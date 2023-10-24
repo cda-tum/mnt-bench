@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <style></style>
+
+    <title>MNT Bench</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+  </head>
+  <body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="/mntbench">
+        <img
+          src="{{ url_for('static', filename='tum_logo.svg') }}"
+          alt=""
+          width="50"
+          height="24"
+          class="d-inline-block align-text-top"
+        />
+        MQT Bench
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="index">Benchmarks</a>
+          <a class="nav-item nav-link" href="description"
+            >Level and File Descriptions</a
+          >
+          <a class="nav-item nav-link" href="benchmark_description"
+            >Benchmark Description</a
+          >
+          <a
+            class="nav-item nav-link"
+            href="https://www.cda.cit.tum.de/research/fcn/"
+            target="_blank"
+            >More on our Work</a
+          >
+          <a class="nav-item nav-link" href="legal">Legal Information</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="col-md-12" style="height: 80px"></div>
+    <p align="center">
+      <img src="{{ url_for('static', filename='mnt_dark.svg')}}" width="20%" />
+    </p>
+    <div class="container">
+      <h1>Welcome to the Munich Nanotech Benchmark Library (MNT Bench)!</h1>
+      <p>ToDo: Description.</p>
+
+      <p>
+        In order to create a benchmark set according to your needs, simply fill
+        out the form below.
+      </p>
+    </div>
+    <form
+      method="POST"
+      class="form-inline"
+      role="form"
+      action="download"
+      id="benchmark_form"
+      onchange="checks_on_change()"
+    >
+      <div class="container">
+        <div class="row">
+          <h4>Benchmark Selection</h4>
+          <p class="text-justify">
+            Please select the desired benchmarks from the set of all available
+            ones or select all (<input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="all_benchmarks"
+              name="all_benchmarks"
+              onchange="toggleAllSelection()"
+            />). For details, see the
+            <a href="benchmark_description" target="_blank"
+              >benchmark description.</a
+            >
+          </p>
+        </div>
+        <div class="row border border-secondary">
+          <div class="row"></div>
+          <div class="row d-flex"></div>
+          <div class="col-md-6">
+            <h6 style="margin-bottom: 0px">Trindade16 Benchmarks:</h6>
+
+            {% for benchmark_trindade in trindade %}
+
+            <div>
+              <div class="col-md-12">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="{{ benchmark_trindade.name }}"
+                  id="selectBench_{{ benchmark_trindade.id }}"
+                  name="selectBench_{{ benchmark_trindade.id }}"
+                />
+                {{ benchmark_trindade.name }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="col-md-6">
+            <h6 style="margin-bottom: 0px">Fontes18 Benchmarks:</h6>
+
+            {% for benchmark_fontes in fontes %}
+
+            <div>
+              <div class="col-md-12">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="{{ benchmark_fontes.name }}"
+                  id="selectBench_{{ benchmark_fontes.id }}"
+                  name="selectBench_{{ benchmark_fontes.id }}"
+                />
+                {{ benchmark_fontes.name }}
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="col-md-12" style="height: 20px"></div>
+        <h4>Abstraction Level Selection</h4>
+        <p class="text-justify" style="margin: 0px">
+          ToDo. For details, see
+          <a href="description" target="_blank">the level description</a>.
+        </p>
+      </div>
+
+      <div class="col-md-12" style="height: 20px"></div>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col border border-secondary"
+            style="width: 25%; min-width: 200px; margin: 1px"
+          >
+            <h6>Gate Library</h6>
+            <p class="text-justify" style="margin: 0px">
+              Select the used gate library:
+            </p>
+            <div class="d-flex">
+              <div class="col-md-6 align-items-center">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="one"
+                  name="one"
+                  value="true"
+                />
+                <label for="one">QCA ONE</label>
+              </div>
+
+              <div class="col-md-6 align-items-center">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="bestagon"
+                  name="bestagon"
+                  value="true"
+                />
+                <label for="bestagon">Bestagon</label>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col border border-secondary"
+            style="width: 25%; min-width: 200px; margin: 1px"
+          >
+            <h6>Clocking Scheme</h6>
+
+            <p class="text-justify" style="margin: 0px">
+              Select the underlying clocking scheme:
+            </p>
+            <div class="row">
+              <div class="col-md-12 align-items-center">
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="twoddwave"
+                    name="twoddwave"
+                  />
+                  <label for="twoddwave">2DDWave</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="use"
+                    name="use"
+                  />
+                  <label for="use">USE</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="res"
+                    name="res"
+                  />
+                  <label for="res">RES</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="esr"
+                    name="esr"
+                  />
+                  <label for="esr">ESR</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="row"
+                    name="row"
+                  />
+                  <label for="row">Row</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" style="height: 20px"></div>
+        <h4>Download</h4>
+        <p class="text-justify"></p>
+        <div class="d-flex">
+          <div class="same_row">Number of selected benchmarks: &nbsp;</div>
+          <div class="same_row" id="num_benchmarks">0</div>
+        </div>
+        After the download button is clicked, all benchmarks provided as
+        <em>.fgl</em> files are downloaded as a <em>.zip</em> archive. Details
+        of the <a href="description" target="_blank">file format</a> are
+        provided. Alternatively, a pre-generated archive with
+        <em>all</em> benchmarks can be <a href="get_pre_gen">downloaded</a>.
+
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg mx-auto text-center"
+            id="downloadButton"
+            disabled
+            value="submit"
+          >
+            Download selected Benchmarks
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="col-md-12" style="height: 20px"></div>
+
+    <div class="container">
+      <h4>Reference</h4>
+      <p class="text-justify">
+        For a more detailed description of MNT Bench, we are referring to the
+        corresponding paper
+        <a href="https://arxiv.org/pdf/2204.13719.pdf" target="_blank"
+          >"MQT Bench: Benchmarking Software and Design Automation Tools for
+          Quantum Computing"</a
+        >. Our implementation is available on
+        <a href="https://github.com/cda-tum/MQTBench" target="_blank">Github</a
+        >.
+
+        <strong
+          >In case you are using MQT Bench in your work, we would be thankful if
+          you referred to it by citing the following publication:</strong
+        >
+      </p>
+
+      <p>
+        @article{quetschlich2023mqtbench, <br />
+        &nbsp; title=&#123;&#123;&#123;MQT Bench}}: Benchmarking Software and
+        Design Automation Tools for Quantum Computing},<br />
+        &nbsp; shorttitle = &#123;&#123;MQT Bench}},<br />
+        &nbsp; journal = &#123;&#123;Quantum}},<br />
+        &nbsp; author={Quetschlich, Nils and Burgholzer, Lukas and Wille,
+        Robert},<br />
+        &nbsp; year={2023},<br />
+        &nbsp; note=&#123;&#123;&#123;MQT Bench}} is available at
+        \url{https://www.cda.cit.tum.de/mqtbench/}},<br />
+        }
+      </p>
+
+      <p>
+        In case you have any problems or questions feel free to contact us via
+        <a href="mailto:quantum.cda@xcit.tum.de">quantum.cda@xcit.tum.de</a>.
+        More on our work on quantum computation is summarized on
+        <a href="https://www.cda.cit.tum.de/research/quantum" target="_blank"
+          >this page</a
+        >.
+      </p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function toggleAllSelection() {
+
+          var ids = {{trindade | length}}+{{fontes | length }}
+          for (let i = 1; i <= ids; i++) {
+              document.getElementById("selectBench_" + i).checked = all_benchmarks.checked
+          }
+      }
+
+      function checks_on_change() {
+          check_col_if_all_selected()
+          get_num_benchs()
+
+
+      }
+
+      function get_num_benchs() {
+          const form = document.getElementById("benchmark_form");
+          const formData = new FormData(form);
+          fetch('./get_num_benchmarks', {
+              method: 'POST',
+              body: formData,
+              dataType: 'json',
+          }).then(response => response.json())
+              .then(response => {
+                  document.getElementById("num_benchmarks").innerHTML = response.num_selected;
+
+                          if (num_benchmarks.innerHTML > 0) {
+                              downloadButton.disabled = false;
+                          }
+                          if (num_benchmarks.innerHTML == 0) {
+                              downloadButton.disabled = true;
+                          }
+              });
+
+      }
+
+      function check_col_if_all_selected() {
+          var ids = {{trindade | length}}+{{fontes | length }}
+          var check_all_selected = true;
+          for (let i = 1; i <= ids; i++) {
+              if (!document.getElementById("selectBench_" + i).checked) {
+                  all_benchmarks.checked = false;
+                  check_all_selected = false;
+              }
+          }
+          if (check_all_selected) {
+              all_benchmarks.checked = true;
+          }
+      }
+    </script>
+  </body>
+</html>

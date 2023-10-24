@@ -1,0 +1,3 @@
+include src/mnt/benchviewer/static/files/MNTBench_all.zip
+include src/mnt/benchviewer/templates/*
+include src/mnt/benchviewer/static/*
