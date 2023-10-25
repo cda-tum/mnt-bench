@@ -42,7 +42,7 @@ def test_prepare_form_input() -> None:
     }
 
     expected_res = BenchmarkConfiguration(
-        indices_benchmarks=list(range(1, 4)),
+        indices_benchmarks=list(range(1, 5)),
         one=True,
         bestagon=False,
         twoddwave=False,
@@ -58,7 +58,7 @@ def test_prepare_form_input() -> None:
 benchviewer = resources.files("mnt.benchviewer")
 
 
-def test_read_mqtbench_all_zip() -> None:
+def test_read_mntbench_all_zip() -> None:
     backend = Backend()
     with resources.as_file(benchviewer) as benchviewer_path:
         target_location = str(benchviewer_path / "static/files")
@@ -128,11 +128,11 @@ def test_flask_server() -> None:
     with app.test_client() as c:
         success_code = 200
         links_to_check = [
-            "/mqtbench/index",
-            "/mqtbench/download",
-            "/mqtbench/legal",
-            "/mqtbench/description",
-            "/mqtbench/benchmark_description",
+            "/mntbench/index",
+            "/mntbench/download",
+            "/mntbench/legal",
+            "/mntbench/description",
+            "/mntbench/benchmark_description",
         ]
         for link in links_to_check:
             assert c.get(link).status_code == success_code
