@@ -6,8 +6,8 @@
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/cda-tum/fiction/main/docs/_static/mnt_light.svg" width="60%">
-  <img src="https://raw.githubusercontent.com/cda-tum/fiction/main/docs/_static/mnt_dark.svg" width="60%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/simon1hofmann/mnt-bench/main/img/mnt_light.svg" width="60%">
+  <img src="https://raw.githubusercontent.com/simon1hofmann/mnt-bench/main/img/mnt_dark.svg" width="60%">
 </picture>
 </p>
 
