@@ -54,9 +54,6 @@
           <a class="nav-item nav-link" href="description"
             >Level and File Descriptions</a
           >
-          <a class="nav-item nav-link" href="benchmark_description"
-            >Benchmark Description</a
-          >
           <a
             class="nav-item nav-link"
             href="https://www.cda.cit.tum.de/research/fcn/"
@@ -150,6 +147,48 @@
 
             {% endfor %}
           </div>
+
+          <div class="col-md-6">
+            <h6 style="margin-bottom: 0px">ISCAS85 Benchmarks:</h6>
+
+            {% for benchmark_iscas in iscas %}
+
+            <div>
+              <div class="col-md-12">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="{{ benchmark_iscas.name }}"
+                  id="selectBench_{{ benchmark_iscas.id }}"
+                  name="selectBench_{{ benchmark_iscas.id }}"
+                />
+                {{ benchmark_iscas.name }}
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+
+          <div class="col-md-6">
+            <h6 style="margin-bottom: 0px">EPFL Benchmarks:</h6>
+
+            {% for benchmark_epfl in epfl %}
+
+            <div>
+              <div class="col-md-12">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="{{ benchmark_epfl.name }}"
+                  id="selectBench_{{ benchmark_epfl.id }}"
+                  name="selectBench_{{ benchmark_epfl.id }}"
+                />
+                {{ benchmark_epfl.name }}
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
         </div>
 
         <div class="col-md-12" style="height: 20px"></div>
@@ -163,6 +202,39 @@
       <div class="col-md-12" style="height: 20px"></div>
       <div class="container">
         <div class="row">
+          <div
+            class="col border border-secondary"
+            style="width: 25%; min-width: 200px; margin: 1px"
+          >
+            <h6>Gate Library</h6>
+            <p class="text-justify" style="margin: 0px">
+              Select the abstraction level:
+            </p>
+            <div class="d-flex">
+              <div class="col-md-6 align-items-center">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="network"
+                  name="network"
+                  value="true"
+                />
+                <label for="network">Network</label>
+              </div>
+
+              <div class="col-md-6 align-items-center">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="gate"
+                  name="gate"
+                  value="true"
+                />
+                <label for="gate">Gate-level</label>
+              </div>
+            </div>
+          </div>
+
           <div
             class="col border border-secondary"
             style="width: 25%; min-width: 200px; margin: 1px"
@@ -322,7 +394,7 @@
     <script>
       function toggleAllSelection() {
 
-          var ids = {{trindade | length}}+{{fontes | length }}
+          var ids = {{trindade | length}}+{{fontes | length }}+{{iscas | length }}+{{epfl | length }}
           for (let i = 1; i <= ids; i++) {
               document.getElementById("selectBench_" + i).checked = all_benchmarks.checked
           }
@@ -357,7 +429,7 @@
       }
 
       function check_col_if_all_selected() {
-          var ids = {{trindade | length}}+{{fontes | length }}
+          var ids = {{trindade | length}}+{{fontes | length }}+{{iscas | length }}+{{epfl | length }}
           var check_all_selected = true;
           for (let i = 1; i <= ids; i++) {
               if (!document.getElementById("selectBench_" + i).checked) {

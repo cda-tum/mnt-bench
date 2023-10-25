@@ -20,6 +20,7 @@ else:
             "mux21_ONE_twoddwave.fgl",
             backend.ParsedBenchmarkName(
                 benchmark="mux21",
+                level="gate",
                 library="one",
                 clocking_scheme="twoddwave",
                 filename="mux21_ONE_twoddwave.fgl",
@@ -38,11 +39,14 @@ def test_prepare_form_input() -> None:
         "selectBench_2": "XOR 2:1",
         "selectBench_3": "clpl",
         "selectBench_4": "majority",
+        "gate": "true",
         "one": "true",
     }
 
     expected_res = BenchmarkConfiguration(
         indices_benchmarks=list(range(1, 5)),
+        gate=True,
+        network=False,
         one=True,
         bestagon=False,
         twoddwave=False,
@@ -78,6 +82,8 @@ def test_create_database() -> None:
 
     input_data = BenchmarkConfiguration(
         indices_benchmarks=[4],
+        gate=True,
+        network=False,
         one=True,
         bestagon=False,
         twoddwave=False,
@@ -97,7 +103,9 @@ def test_streaming_zip() -> None:
     backend.read_mntbench_all_zip(
         skip_question=True, target_location=str(resources.files("mnt.benchviewer") / "static" / "files")
     )
-    res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_2DDWave.fgl", "xor2_ONE_2DDWave.fgl"])
+    res = backend.generate_zip_ephemeral_chunks(
+        filenames=["MNTBench_all/mux21_ONE_2DDWave.fgl", "MNTBench_all/xor2_ONE_2DDWave.fgl"]
+    )
     assert list(res)
 
     with pytest.raises(KeyError):
@@ -117,7 +125,6 @@ def test_flask_server() -> None:
 
     paths_to_check = [
         "static/files/MNTBench_all.zip",
-        "templates/benchmark_description.html",
         "templates/index.html",
         "templates/legal.html",
         "templates/description.html",
@@ -132,7 +139,6 @@ def test_flask_server() -> None:
             "/mntbench/download",
             "/mntbench/legal",
             "/mntbench/description",
-            "/mntbench/benchmark_description",
         ]
         for link in links_to_check:
             assert c.get(link).status_code == success_code

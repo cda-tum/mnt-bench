@@ -54,12 +54,9 @@
           <a class="nav-item nav-link active" href="description "
             >Level and File Descriptions</a
           >
-          <a class="nav-item nav-link" href="benchmark_description "
-            >Benchmark Description</a
-          >
           <a
             class="nav-item nav-link"
-            href="https://www.cda.cit.tum.de/research/quantum/"
+            href="https://www.cda.cit.tum.de/research/fcn/"
             target="_blank"
             >More on our Work</a
           >
@@ -70,51 +67,24 @@
     <div class="col-xs-12" style="height: 80px"></div>
 
     <div class="container">
-      <h1>MNT Bench: Level Description and File Format</h1>
-      <p>Benchmarks are provided on four different abstraction levels:</p>
+      <h1>MNT Bench: Library Description and File Format</h1>
+      <p>Benchmarks are provided for two different gate libraries:</p>
       <ul>
-        <li>
-          <em>Algorithmic Level</em>: Circuits are described in a textbook-like
-          fashion using high-level constructs.
-        </li>
-        <li>
-          <em>Target-Independent Level</em>: Circuits are unfolded and unrolled
-          representations of the circuits from the algorithmic level.
-        </li>
-        <li>
-          <em>Target-dependent Native Gates Level</em>: Circuits are synthesized
-          to a particular native gate-set.
-        </li>
-        <li>
-          <em>Target-dependent Mapped Level</em>: Circuits are mapped to a
-          particular architecture.
-        </li>
+        <li><em>QCA ONE</em>: Used for QCA circuits.</li>
+        <li><em>Bestagon</em>: Used for SiDB circuits.</li>
       </ul>
       <p>Used File Format:</p>
       <ul>
         <li>
-          Until openQASM 3.0 is widely supported, all circuits (except those on
-          the algorithmic level) are provided as <em>.qasm</em> files following
-          the openQASM 2.0 standard. Circuits on the algorithmic level can
-          directly be generated (as IBM Qiskit QuantumCircuit objects) using the
-          <em>mqt.bench</em> python package. More details on openQASM 2.0 can be
-          found <a href="https://arxiv.org/abs/1707.03429">here</a>, and on
-          openQASM 3.0 <a href="https://arxiv.org/abs/2104.14722">here</a>.
-        </li>
-        <li>
           Not every benchmark is necessarily available for every possible
-          configuration of the available options. For example, not all qubit
-          counts in a given range might be available for a selected benchmark.
-        </li>
-        <li>
-          Mapped benchmarks are only available up to the biggest available
-          architecture. That is, for IBM (for Rigetti) mapped benchmarks are
-          available only for instances with up to 127 qubits (80 qubits).
+          configuration of the available options. For example, for large
+          circuits layouts using the USE clocking scheme have not been found
+          yet.
         </li>
         <li>
           Since the <em>.zip</em> file may be composed of numerous files
-          (currently, we offer more than 30.000 benchmark circuits), the
-          following naming convention is used for the respective files:
+          (currently, we offer more than 100 benchmark circuits), the following
+          naming convention is used for the respective files:
         </li>
       </ul>
     </div>
@@ -133,45 +103,16 @@
         </thead>
         <tbody>
           <tr>
-            <td style="vertical-align: top">Algorithmic Level</td>
+            <td style="vertical-align: top">Gate Level</td>
             <td style="vertical-align: top">
-              For this level, dedicated <em>.qasm</em> files cannot be provided
-              yet, since openQASM 2.0 supports only a set of quantum gates.
-              Thus, we provide those benchmarks using our pypi package which is
-              accessible via <em>pip</em>.
+              &lt;benchmark_identifier&gt;_&lt;library&gt;_&lt;clocking_scheme&gt;.fgl
             </td>
-            <td style="vertical-align: top">
-              Python <em>Qiskit::QuantumCircuit</em> Object
-            </td>
+            <td style="vertical-align: top">mux21_Bestagon_ROW.fgl</td>
           </tr>
           <tr>
-            <td style="vertical-align: top">Target-independent Level</td>
-            <td style="vertical-align: top">
-              &lt;benchmark_identifier&gt;_indep_&lt;compiler&gt;_&lt;number_of_qubits&gt;.qasm
-            </td>
-            <td style="vertical-align: top">qft_indep_tket_5.qasm</td>
-          </tr>
-          <tr>
-            <td style="vertical-align: top">
-              Target-dependent Native Gates Level
-            </td>
-            <td style="vertical-align: top">
-              &lt;benchmark_identifier&gt;_nativegates_&lt;native_gate_set&gt;_&lt;compiler&gt;_&lt;optional:
-              compiler settings&gt;_&lt;number_of_qubits&gt;.qasm
-            </td>
-            <td style="vertical-align: top">
-              qft_nativegates_ibm_qiskit_opt3_5.qasm
-            </td>
-          </tr>
-          <tr>
-            <td style="vertical-align: top">Target-dependent Mapped Level</td>
-            <td style="vertical-align: top">
-              &lt;benchmark_identifier&gt;_mapped_&lt;device&gt;_&lt;compiler&gt;_&lt;compiler
-              settings>_&lt;number_of_qubits&gt;.qasm
-            </td>
-            <td style="vertical-align: top">
-              qft_nativegates_rigetti_aspen_m1_qiskit_opt3_5.qasm
-            </td>
+            <td style="vertical-align: top">Network Level</td>
+            <td style="vertical-align: top">&lt;benchmark_identifier&gt;.v</td>
+            <td style="vertical-align: top">mux21.v</td>
           </tr>
         </tbody>
       </table>

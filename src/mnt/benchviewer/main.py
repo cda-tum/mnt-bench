@@ -63,6 +63,8 @@ def index() -> str:
         "index.html",
         trindade=SERVER.backend.trindade,
         fontes=SERVER.backend.fontes,
+        iscas=SERVER.backend.iscas,
+        epfl=SERVER.backend.epfl,
     )
 
 
@@ -95,7 +97,7 @@ def download_data() -> str | Response:
     if request.method == "POST":
         data = request.form
         prepared_data = SERVER.backend.prepare_form_input(data)
-        file_paths = SERVER.backend.get_selected_file_paths(prepared_data)
+        file_paths = ["MNTBench_all/" + file for file in SERVER.backend.get_selected_file_paths(prepared_data)]
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
         if SERVER.activate_logging:
@@ -120,6 +122,8 @@ def download_data() -> str | Response:
         "index.html",
         trindade=SERVER.backend.trindade,
         fontes=SERVER.backend.fontes,
+        iscas=SERVER.backend.iscas,
+        epfl=SERVER.backend.epfl,
     )
 
 
@@ -135,15 +139,6 @@ def description() -> str:
     """Return the description.html file in which the file formats are described."""
 
     return render_template("description.html")
-
-
-@app.route(f"{PREFIX}/benchmark_description")
-def benchmark_description() -> str:
-    """Return the benchmark_description.html file together in which all benchmark algorithms
-    are described in detail.
-    """
-
-    return render_template("benchmark_description.html")
 
 
 @app.route(f"{PREFIX}/get_num_benchmarks", methods=["POST"])
