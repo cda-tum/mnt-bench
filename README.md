@@ -98,8 +98,8 @@ Afterwards, the webserver is started locally.
 For that, the repository must be cloned and installed:
 
 ```
-git clone https://github.com/cda-tum/MNTBench.git
-cd MNTBench
+git clone https://github.com/cda-tum/mnt-bench.git
+cd mnt-bench
 pip install .
 ```
 
