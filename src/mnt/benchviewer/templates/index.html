@@ -16,7 +16,16 @@
       crossorigin="anonymous"
     />
 
-    <style></style>
+    <style>
+      .disabled-checkbox {
+        opacity: 0.5; /* Make the checkbox semi-transparent */
+        pointer-events: none; /* Disable mouse events on the checkbox */
+      }
+
+      .disabled-checkbox + label {
+        color: #808080; /* Change label color to gray */
+      }
+    </style>
 
     <title>MNT Bench</title>
     <link
@@ -24,7 +33,7 @@
       href="{{ url_for('static', filename='favicon.ico') }}"
     />
   </head>
-  <body>
+  <body onload="disable_all()">
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <a class="navbar-brand" href="/mntbench">
@@ -98,10 +107,7 @@
               id="all_benchmarks"
               name="all_benchmarks"
               onchange="toggleAllSelection()"
-            />). For details, see the
-            <a href="benchmark_description" target="_blank"
-              >benchmark description.</a
-            >
+            />).
           </p>
         </div>
         <div class="row border border-secondary">
@@ -206,7 +212,7 @@
             class="col border border-secondary"
             style="width: 25%; min-width: 200px; margin: 1px"
           >
-            <h6>Gate Library</h6>
+            <h6>Abstraction Level</h6>
             <p class="text-justify" style="margin: 0px">
               Select the abstraction level:
             </p>
@@ -393,7 +399,6 @@
 
     <script>
       function toggleAllSelection() {
-
           var ids = {{trindade | length}}+{{fontes | length }}+{{iscas | length }}+{{epfl | length }}
           for (let i = 1; i <= ids; i++) {
               document.getElementById("selectBench_" + i).checked = all_benchmarks.checked
@@ -401,10 +406,99 @@
       }
 
       function checks_on_change() {
+          enable_level()
           check_col_if_all_selected()
           get_num_benchs()
+      }
 
+      function setCheckboxState(id, checked, disabled, update) {
+          var checkboxElement = document.getElementById(id);
+          if (update) {
+              checkboxElement.checked = checked;
+          }
+          checkboxElement.disabled = disabled;
+          if (disabled) {
+              checkboxElement.classList.add("disabled-checkbox");
+          } else {
+              checkboxElement.classList.remove("disabled-checkbox");
+          }
+      }
 
+      function enable_level() {
+          var ids = {{trindade | length}}+{{fontes | length }}+{{iscas | length }}+{{epfl | length }}
+          var at_least_one = false;
+          for (let i = 1; i <= ids; i++) {
+              if (document.getElementById("selectBench_" + i).checked) {
+                  at_least_one = true;
+              }
+          }
+          if (at_least_one){
+            setCheckboxState("network", false, false, false);
+            setCheckboxState("gate", false, false, false);
+            enable_gate_library_selection();
+          }
+          else {
+            disable_all();
+          }
+      }
+
+      function enable_gate_library_selection(){
+          if (document.getElementById("gate").checked) {
+              setCheckboxState("one", false, false, false);
+              setCheckboxState("bestagon", false, false, false);
+              enable_clocking_schemes();
+          }
+          else {
+              disable_gate_libraries();
+              disable_clocking_schemes(one=true, bestagon=true);
+          }
+      }
+
+      function enable_clocking_schemes(){
+          if (document.getElementById("one").checked) {
+              setCheckboxState("twoddwave", false, false, false);
+              setCheckboxState("use", false, false, false);
+              setCheckboxState("res", false, false, false);
+              setCheckboxState("esr", false, false, false);
+          }
+          else {
+              disable_clocking_schemes(one=true, bestagon=false);
+          }
+          if (document.getElementById("bestagon").checked) {
+              setCheckboxState("row", true, false, true);
+          }
+          else {
+              disable_clocking_schemes(one=false, bestagon=true);
+          }
+      }
+
+      function disable_all(){
+        disable_levels();
+        disable_gate_libraries();
+        disable_clocking_schemes(one=true, bestagon=true);
+      }
+
+      function disable_levels() {
+          setCheckboxState("network", false, true, true);
+          setCheckboxState("gate", false, true, true);
+      }
+
+      function disable_gate_libraries() {
+          setCheckboxState("one", false, true, true);
+          setCheckboxState("bestagon", false, true, true);
+      }
+
+      function disable_clocking_schemes(one, bestagon){
+          if (one) {
+              setCheckboxState("twoddwave", false, true, true);
+              setCheckboxState("use", false, true, true);
+              setCheckboxState("res", false, true, true);
+              setCheckboxState("esr", false, true, true);
+          }
+
+          if (bestagon) {
+              setCheckboxState("row", false, true, true);
+          }
       }
 
       function get_num_benchs() {

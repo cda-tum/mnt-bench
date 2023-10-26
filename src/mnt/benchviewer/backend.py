@@ -89,34 +89,22 @@ class Backend:
         if self.database is None or self.database.empty:
             return []
 
-        selected_trindade_benchmarks = []
-        selected_fontes_benchmarks = []
-        selected_iscas_benchmarks = []
-        selected_epfl_benchmarks = []
-
+        selected_benchmarks = []
         for identifier in benchmark_config.indices_benchmarks:
-            if 0 < identifier <= len(self.trindade):
-                name = self.trindade[identifier - 1]["filename"]
-                selected_trindade_benchmarks.append(name)
+            if 1 <= identifier <= len(self.trindade):
+                selected_benchmarks.append(self.trindade[identifier - 1]["filename"])
+            elif 1 <= identifier <= len(self.trindade) + len(self.fontes):
+                selected_benchmarks.append(self.fontes[identifier - 1 - len(self.trindade)]["filename"])
+            elif 1 <= identifier <= len(self.trindade) + len(self.fontes) + len(self.iscas):
+                selected_benchmarks.append(
+                    self.iscas[identifier - 1 - len(self.trindade) - len(self.fontes)]["filename"]
+                )
+            elif 1 <= identifier <= len(self.trindade) + len(self.fontes) + len(self.iscas) + len(self.epfl):
+                selected_benchmarks.append(
+                    self.epfl[identifier - 1 - len(self.trindade) - len(self.fontes) - len(self.iscas)]["filename"]
+                )
 
-            elif 0 < identifier <= len(self.trindade) + len(self.fontes):
-                name = self.fontes[identifier - 1 - len(self.trindade)]["filename"]
-                selected_fontes_benchmarks.append(name)
-
-            elif 0 < identifier <= len(self.trindade) + len(self.fontes) + len(self.iscas):
-                name = self.iscas[identifier - 1 - len(self.trindade) - len(self.fontes)]["filename"]
-                selected_iscas_benchmarks.append(name)
-
-            elif 0 < identifier <= len(self.trindade) + len(self.fontes) + len(self.iscas) + len(self.epfl):
-                name = self.epfl[identifier - 1 - len(self.trindade) - len(self.fontes) - len(self.iscas)]["filename"]
-                selected_epfl_benchmarks.append(name)
-
-        db_tmp = self.database.loc[
-            (self.database["benchmark"].isin(selected_trindade_benchmarks))
-            | (self.database["benchmark"].isin(selected_fontes_benchmarks))
-            | (self.database["benchmark"].isin(selected_iscas_benchmarks))
-            | (self.database["benchmark"].isin(selected_epfl_benchmarks))
-        ]
+        db_tmp = self.database[self.database["benchmark"].isin(selected_benchmarks)]
 
         if not (benchmark_config.one | benchmark_config.bestagon):
             if benchmark_config.network and not benchmark_config.gate:
