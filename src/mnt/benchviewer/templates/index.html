@@ -465,7 +465,12 @@
               disable_clocking_schemes(one=true, bestagon=false);
           }
           if (document.getElementById("bestagon").checked) {
-              setCheckboxState("row", true, false, true);
+              if (!document.getElementById("one").checked) {
+                  setCheckboxState("row", true, false, true);
+              }
+              else {
+                setCheckboxState("row", true, false, false);
+              }
           }
           else {
               disable_clocking_schemes(one=false, bestagon=true);

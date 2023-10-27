@@ -52,21 +52,56 @@ class Backend:
         self.trindade = [
             {"name": "Multiplexer 2:1", "id": "1", "filename": "mux21"},
             {"name": "XOR 2:1", "id": "2", "filename": "xor2"},
+            {"name": "XNOR 2:1", "id": "3", "filename": "xnor2"},
+            {"name": "Half Adder", "id": "4", "filename": "ha"},
+            {"name": "Full Adder", "id": "5", "filename": "fa"},
+            {"name": "Parity Generator", "id": "6", "filename": "par_gen"},
+            {"name": "Parity Check", "id": "7", "filename": "par_check"},
         ]
 
         self.fontes = [
-            {"name": "clpl", "id": "3", "filename": "clpl"},
-            {"name": "majority", "id": "4", "filename": "majority"},
+            {"name": "t", "id": "8", "filename": "t"},
+            {"name": "b1_r2", "id": "9", "filename": "b1_r2"},
+            {"name": "majority", "id": "10", "filename": "majority"},
+            {"name": "newtag", "id": "11", "filename": "newtag"},
+            {"name": "clpl", "id": "12", "filename": "clpl"},
+            {"name": "1bitAdderAOIG", "id": "13", "filename": "1bitadderaoig"},
+            {"name": "1bitAdderMaj", "id": "14", "filename": "1bitaddermaj"},
+            {"name": "2bitAdderAOIG", "id": "15", "filename": "2bitaddermaj"},
+            {"name": "XOR5Maj", "id": "16", "filename": "xor5maj"},
+            {"name": "cm82a_5", "id": "17", "filename": "cm82a_5"},
+            {"name": "parity", "id": "18", "filename": "parity"},
         ]
 
         self.iscas = [
-            {"name": "c432", "id": "5", "filename": "c432"},
-            {"name": "c499", "id": "6", "filename": "c499"},
+            {"name": "c17", "id": "19", "filename": "c17"},
+            {"name": "c432", "id": "20", "filename": "c432"},
+            {"name": "c499", "id": "21", "filename": "c499"},
+            {"name": "c880", "id": "22", "filename": "c880"},
+            {"name": "c1355", "id": "23", "filename": "c1355"},
+            {"name": "c1908", "id": "24", "filename": "c1908"},
+            {"name": "c2670", "id": "25", "filename": "c2670"},
+            {"name": "c3540", "id": "26", "filename": "c3540"},
+            {"name": "c5315", "id": "27", "filename": "c5315"},
+            {"name": "c6288", "id": "28", "filename": "c6288"},
+            {"name": "c7552", "id": "29", "filename": "c7552"},
         ]
 
         self.epfl = [
-            {"name": "adder", "id": "7", "filename": "adder"},
-            {"name": "sin", "id": "8", "filename": "sin"},
+            {"name": "ctrl", "id": "30", "filename": "ctrl"},
+            {"name": "router", "id": "31", "filename": "router"},
+            {"name": "int2float", "id": "32", "filename": "int2float"},
+            {"name": "cavlc", "id": "33", "filename": "cavlc"},
+            {"name": "priority", "id": "34", "filename": "priority"},
+            {"name": "dec", "id": "35", "filename": "dec"},
+            {"name": "i2c", "id": "36", "filename": "i2c"},
+            {"name": "adder", "id": "37", "filename": "adder"},
+            {"name": "arbiter", "id": "38", "filename": "arbiter"},
+            {"name": "bar", "id": "39", "filename": "bar"},
+            {"name": "max", "id": "40", "filename": "max"},
+            {"name": "sin", "id": "41", "filename": "sin"},
+            {"name": "voter", "id": "42", "filename": "voter"},
+            {"name": "square", "id": "43", "filename": "square"},
         ]
 
         self.database: pd.DataFrame | None = None
@@ -139,25 +174,38 @@ class Backend:
                     db_tmp = db_tmp.loc[(db_tmp["library"] == "one") | (db_tmp["library"] == "bestagon")]
                     db_filtered = pd.concat([db_filtered, db_tmp])
 
-            if benchmark_config.one:
-                if benchmark_config.twoddwave:
-                    db_tmp = db_tmp.loc[(db_tmp["clocking_scheme"] == "2ddwave") & (db_tmp["library"] == "one")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
+            if benchmark_config.one and not benchmark_config.bestagon:
+                db_tmp = db_tmp.loc[
+                    (
+                        (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
+                        | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
+                        | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
+                        | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
+                    )
+                    & (db_tmp["library"] == "one")
+                ]
+                db_filtered = pd.concat([db_filtered, db_tmp])
 
-                if benchmark_config.use:
-                    db_tmp = db_tmp.loc[(db_tmp["clocking_scheme"] == "use") & (db_tmp["library"] == "one")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-                if benchmark_config.res:
-                    db_tmp = db_tmp.loc[(db_tmp["clocking_scheme"] == "res") & (db_tmp["library"] == "one")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-                if benchmark_config.esr:
-                    db_tmp = db_tmp.loc[(db_tmp["clocking_scheme"] == "esr") & (db_tmp["library"] == "one")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-            if benchmark_config.bestagon and benchmark_config.row:
+            if benchmark_config.bestagon and not benchmark_config.one:
                 db_tmp = db_tmp.loc[(db_tmp["clocking_scheme"] == "row") & (db_tmp["library"] == "bestagon")]
+                db_filtered = pd.concat([db_filtered, db_tmp])
+
+            if benchmark_config.one and benchmark_config.bestagon:
+                db_tmp = db_tmp.loc[
+                    (
+                        (
+                            (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
+                            | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
+                            | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
+                            | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
+                        )
+                        & (db_tmp["library"] == "one")
+                    )
+                    | (
+                        (db_tmp["clocking_scheme"] == ("row" if benchmark_config.row else "-"))
+                        & (db_tmp["library"] == "bestagon")
+                    )
+                ]
                 db_filtered = pd.concat([db_filtered, db_tmp])
 
         if benchmark_config.gate and benchmark_config.network:
@@ -183,42 +231,49 @@ class Backend:
                     ]
                     db_filtered = pd.concat([db_filtered, db_tmp])
 
-            if benchmark_config.one:
-                if benchmark_config.twoddwave:
-                    db_tmp = db_tmp.loc[
-                        ((db_tmp["clocking_scheme"] == "2ddwave") & (db_tmp["library"] == "one"))
-                        | (db_tmp["level"] == "network")
-                    ]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
+            if benchmark_config.one and not benchmark_config.bestagon:
+                db_tmp = db_tmp.loc[
+                    (
+                        (
+                            (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
+                            | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
+                            | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
+                            | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
+                        )
+                        & (db_tmp["library"] == "one")
+                    )
+                    | (db_tmp["level"] == "network")
+                ]
+                db_filtered = pd.concat([db_filtered, db_tmp])
 
-                if benchmark_config.use:
-                    db_tmp = db_tmp.loc[
-                        ((db_tmp["clocking_scheme"] == "use") & (db_tmp["library"] == "one"))
-                        | (db_tmp["level"] == "network")
-                    ]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-                if benchmark_config.res:
-                    db_tmp = db_tmp.loc[
-                        ((db_tmp["clocking_scheme"] == "res") & (db_tmp["library"] == "one"))
-                        | (db_tmp["level"] == "network")
-                    ]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-                if benchmark_config.esr:
-                    db_tmp = db_tmp.loc[
-                        ((db_tmp["clocking_scheme"] == "esr") & (db_tmp["library"] == "one"))
-                        | (db_tmp["level"] == "network")
-                    ]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-            if benchmark_config.bestagon and benchmark_config.row:
+            if benchmark_config.bestagon and not benchmark_config.one:
                 db_tmp = db_tmp.loc[
                     ((db_tmp["clocking_scheme"] == "row") & (db_tmp["library"] == "bestagon"))
                     | (db_tmp["level"] == "network")
                 ]
                 db_filtered = pd.concat([db_filtered, db_tmp])
 
+            if benchmark_config.one and benchmark_config.bestagon:
+                db_tmp = db_tmp.loc[
+                    (
+                        (
+                            (
+                                (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
+                                | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
+                                | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
+                                | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
+                            )
+                            & (db_tmp["library"] == "one")
+                        )
+                        | (
+                            (db_tmp["clocking_scheme"] == ("row" if benchmark_config.row else "-"))
+                            & (db_tmp["library"] == "bestagon")
+                        )
+                    )
+                    | (db_tmp["level"] == "network")
+                ]
+                db_filtered = pd.concat([db_filtered, db_tmp])
+        db_filtered = db_filtered.drop_duplicates()
         return cast(list[str], db_filtered["filename"].to_list())
 
     def generate_zip_ephemeral_chunks(
@@ -422,9 +477,9 @@ def parse_data(filename: str) -> ParsedBenchmarkName:
     if "/" in filename:
         filename = filename.split("/")[1]
     if filename.endswith(".fgl"):
-        benchmark = filename.split("_")[0].lower()
-        library = filename.split("_")[1].lower()
-        clocking_scheme = filename.split("_")[2].lower().split(".")[0]
+        benchmark = "_".join([file.lower() for file in filename.split("_")[0:-2]])
+        library = filename.split("_")[-2].lower()
+        clocking_scheme = filename.split("_")[-1].lower().split(".")[0]
         level = "gate"
     elif filename.endswith(".v"):
         benchmark = filename.split(".")[0].lower()
