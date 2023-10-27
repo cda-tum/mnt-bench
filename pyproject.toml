@@ -89,9 +89,6 @@ show_missing = true
 skip_empty = true
 precision = 1
 
-[tool.black]
-line-length = 120
-
 [tool.mypy]
 mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
 files = ["src", "tests", "setup.py"]
@@ -108,7 +105,12 @@ module = ["joblib.*", "networkx.*", "pandas.*"]
 ignore_missing_imports = true
 
 [tool.ruff]
-select = [
+line-length = 120
+extend-include = ["*.ipynb"]
+src = ["src"]
+
+[tool.ruff.lint]
+extend-select = [
     "E", "F", "W", # flake8
     "A",           # flake8-builtins
     "B",  "B904",  # flake8-bugbear
