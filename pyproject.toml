@@ -163,5 +163,3 @@ exclude = [
     "node_modules",
     "venv",
 ]
-
-line-length = 120
