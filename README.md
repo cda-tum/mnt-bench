@@ -6,8 +6,8 @@
 
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/simon1hofmann/mnt-bench/main/img/mnt_light.svg" width="60%">
-  <img src="https://raw.githubusercontent.com/simon1hofmann/mnt-bench/main/img/mnt_dark.svg" width="60%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/img/mnt_light.svg" width="60%">
+  <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/img/mnt_dark.svg" width="60%">
 </picture>
 </p>
 
@@ -34,8 +34,8 @@ See the [benchmark description](https://www.cda.cit.tum.de/mntbench/benchmark_de
 
 So far, MNT Bench supports the following native gate-sets:
 
-1. [QCA ONE]() gate set: _\[AND, OR, NOT\]_
-2. [Bestagon]() gate set: _\[AND, OR, NOT\]_
+1. [QCA ONE]() gate set: _\[AND, OR, NOT, BUF\]_
+2. [Bestagon]() gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
 
 ## Clocking Schemes
 

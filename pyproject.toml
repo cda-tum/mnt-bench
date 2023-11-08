@@ -63,9 +63,9 @@ dev = ["mnt.bench[coverage, docs]"]
 "mnt.bench" = "mnt.benchviewer.main:start_server"
 
 [project.urls]
-Homepage = "https://github.com/simon1hofmann/mntbench"
-"Bug Tracker" = "https://github.com/simon1hofmann/mntbench/issues"
-Discussions = "https://github.com/simon1hofmann/mntbench/discussions"
+Homepage = "https://github.com/cda-tum/mntbench"
+"Bug Tracker" = "https://github.com/cda-tum/mntbench/issues"
+Discussions = "https://github.com/cda-tum/mntbench/discussions"
 Research = "https://www.cda.cit.tum.de/research/fcn/"
 
 [tool.setuptools_scm]
