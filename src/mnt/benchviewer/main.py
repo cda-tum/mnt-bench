@@ -97,7 +97,7 @@ def download_data() -> str | Response:
     if request.method == "POST":
         data = request.form
         prepared_data = SERVER.backend.prepare_form_input(data)
-        file_paths = ["MNTBench_all/" + file for file in SERVER.backend.get_selected_file_paths(prepared_data)]
+        file_paths = SERVER.backend.get_selected_file_paths(prepared_data)
         timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
         if SERVER.activate_logging:
