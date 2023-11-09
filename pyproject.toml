@@ -61,7 +61,7 @@ docs = [
 dev = ["mnt.bench[coverage, docs]"]
 
 [project.scripts]
-"mnt.bench" = "mnt.benchviewer.main:start_server"
+"mnt.bench" = "mnt.bench.main:start_server"
 
 [project.urls]
 Homepage = "https://github.com/cda-tum/mntbench"
@@ -79,7 +79,7 @@ log_cli_level = "INFO"
 xfail_strict = true
 
 [tool.coverage.run]
-source = ["mnt.benchviewer"]
+source = ["mnt.bench"]
 
 [tool.coverage.report]
 exclude_also = [

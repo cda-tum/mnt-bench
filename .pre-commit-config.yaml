@@ -61,7 +61,7 @@ repos:
     hooks:
       - id: codespell
         args: ["-L", "wille,linz"]
-        exclude: "mnt/benchviewer/templates/legal.html"
+        exclude: "mnt/bench/templates/legal.html"
 
   # Format configuration files with prettier
   - repo: https://github.com/pre-commit/mirrors-prettier

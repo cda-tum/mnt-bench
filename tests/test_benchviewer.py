@@ -5,8 +5,8 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from mnt.benchviewer import Backend, BenchmarkConfiguration, Server, backend
-from mnt.benchviewer.main import app
+from mnt.bench import Backend, BenchmarkConfiguration, Server, backend
+from mnt.bench.main import app
 
 if TYPE_CHECKING or sys.version_info >= (3, 10, 0):  # pragma: no cover
     from importlib import resources
@@ -60,13 +60,13 @@ def test_prepare_form_input() -> None:
     assert backend.prepare_form_input(form_data) == expected_res
 
 
-benchviewer = resources.files("mnt.benchviewer")
+bench = resources.files("mnt.bench")
 
 
 def test_read_mntbench_all_zip() -> None:
     backend = Backend()
-    with resources.as_file(benchviewer) as benchviewer_path:
-        target_location = str(benchviewer_path / "static/files")
+    with resources.as_file(bench) as bench_path:
+        target_location = str(bench_path / "static/files")
     assert backend.read_mntbench_all_zip(skip_question=True, target_location=target_location)
 
 
@@ -74,7 +74,7 @@ def test_create_database() -> None:
     backend = Backend()
 
     res_zip = backend.read_mntbench_all_zip(
-        skip_question=True, target_location=str(resources.files("mnt.benchviewer") / "static" / "files")
+        skip_question=True, target_location=str(resources.files("mnt.bench") / "static" / "files")
     )
     assert res_zip
 
@@ -102,7 +102,7 @@ def test_create_database() -> None:
 def test_streaming_zip() -> None:
     backend = Backend()
     backend.read_mntbench_all_zip(
-        skip_question=True, target_location=str(resources.files("mnt.benchviewer") / "static" / "files")
+        skip_question=True, target_location=str(resources.files("mnt.bench") / "static" / "files")
     )
     res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_2DDWave.fgl", "xor2_ONE_2DDWave.fgl"])
     assert list(res)
@@ -112,9 +112,9 @@ def test_streaming_zip() -> None:
 
 
 def test_flask_server() -> None:
-    with resources.as_file(benchviewer) as benchviewer_path:
-        benchviewer_location = benchviewer_path
-    target_location = str(benchviewer_location / "static/files")
+    with resources.as_file(bench) as bench_path:
+        bench_location = bench_path
+    target_location = str(bench_location / "static/files")
 
     Server(
         skip_question=True,
@@ -129,7 +129,7 @@ def test_flask_server() -> None:
         "templates/description.html",
     ]
     for path in paths_to_check:
-        assert (benchviewer_location / path).is_file()
+        assert (bench_location / path).is_file()
 
     with app.test_client() as c:
         success_code = 200

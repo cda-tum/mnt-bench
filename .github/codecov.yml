@@ -1,5 +1,5 @@
 ignore:
-  - "benchviewer/*"
+  - "bench/*"
   - "mnt/bench/tests/*"
 
 coverage:
