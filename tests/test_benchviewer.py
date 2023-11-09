@@ -4,6 +4,7 @@ import sys
 from typing import TYPE_CHECKING
 
 import pytest
+
 from mnt.benchviewer import Backend, BenchmarkConfiguration, Server, backend
 from mnt.benchviewer.main import app
 
@@ -103,9 +104,7 @@ def test_streaming_zip() -> None:
     backend.read_mntbench_all_zip(
         skip_question=True, target_location=str(resources.files("mnt.benchviewer") / "static" / "files")
     )
-    res = backend.generate_zip_ephemeral_chunks(
-        filenames=["MNTBench_all/mux21_ONE_2DDWave.fgl", "MNTBench_all/xor2_ONE_2DDWave.fgl"]
-    )
+    res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_2DDWave.fgl", "xor2_ONE_2DDWave.fgl"])
     assert list(res)
 
     with pytest.raises(KeyError):
