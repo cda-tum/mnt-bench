@@ -1,7 +1,7 @@
 [![PyPI](https://img.shields.io/pypi/v/mnt.bench?logo=pypi&style=flat-square)](https://pypi.org/project/mnt.bench/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![CI](https://img.shields.io/github/actions/workflow/status/cda-tum/MNTBench/coverage.yml?branch=main&style=flat-square&logo=github&label=coverage)](https://github.com/cda-tum/MNTBench/actions/workflows/coverage.yml)
-[![Bindings](https://img.shields.io/github/actions/workflow/status/cda-tum/MNTBench/deploy.yml?branch=main&style=flat-square&logo=github&label=python)](https://github.com/cda-tum/MNTBench/actions/workflows/deploy.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/cda-tum/MNTBench/coverage.yml?branch=main&style=flat-square&logo=github&label=coverage)](https://github.com/cda-tum/mnt-bench/actions/workflows/coverage.yml)
+[![Bindings](https://img.shields.io/github/actions/workflow/status/cda-tum/MNTBench/deploy.yml?branch=main&style=flat-square&logo=github&label=python)](https://github.com/cda-tum/mnt-bench/actions/workflows/deploy.yml)
 [![codecov](https://img.shields.io/codecov/c/github/cda-tum/mnt-bench?style=flat-square&logo=codecov)](https://codecov.io/gh/cda-tum/mnt-bench)
 
 <p align="center">
