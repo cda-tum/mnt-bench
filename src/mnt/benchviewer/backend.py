@@ -474,8 +474,6 @@ def parse_data(filename: str) -> ParsedBenchmarkName:
     Return values:
     parsed_data -- parsed data extracted from filename
     """
-    if "/" in filename:
-        filename = filename.split("/")[1]
     if filename.endswith(".fgl"):
         benchmark = "_".join([file.lower() for file in filename.split("_")[0:-2]])
         library = filename.split("_")[-2].lower()
@@ -555,7 +553,7 @@ def create_database(zip_file: ZipFile) -> pd.DataFrame:
     rows_list = []
 
     for filename in zip_file.namelist():
-        if (filename.endswith((".fgl", ".v"))) and "__MACOSX" not in filename:
+        if filename.endswith((".fgl", ".v")):
             parsed_data = parse_data(filename)
             rows_list.append(parsed_data)
 
@@ -593,7 +591,7 @@ def handle_github_api_request(repo_url: str) -> requests.Response:
     if "GITHUB_TOKEN" in os.environ:
         headers = {"Authorization": f"token {os.environ['GITHUB_TOKEN']}"}
 
-    response = requests.get(f"https://api.github.com/repos/simon1hofmann/mntbench/{repo_url}", headers=headers)
+    response = requests.get(f"https://api.github.com/repos/cda-tum/mnt-bench/{repo_url}", headers=headers)
     success_code = 200
     if response.status_code == success_code:
         return response
