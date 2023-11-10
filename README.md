@@ -34,18 +34,20 @@ See the [benchmark description](https://www.cda.cit.tum.de/mntbench/benchmark_de
 
 So far, MNT Bench supports the following native gate-sets:
 
-1. [QCA ONE]() gate set: _\[AND, OR, NOT, BUF\]_
-2. [Bestagon]() gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
+1. [QCA ONE](https://ieeexplore.ieee.org/document/7538997/) gate set: _\[AND, OR, NOT, BUF\]_
+2. [Bestagon](https://dl.acm.org/doi/10.1145/3489517.3530525) gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
 
 ## Clocking Schemes
 
 Most of the layouts are available for any of the following clocking schemes:
 
-1. [2DDWave]()
-2. [USE]()
-3. [RES]()
-4. [ESR]()
-5. [ROW]()
+|        [Row](https://ieeexplore.ieee.org/document/573740)        |         [2DDWave](https://ieeexplore.ieee.org/document/1717097)          | [ESR](https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf) |
+| :--------------------------------------------------------------: | :----------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
+| <img src="src/mnt/bench/static/row.png" alt="Row" height="200"/> | <img src="src/mnt/bench/static/2ddwave.png" alt="2DDWave" height="200"/> |      <img src="src/mnt/bench/static/esr.png" alt="ESR" height="200"/>       |
+
+|       [USE](https://ieeexplore.ieee.org/document/7219390)        | [RES](https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551) |
+| :--------------------------------------------------------------: | :----------------------------------------------------------------------: |
+| <img src="src/mnt/bench/static/use.png" alt="USE" height="200"/> |     <img src="src/mnt/bench/static/res.png" alt="RES" height="200"/>     |
 
 # Repository Structure
 
