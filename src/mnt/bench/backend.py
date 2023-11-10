@@ -100,8 +100,6 @@ class Backend:
             {"name": "bar", "id": "39", "filename": "bar"},
             {"name": "max", "id": "40", "filename": "max"},
             {"name": "sin", "id": "41", "filename": "sin"},
-            {"name": "voter", "id": "42", "filename": "voter"},
-            {"name": "square", "id": "43", "filename": "square"},
         ]
 
         self.database: pd.DataFrame | None = None
