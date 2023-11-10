@@ -28,8 +28,6 @@ So far, the functions from the following benchmark sets are implemented and prov
 3. [ISCAS85]()
 4. [EPFL]()
 
-See the [benchmark description](https://www.cda.cit.tum.de/mntbench/benchmark_description) for further details on the individual benchmarks.
-
 ## Gate Libraries
 
 So far, MNT Bench supports the following native gate-sets:
@@ -104,4 +102,4 @@ cd mnt-bench
 pip install .
 ```
 
-Afterwards, the package can be used as described [above](#Usage via pip package).
+Afterwards, the package can be used as described [above](#Usage-via-pip-package).
