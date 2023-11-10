@@ -52,8 +52,7 @@ Most of the layouts are available for any of the following clocking schemes:
 # Repository Structure
 
 - src/mnt/: main source directory
-  - bench: Directory for the MNT Bench package
-  - benchviewer: Directory for the webpage (which can be started locally and is also hosted at
+  - bench: Directory for the webpage (which can be started locally and is also hosted at
     [https://www.cda.cit.tum.de/mntbench/](https://www.cda.cit.tum.de/mntbench/))
 - tests: Directory for the tests for MNT Bench
 
