@@ -34,6 +34,7 @@ repos:
     hooks:
       - id: fix-ligatures
       - id: fix-smartquotes
+        exclude: "mnt/bench/templates/legal.html"
 
   # Python linting using ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
