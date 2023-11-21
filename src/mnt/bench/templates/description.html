@@ -105,7 +105,7 @@
           <a
             href="https://ieeexplore.ieee.org/document/7538997/"
             target="_blank"
-            >QCA ONE</a
+            >ONE</a
           >: Used for QCA circuits.
         </li>
         <li>
@@ -196,14 +196,30 @@
         </thead>
         <tbody>
           <tr>
-            <td style="vertical-align: top">Gate Level</td>
+            <td style="vertical-align: top">Gate-Level</td>
             <td style="vertical-align: top">
               <span style="font-family: monospace"
-                >&lt;benchmark_identifier&gt;_&lt;library&gt;_&lt;clocking_scheme&gt;.fgl</span
+                >&lt;benchmark_identifier&gt;_&lt;library&gt;_&lt;clocking_scheme&gt;_&lt;optimized&gt;_&lt;input-ordered&gt;.fgl</span
               >
             </td>
             <td style="vertical-align: top">
-              <span style="font-family: monospace">mux21_Bestagon_ROW.fgl</span>
+              <span style="font-family: monospace"
+                >mux21_Bestagon_ROW_Opt_Ord.fgl</span
+              >
+              <span style="font-family: monospace"
+                >mux21_ONE_USE_UnOpt_UnOrd.fgl</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top">Best Gate-Level Layout</td>
+            <td style="vertical-align: top">
+              <span style="font-family: monospace"
+                >&lt;benchmark_identifier&gt;_&lt;library&gt;_BEST.fgl</span
+              >
+            </td>
+            <td style="vertical-align: top">
+              <span style="font-family: monospace">mux21_ONE_BEST.fgl</span>
             </td>
           </tr>
           <tr>

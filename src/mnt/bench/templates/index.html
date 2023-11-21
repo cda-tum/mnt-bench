@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -20,6 +20,23 @@
       .disabled-checkbox {
         opacity: 0.5; /* Make the checkbox semi-transparent */
         pointer-events: none; /* Disable mouse events on the checkbox */
+      }
+      table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px 0;
+      }
+      th,
+      td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 12px; /* Increased padding for better spacing */
+      }
+
+      #pipeline-img {
+        width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        display: block; /* Remove extra space beneath image */
       }
 
       .disabled-checkbox + label {
@@ -86,7 +103,7 @@
         this emerging technology. To compare the results of new physical design
         algorithms, this benchmark suite provides common benchmark functions in
         the field combined with state-of-the-art layouts. In addition to layouts
-        using different gate sets, such as the <em>QCA ONE</em> gate library for
+        using different gate sets, such as the <em>ONE</em> gate library for
         <em>Quantum-dot Cellular Automata</em> (QCA) or <em>Bestagon</em> for
         <em>Silicon Dangling Bonds</em> (SiDBS), the following benchmark library
         also differentiates between different underlying clocking schemes such
@@ -346,7 +363,7 @@
                   name="one"
                   value="true"
                 />
-                <label for="one">QCA ONE</label>
+                <label for="one">ONE</label>
               </div>
 
               <div class="col-md-6 align-items-center">
@@ -423,10 +440,166 @@
                   />
                   <label for="row">Row</label>
                 </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="best"
+                    name="best"
+                  />
+                  <label for="best">Best</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col border border-secondary"
+            style="width: 25%; min-width: 200px; margin: 1px"
+          >
+            <h6>Physical Design Algorithm</h6>
+
+            <p class="text-justify" style="margin: 0px">
+              Select the physical design algorithm used to create the chosen
+              layouts:
+            </p>
+            <div class="row">
+              <div class="col-md-12 align-items-center">
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="exact"
+                    name="exact"
+                    onchange="toggleExactSelection()"
+                  />
+                  <label for="exact">Exact</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="ortho"
+                    name="ortho"
+                    onchange="toggleOrthoSelection()"
+                  />
+                  <label for="ortho">Ortho</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="nanoplacer"
+                    name="nanoplacer"
+                    onchange="toggleNanoPlaceRSelection()"
+                  />
+                  <label for="nanoplacer">NanoPlaceR</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col border border-secondary"
+            style="width: 25%; min-width: 200px; margin: 1px"
+          >
+            <h6>Optimization Algorithm</h6>
+
+            <p class="text-justify" style="margin: 0px">
+              For Ortho and NanoPlaceR, choose the applied optimization
+              algorithms:
+            </p>
+            <div class="row">
+              <div class="col-md-12 align-items-center">
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="post-layout"
+                    name="post-layout"
+                  />
+                  <label for="post-layout">Post-Layout Optimization</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="input-ordering"
+                    name="input-ordering"
+                  />
+                  <label for="input-ordering">Input Ordering</label>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <!-- Existing boxes -->
+
+          <!-- Box 1 -->
+          <div
+            class="col border border-secondary"
+            style="width: 20%; min-width: 200px; margin: 1px"
+          >
+            <img
+              src="{{ url_for('static', filename='abstraction_level.pdf')}}"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+
+          <!-- Box 2 -->
+          <div
+            class="col border border-secondary"
+            style="width: 20%; min-width: 200px; margin: 1px"
+          >
+            <img
+              src="{{ url_for('static', filename='gate_library.pdf')}}"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+
+          <!-- Box 3 -->
+          <div
+            class="col border border-secondary"
+            style="width: 20%; min-width: 200px; margin: 1px"
+          >
+            <img
+              src="{{ url_for('static', filename='clocking_scheme.pdf')}}"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+
+          <!-- Box 4 -->
+          <div
+            class="col border border-secondary"
+            style="width: 20%; min-width: 200px; margin: 1px"
+          >
+            <img
+              src="{{ url_for('static', filename='physical_design_algorithm.pdf')}}"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+
+          <!-- Box 5 -->
+          <div
+            class="col border border-secondary"
+            style="width: 20%; min-width: 200px; margin: 1px"
+          >
+            <img
+              src="{{ url_for('static', filename='physical_design_algorithm.pdf')}}"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+        </div>
+
         <div class="col-md-12" style="height: 20px"></div>
         <h4>Download</h4>
         <p class="text-justify"></p>
@@ -449,11 +622,39 @@
             class="btn btn-primary btn-lg mx-auto text-center"
             id="downloadButton"
             disabled
+            name="button"
             value="submit"
           >
             Download selected Benchmarks
           </button>
         </div>
+        <h6>Selected Benchmarks:</h6>
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="format" style="margin-right: 10px"
+              >Select format:</label
+            >
+            <select name="format" id="format" class="form-control-sm">
+              <option value="csv">CSV</option>
+              <option value="excel">Excel</option>
+              <option value="json">JSON</option>
+              <option value="clipboard">Clipboard</option>
+            </select>
+            <button
+              type="submit"
+              class="btn btn-primary btn-sm ml-2"
+              id="downloadTableButton"
+              disabled
+              name="button"
+              value="submitTable"
+            >
+              Download Table
+            </button>
+          </div>
+        </div>
+        {% for table in tables %}
+        <div class="data-table">{{ table|safe }}</div>
+        {% endfor %}
       </div>
     </form>
 
@@ -528,6 +729,21 @@
           }
       }
 
+      function toggleExactSelection(){
+        setCheckboxState("ortho", false, false, true);
+        setCheckboxState("nanoplacer", false, false, true);
+      }
+
+      function toggleOrthoSelection(){
+        setCheckboxState("exact", false, false, true);
+        setCheckboxState("nanoplacer", false, false, true);
+      }
+
+      function toggleNanoPlaceRSelection(){
+        setCheckboxState("exact", false, false, true);
+        setCheckboxState("ortho", false, false, true);
+      }
+
       function checks_on_change() {
           enable_level()
           check_col_if_all_selected()
@@ -573,41 +789,97 @@
           if (document.getElementById("gate").checked) {
               setCheckboxState("one", false, false, false);
               setCheckboxState("bestagon", false, false, false);
-              enable_clocking_schemes();
+              enable_clocking_scheme_selection();
           }
           else {
               disable_gate_libraries();
-              disable_clocking_schemes(one=true, bestagon=true);
+              disable_clocking_scheme_selection(one=true, bestagon=true);
+              disable_physical_design_algorithm_selection();
+              disable_optimization_algorithm_selection();
           }
       }
 
-      function enable_clocking_schemes(){
+      function enable_clocking_scheme_selection(){
           if (document.getElementById("one").checked) {
               setCheckboxState("twoddwave", false, false, false);
               setCheckboxState("use", false, false, false);
               setCheckboxState("res", false, false, false);
               setCheckboxState("esr", false, false, false);
+              setCheckboxState("best", false, false, false);
+              enable_physical_design_algorithm_selection();
           }
           else {
-              disable_clocking_schemes(one=true, bestagon=false);
+              disable_clocking_scheme_selection(one=true, bestagon=false);
           }
           if (document.getElementById("bestagon").checked) {
-              if (!document.getElementById("one").checked) {
-                  setCheckboxState("row", true, false, true);
-              }
-              else {
-                setCheckboxState("row", true, false, false);
-              }
+              setCheckboxState("row", false, false, false);
+              setCheckboxState("best", false, false, false);
+              enable_physical_design_algorithm_selection();
           }
           else {
-              disable_clocking_schemes(one=false, bestagon=true);
+              disable_clocking_scheme_selection(one=false, bestagon=true);
           }
+
+          if (!document.getElementById("one").checked && !document.getElementById("bestagon").checked){
+              disable_clocking_scheme_selection(one=true, bestagon=true, best=true);
+              disable_physical_design_algorithm_selection();
+              disable_optimization_algorithm_selection();
+          }
+      }
+
+      function enable_physical_design_algorithm_selection(){
+          if (!document.getElementById("best").checked){
+            var ortho_possible = (document.getElementById("twoddwave").checked || document.getElementById("row").checked) && !(document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked);
+            var exact_or_nanoplacer_possible = document.getElementById("twoddwave").checked || document.getElementById("row").checked || document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked;
+            if (exact_or_nanoplacer_possible && !ortho_possible) {
+                  setCheckboxState("nanoplacer", false, false, false);
+                  setCheckboxState("ortho", false, true, true);
+                  setCheckboxState("exact", false, false, false);
+                  enable_optimization_algorithm_selection();
+            }
+            else if (exact_or_nanoplacer_possible && ortho_possible) {
+                setCheckboxState("exact", false, false, false);
+                setCheckboxState("ortho", false, false, false);
+                setCheckboxState("nanoplacer", false, false, false);
+                enable_optimization_algorithm_selection();
+            }
+            else {
+                disable_physical_design_algorithm_selection();
+                disable_optimization_algorithm_selection();
+            }
+          }
+          else {
+              disable_clocking_scheme_selection(one=true, bestagon=true);
+              disable_physical_design_algorithm_selection();
+              disable_optimization_algorithm_selection();
+          }
+      }
+
+      function enable_optimization_algorithm_selection(){
+        if (!document.getElementById("bestagon").checked){
+          if (document.getElementById("ortho").checked){
+            setCheckboxState("post-layout", false, false, false);
+            setCheckboxState("input-ordering", false, false, false);
+          }
+          else if (document.getElementById("nanoplacer").checked){
+            setCheckboxState("post-layout", false, false, false);
+            setCheckboxState("input-ordering", false, true, true);
+          }
+          else {
+            disable_optimization_algorithm_selection();
+          }
+        }
+        else {
+          disable_optimization_algorithm_selection();
+        }
       }
 
       function disable_all(){
         disable_levels();
         disable_gate_libraries();
-        disable_clocking_schemes(one=true, bestagon=true);
+        disable_clocking_scheme_selection(one=true, bestagon=true, best=true);
+        disable_physical_design_algorithm_selection();
+        disable_optimization_algorithm_selection();
       }
 
       function disable_levels() {
@@ -620,7 +892,7 @@
           setCheckboxState("bestagon", false, true, true);
       }
 
-      function disable_clocking_schemes(one, bestagon){
+      function disable_clocking_scheme_selection(one, bestagon, best){
           if (one) {
               setCheckboxState("twoddwave", false, true, true);
               setCheckboxState("use", false, true, true);
@@ -631,11 +903,27 @@
           if (bestagon) {
               setCheckboxState("row", false, true, true);
           }
+
+          if (best) {
+              setCheckboxState("best", false, true, true);
+          }
+      }
+
+      function disable_physical_design_algorithm_selection(){
+        setCheckboxState("exact", false, true, true);
+        setCheckboxState("ortho", false, true, true);
+        setCheckboxState("nanoplacer", false, true, true);
+      }
+
+      function disable_optimization_algorithm_selection(){
+        setCheckboxState("post-layout", false, true, true);
+        setCheckboxState("input-ordering", false, true, true);
       }
 
       function get_num_benchs() {
           const form = document.getElementById("benchmark_form");
           const formData = new FormData(form);
+
           fetch('./get_num_benchmarks', {
               method: 'POST',
               body: formData,
@@ -644,14 +932,23 @@
               .then(response => {
                   document.getElementById("num_benchmarks").innerHTML = response.num_selected;
 
-                          if (num_benchmarks.innerHTML > 0) {
-                              downloadButton.disabled = false;
-                          }
-                          if (num_benchmarks.innerHTML == 0) {
-                              downloadButton.disabled = true;
-                          }
-              });
+                  // Check if the 'table' property exists in the response
+                  if (response.table) {
+                      // Replace the content of the first table with the received table
+                      const tables = document.getElementsByClassName("data-table");
+                      if (tables.length > 0) {
+                          tables[0].innerHTML = response.table;
+                      }
+                  }
 
+                  if (num_benchmarks.innerHTML > 0) {
+                      downloadButton.disabled = false;
+                      downloadTableButton.disabled = false;
+                  } else {
+                      downloadButton.disabled = true;
+                      downloadTableButton.disabled = true;
+                  }
+              });
       }
 
       function check_col_if_all_selected() {
