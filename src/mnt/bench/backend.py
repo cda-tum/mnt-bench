@@ -36,6 +36,7 @@ class BenchmarkConfiguration:
     res: bool
     esr: bool
     row: bool
+    best: bool
     exact: bool
     ortho: bool
     nanoplacer: bool
@@ -336,6 +337,7 @@ class Backend:
         res = False
         esr = False
         row = False
+        best = False
         exact = False
         ortho = False
         nanoplacer = False
@@ -357,6 +359,7 @@ class Backend:
             res = "res" in k or res
             esr = "esr" in k or esr
             row = "row" in k or row
+            best = "best" in k or best
             exact = "exact" in k or exact
             ortho = "ortho" in k or ortho
             nanoplacer = "nanoplacer" in k or nanoplacer
@@ -374,6 +377,7 @@ class Backend:
             res=res,
             esr=esr,
             row=row,
+            best=best,
             exact=exact,
             ortho=ortho,
             nanoplacer=nanoplacer,

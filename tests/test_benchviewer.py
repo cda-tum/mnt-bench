@@ -24,7 +24,10 @@ else:
                 level="gate",
                 library="one",
                 clocking_scheme="twoddwave",
-                filename="mux21_ONE_twoddwave.fgl",
+                physical_design_algorithm="exact",
+                optimized="noopt",
+                ordered="noord",
+                filename="mux21_ONE_twoddwave_exact_NoOpt_NoOrd.fgl",
             ),
         ),
     ],
@@ -55,6 +58,12 @@ def test_prepare_form_input() -> None:
         res=False,
         esr=False,
         row=False,
+        best=False,
+        exact=False,
+        ortho=False,
+        nanoplacer=False,
+        optimized=False,
+        ordered=False,
     )
     backend = Backend()
     assert backend.prepare_form_input(form_data) == expected_res
@@ -92,9 +101,15 @@ def test_create_database() -> None:
         res=False,
         esr=False,
         row=False,
+        best=False,
+        exact=False,
+        ortho=False,
+        nanoplacer=False,
+        optimized=False,
+        ordered=False,
     )
 
-    res = backend.get_selected_file_paths(input_data)
+    res = backend.get_selected_file_paths(backend.get_updated_table(input_data))
     assert isinstance(res, list)
     assert len(res) > 3
 
