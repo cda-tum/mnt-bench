@@ -32,8 +32,8 @@ So far, the functions from the following benchmark sets are implemented and prov
 
 So far, MNT Bench supports the following native gate-sets:
 
-1. [QCA ONE](https://ieeexplore.ieee.org/document/7538997/) gate set: _\[AND, OR, NOT, BUF\]_
-2. [Bestagon](https://dl.acm.org/doi/10.1145/3489517.3530525) gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
+1. [ONE](https://ieeexplore.ieee.org/document/7538997/) (for QCA) gate set: _\[AND, OR, NOT, BUF\]_
+2. [Bestagon](https://dl.acm.org/doi/10.1145/3489517.3530525) (for SiDB) gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
 
 ## Clocking Schemes
 
