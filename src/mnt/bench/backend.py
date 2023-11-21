@@ -36,6 +36,11 @@ class BenchmarkConfiguration:
     res: bool
     esr: bool
     row: bool
+    exact: bool
+    ortho: bool
+    nanoplacer: bool
+    optimized: bool
+    ordered: bool
 
 
 @dataclass
@@ -44,6 +49,9 @@ class ParsedBenchmarkName:
     level: str
     library: str
     clocking_scheme: str
+    physical_design_algorithm: str
+    optimized: str
+    ordered: str
     filename: str
 
 
@@ -61,51 +69,53 @@ class Backend:
 
         self.fontes = [
             {"name": "t", "id": "8", "filename": "t"},
-            {"name": "b1_r2", "id": "9", "filename": "b1_r2"},
-            {"name": "majority", "id": "10", "filename": "majority"},
-            {"name": "newtag", "id": "11", "filename": "newtag"},
-            {"name": "clpl", "id": "12", "filename": "clpl"},
-            {"name": "1bitAdderAOIG", "id": "13", "filename": "1bitadderaoig"},
-            {"name": "1bitAdderMaj", "id": "14", "filename": "1bitaddermaj"},
-            {"name": "2bitAdderAOIG", "id": "15", "filename": "2bitaddermaj"},
-            {"name": "XOR5Maj", "id": "16", "filename": "xor5maj"},
-            {"name": "cm82a_5", "id": "17", "filename": "cm82a_5"},
-            {"name": "parity", "id": "18", "filename": "parity"},
+            {"name": "t_5", "id": "9", "filename": "t_5"},
+            {"name": "b1_r2", "id": "10", "filename": "b1_r2"},
+            {"name": "majority", "id": "11", "filename": "majority"},
+            {"name": "majority_5_r1", "id": "12", "filename": "majority_5_r1"},
+            {"name": "newtag", "id": "13", "filename": "newtag"},
+            {"name": "clpl", "id": "14", "filename": "clpl"},
+            {"name": "1bitAdderAOIG", "id": "15", "filename": "1bitadderaoig"},
+            {"name": "1bitAdderMaj", "id": "16", "filename": "1bitaddermaj"},
+            {"name": "2bitAdderAOIG", "id": "17", "filename": "2bitaddermaj"},
+            {"name": "XOR5Maj", "id": "18", "filename": "xor5maj"},
+            {"name": "xor5_r1", "id": "19", "filename": "xor5_r1"},
+            {"name": "cm82a_5", "id": "20", "filename": "cm82a_5"},
+            {"name": "parity", "id": "21", "filename": "parity"},
         ]
 
         self.iscas = [
-            {"name": "c17", "id": "19", "filename": "c17"},
-            {"name": "c432", "id": "20", "filename": "c432"},
-            {"name": "c499", "id": "21", "filename": "c499"},
-            {"name": "c880", "id": "22", "filename": "c880"},
-            {"name": "c1355", "id": "23", "filename": "c1355"},
-            {"name": "c1908", "id": "24", "filename": "c1908"},
-            {"name": "c2670", "id": "25", "filename": "c2670"},
-            {"name": "c3540", "id": "26", "filename": "c3540"},
-            {"name": "c5315", "id": "27", "filename": "c5315"},
-            {"name": "c6288", "id": "28", "filename": "c6288"},
-            {"name": "c7552", "id": "29", "filename": "c7552"},
+            {"name": "c17", "id": "22", "filename": "c17"},
+            {"name": "c432", "id": "23", "filename": "c432"},
+            {"name": "c499", "id": "24", "filename": "c499"},
+            {"name": "c880", "id": "25", "filename": "c880"},
+            {"name": "c1355", "id": "26", "filename": "c1355"},
+            {"name": "c1908", "id": "27", "filename": "c1908"},
+            {"name": "c2670", "id": "28", "filename": "c2670"},
+            {"name": "c3540", "id": "29", "filename": "c3540"},
+            {"name": "c5315", "id": "30", "filename": "c5315"},
+            {"name": "c6288", "id": "31", "filename": "c6288"},
+            {"name": "c7552", "id": "32", "filename": "c7552"},
         ]
 
         self.epfl = [
-            {"name": "ctrl", "id": "30", "filename": "ctrl"},
-            {"name": "router", "id": "31", "filename": "router"},
-            {"name": "int2float", "id": "32", "filename": "int2float"},
-            {"name": "cavlc", "id": "33", "filename": "cavlc"},
-            {"name": "priority", "id": "34", "filename": "priority"},
-            {"name": "dec", "id": "35", "filename": "dec"},
-            {"name": "i2c", "id": "36", "filename": "i2c"},
-            {"name": "adder", "id": "37", "filename": "adder"},
-            {"name": "arbiter", "id": "38", "filename": "arbiter"},
-            {"name": "bar", "id": "39", "filename": "bar"},
-            {"name": "max", "id": "40", "filename": "max"},
-            {"name": "sin", "id": "41", "filename": "sin"},
+            {"name": "ctrl", "id": "33", "filename": "ctrl"},
+            {"name": "router", "id": "34", "filename": "router"},
+            {"name": "int2float", "id": "35", "filename": "int2float"},
+            {"name": "cavlc", "id": "36", "filename": "cavlc"},
+            {"name": "priority", "id": "37", "filename": "priority"},
+            {"name": "dec", "id": "38", "filename": "dec"},
+            {"name": "i2c", "id": "39", "filename": "i2c"},
+            {"name": "adder", "id": "40", "filename": "adder"},
+            {"name": "bar", "id": "41", "filename": "bar"},
+            {"name": "max", "id": "42", "filename": "max"},
+            {"name": "sin", "id": "43", "filename": "sin"},
         ]
 
         self.database: pd.DataFrame | None = None
         self.mntbench_all_zip: ZipFile | None = None
 
-    def filter_database(self, benchmark_config: BenchmarkConfiguration) -> list[str]:  # noqa: PLR0912, PLR0915
+    def filter_database(self, benchmark_config: BenchmarkConfiguration) -> pd.DataFrame:  # noqa: PLR0912, PLR0915
         """Filters the database according to the filter criteria.
 
         Keyword arguments:
@@ -138,141 +148,64 @@ class Backend:
                 )
 
         db_tmp = self.database[self.database["benchmark"].isin(selected_benchmarks)]
+        db_networks = db_tmp.loc[db_tmp["level"] == "network"]
 
-        if not (benchmark_config.one | benchmark_config.bestagon):
-            if benchmark_config.network and not benchmark_config.gate:
-                db_tmp = db_tmp.loc[db_tmp["level"] == "network"]
-                db_filtered = pd.concat([db_filtered, db_tmp])
-
-            if benchmark_config.gate and not benchmark_config.network:
-                db_tmp = db_tmp.loc[db_tmp["level"] == "gate"]
-                db_filtered = pd.concat([db_filtered, db_tmp])
-
-            if benchmark_config.network and benchmark_config.gate:
-                db_tmp = db_tmp.loc[(db_tmp["level"] == "network") | (db_tmp["level"] == "gate")]
-                db_filtered = pd.concat([db_filtered, db_tmp])
-
-        if benchmark_config.gate and not benchmark_config.network:
-            if not (
-                benchmark_config.twoddwave
-                | benchmark_config.use
-                | benchmark_config.res
-                | benchmark_config.esr
-                | benchmark_config.row
-            ):
-                if benchmark_config.one and not benchmark_config.bestagon:
-                    db_tmp = db_tmp.loc[db_tmp["library"] == "one"]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-                if benchmark_config.bestagon and not benchmark_config.one:
-                    db_tmp = db_tmp.loc[db_tmp["library"] == "bestagon"]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
-
-                if benchmark_config.one and benchmark_config.bestagon:
-                    db_tmp = db_tmp.loc[(db_tmp["library"] == "one") | (db_tmp["library"] == "bestagon")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
+        if benchmark_config.gate:
+            db_tmp = db_tmp.loc[db_tmp["level"] == "gate"]
+            db_filtered = pd.concat([db_filtered, db_tmp])
 
             if benchmark_config.one and not benchmark_config.bestagon:
-                db_tmp = db_tmp.loc[
-                    (
-                        (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
-                        | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
-                        | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
-                        | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
-                    )
-                    & (db_tmp["library"] == "one")
-                ]
-                db_filtered = pd.concat([db_filtered, db_tmp])
+                db_filtered = db_tmp.loc[db_tmp["library"] == "one"]
 
-            if benchmark_config.bestagon and not benchmark_config.one:
-                db_tmp = db_tmp.loc[(db_tmp["clocking_scheme"] == "row") & (db_tmp["library"] == "bestagon")]
-                db_filtered = pd.concat([db_filtered, db_tmp])
+            if not benchmark_config.one and benchmark_config.bestagon:
+                db_filtered = db_tmp.loc[db_tmp["library"] == "bestagon"]
 
-            if benchmark_config.one and benchmark_config.bestagon:
-                db_tmp = db_tmp.loc[
-                    (
-                        (
-                            (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
-                            | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
-                            | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
-                            | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
-                        )
-                        & (db_tmp["library"] == "one")
-                    )
-                    | (
-                        (db_tmp["clocking_scheme"] == ("row" if benchmark_config.row else "-"))
-                        & (db_tmp["library"] == "bestagon")
-                    )
-                ]
-                db_filtered = pd.concat([db_filtered, db_tmp])
+            db_tmp_all_schemes = pd.DataFrame(columns=colnames)
+            if benchmark_config.twoddwave:
+                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "2ddwave"]
+                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-        if benchmark_config.gate and benchmark_config.network:
-            if not (
-                benchmark_config.twoddwave
-                | benchmark_config.use
-                | benchmark_config.res
-                | benchmark_config.esr
-                | benchmark_config.row
-            ):
-                if benchmark_config.one and not benchmark_config.bestagon:
-                    db_tmp = db_tmp.loc[(db_tmp["library"] == "one") | (db_tmp["level"] == "network")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
+            if benchmark_config.use:
+                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "use"]
+                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-                if benchmark_config.bestagon and not benchmark_config.one:
-                    db_tmp = db_tmp.loc[(db_tmp["library"] == "bestagon") | (db_tmp["level"] == "network")]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
+            if benchmark_config.res:
+                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "res"]
+                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-                if benchmark_config.one and benchmark_config.bestagon:
-                    db_tmp = db_tmp.loc[
-                        ((db_tmp["library"] == "one") | (db_tmp["library"] == "bestagon"))
-                        | (db_tmp["level"] == "network")
-                    ]
-                    db_filtered = pd.concat([db_filtered, db_tmp])
+            if benchmark_config.esr:
+                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "esr"]
+                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if benchmark_config.one and not benchmark_config.bestagon:
-                db_tmp = db_tmp.loc[
-                    (
-                        (
-                            (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
-                            | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
-                            | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
-                            | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
-                        )
-                        & (db_tmp["library"] == "one")
-                    )
-                    | (db_tmp["level"] == "network")
-                ]
-                db_filtered = pd.concat([db_filtered, db_tmp])
+            if benchmark_config.row:
+                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "row"]
+                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if benchmark_config.bestagon and not benchmark_config.one:
-                db_tmp = db_tmp.loc[
-                    ((db_tmp["clocking_scheme"] == "row") & (db_tmp["library"] == "bestagon"))
-                    | (db_tmp["level"] == "network")
-                ]
-                db_filtered = pd.concat([db_filtered, db_tmp])
+            if not db_tmp_all_schemes.empty:
+                db_filtered = db_tmp_all_schemes
 
-            if benchmark_config.one and benchmark_config.bestagon:
-                db_tmp = db_tmp.loc[
-                    (
-                        (
-                            (
-                                (db_tmp["clocking_scheme"] == ("2ddwave" if benchmark_config.twoddwave else "-"))
-                                | (db_tmp["clocking_scheme"] == ("use" if benchmark_config.use else "-"))
-                                | (db_tmp["clocking_scheme"] == ("res" if benchmark_config.res else "-"))
-                                | (db_tmp["clocking_scheme"] == ("esr" if benchmark_config.esr else "-"))
-                            )
-                            & (db_tmp["library"] == "one")
-                        )
-                        | (
-                            (db_tmp["clocking_scheme"] == ("row" if benchmark_config.row else "-"))
-                            & (db_tmp["library"] == "bestagon")
-                        )
-                    )
-                    | (db_tmp["level"] == "network")
-                ]
-                db_filtered = pd.concat([db_filtered, db_tmp])
-        db_filtered = db_filtered.drop_duplicates()
-        return cast(list[str], db_filtered["filename"].to_list())
+            if benchmark_config.exact:
+                db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "exact"]
+
+            if benchmark_config.nanoplacer:
+                db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "nanoplacer"]
+
+                if benchmark_config.optimized:
+                    db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
+
+            if benchmark_config.ortho:
+                db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "ortho"]
+
+                if benchmark_config.optimized:
+                    db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
+
+                if benchmark_config.ordered:
+                    db_filtered = db_filtered.loc[db_filtered["ordered"] == "ord"]
+
+        if benchmark_config.network:
+            db_filtered = pd.concat([db_filtered, db_networks])
+
+        return db_filtered.drop_duplicates()
 
     def generate_zip_ephemeral_chunks(
         self,
@@ -306,16 +239,74 @@ class Backend:
         yield fileobj.read()
         fileobj.close()
 
-    def get_selected_file_paths(self, prepared_data: BenchmarkConfiguration) -> list[str]:
-        """Extracts all file paths according to the prepared user's filter criteria.
+    def get_updated_table(self, prepared_data: pd.DataFrame) -> pd.DataFrame:
+        """
+        Get an updated table based on the provided prepared data.
 
-        Keyword arguments:
-        prepared_data -- user's filter criteria after preparation step
+        Parameters:
+        - prepared_data (pd.DataFrame): A DataFrame containing prepared data for filtering.
 
-        Return values:
-        file_paths -- list of filter criteria for each selected benchmark
+        Returns:
+        - pd.DataFrame: The updated table after applying filters using the filter_database method.
         """
         return self.filter_database(prepared_data)
+
+    @staticmethod
+    def prettify_table(table: pd.DataFrame) -> pd.DataFrame:
+        """
+        Prettify the given DataFrame by replacing certain values and renaming columns.
+
+        Parameters:
+        - table (pd.DataFrame): The DataFrame to be prettified.
+
+        Returns:
+        - pd.DataFrame: The prettified DataFrame.
+        """
+        benchmark_mapping = {
+            "mux21": "MUX 2:1",
+            "xor2": "XOR 2:1",
+            "xnor2": "XNOR 2:1",
+            "ha": "Half Adder",
+            "fa": "Full Adder",
+            "par_gen": "Parity Generator",
+            "par_check": "Parity Check",
+        }
+        table.replace({"benchmark": benchmark_mapping}, inplace=True)
+
+        level_mapping = {"gate": "Gate-level", "network": "Network"}
+        table.replace({"level": level_mapping}, inplace=True)
+
+        library_mapping = {"one": "ONE", "bestagon": "Bestagon"}
+        table.replace({"library": library_mapping}, inplace=True)
+
+        clocking_scheme_mapping = {"2ddwave": "2DDWave", "use": "USE", "res": "RES", "esr": "ESR", "row": "ROW"}
+        table.replace({"clocking_scheme": clocking_scheme_mapping}, inplace=True)
+
+        column_mapping = {
+            "benchmark": "Benchmark Function",
+            "level": "Abstraction Level",
+            "library": "Gate Library",
+            "clocking_scheme": "Clocking Scheme",
+            "physical_design_algorithm": "Physical Design Algorithm",
+            "optimized": "Post-Layout Optimization",
+            "ordered": "Input-Ordering",
+            "filename": "Filename",
+        }
+        table.columns = [column_mapping.get(col, col) for col in table.columns]
+        return table
+
+    @staticmethod
+    def get_selected_file_paths(table: pd.DataFrame) -> list[str]:
+        """
+        Get a list of selected file paths from the given DataFrame.
+
+        Parameters:
+        - table (pd.DataFrame): The DataFrame containing a column named 'filename'.
+
+        Returns:
+        - List[str]: A list of file paths extracted from the 'filename' column.
+        """
+        return cast(list[str], table["filename"].to_list())
 
     def init_database(self) -> bool:
         """Generates the database and saves it into a global variable."""
@@ -332,7 +323,8 @@ class Backend:
         print("Database initialization failed.")
         return False
 
-    def prepare_form_input(self, form_data: dict[str, str]) -> BenchmarkConfiguration:
+    @staticmethod
+    def prepare_form_input(form_data: dict[str, str]) -> BenchmarkConfiguration:
         """Formats the formData extracted from the user's inputs."""
         indices_benchmarks = []
         network = False
@@ -344,6 +336,11 @@ class Backend:
         res = False
         esr = False
         row = False
+        exact = False
+        ortho = False
+        nanoplacer = False
+        optimized = False
+        ordered = False
 
         for k in form_data:
             if "select" in k:
@@ -360,6 +357,11 @@ class Backend:
             res = "res" in k or res
             esr = "esr" in k or esr
             row = "row" in k or row
+            exact = "exact" in k or exact
+            ortho = "ortho" in k or ortho
+            nanoplacer = "nanoplacer" in k or nanoplacer
+            optimized = (("opt" in k) and ("noopt" not in k)) or optimized
+            ordered = (("ord" in k) and ("noord" not in k)) or ordered
 
         return BenchmarkConfiguration(
             indices_benchmarks=indices_benchmarks,
@@ -372,6 +374,11 @@ class Backend:
             res=res,
             esr=esr,
             row=row,
+            exact=exact,
+            ortho=ortho,
+            nanoplacer=nanoplacer,
+            optimized=optimized,
+            ordered=ordered,
         )
 
     def read_mntbench_all_zip(  # noqa: PLR0912
@@ -414,6 +421,7 @@ class Backend:
 
                         if version_found:
                             download_url = asset["browser_download_url"]
+                            response = "n"
                             if not skip_question:
                                 file_size = round((asset["size"]) / 2**20, 2)
                                 print(
@@ -439,7 +447,8 @@ class Backend:
             self.mntbench_all_zip = ZipFile(zip_bytes, mode="r")
         return True
 
-    def handle_downloading_benchmarks(self, target_location: str, download_url: str) -> None:
+    @staticmethod
+    def handle_downloading_benchmarks(target_location: str, download_url: str) -> None:
         print("Start downloading benchmarks...")
 
         r = requests.get(download_url, stream=True)
@@ -473,14 +482,30 @@ def parse_data(filename: str) -> ParsedBenchmarkName:
     parsed_data -- parsed data extracted from filename
     """
     if filename.endswith(".fgl"):
-        benchmark = "_".join([file.lower() for file in filename.split("_")[0:-2]])
-        library = filename.split("_")[-2].lower()
-        clocking_scheme = filename.split("_")[-1].lower().split(".")[0]
+        if ("best" in filename.lower()) and ("bestagon" not in filename.lower()):
+            benchmark = "_".join([file.lower() for file in filename.split("_")[0:-2]])
+            library = filename.split("_")[-2].lower()
+            clocking_scheme = filename.split("_")[-1].lower().split(".")[0]
+            physical_design_algorithm = ""
+            optimized = "noopt"
+            ordered = "noord"
+        else:
+            benchmark = "_".join(
+                [file.lower() for file in filename.split("_")[0:-2]]
+            )  # "_".join([file.lower() for file in filename.split("_")[0:-5]])
+            library = filename.split("_")[-2].lower()  # filename.split("_")[-5].lower()
+            clocking_scheme = filename.split("_")[-1].lower().split(".")[0]  # filename.split("_")[-4].lower()
+            physical_design_algorithm = ""  # filename.split("_")[-3].lower()
+            optimized = ""  # filename.split("_")[-2].lower()
+            ordered = ""  # filename.split("_")[-1].lower().split(".")[0]
         level = "gate"
     elif filename.endswith(".v"):
         benchmark = filename.split(".")[0].lower()
         library = ""
         clocking_scheme = ""
+        physical_design_algorithm = ""
+        optimized = ""
+        ordered = ""
         level = "network"
     else:
         msg = "Unknown file type in MNTBench_all.zip"
@@ -491,6 +516,9 @@ def parse_data(filename: str) -> ParsedBenchmarkName:
         level=level,
         library=library,
         clocking_scheme=clocking_scheme,
+        physical_design_algorithm=physical_design_algorithm,
+        optimized=optimized,
+        ordered=ordered,
         filename=filename,
     )
 

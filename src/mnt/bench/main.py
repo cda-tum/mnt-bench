@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+import io
 import logging
 import os
 import sys
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from flask import Flask, cli, jsonify, render_template, request, send_from_directory
+import pandas as pd
+from flask import Flask, cli, jsonify, make_response, render_template, request, send_from_directory
 
 from mnt.bench.backend import Backend
 
@@ -65,6 +67,7 @@ def index() -> str:
         fontes=SERVER.backend.fontes,
         iscas=SERVER.backend.iscas,
         epfl=SERVER.backend.epfl,
+        tables=[pd.DataFrame().to_html(classes="data", header="true", index=False)],
     )
 
 
@@ -95,28 +98,71 @@ def download_pre_gen_zip() -> Response:
 def download_data() -> str | Response:
     """Triggers the downloading process of all benchmarks according to the user's input."""
     if request.method == "POST":
-        data = request.form
-        prepared_data = SERVER.backend.prepare_form_input(data)
-        file_paths = SERVER.backend.get_selected_file_paths(prepared_data)
-        timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        selected_action = request.form["button"]
+        if selected_action == "submit":
+            data = request.form
+            prepared_data = SERVER.backend.prepare_form_input(data)
+            table = SERVER.backend.get_updated_table(prepared_data)
+            file_paths = SERVER.backend.get_selected_file_paths(table)
+            timestamp = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
-        if SERVER.activate_logging:
-            app.logger.info("###### Start ######")
-            app.logger.info("Timestamp: %s", timestamp)
-            headers = str(request.headers)
-            headers = headers.replace("\r\n", "").replace("\n", "")
-            app.logger.info("Headers: %s", headers)
-            app.logger.info("Prepared_data: %s", prepared_data)
-            app.logger.info("Download started: %s", len(file_paths))
-            app.logger.info("###### End ######")
+            if SERVER.activate_logging:
+                app.logger.info("###### Start ######")
+                app.logger.info("Timestamp: %s", timestamp)
+                headers = str(request.headers)
+                headers = headers.replace("\r\n", "").replace("\n", "")
+                app.logger.info("Headers: %s", headers)
+                app.logger.info("Prepared_data: %s", prepared_data)
+                app.logger.info("Download started: %s", len(file_paths))
+                app.logger.info("###### End ######")
 
-        if file_paths:
-            return app.response_class(  # type: ignore[no-any-return]
-                SERVER.backend.generate_zip_ephemeral_chunks(file_paths),
-                mimetype="application/zip",
-                headers={"Content-Disposition": f'attachment; filename="MNTBench_{timestamp}.zip"'},
-                direct_passthrough=True,
-            )
+            if file_paths:
+                return app.response_class(  # type: ignore[no-any-return]
+                    SERVER.backend.generate_zip_ephemeral_chunks(file_paths),
+                    mimetype="application/zip",
+                    headers={"Content-Disposition": f'attachment; filename="MNTBench_{timestamp}.zip"'},
+                    direct_passthrough=True,
+                )
+
+        elif selected_action == "submitTable":
+            try:
+                prepared_data = SERVER.backend.prepare_form_input(request.form)
+                raw_table = SERVER.backend.get_updated_table(prepared_data)
+                table = SERVER.backend.prettify_table(raw_table)
+
+                # Get the selected format from the form
+                format_type = request.form["format"]
+
+                # Convert DataFrame to the selected format
+                if format_type == "csv":
+                    content_type = "text/csv"
+                    file_extension = "csv"
+                    file_data = table.to_csv(index=False)
+                elif format_type == "excel":
+                    content_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    file_extension = "xlsx"
+                    # Use BytesIO to create an in-memory Excel file
+                    excel_file = io.BytesIO()
+                    table.to_excel(excel_file, index=False, engine="openpyxl")  # Specify the engine as openpyxl
+                    file_data = excel_file.getvalue()
+                elif format_type == "json":
+                    content_type = "application/json"
+                    file_extension = "json"
+                    file_data = table.to_json(orient="records", lines=True)
+                else:
+                    e = f"Unsupported format: {format_type}"
+                    return render_template("error.html", error_message=str(e))
+
+                # Set up the response
+                response = make_response(file_data)
+                response.headers["Content-Type"] = content_type
+                response.headers["Content-Disposition"] = f"attachment; filename=table.{file_extension}"
+
+                return response
+            except Exception as e:
+                return render_template("error.html", error_message=str(e))
+        else:
+            return render_template("error.html", error_message="Invalid button selected!")
 
     return render_template(
         "index.html",
@@ -124,20 +170,19 @@ def download_data() -> str | Response:
         fontes=SERVER.backend.fontes,
         iscas=SERVER.backend.iscas,
         epfl=SERVER.backend.epfl,
+        tables=[pd.DataFrame().to_html(classes="data", header="true", index=False)],
     )
 
 
 @app.route(f"{PREFIX}/legal")
 def legal() -> str:
     """Return the legal.html file."""
-
     return render_template("legal.html")
 
 
 @app.route(f"{PREFIX}/description")
 def description() -> str:
     """Return the description.html file in which the file formats are described."""
-
     return render_template("description.html")
 
 
@@ -146,9 +191,13 @@ def get_num_benchmarks() -> Response:
     if request.method == "POST":
         data = request.form
         prepared_data = SERVER.backend.prepare_form_input(data)
-        file_paths = SERVER.backend.get_selected_file_paths(prepared_data)
-        return jsonify({"num_selected": len(file_paths)})  # type: ignore[no-any-return]
-    return jsonify({"num_selected": 0})  # type: ignore[no-any-return]
+        raw_table = SERVER.backend.get_updated_table(prepared_data)
+        file_paths = SERVER.backend.get_selected_file_paths(raw_table)
+        table = SERVER.backend.prettify_table(raw_table)
+        return jsonify(  # type: ignore[no-any-return]
+            {"num_selected": len(file_paths), "table": table.to_html(classes="data", header="true", index=False)}
+        )
+    return jsonify({"num_selected": 0, "table": pd.DataFrame().to_html(classes="data", header="true", index=False)})  # type: ignore[no-any-return]
 
 
 def start_server(
