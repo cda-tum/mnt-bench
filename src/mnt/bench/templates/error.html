@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-color: #f8f8f8;
+        color: #333;
+      }
+
+      .error-message {
+        color: #ff0000;
+        font-size: 1.2em;
+      }
+
+      .github-link,
+      .goback-button {
+        text-decoration: none;
+        color: #0366d6;
+        font-weight: bold;
+        margin: 10px;
+        padding: 12px 24px;
+        border: 2px solid #0366d6;
+        border-radius: 6px;
+        display: inline-block;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+
+      .goback-button:hover {
+        background-color: #0366d6;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Oops! Something went wrong.</h1>
+    <p class="error-message">
+      An error occurred while processing your request.
+    </p>
+    <p>
+      Please report the issue on our
+      <a
+        href="https://github.com/cda-tum/mnt-bench/issues"
+        class="github-link"
+        target="_blank"
+        >GitHub repository</a
+      >.
+    </p>
+    <button class="goback-button" onclick="goBack()">Go Back</button>
+
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
