@@ -23,29 +23,29 @@ This documentation explains how to use MNT Bench to filter and download benchmar
 
 So far, the functions from the following benchmark sets are implemented and provided:
 
-1. [Trindade16]()
-2. [Fontes18]()
-3. [ISCAS85]()
-4. [EPFL]()
+1. [Trindade16](https://ieeexplore.ieee.org/document/7724048)
+2. [Fontes18](https://ieeexplore.ieee.org/document/8351001)
+3. [ISCAS85](https://www.researchgate.net/publication/273775783_A_neutral_netlist_of_10_combinational_benchmark_circuits_and_a_targeted_translator_in_FORTRAN)
+4. [EPFL](https://www.epfl.ch/labs/lsi/page-102566-en-html/benchmarks/)
 
 ## Gate Libraries
 
 So far, MNT Bench supports the following native gate-sets:
 
 1. [ONE](https://ieeexplore.ieee.org/document/7538997/) (for QCA) gate set: _\[AND, OR, NOT, BUF\]_
-2. [Bestagon](https://dl.acm.org/doi/10.1145/3489517.3530525) (for SiDB) gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
+2. [Bestagon](https://www.cda.cit.tum.de/files/eda/2022_dac_hexagons_are_the_bestagons.pdf) (for SiDB) gate set: _\[AND, NAND, OR, NOR, XOR, XNOR, NOT, BUF\]_
 
 ## Clocking Schemes
 
 Most of the layouts are available for any of the following clocking schemes:
 
-|        [Row](https://ieeexplore.ieee.org/document/573740)        |         [2DDWave](https://ieeexplore.ieee.org/document/1717097)          | [ESR](https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf) |
-| :--------------------------------------------------------------: | :----------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| <img src="src/mnt/bench/static/row.png" alt="Row" height="200"/> | <img src="src/mnt/bench/static/2ddwave.png" alt="2DDWave" height="200"/> |      <img src="src/mnt/bench/static/esr.png" alt="ESR" height="200"/>       |
+|                                    [Row](https://ieeexplore.ieee.org/document/573740)                                     |                                      [2DDWave](https://ieeexplore.ieee.org/document/1717097)                                      |                        [ESR](https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf)                        |
+| :-----------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/row.png" alt="Row" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/2ddwave.png" alt="2DDWave" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/esr.png" alt="ESR" height="200"/> |
 
-|       [USE](https://ieeexplore.ieee.org/document/7219390)        | [RES](https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551) |
-| :--------------------------------------------------------------: | :----------------------------------------------------------------------: |
-| <img src="src/mnt/bench/static/use.png" alt="USE" height="200"/> |     <img src="src/mnt/bench/static/res.png" alt="RES" height="200"/>     |
+|                                    [USE](https://ieeexplore.ieee.org/document/7219390)                                    |                         [RES](https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551)                          |
+| :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/use.png" alt="USE" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/res.png" alt="RES" height="200"/> |
 
 # Repository Structure
 
