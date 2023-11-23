@@ -42,6 +42,10 @@
       .disabled-checkbox + label {
         color: #808080; /* Change label color to gray */
       }
+
+      a:active {
+        text-decoration: none;
+      }
     </style>
 
     <title>MNT Bench</title>
@@ -103,15 +107,76 @@
         this emerging technology. To compare the results of new physical design
         algorithms, this benchmark suite provides common benchmark functions in
         the field combined with state-of-the-art layouts. In addition to layouts
-        using different gate sets, such as the <em>ONE</em> gate library for
-        <em>Quantum-dot Cellular Automata</em> (QCA) or <em>Bestagon</em> for
-        <em>Silicon Dangling Bonds</em> (SiDBS), the following benchmark library
-        also differentiates between different underlying clocking schemes such
-        as <em>2DDWave</em>, <em>USE</em>, <em>RES</em>, <em>ESR</em> or
-        <em>ROW</em>. Furthermore, all layouts have been verified using
+        using different gate sets, such as the
+        <em
+          >QCA ONE<a
+            href="https://ieeexplore.ieee.org/document/7538997/"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >
+        gate library for <em>Quantum-dot Cellular Automata</em> (QCA) or
+        <em
+          >Bestagon<a
+            href="https://dl.acm.org/doi/10.1145/3489517.3530525"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >
+        for <em>Silicon Dangling Bonds</em> (SiDBS), the following benchmark
+        library also differentiates between different underlying clocking
+        schemes such as
+        <em
+          >2DDWave<a
+            href="https://ieeexplore.ieee.org/document/1717097"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >,
+        <em
+          >USE<a
+            href="https://ieeexplore.ieee.org/document/7219390"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >,
+        <em
+          >RES<a
+            href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >,
+        <em
+          >ESR<a
+            href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >
+        or
+        <em
+          >ROW<a
+            href="https://ieeexplore.ieee.org/document/573740"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
+          ></em
+        >. Furthermore, all layouts have been verified using
         <a href="https://github.com/cda-tum/fiction" target="_blank"
           ><em>fiction</em></a
-        >'s equivalence checker.
+        >'s equivalence checker<a
+          href="https://ieeexplore.ieee.org/document/9218641"
+          target="_blank"
+          style="text-decoration: none"
+          >&#128196;</a
+        >.
       </p>
       <p>
         All layouts can be downloaded as fiction gate-level layouts files (<span
@@ -122,7 +187,11 @@
           ><em>fiction</em></a
         >.
       </p>
-
+      <p>
+        The respective publications for the gate libraries, benchmarks, clocking
+        schemes, physical design algorithms and optimization algorithms can be
+        found by clicking the corresponding paper (&#128196;) symbol.
+      </p>
       <p>
         In order to create a benchmark set according to your needs, simply fill
         out the form below.
@@ -157,10 +226,11 @@
           <div class="row d-flex"></div>
           <div class="col-md-6">
             <h6 style="margin-bottom: 0px">
-              <a
+              Trindade16<a
                 href="https://ieeexplore.ieee.org/document/7724048"
                 target="_blank"
-                >Trindade16</a
+                style="text-decoration: none"
+                >&#128196;</a
               >
               Benchmarks
               <input
@@ -192,10 +262,11 @@
 
           <div class="col-md-6">
             <h6 style="margin-bottom: 0px">
-              <a
+              Fontes18<a
                 href="https://ieeexplore.ieee.org/document/8351001"
                 target="_blank"
-                >Fontes18</a
+                style="text-decoration: none"
+                >&#128196;</a
               >
               Benchmarks
               <input
@@ -228,10 +299,11 @@
 
           <div class="col-md-6">
             <h6 style="margin-bottom: 0px">
-              <a
+              ISCAS85<a
                 href="https://www.researchgate.net/publication/273775783_A_neutral_netlist_of_10_combinational_benchmark_circuits_and_a_targeted_translator_in_FORTRAN"
                 target="_blank"
-                >ISCAS85</a
+                style="text-decoration: none"
+                >&#128196;</a
               >
               Benchmarks
               <input
@@ -264,10 +336,11 @@
 
           <div class="col-md-6">
             <h6 style="margin-bottom: 0px">
-              <a
+              EPFL<a
                 href="https://www.epfl.ch/labs/lsi/page-102566-en-html/benchmarks/"
                 target="_blank"
-                >EPFL</a
+                style="text-decoration: none"
+                >&#128196;</a
               >
               Benchmarks
               <input
@@ -363,7 +436,15 @@
                   name="one"
                   value="true"
                 />
-                <label for="one">ONE</label>
+                <label for="one"
+                  >QCA ONE
+                  <a
+                    href="https://ieeexplore.ieee.org/document/7538997/"
+                    target="_blank"
+                    style="text-decoration: none"
+                    >&#128196;</a
+                  ></label
+                >
               </div>
 
               <div class="col-md-6 align-items-center">
@@ -374,7 +455,14 @@
                   name="bestagon"
                   value="true"
                 />
-                <label for="bestagon">Bestagon</label>
+                <label for="bestagon"
+                  >Bestagon<a
+                    href="https://dl.acm.org/doi/10.1145/3489517.3530525"
+                    target="_blank"
+                    style="text-decoration: none"
+                    >&#128196;</a
+                  ></label
+                >
               </div>
             </div>
           </div>
@@ -398,7 +486,14 @@
                     id="twoddwave"
                     name="twoddwave"
                   />
-                  <label for="twoddwave">2DDWave</label>
+                  <label for="twoddwave"
+                    >2DDWave<a
+                      href="https://ieeexplore.ieee.org/document/1717097"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -408,7 +503,14 @@
                     id="use"
                     name="use"
                   />
-                  <label for="use">USE</label>
+                  <label for="use"
+                    >USE<a
+                      href="https://ieeexplore.ieee.org/document/7219390"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -418,7 +520,14 @@
                     id="res"
                     name="res"
                   />
-                  <label for="res">RES</label>
+                  <label for="res"
+                    >RES<a
+                      href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -428,7 +537,14 @@
                     id="esr"
                     name="esr"
                   />
-                  <label for="esr">ESR</label>
+                  <label for="esr"
+                    >ESR<a
+                      href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -438,8 +554,20 @@
                     id="row"
                     name="row"
                   />
-                  <label for="row">Row</label>
+                  <label for="row"
+                    >ROW<a
+                      href="https://ieeexplore.ieee.org/document/573740"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
+                <p class="text-justify" style="margin: 0px">
+                  Choose Best to automatically select the best clocking scheme,
+                  physical design algorithm and optimizations w.r.t. layout
+                  area:
+                </p>
                 <div class="form-group">
                   <input
                     class="form-check-input"
@@ -475,7 +603,14 @@
                     name="exact"
                     onchange="toggleExactSelection()"
                   />
-                  <label for="exact">Exact</label>
+                  <label for="exact"
+                    >Exact<a
+                      href="https://ieeexplore.ieee.org/document/8342060"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -486,7 +621,19 @@
                     name="ortho"
                     onchange="toggleOrthoSelection()"
                   />
-                  <label for="ortho">Ortho</label>
+                  <label for="ortho"
+                    >Ortho<a
+                      href="https://dl.acm.org/doi/10.1145/3287624.3287705"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    >(+45°)<a
+                      href="https://www.researchgate.net/publication/373614428_Scalable_Physical_Design_for_Silicon_Dangling_Bond_Logic_How_a_45_Turn_Prevents_the_Reinvention_of_the_Wheel"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -497,7 +644,14 @@
                     name="nanoplacer"
                     onchange="toggleNanoPlaceRSelection()"
                   />
-                  <label for="nanoplacer">NanoPlaceR</label>
+                  <label for="nanoplacer"
+                    >NanoPlaceR<a
+                      href="https://ieeexplore.ieee.org/document/10247933"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
               </div>
             </div>
@@ -523,7 +677,14 @@
                     id="post-layout"
                     name="post-layout"
                   />
-                  <label for="post-layout">Post-Layout Optimization</label>
+                  <label for="post-layout"
+                    >Post-Layout Optimization<a
+                      href="https://www.cda.cit.tum.de/files/eda/2023_nanoarch_post-layout_optimization_for_fcn.pdf"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
                 <div class="form-group">
                   <input
@@ -533,7 +694,14 @@
                     id="input-ordering"
                     name="input-ordering"
                   />
-                  <label for="input-ordering">Input Ordering</label>
+                  <label for="input-ordering"
+                    >Input Ordering<a
+                      href="https://www.computer.org/csdl/proceedings-article/isvlsi/2023/10238604/1QdHlcDCWre"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
                 </div>
               </div>
             </div>
@@ -594,7 +762,7 @@
             style="width: 20%; min-width: 200px; margin: 1px"
           >
             <img
-              src="{{ url_for('static', filename='physical_design_algorithm.pdf')}}"
+              src="{{ url_for('static', filename='optimization_algorithm.pdf')}}"
               style="width: 100%; height: 100%; object-fit: cover"
             />
           </div>
@@ -615,7 +783,7 @@
         <a href="description" target="_blank">file format</a> are provided.
         Alternatively, a pre-generated archive with <em>all</em> benchmarks can
         be <a href="get_pre_gen">downloaded</a>.
-
+        <div class="col-md-12" style="height: 20px"></div>
         <div class="text-center">
           <button
             type="submit"
@@ -638,7 +806,6 @@
               <option value="csv">CSV</option>
               <option value="excel">Excel</option>
               <option value="json">JSON</option>
-              <option value="clipboard">Clipboard</option>
             </select>
             <button
               type="submit"
@@ -671,6 +838,17 @@
       </p>
     </div>
 
+    <div class="container">
+      <p>
+        If you use any of the algorithms in your work, please consider citing
+        them as shown on
+        <a
+          href="https://fiction.readthedocs.io/en/latest/publications.html"
+          target="_blank"
+          >this page</a
+        >.
+      </p>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

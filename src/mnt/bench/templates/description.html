@@ -17,23 +17,35 @@
     />
 
     <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
       .image-container {
-        float: left;
-        width: 33.33%;
         box-sizing: border-box;
+        width: 20%;
         padding: 10px;
         text-align: center;
       }
 
       .image-container img {
         max-width: 100%;
-        height: auto;
+        height: 120px; /* Set a fixed height for all images */
+        object-fit: cover; /* This property ensures the image retains its aspect ratio and covers the entire container */
+        display: block; /* Remove extra space beneath the image */
+        margin: 0 auto; /* Center the image within the container */
       }
 
-      .clear-after-images::before {
+      .clear-after-images::before,
+      .clear-after-images::after {
         content: "";
         display: table;
         clear: both;
+      }
+
+      .line-break {
+        width: 100%;
       }
 
       @media (max-width: 768px) {
@@ -44,7 +56,7 @@
 
       @media (max-width: 480px) {
         .image-container {
-          width: 100%;
+          width: 80%;
         }
       }
     </style>
@@ -99,28 +111,37 @@
 
     <div class="container">
       <h1>MNT Bench: Library Description and File Format</h1>
+      <div class="line-break"></div>
       <p>Benchmarks are provided for two different gate libraries:</p>
+      <div class="line-break"></div>
       <ul>
         <li>
-          <a
+          QCA ONE<a
             href="https://ieeexplore.ieee.org/document/7538997/"
             target="_blank"
-            >ONE</a
+            style="text-decoration: none"
+            >&#128196;</a
           >: Used for QCA circuits.
         </li>
         <li>
-          <a
+          Bestagon<a
             href="https://dl.acm.org/doi/10.1145/3489517.3530525"
             target="_blank"
-            >Bestagon</a
+            style="text-decoration: none"
+            >&#128196;</a
           >: Used for SiDB circuits.
         </li>
       </ul>
+      <div class="line-break"></div>
       <p>and up to five different clocking schemes:</p>
+      <div class="line-break"></div>
       <div class="image-container">
         <p>
-          <a href="https://ieeexplore.ieee.org/document/1717097" target="_blank"
-            >2DDWave</a
+          2DDWave<a
+            href="https://ieeexplore.ieee.org/document/1717097"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
           >
         </p>
         <img src="{{ url_for('static', filename='2ddwave.png')}}" />
@@ -128,8 +149,11 @@
 
       <div class="image-container">
         <p>
-          <a href="https://ieeexplore.ieee.org/document/7219390" target="_blank"
-            >USE</a
+          USE<a
+            href="https://ieeexplore.ieee.org/document/7219390"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
           >
         </p>
         <img src="{{ url_for('static', filename='use.png')}}" />
@@ -137,10 +161,11 @@
 
       <div class="image-container">
         <p>
-          <a
+          RES<a
             href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
             target="_blank"
-            >RES</a
+            style="text-decoration: none"
+            >&#128196;</a
           >
         </p>
         <img src="{{ url_for('static', filename='res.png')}}" />
@@ -148,10 +173,11 @@
 
       <div class="image-container">
         <p>
-          <a
+          ESR<a
             href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
             target="_blank"
-            >ESR</a
+            style="text-decoration: none"
+            >&#128196;</a
           >
         </p>
         <img src="{{ url_for('static', filename='esr.png')}}" />
@@ -159,13 +185,18 @@
 
       <div class="image-container">
         <p>
-          <a href="https://ieeexplore.ieee.org/document/573740" target="_blank"
-            >ROW</a
+          ROW<a
+            href="https://ieeexplore.ieee.org/document/573740"
+            target="_blank"
+            style="text-decoration: none"
+            >&#128196;</a
           >
         </p>
-        <img src="{{ url_for('static', filename='row.png')}}" />
+        <img src="{{ url_for('static', filename='row.pdf')}}" />
       </div>
 
+      <div class="line-break"></div>
+      <div class="col-md-12" style="height: 20px"></div>
       <p class="clear-after-images">Used File Format:</p>
       <ul>
         <li>
