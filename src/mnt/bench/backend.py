@@ -155,53 +155,58 @@ class Backend:
             db_tmp = db_tmp.loc[db_tmp["level"] == "gate"]
             db_filtered = pd.concat([db_filtered, db_tmp])
 
-            if benchmark_config.one and not benchmark_config.bestagon:
-                db_filtered = db_tmp.loc[db_tmp["library"] == "one"]
+            if benchmark_config.best:
+                db_tmp = db_tmp.loc[db_tmp["clocking_scheme"] == "best"]
+                db_filtered = pd.concat([db_filtered, db_tmp])
 
-            if not benchmark_config.one and benchmark_config.bestagon:
-                db_filtered = db_tmp.loc[db_tmp["library"] == "bestagon"]
+            else:
+                if benchmark_config.one and not benchmark_config.bestagon:
+                    db_filtered = db_tmp.loc[db_tmp["library"] == "one"]
 
-            db_tmp_all_schemes = pd.DataFrame(columns=colnames)
-            if benchmark_config.twoddwave:
-                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "2ddwave"]
-                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                if not benchmark_config.one and benchmark_config.bestagon:
+                    db_filtered = db_tmp.loc[db_tmp["library"] == "bestagon"]
 
-            if benchmark_config.use:
-                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "use"]
-                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                db_tmp_all_schemes = pd.DataFrame(columns=colnames)
+                if benchmark_config.twoddwave:
+                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "2ddwave"]
+                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if benchmark_config.res:
-                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "res"]
-                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                if benchmark_config.use:
+                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "use"]
+                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if benchmark_config.esr:
-                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "esr"]
-                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                if benchmark_config.res:
+                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "res"]
+                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if benchmark_config.row:
-                db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "row"]
-                db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                if benchmark_config.esr:
+                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "esr"]
+                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if not db_tmp_all_schemes.empty:
-                db_filtered = db_tmp_all_schemes
+                if benchmark_config.row:
+                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "row"]
+                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
 
-            if benchmark_config.exact:
-                db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "exact"]
+                if not db_tmp_all_schemes.empty:
+                    db_filtered = db_tmp_all_schemes
 
-            if benchmark_config.nanoplacer:
-                db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "nanoplacer"]
+                if benchmark_config.exact:
+                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "exact"]
 
-                if benchmark_config.optimized:
-                    db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
+                if benchmark_config.nanoplacer:
+                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "nanoplacer"]
 
-            if benchmark_config.ortho:
-                db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "ortho"]
+                    if benchmark_config.optimized:
+                        db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
 
-                if benchmark_config.optimized:
-                    db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
+                if benchmark_config.ortho:
+                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "ortho"]
 
-                if benchmark_config.ordered:
-                    db_filtered = db_filtered.loc[db_filtered["ordered"] == "ord"]
+                    if benchmark_config.optimized:
+                        db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
+
+                    if benchmark_config.ordered:
+                        db_filtered = db_filtered.loc[db_filtered["ordered"] == "ord"]
 
         if benchmark_config.network:
             db_filtered = pd.concat([db_filtered, db_networks])
@@ -277,7 +282,7 @@ class Backend:
         level_mapping = {"gate": "Gate-level", "network": "Network"}
         table.replace({"level": level_mapping}, inplace=True)
 
-        library_mapping = {"one": "ONE", "bestagon": "Bestagon"}
+        library_mapping = {"one": "QCA ONE", "bestagon": "Bestagon"}
         table.replace({"library": library_mapping}, inplace=True)
 
         clocking_scheme_mapping = {"2ddwave": "2DDWave", "use": "USE", "res": "RES", "esr": "ESR", "row": "ROW"}
