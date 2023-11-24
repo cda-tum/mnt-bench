@@ -49,7 +49,7 @@ Most of the layouts are available for any of the following clocking schemes:
 
 |                                    [Row](https://ieeexplore.ieee.org/document/573740)                                     |
 | :-----------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/row.pdf" alt="Row" height="200"/> |
+| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/row.png" alt="Row" height="200"/> |
 
 # Repository Structure
 
