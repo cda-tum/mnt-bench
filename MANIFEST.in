@@ -1,3 +1,4 @@
 include src/mnt/bench/static/files/MNTBench_all.zip
+include src/mnt/bench/static/files/layout_dimensions.json
 include src/mnt/bench/templates/*
 include src/mnt/bench/static/*

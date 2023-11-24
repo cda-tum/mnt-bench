@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import io
+import json
 import os
 import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Any, cast
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import pandas as pd
@@ -53,6 +54,9 @@ class ParsedBenchmarkName:
     physical_design_algorithm: str
     optimized: str
     ordered: str
+    x: str
+    y: str
+    area: str
     filename: str
 
 
@@ -115,6 +119,7 @@ class Backend:
 
         self.database: pd.DataFrame | None = None
         self.mntbench_all_zip: ZipFile | None = None
+        self.layout_dimensions: list[dict[str, dict[str, str]]] | None = None
 
     def filter_database(self, benchmark_config: BenchmarkConfiguration) -> pd.DataFrame:  # noqa: PLR0912, PLR0915
         """Filters the database according to the filter criteria.
@@ -156,8 +161,7 @@ class Backend:
             db_filtered = pd.concat([db_filtered, db_tmp])
 
             if benchmark_config.best:
-                db_tmp = db_tmp.loc[db_tmp["clocking_scheme"] == "best"]
-                db_filtered = pd.concat([db_filtered, db_tmp])
+                db_filtered = db_filtered.loc[db_filtered["clocking_scheme"] == "best"]
 
             else:
                 if benchmark_config.one and not benchmark_config.bestagon:
@@ -288,6 +292,12 @@ class Backend:
         clocking_scheme_mapping = {"2ddwave": "2DDWave", "use": "USE", "res": "RES", "esr": "ESR", "row": "ROW"}
         table.replace({"clocking_scheme": clocking_scheme_mapping}, inplace=True)
 
+        opt_mapping = {"opt": "✓", "unopt": "✗"}
+        table.replace({"optimized": opt_mapping}, inplace=True)
+
+        ord_mapping = {"ord": "✓", "unord": "✗"}
+        table.replace({"ordered": ord_mapping}, inplace=True)
+
         column_mapping = {
             "benchmark": "Benchmark Function",
             "level": "Abstraction Level",
@@ -296,6 +306,9 @@ class Backend:
             "physical_design_algorithm": "Physical Design Algorithm",
             "optimized": "Post-Layout Optimization",
             "ordered": "Input-Ordering",
+            "x": "Layout Width",
+            "y": "Layout Height",
+            "area": "Layout Area",
             "filename": "Filename",
         }
         table.columns = [column_mapping.get(col, col) for col in table.columns]
@@ -320,7 +333,7 @@ class Backend:
         assert self.mntbench_all_zip is not None
 
         print("Initiating database...")
-        self.database = create_database(self.mntbench_all_zip)
+        self.database = create_database(self, self.mntbench_all_zip)
         print(f"... done: {len(self.database)} benchmarks.")
 
         if not self.database.empty:
@@ -368,8 +381,8 @@ class Backend:
             exact = "exact" in k or exact
             ortho = "ortho" in k or ortho
             nanoplacer = "nanoplacer" in k or nanoplacer
-            optimized = (("opt" in k) and ("noopt" not in k)) or optimized
-            ordered = (("ord" in k) and ("noord" not in k)) or ordered
+            optimized = ("post-layout" in k) or optimized
+            ordered = ("input-ordering" in k) or ordered
 
         return BenchmarkConfiguration(
             indices_benchmarks=indices_benchmarks,
@@ -480,56 +493,79 @@ class Backend:
                 bar.update(size)
         print(f"Download completed to {fname}. Server is starting now.")
 
+    @staticmethod
+    def read_layout_dimensions_from_json(target_location: str) -> list[dict[str, dict[str, str]]] | None:
+        """
+        Read layout dimensions from a JSON file.
 
-def parse_data(filename: str) -> ParsedBenchmarkName:
-    """Extracts the necessary information from a given filename.
+        Parameters:
+            target_location (str): The directory where the 'layout_dimensions.json' file is located.
 
-    Keyword arguments:
-    filename -- name of file
+        Returns:
+            Union[List[Dict[str, Any]], None]: A list of dictionaries representing layout dimensions,
+            or None if the file is not found.
 
-    Return values:
-    parsed_data -- parsed data extracted from filename
-    """
-    if filename.endswith(".fgl"):
-        if ("best" in filename.lower()) and ("bestagon" not in filename.lower()):
-            benchmark = "_".join([file.lower() for file in filename.split("_")[0:-2]])
-            library = filename.split("_")[-2].lower()
-            clocking_scheme = filename.split("_")[-1].lower().split(".")[0]
-            physical_design_algorithm = ""
-            optimized = "noopt"
-            ordered = "noord"
+        Raises:
+            FileNotFoundError: If the 'layout_dimensions.json' file is not found.
+        """
+        file_name = target_location + "/layout_dimensions.json"
+        try:
+            with open(file_name) as file:  # noqa: PTH123
+                return json.load(file)  # type: ignore[no-any-return]
+        except FileNotFoundError:
+            return []
+
+    def parse_data(self, filename: str) -> ParsedBenchmarkName:
+        """Extracts the necessary information from a given filename.
+
+        Args:
+        backend: The backend object containing layout dimensions.
+        filename (str): The name of the file.
+
+        Returns:
+        ParsedBenchmarkName: Parsed data extracted from the filename.
+        """
+        layout_dimensions: Any = {}
+
+        if filename.endswith(".fgl"):
+            layout_dimensions = next((entry for entry in self.layout_dimensions if filename in entry), {})  # type: ignore[union-attr]
+
+            is_best_fgl = "best.fgl" in filename.lower()
+            filename = filename.split(".")[0]
+            specs = filename.lower().split("_")
+
+            benchmark = "_".join(specs[0 : -(2 if is_best_fgl else 5)])
+            library, clocking_scheme, *additional_specs = specs[-2:] if is_best_fgl else specs[-5:]
+            physical_design_algorithm, optimized, ordered = additional_specs + [""] * (3 - len(additional_specs))
+
+            level = "gate"
+            area = int(layout_dimensions.get("x", 0)) * int(layout_dimensions.get("y", 0)) if layout_dimensions else ""
+
+            filename = filename + ".fgl"
+
+        elif filename.endswith(".v"):
+            benchmark = filename.split(".")[0].lower()
+            library = clocking_scheme = physical_design_algorithm = optimized = ordered = ""
+            level = "network"
+            area = ""
+
         else:
-            benchmark = "_".join(
-                [file.lower() for file in filename.split("_")[0:-2]]
-            )  # "_".join([file.lower() for file in filename.split("_")[0:-5]])
-            library = filename.split("_")[-2].lower()  # filename.split("_")[-5].lower()
-            clocking_scheme = filename.split("_")[-1].lower().split(".")[0]  # filename.split("_")[-4].lower()
-            physical_design_algorithm = ""  # filename.split("_")[-3].lower()
-            optimized = ""  # filename.split("_")[-2].lower()
-            ordered = ""  # filename.split("_")[-1].lower().split(".")[0]
-        level = "gate"
-    elif filename.endswith(".v"):
-        benchmark = filename.split(".")[0].lower()
-        library = ""
-        clocking_scheme = ""
-        physical_design_algorithm = ""
-        optimized = ""
-        ordered = ""
-        level = "network"
-    else:
-        msg = "Unknown file type in MNTBench_all.zip"
-        raise RuntimeError(msg)
+            msg = "Unknown file type in MNTBench_all.zip"
+            raise RuntimeError(msg)
 
-    return ParsedBenchmarkName(
-        benchmark=benchmark,
-        level=level,
-        library=library,
-        clocking_scheme=clocking_scheme,
-        physical_design_algorithm=physical_design_algorithm,
-        optimized=optimized,
-        ordered=ordered,
-        filename=filename,
-    )
+        return ParsedBenchmarkName(
+            benchmark=benchmark,
+            level=level,
+            library=library,
+            clocking_scheme=clocking_scheme,
+            physical_design_algorithm=physical_design_algorithm,
+            optimized=optimized,
+            ordered=ordered,
+            x=layout_dimensions.get("x", ""),
+            y=layout_dimensions.get("y", ""),
+            area=area,  # type: ignore[arg-type]
+            filename=filename,
+        )
 
 
 class NoSeekBytesIO:
@@ -578,7 +614,7 @@ def parse_benchmark_id_from_form_key(k: str) -> int | bool:
     return False
 
 
-def create_database(zip_file: ZipFile) -> pd.DataFrame:
+def create_database(backend: Backend, zip_file: ZipFile) -> pd.DataFrame:
     """Creates the database based on the provided directories.
     Keyword arguments:
     qasm_path -- zip containing all .qasm files
@@ -589,7 +625,7 @@ def create_database(zip_file: ZipFile) -> pd.DataFrame:
 
     for filename in zip_file.namelist():
         if filename.endswith((".fgl", ".v")):
-            parsed_data = parse_data(filename)
+            parsed_data = backend.parse_data(filename)
             rows_list.append(parsed_data)
 
     colnames = list(ParsedBenchmarkName.__annotations__.keys())

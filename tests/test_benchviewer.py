@@ -14,25 +14,33 @@ else:
     import importlib_resources as resources
 
 
+target_location = str(resources.files("mnt.bench") / "static" / "files")
+
+
 @pytest.mark.parametrize(
     ("filename", "expected_res"),
     [
         (
-            "mux21_ONE_twoddwave.fgl",
+            "mux21_ONE_twoddwave_exact_UnOpt_UnOrd.fgl",
             backend.ParsedBenchmarkName(
                 benchmark="mux21",
                 level="gate",
                 library="one",
                 clocking_scheme="twoddwave",
                 physical_design_algorithm="exact",
-                optimized="noopt",
-                ordered="noord",
-                filename="mux21_ONE_twoddwave_exact_NoOpt_NoOrd.fgl",
+                optimized="unopt",
+                ordered="unord",
+                x="",
+                y="",
+                area="",
+                filename="mux21_ONE_twoddwave_exact_UnOpt_UnOrd.fgl",
             ),
         ),
     ],
 )
 def test_parse_data(filename: str, expected_res: backend.ParsedBenchmarkName) -> None:
+    backend = Backend()
+    backend.layout_dimensions = backend.read_layout_dimensions_from_json(target_location)
     assert backend.parse_data(filename) == expected_res
 
 
@@ -81,6 +89,7 @@ def test_read_mntbench_all_zip() -> None:
 
 def test_create_database() -> None:
     backend = Backend()
+    backend.layout_dimensions = backend.read_layout_dimensions_from_json(target_location)
 
     res_zip = backend.read_mntbench_all_zip(
         skip_question=True, target_location=str(resources.files("mnt.bench") / "static" / "files")
@@ -119,7 +128,7 @@ def test_streaming_zip() -> None:
     backend.read_mntbench_all_zip(
         skip_question=True, target_location=str(resources.files("mnt.bench") / "static" / "files")
     )
-    res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_2DDWave.fgl", "xor2_ONE_2DDWave.fgl"])
+    res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_BEST.fgl", "xor2_ONE_BEST.fgl"])
     assert list(res)
 
     with pytest.raises(KeyError):
