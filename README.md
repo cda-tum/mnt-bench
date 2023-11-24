@@ -39,13 +39,17 @@ So far, MNT Bench supports the following native gate-sets:
 
 Most of the layouts are available for any of the following clocking schemes:
 
-|                                    [Row](https://ieeexplore.ieee.org/document/573740)                                     |                                      [2DDWave](https://ieeexplore.ieee.org/document/1717097)                                      |                        [ESR](https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf)                        |
-| :-----------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/row.png" alt="Row" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/2ddwave.png" alt="2DDWave" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/esr.png" alt="ESR" height="200"/> |
+|                                      [2DDWave](https://ieeexplore.ieee.org/document/1717097)                                      |                        [ESR](https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf)                        |
+| :-------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/2ddwave.png" alt="2DDWave" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/esr.png" alt="ESR" height="200"/> |
 
 |                                    [USE](https://ieeexplore.ieee.org/document/7219390)                                    |                         [RES](https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551)                          |
 | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/use.png" alt="USE" height="200"/> | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/res.png" alt="RES" height="200"/> |
+
+|                                    [Row](https://ieeexplore.ieee.org/document/573740)                                     |
+| :-----------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/row.pdf" alt="Row" height="200"/> |
 
 # Repository Structure
 
