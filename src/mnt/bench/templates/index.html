@@ -573,10 +573,10 @@
                     class="form-check-input"
                     type="checkbox"
                     value="true"
-                    id="best"
-                    name="best"
+                    id="best-layout"
+                    name="best-layout"
                   />
-                  <label for="best">Best</label>
+                  <label for="best-layout">Best</label>
                 </div>
               </div>
             </div>
@@ -774,6 +774,13 @@
         <div class="d-flex">
           <div class="same_row">Number of selected benchmarks: &nbsp;</div>
           <div class="same_row" id="num_benchmarks">0</div>
+          <div class="same_row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          <div class="same_row">File Size (compressed): &nbsp;</div>
+          <div class="same_row" id="size_compressed">0</div>
+          <div class="same_row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          <div class="same_row">File Size (uncompressed): &nbsp;</div>
+          <div class="same_row" id="size_uncompressed">0</div>
+          <div class="same_row">&nbsp;</div>
         </div>
         After the download button is clicked, all benchmark functions provided
         as <span style="font-family: monospace">.v</span> files and selected
@@ -983,7 +990,7 @@
               setCheckboxState("use", false, false, false);
               setCheckboxState("res", false, false, false);
               setCheckboxState("esr", false, false, false);
-              setCheckboxState("best", false, false, false);
+              setCheckboxState("best-layout", false, false, false);
               enable_physical_design_algorithm_selection();
           }
           else {
@@ -991,7 +998,7 @@
           }
           if (document.getElementById("bestagon").checked) {
               setCheckboxState("row", false, false, false);
-              setCheckboxState("best", false, false, false);
+              setCheckboxState("best-layout", false, false, false);
               enable_physical_design_algorithm_selection();
           }
           else {
@@ -1006,7 +1013,7 @@
       }
 
       function enable_physical_design_algorithm_selection(){
-          if (!document.getElementById("best").checked){
+          if (!document.getElementById("best-layout").checked){
             var ortho_possible = (document.getElementById("twoddwave").checked || document.getElementById("row").checked) && !(document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked);
             var exact_or_nanoplacer_possible = document.getElementById("twoddwave").checked || document.getElementById("row").checked || document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked;
             if (exact_or_nanoplacer_possible && !ortho_possible) {
@@ -1083,7 +1090,7 @@
           }
 
           if (best) {
-              setCheckboxState("best", false, true, true);
+              setCheckboxState("best-layout", false, true, true);
           }
       }
 
@@ -1109,6 +1116,8 @@
           }).then(response => response.json())
               .then(response => {
                   document.getElementById("num_benchmarks").innerHTML = response.num_selected;
+                  document.getElementById("size_compressed").innerHTML = response.size_compressed;
+                  document.getElementById("size_uncompressed").innerHTML = response.size_uncompressed;
 
                   // Check if the 'table' property exists in the response
                   if (response.table) {

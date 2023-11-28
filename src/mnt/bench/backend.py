@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any, cast
 from zipfile import ZIP_DEFLATED, ZipFile
 
+import humanize  # type: ignore[import-not-found]
 import pandas as pd
 import requests
 from packaging import version
@@ -54,9 +55,11 @@ class ParsedBenchmarkName:
     physical_design_algorithm: str
     optimized: str
     ordered: str
-    x: str
-    y: str
-    area: str
+    x: int
+    y: int
+    area: int
+    size_uncompressed: int
+    size_compressed: int
     filename: str
 
 
@@ -158,38 +161,47 @@ class Backend:
 
         if benchmark_config.gate:
             db_tmp = db_tmp.loc[db_tmp["level"] == "gate"]
-            db_filtered = pd.concat([db_filtered, db_tmp])
+            db_filtered = pd.concat([db_filtered if not db_filtered.empty else None, db_tmp])
+
+            if benchmark_config.one and not benchmark_config.bestagon:
+                db_filtered = db_tmp.loc[db_tmp["library"] == "one"]
+
+            if not benchmark_config.one and benchmark_config.bestagon:
+                db_filtered = db_tmp.loc[db_tmp["library"] == "bestagon"]
 
             if benchmark_config.best:
                 db_filtered = db_filtered.loc[db_filtered["clocking_scheme"] == "best"]
-
             else:
-                if benchmark_config.one and not benchmark_config.bestagon:
-                    db_filtered = db_tmp.loc[db_tmp["library"] == "one"]
-
-                if not benchmark_config.one and benchmark_config.bestagon:
-                    db_filtered = db_tmp.loc[db_tmp["library"] == "bestagon"]
-
                 db_tmp_all_schemes = pd.DataFrame(columns=colnames)
                 if benchmark_config.twoddwave:
                     db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "2ddwave"]
-                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                    db_tmp_all_schemes = pd.concat(
+                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                    )
 
                 if benchmark_config.use:
                     db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "use"]
-                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                    db_tmp_all_schemes = pd.concat(
+                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                    )
 
                 if benchmark_config.res:
                     db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "res"]
-                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                    db_tmp_all_schemes = pd.concat(
+                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                    )
 
                 if benchmark_config.esr:
                     db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "esr"]
-                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                    db_tmp_all_schemes = pd.concat(
+                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                    )
 
                 if benchmark_config.row:
                     db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "row"]
-                    db_tmp_all_schemes = pd.concat([db_tmp_all_schemes, db_tmp])
+                    db_tmp_all_schemes = pd.concat(
+                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                    )
 
                 if not db_tmp_all_schemes.empty:
                     db_filtered = db_tmp_all_schemes
@@ -213,7 +225,7 @@ class Backend:
                         db_filtered = db_filtered.loc[db_filtered["ordered"] == "ord"]
 
         if benchmark_config.network:
-            db_filtered = pd.concat([db_filtered, db_networks])
+            db_filtered = pd.concat([db_filtered if not db_filtered.empty else None, db_networks])
 
         return db_filtered.drop_duplicates()
 
@@ -298,6 +310,9 @@ class Backend:
         ord_mapping = {"ord": "✓", "unord": "✗"}
         table.replace({"ordered": ord_mapping}, inplace=True)
 
+        table["size_compressed"] = table["size_compressed"].apply(lambda x: humanize.naturalsize(x))
+        table["size_uncompressed"] = table["size_uncompressed"].apply(lambda x: humanize.naturalsize(x))
+
         column_mapping = {
             "benchmark": "Benchmark Function",
             "level": "Abstraction Level",
@@ -309,6 +324,8 @@ class Backend:
             "x": "Layout Width",
             "y": "Layout Height",
             "area": "Layout Area",
+            "size_uncompressed": "File Size (uncompressed)",
+            "size_compressed": "File Size (compressed)",
             "filename": "Filename",
         }
         table.columns = [column_mapping.get(col, col) for col in table.columns]
@@ -377,12 +394,12 @@ class Backend:
             res = "res" in k or res
             esr = "esr" in k or esr
             row = "row" in k or row
-            best = "best" in k or best
+            best = "best-layout" in k or best
             exact = "exact" in k or exact
             ortho = "ortho" in k or ortho
             nanoplacer = "nanoplacer" in k or nanoplacer
-            optimized = ("post-layout" in k) or optimized
-            ordered = ("input-ordering" in k) or ordered
+            optimized = "post-layout" in k or optimized
+            ordered = "input-ordering" in k or ordered
 
         return BenchmarkConfiguration(
             indices_benchmarks=indices_benchmarks,
@@ -525,14 +542,12 @@ class Backend:
         Returns:
         ParsedBenchmarkName: Parsed data extracted from the filename.
         """
-        layout_dimensions: Any = {}
+        layout_dimensions: Any = next((entry for entry in self.layout_dimensions if filename in entry), {})  # type: ignore[union-attr]
+        layout_dimensions = layout_dimensions.get(filename, {})
 
         if filename.endswith(".fgl"):
-            layout_dimensions = next((entry for entry in self.layout_dimensions if filename in entry), {})  # type: ignore[union-attr]
-
             is_best_fgl = "best.fgl" in filename.lower()
-            filename = filename.split(".")[0]
-            specs = filename.lower().split("_")
+            specs = filename.split(".")[0].lower().split("_")
 
             benchmark = "_".join(specs[0 : -(2 if is_best_fgl else 5)])
             library, clocking_scheme, *additional_specs = specs[-2:] if is_best_fgl else specs[-5:]
@@ -540,8 +555,6 @@ class Backend:
 
             level = "gate"
             area = int(layout_dimensions.get("x", 0)) * int(layout_dimensions.get("y", 0)) if layout_dimensions else ""
-
-            filename = filename + ".fgl"
 
         elif filename.endswith(".v"):
             benchmark = filename.split(".")[0].lower()
@@ -552,6 +565,9 @@ class Backend:
         else:
             msg = "Unknown file type in MNTBench_all.zip"
             raise RuntimeError(msg)
+
+        size_uncompressed = round(layout_dimensions.get("size_uncompressed", 0))
+        size_compressed = round(layout_dimensions.get("size_compressed", 0))
 
         return ParsedBenchmarkName(
             benchmark=benchmark,
@@ -564,6 +580,8 @@ class Backend:
             x=layout_dimensions.get("x", ""),
             y=layout_dimensions.get("y", ""),
             area=area,  # type: ignore[arg-type]
+            size_uncompressed=size_uncompressed,
+            size_compressed=size_compressed,
             filename=filename,
         )
 

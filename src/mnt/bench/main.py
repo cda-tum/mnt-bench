@@ -7,6 +7,7 @@ import sys
 from datetime import datetime
 from typing import TYPE_CHECKING
 
+import humanize  # type: ignore[import-not-found]
 import pandas as pd
 from flask import Flask, cli, jsonify, make_response, render_template, request, send_from_directory
 
@@ -195,11 +196,26 @@ def get_num_benchmarks() -> Response:
         prepared_data = SERVER.backend.prepare_form_input(data)
         raw_table = SERVER.backend.get_updated_table(prepared_data)
         file_paths = SERVER.backend.get_selected_file_paths(raw_table)
+        size_compressed = humanize.naturalsize(raw_table["size_compressed"].sum())
+        size_uncompressed = humanize.naturalsize(raw_table["size_uncompressed"].sum())
         table = SERVER.backend.prettify_table(raw_table)
+
         return jsonify(  # type: ignore[no-any-return]
-            {"num_selected": len(file_paths), "table": table.to_html(classes="data", header="true", index=False)}
+            {
+                "num_selected": len(file_paths),
+                "table": table.to_html(classes="data", header="true", index=False),
+                "size_compressed": size_compressed,
+                "size_uncompressed": size_uncompressed,
+            }
         )
-    return jsonify({"num_selected": 0, "table": pd.DataFrame().to_html(classes="data", header="true", index=False)})  # type: ignore[no-any-return]
+    return jsonify(  # type: ignore[no-any-return]
+        {
+            "num_selected": 0,
+            "table": pd.DataFrame().to_html(classes="data", header="true", index=False),
+            "size_compressed": 0,
+            "size_uncompressed": 0,
+        }
+    )
 
 
 def start_server(
