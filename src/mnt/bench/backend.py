@@ -635,7 +635,8 @@ def parse_benchmark_id_from_form_key(k: str) -> int | bool:
 def create_database(backend: Backend, zip_file: ZipFile) -> pd.DataFrame:
     """Creates the database based on the provided directories.
     Keyword arguments:
-    qasm_path -- zip containing all .qasm files
+    backend -- website backend
+    zip_file -- zip containing all .fgl and .v files
     Return values:
     database -- database containing all available benchmarks
     """
