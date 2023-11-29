@@ -33,7 +33,7 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 x=3,
                 y=4,
                 area=12,
-                size_compressed=517,
+                size_compressed=1034,
                 size_uncompressed=3513,
                 filename="mux21_ONE_2DDWave_exact_UnOpt_UnOrd.fgl",
             ),
