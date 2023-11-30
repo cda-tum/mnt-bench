@@ -41,7 +41,9 @@ class Server:
             msg = "Error while reading the MNTBench_all.zip file."
             raise RuntimeError(msg)
 
-        self.backend.layout_dimensions = self.backend.read_layout_dimensions_from_json(self.target_location)
+        self.backend.layout_dimensions = self.backend.read_layout_dimensions_from_json(
+            str(resources.files("mnt.bench") / "static" / "files")
+        )
         self.backend.init_database()
         if self.backend.database is None:
             msg = "Error while initializing the database."
