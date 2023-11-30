@@ -304,14 +304,17 @@ class Backend:
         clocking_scheme_mapping = {"2ddwave": "2DDWave", "use": "USE", "res": "RES", "esr": "ESR", "row": "ROW"}
         table.replace({"clocking_scheme": clocking_scheme_mapping}, inplace=True)
 
+        physical_design_algorithm_mapping = {"nanoplacer": "NanoPlaceR"}
+        table.replace({"physical_design_algorithm": physical_design_algorithm_mapping}, inplace=True)
+
         opt_mapping = {"opt": "✓", "unopt": "✗"}
         table.replace({"optimized": opt_mapping}, inplace=True)
 
         ord_mapping = {"ord": "✓", "unord": "✗"}
         table.replace({"ordered": ord_mapping}, inplace=True)
 
-        table["size_compressed"] = table["size_compressed"].apply(lambda x: humanize.naturalsize(x))
-        table["size_uncompressed"] = table["size_uncompressed"].apply(lambda x: humanize.naturalsize(x))
+        table["size_compressed"] = table["size_compressed"].apply(humanize.naturalsize)
+        table["size_uncompressed"] = table["size_uncompressed"].apply(humanize.naturalsize)
 
         column_mapping = {
             "benchmark": "Benchmark Function",
