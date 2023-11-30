@@ -7,7 +7,7 @@ import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, cast
+from typing import TYPE_CHECKING, Any
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import humanize  # type: ignore[import-not-found]
@@ -342,7 +342,7 @@ class Backend:
         Returns:
         - List[str]: A list of file paths extracted from the 'filename' column.
         """
-        return cast(list[str], table["filename"].to_list())
+        return [str(item) for item in table["filename"].to_list()]
 
     def init_database(self) -> bool:
         """Generates the database and saves it into a global variable."""
