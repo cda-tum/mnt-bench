@@ -233,7 +233,7 @@ def start_server(
         activate_logging=activate_logging,
     )
     print(
-        "Server is hosted at: http://127.0.0.1:5000" + PREFIX + ".",
+        "Server is hosted at: http://127.0.0.1:5001" + PREFIX + ".",
         "To stop it, interrupt the process (e.g., via CTRL+C). \n",
     )
 
@@ -244,7 +244,7 @@ def start_server(
         log = logging.getLogger("werkzeug")
         log.disabled = True
 
-    app.run(debug=debug_flag)
+    app.run(debug=debug_flag, port=5001)
 
 
 if __name__ == "__main__":
