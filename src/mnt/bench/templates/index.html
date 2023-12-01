@@ -104,10 +104,13 @@
       <p>
         The development and improvement of physical design tools for
         <em>Field-coupled Nanocomputing</em> (FCN) is critical to the success of
-        this emerging technology. To compare the results of new physical design
-        algorithms, this benchmark suite provides common benchmark functions in
-        the field combined with state-of-the-art layouts. In addition to layouts
-        using different gate sets, such as the
+        this emerging technology. Furthermore, simulation and fabrication
+        heavily rely on the usage of area-efficient layouts. To compare the
+        results of new physical design algorithms and provide the most optimal
+        layouts found thus far, this benchmark suite offers common benchmark
+        functions in the field combined with the best state-of-the-art layouts
+        w.r.t. to area. In addition to layouts using different gate sets, such
+        as the
         <em
           >QCA ONE<a
             href="https://ieeexplore.ieee.org/document/7538997/"
@@ -160,7 +163,7 @@
             >&#128196;</a
           ></em
         >
-        or
+        , or
         <em
           >ROW<a
             href="https://ieeexplore.ieee.org/document/573740"
@@ -189,7 +192,7 @@
       </p>
       <p>
         The respective publications for the gate libraries, benchmarks, clocking
-        schemes, physical design algorithms and optimization algorithms can be
+        schemes, physical design algorithms, and optimization algorithms can be
         found by clicking the corresponding paper (&#128196;) symbol.
       </p>
       <p>
@@ -394,8 +397,8 @@
             <p class="text-justify" style="margin: 0px">
               Select the abstraction level:
             </p>
-            <div class="d-flex">
-              <div class="col-md-6 align-items-center">
+            <div class="row">
+              <div class="col-md-12 align-items-center">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -403,10 +406,13 @@
                   name="network"
                   value="true"
                 />
-                <label for="network">Network</label>
+                <label for="network"
+                  >Network (<span style="font-family: monospace">.v</span
+                  >)</label
+                >
               </div>
 
-              <div class="col-md-6 align-items-center">
+              <div class="col-md-12 align-items-center">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -414,7 +420,10 @@
                   name="gate"
                   value="true"
                 />
-                <label for="gate">Gate-level</label>
+                <label for="gate"
+                  >Gate-level (<span style="font-family: monospace">.fgl</span
+                  >)</label
+                >
               </div>
             </div>
           </div>
@@ -427,8 +436,8 @@
             <p class="text-justify" style="margin: 0px">
               Select the used gate library:
             </p>
-            <div class="d-flex">
-              <div class="col-md-6 align-items-center">
+            <div class="row">
+              <div class="col-md-12 align-items-center">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -447,7 +456,7 @@
                 >
               </div>
 
-              <div class="col-md-6 align-items-center">
+              <div class="col-md-12 align-items-center">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -664,8 +673,8 @@
             <h6>Optimization Algorithm</h6>
 
             <p class="text-justify" style="margin: 0px">
-              For Ortho and NanoPlaceR, choose the applied optimization
-              algorithms:
+              If Ortho or NanoPlaceR has been chosen, please also select the
+              applied optimization algorithms:
             </p>
             <div class="row">
               <div class="col-md-12 align-items-center">
@@ -803,7 +812,7 @@
             Download selected Benchmarks
           </button>
         </div>
-        <h6>Selected Benchmarks:</h6>
+        <h6>Overview of Selected Benchmarks:</h6>
         <div class="form-inline">
           <div class="form-group">
             <label for="format" style="margin-right: 10px"
