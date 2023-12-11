@@ -437,7 +437,7 @@ class Backend:
             return False
 
         print("Searching for local benchmarks...")
-        if huge_zip_path.is_file() and len(ZipFile(huge_zip_path, "r").namelist()) != 0:
+        if huge_zip_path.is_file() and len(ZipFile(huge_zip_path, "r").namelist()) != 0 and not skip_question:
             print("... found.")
         else:
             print("No benchmarks found. Querying GitHub...")
