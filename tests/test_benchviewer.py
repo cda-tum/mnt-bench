@@ -86,7 +86,7 @@ def test_read_mntbench_all_zip() -> None:
     backend = Backend()
     with resources.as_file(bench) as bench_path:
         target_location = str(bench_path / "static/files")
-    assert backend.read_mntbench_all_zip(skip_question=False, target_location=target_location)
+    assert backend.read_mntbench_all_zip(skip_question=True, target_location=target_location, test=True)
 
 
 def test_create_database() -> None:
@@ -94,7 +94,7 @@ def test_create_database() -> None:
     backend.layout_dimensions = backend.read_layout_dimensions_from_json(target_location)
 
     res_zip = backend.read_mntbench_all_zip(
-        skip_question=False, target_location=str(resources.files("mnt.bench") / "static" / "files")
+        skip_question=False, target_location=str(resources.files("mnt.bench") / "static" / "files"), test=True
     )
     assert res_zip
 
@@ -128,7 +128,7 @@ def test_create_database() -> None:
 def test_streaming_zip() -> None:
     backend = Backend()
     backend.read_mntbench_all_zip(
-        skip_question=False, target_location=str(resources.files("mnt.bench") / "static" / "files")
+        skip_question=False, target_location=str(resources.files("mnt.bench") / "static" / "files"), test=True
     )
     res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_BEST.fgl", "xor2_ONE_BEST.fgl"])
     assert list(res)
@@ -143,7 +143,7 @@ def test_flask_server() -> None:
     target_location = str(bench_location / "static/files")
 
     Server(
-        skip_question=False,
+        skip_question=True,
         activate_logging=False,
         target_location=target_location,
     )

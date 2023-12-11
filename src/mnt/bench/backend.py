@@ -427,6 +427,7 @@ class Backend:
         self,
         target_location: str,
         skip_question: bool = False,
+        test: bool = False,
     ) -> bool:
         huge_zip_path = Path(target_location) / "MNTBench_all.zip"
 
@@ -437,7 +438,7 @@ class Backend:
             return False
 
         print("Searching for local benchmarks...")
-        if huge_zip_path.is_file() and len(ZipFile(huge_zip_path, "r").namelist()) != 0 and not skip_question:
+        if (not skip_question or test) and huge_zip_path.is_file() and len(ZipFile(huge_zip_path, "r").namelist()) != 0:
             print("... found.")
         else:
             print("No benchmarks found. Querying GitHub...")
