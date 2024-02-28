@@ -85,7 +85,7 @@ class Backend:
             {"name": "clpl", "id": "14", "filename": "clpl"},
             {"name": "1bitAdderAOIG", "id": "15", "filename": "1bitadderaoig"},
             {"name": "1bitAdderMaj", "id": "16", "filename": "1bitaddermaj"},
-            {"name": "2bitAdderAOIG", "id": "17", "filename": "2bitaddermaj"},
+            {"name": "2bitAdderMaj", "id": "17", "filename": "2bitaddermaj"},
             {"name": "XOR5Maj", "id": "18", "filename": "xor5maj"},
             {"name": "xor5_r1", "id": "19", "filename": "xor5_r1"},
             {"name": "cm82a_5", "id": "20", "filename": "cm82a_5"},
