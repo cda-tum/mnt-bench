@@ -103,14 +103,15 @@
       <h1>Welcome to the Munich Nanotech Benchmark Library (MNT Bench)!</h1>
       <p>
         The development and improvement of physical design tools for
-        <em>nanotechnologies</em>, such as <em>Silicon Dangling Bonds</em> (SiDBS),
-        is critical to the success of this emerging technology. 
-        Furthermore, simulation and fabrication heavily rely on the usage of 
-        area-efficient layouts. To compare the results of new physical design 
-        algorithms and provide the most optimal layouts found thus far, this 
-        benchmark suite offers common benchmark functions in the field combined 
-        with the best state-of-the-art layouts w.r.t. to area. In addition to 
-        layouts using different gate sets, such as the
+        <em>nanotechnologies</em>, such as
+        <em>Silicon Dangling Bonds</em> (SiDBS), is critical to the success of
+        this emerging technology. Furthermore, simulation and fabrication
+        heavily rely on the usage of area-efficient layouts. To compare the
+        results of new physical design algorithms and provide the most optimal
+        layouts found thus far, this benchmark suite offers common benchmark
+        functions in the field combined with the best state-of-the-art layouts
+        w.r.t. to area. In addition to layouts using different gate sets, such
+        as the
         <em
           >QCA ONE<a
             href="https://ieeexplore.ieee.org/document/7538997/"
@@ -659,6 +660,11 @@
                       target="_blank"
                       style="text-decoration: none"
                       >&#128196;</a
+                    ><a
+                      href="https://www.cda.cit.tum.de/files/eda/2024_isqed_thinking_outside_the_clock_physical_design_for_field-coupled_nanocomputing_with_deep_reinforcement_learning.pdf"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
                     ></label
                   >
                 </div>
@@ -689,6 +695,11 @@
                   <label for="post-layout"
                     >Post-Layout Optimization<a
                       href="https://www.cda.cit.tum.de/files/eda/2023_nanoarch_post-layout_optimization_for_fcn.pdf"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    >(+Wiring Reduction)<a
+                      href="https://www.cda.cit.tum.de/files/eda/2024_dac_wiring_reduction_for_field-coupled_nanotechnologies.pdf"
                       target="_blank"
                       style="text-decoration: none"
                       >&#128196;</a
@@ -866,7 +877,8 @@
       <p>
         @inproceedings{hofmann2024mntbench, <br />
         &nbsp; author={Hofmann, Simon and Walter, Marcel and Wille, Robert},<br />
-        &nbsp; booktitle = &#123;&#123;2024 Design, Automation and Test in Europe (DATE)}},<br />
+        &nbsp; booktitle = &#123;&#123;2024 Design, Automation and Test in
+        Europe (DATE)}},<br />
         &nbsp; title=&#123;&#123;&#123;MNT Bench}}: Benchmarking Software and
         Layout Libraries for Field-coupled Nanocomputing},<br />
         &nbsp; year={2024},<br />
@@ -1078,18 +1090,13 @@
       }
 
       function enable_optimization_algorithm_selection(){
-        if (!document.getElementById("bestagon").checked){
-          if (document.getElementById("ortho").checked){
-            setCheckboxState("post-layout", false, false, false);
-            setCheckboxState("input-ordering", false, false, false);
-          }
-          else if (document.getElementById("nanoplacer").checked){
-            setCheckboxState("post-layout", false, false, false);
-            setCheckboxState("input-ordering", false, true, true);
-          }
-          else {
-            disable_optimization_algorithm_selection();
-          }
+        if (document.getElementById("ortho").checked){
+          setCheckboxState("post-layout", false, false, false);
+          setCheckboxState("input-ordering", false, false, false);
+        }
+        else if (document.getElementById("nanoplacer").checked){
+          setCheckboxState("post-layout", false, false, false);
+          setCheckboxState("input-ordering", false, true, true);
         }
         else {
           disable_optimization_algorithm_selection();
