@@ -25,10 +25,10 @@
   },
   {
     "t_5_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 7,
-      "y": 8,
-      "size_compressed": 990.0,
-      "size_uncompressed": 13871
+      "x": 6,
+      "y": 9,
+      "size_compressed": 1003.0000000000001,
+      "size_uncompressed": 14158
     }
   },
   {
@@ -49,17 +49,17 @@
   },
   {
     "c7552_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 2201,
-      "y": 4882,
-      "size_compressed": 21691448.0,
-      "size_uncompressed": 696131452
+      "x": 2139,
+      "y": 4837,
+      "size_compressed": 21168017.0,
+      "size_uncompressed": 678020012
     }
   },
   {
-    "par_gen_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+    "par_gen_ONE_2DDWave_ortho_Opt_Unord.fgl": {
       "x": 8,
       "y": 8,
-      "size_compressed": 1026.0,
+      "size_compressed": 1025.0,
       "size_uncompressed": 14980
     }
   },
@@ -82,9 +82,9 @@
   {
     "newtag_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 12,
-      "y": 26,
-      "size_compressed": 2714.0,
-      "size_uncompressed": 56877
+      "y": 25,
+      "size_compressed": 2707.0,
+      "size_uncompressed": 56585
     }
   },
   {
@@ -99,7 +99,7 @@
     "adder_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 512,
       "y": 1783,
-      "size_compressed": 4573011.0,
+      "size_compressed": 4573013.0,
       "size_uncompressed": 105263289
     }
   },
@@ -112,6 +112,14 @@
     }
   },
   {
+    "cavlc_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 620,
+      "y": 1326,
+      "size_compressed": 2631479.0,
+      "size_uncompressed": 59754995
+    }
+  },
+  {
     "xor5_r1_ONE_BEST.fgl": {
       "x": 7,
       "y": 11,
@@ -121,10 +129,18 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 9,
-      "y": 8,
-      "size_compressed": 1039.0,
-      "size_uncompressed": 15922
+      "x": 8,
+      "y": 9,
+      "size_compressed": 1058.0,
+      "size_uncompressed": 15635
+    }
+  },
+  {
+    "adder_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 385,
+      "y": 1277,
+      "size_compressed": 3326535.9999999995,
+      "size_uncompressed": 75983225
     }
   },
   {
@@ -136,6 +152,14 @@
     }
   },
   {
+    "c1908_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 352,
+      "y": 678,
+      "size_compressed": 815083.9999999999,
+      "size_uncompressed": 24085722
+    }
+  },
+  {
     "newtag_ONE_2DDWave_exact_UnOpt_UnOrd.fgl": {
       "x": 4,
       "y": 11,
@@ -144,18 +168,34 @@
     }
   },
   {
+    "cavlc_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 617,
+      "y": 1453,
+      "size_compressed": 2537080.0,
+      "size_uncompressed": 77492336
+    }
+  },
+  {
+    "c6288_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 1311,
+      "y": 5125,
+      "size_compressed": 6276546.0,
+      "size_uncompressed": 197337848
+    }
+  },
+  {
     "ctrl_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 178,
-      "y": 390,
-      "size_compressed": 224408.0,
-      "size_uncompressed": 5102768
+      "x": 166,
+      "y": 365,
+      "size_compressed": 215077.0,
+      "size_uncompressed": 4892661
     }
   },
   {
     "c880_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 278,
       "y": 666,
-      "size_compressed": 676387.0,
+      "size_compressed": 676389.0,
       "size_uncompressed": 19793792
     }
   },
@@ -170,24 +210,24 @@
   {
     "majority_5_r1_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 10,
-      "y": 24,
-      "size_compressed": 2153.0,
-      "size_uncompressed": 42956
+      "y": 23,
+      "size_compressed": 2144.0,
+      "size_uncompressed": 42666
     }
   },
   {
     "c432_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 157,
-      "y": 424,
-      "size_compressed": 263325.0,
-      "size_uncompressed": 6007986
+      "x": 155,
+      "y": 417,
+      "size_compressed": 260491.0,
+      "size_uncompressed": 5935765
     }
   },
   {
     "router_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 209,
       "y": 470,
-      "size_compressed": 393900.0,
+      "size_compressed": 393902.0,
       "size_uncompressed": 9060504
     }
   },
@@ -201,10 +241,10 @@
   },
   {
     "c7552_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1592,
-      "y": 3545,
-      "size_compressed": 15278642.0,
-      "size_uncompressed": 348699142
+      "x": 1535,
+      "y": 3433,
+      "size_compressed": 14267099.0,
+      "size_uncompressed": 325723644
     }
   },
   {
@@ -217,10 +257,10 @@
   },
   {
     "b1_r2_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 11,
-      "y": 9,
-      "size_compressed": 1449.0,
-      "size_uncompressed": 25610
+      "x": 8,
+      "y": 12,
+      "size_compressed": 1254.0,
+      "size_uncompressed": 20742
     }
   },
   {
@@ -249,49 +289,57 @@
   },
   {
     "mux21_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 4,
-      "y": 11,
-      "size_compressed": 690.0,
-      "size_uncompressed": 7246
+      "x": 3,
+      "y": 12,
+      "size_compressed": 745.0,
+      "size_uncompressed": 8399
     }
   },
   {
     "max_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 3111,
-      "y": 6767,
-      "size_compressed": 50219974.0,
-      "size_uncompressed": 1614991476
+      "x": 3110,
+      "y": 6638,
+      "size_compressed": 49968315.0,
+      "size_uncompressed": 1606444516
     }
   },
   {
     "c3540_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 969,
-      "y": 2050,
-      "size_compressed": 4086085.0,
-      "size_uncompressed": 92901638
+      "x": 961,
+      "y": 2028,
+      "size_compressed": 4059012.0,
+      "size_uncompressed": 92297250
     }
   },
   {
-    "FA_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 10,
-      "y": 15,
-      "size_compressed": 1815.0,
-      "size_uncompressed": 33972
+    "bar_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 3039,
+      "y": 6059,
+      "size_compressed": 34182275.0,
+      "size_uncompressed": 1091923095
+    }
+  },
+  {
+    "FA_ONE_2DDWave_ortho_Opt_Unord.fgl": {
+      "x": 6,
+      "y": 7,
+      "size_compressed": 856.0,
+      "size_uncompressed": 11440
     }
   },
   {
     "xor5_r1_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 13,
-      "y": 10,
-      "size_compressed": 1655.0,
-      "size_uncompressed": 29650
+      "x": 11,
+      "y": 11,
+      "size_compressed": 1559.0,
+      "size_uncompressed": 27345
     }
   },
   {
     "xor2_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 5,
       "y": 4,
-      "size_compressed": 555.0,
+      "size_compressed": 556.0,
       "size_uncompressed": 4781
     }
   },
@@ -312,6 +360,14 @@
     }
   },
   {
+    "xnor2_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 426.0,
+      "size_uncompressed": 1734
+    }
+  },
+  {
     "clpl_Bestagon_ROW_exact_UnOpt_UnOrd.fgl": {
       "x": 11,
       "y": 16,
@@ -328,18 +384,34 @@
     }
   },
   {
+    "cm82a_5_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 8,
+      "y": 24,
+      "size_compressed": 2028.0,
+      "size_uncompressed": 38725
+    }
+  },
+  {
+    "c3540_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 855,
+      "y": 1809,
+      "size_compressed": 3648253.0,
+      "size_uncompressed": 82748152
+    }
+  },
+  {
     "clpl_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 14,
-      "y": 48,
-      "size_compressed": 4541.0,
-      "size_uncompressed": 98835
+      "x": 11,
+      "y": 46,
+      "size_compressed": 4300.0,
+      "size_uncompressed": 91481
     }
   },
   {
     "c499_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 405,
       "y": 716,
-      "size_compressed": 789216.0,
+      "size_compressed": 789217.0,
       "size_uncompressed": 23746230
     }
   },
@@ -352,18 +424,26 @@
     }
   },
   {
+    "newtag_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 22,
+      "size_compressed": 1727.0,
+      "size_uncompressed": 31687
+    }
+  },
+  {
     "mux21_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 3,
-      "y": 9,
-      "size_compressed": 636.0,
-      "size_uncompressed": 6096
+      "y": 6,
+      "size_compressed": 519.0,
+      "size_uncompressed": 3516
     }
   },
   {
     "i2c_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 1288,
       "y": 2655,
-      "size_compressed": 9793638.0,
+      "size_compressed": 9793636.0,
       "size_uncompressed": 309367004
     }
   },
@@ -371,7 +451,7 @@
     "xor5Maj_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 27,
       "y": 74,
-      "size_compressed": 9645.0,
+      "size_compressed": 9646.0,
       "size_uncompressed": 236324
     }
   },
@@ -384,11 +464,35 @@
     }
   },
   {
+    "c499_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 310,
+      "y": 608,
+      "size_compressed": 643638.0,
+      "size_uncompressed": 19036551
+    }
+  },
+  {
     "mux21_Bestagon_ROW_exact_UnOpt_UnOrd.fgl": {
       "x": 3,
       "y": 6,
       "size_compressed": 544.0,
       "size_uncompressed": 4087
+    }
+  },
+  {
+    "newtag_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 7,
+      "y": 16,
+      "size_compressed": 1170.0,
+      "size_uncompressed": 16679
+    }
+  },
+  {
+    "c17_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 8,
+      "y": 11,
+      "size_compressed": 1192.0,
+      "size_uncompressed": 19030
     }
   },
   {
@@ -408,10 +512,18 @@
     }
   },
   {
+    "c7552_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 1422,
+      "y": 2944,
+      "size_compressed": 12952814.0,
+      "size_uncompressed": 295522097
+    }
+  },
+  {
     "cavlc_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 644,
       "y": 1388,
-      "size_compressed": 2765729.0,
+      "size_compressed": 2765730.0,
       "size_uncompressed": 62890972
     }
   },
@@ -433,10 +545,10 @@
   },
   {
     "router_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 217,
-      "y": 532,
-      "size_compressed": 388164.0,
-      "size_uncompressed": 8878326
+      "x": 216,
+      "y": 529,
+      "size_compressed": 387773.0,
+      "size_uncompressed": 8865253
     }
   },
   {
@@ -456,6 +568,14 @@
     }
   },
   {
+    "c880_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 246,
+      "y": 587,
+      "size_compressed": 506887.0,
+      "size_uncompressed": 11473621
+    }
+  },
+  {
     "clpl_ONE_USE_exact_UnOpt_UnOrd.fgl": {
       "x": 2,
       "y": 21,
@@ -464,27 +584,35 @@
     }
   },
   {
+    "xor2_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 424.0,
+      "size_uncompressed": 1732
+    }
+  },
+  {
     "t_5_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 5,
       "y": 14,
-      "size_compressed": 972.0,
+      "size_compressed": 973.0,
       "size_uncompressed": 13030
     }
   },
   {
     "2bitAdderMaj_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 22,
-      "y": 42,
-      "size_compressed": 4650.0,
-      "size_uncompressed": 105069
+      "x": 20,
+      "y": 39,
+      "size_compressed": 5233.0,
+      "size_uncompressed": 121313
     }
   },
   {
     "c880_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 307,
-      "y": 714,
-      "size_compressed": 632773.0,
-      "size_uncompressed": 14349712
+      "x": 296,
+      "y": 688,
+      "size_compressed": 612539.0,
+      "size_uncompressed": 13890217
     }
   },
   {
@@ -498,16 +626,24 @@
   {
     "t_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 10,
-      "y": 18,
-      "size_compressed": 1562.0,
-      "size_uncompressed": 28274
+      "y": 16,
+      "size_compressed": 1522.0,
+      "size_uncompressed": 26826
     }
   },
   {
-    "mux21_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+    "c2670_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 623,
+      "y": 1254,
+      "size_compressed": 2534428.0,
+      "size_uncompressed": 78119838
+    }
+  },
+  {
+    "mux21_ONE_2DDWave_ortho_Opt_Unord.fgl": {
       "x": 6,
       "y": 4,
-      "size_compressed": 623.0,
+      "size_compressed": 622.0,
       "size_uncompressed": 5809
     }
   },
@@ -523,7 +659,7 @@
     "xor2_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 5,
       "y": 4,
-      "size_compressed": 556.0,
+      "size_compressed": 557.0,
       "size_uncompressed": 4781
     }
   },
@@ -531,8 +667,16 @@
     "FA_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 11,
       "y": 10,
-      "size_compressed": 1396.0,
-      "size_uncompressed": 23862
+      "size_compressed": 1399.0,
+      "size_uncompressed": 23866
+    }
+  },
+  {
+    "c432_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 142,
+      "y": 336,
+      "size_compressed": 225836.0,
+      "size_uncompressed": 5120002
     }
   },
   {
@@ -545,10 +689,10 @@
   },
   {
     "xor5_r1_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 14,
-      "y": 20,
-      "size_compressed": 2210.0,
-      "size_uncompressed": 44233
+      "x": 12,
+      "y": 13,
+      "size_compressed": 1659.0,
+      "size_uncompressed": 30541
     }
   },
   {
@@ -560,27 +704,51 @@
     }
   },
   {
+    "c3540_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 823,
+      "y": 1738,
+      "size_compressed": 3858632.0,
+      "size_uncompressed": 117920472
+    }
+  },
+  {
     "t_5_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 8,
-      "y": 9,
-      "size_compressed": 1105.0,
-      "size_uncompressed": 16454
+      "x": 6,
+      "y": 7,
+      "size_compressed": 866.9999999999999,
+      "size_uncompressed": 11001
+    }
+  },
+  {
+    "t_5_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 5,
+      "y": 11,
+      "size_compressed": 878.0,
+      "size_uncompressed": 11007
     }
   },
   {
     "cm82a_5_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 12,
-      "y": 38,
-      "size_compressed": 2820.0,
-      "size_uncompressed": 58480
+      "y": 35,
+      "size_compressed": 2731.0,
+      "size_uncompressed": 56448
     }
   },
   {
     "par_gen_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 3,
-      "y": 10,
-      "size_compressed": 616.0,
+      "y": 9,
+      "size_compressed": 613.0,
       "size_uncompressed": 5716
+    }
+  },
+  {
+    "c2670_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 540,
+      "y": 1229,
+      "size_compressed": 2193484.0,
+      "size_uncompressed": 49622755
     }
   },
   {
@@ -603,7 +771,7 @@
     "newtag_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 10,
       "y": 15,
-      "size_compressed": 1632.0,
+      "size_compressed": 1633.0,
       "size_uncompressed": 28761
     }
   },
@@ -611,16 +779,16 @@
     "t_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 7,
       "y": 9,
-      "size_compressed": 824.9999999999999,
-      "size_uncompressed": 9862
+      "size_compressed": 1034.0,
+      "size_uncompressed": 15017
     }
   },
   {
     "1bitAdderAOIG_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 6,
-      "y": 19,
-      "size_compressed": 1112.0,
-      "size_uncompressed": 16946
+      "x": 5,
+      "y": 17,
+      "size_compressed": 1045.0,
+      "size_uncompressed": 15212
     }
   },
   {
@@ -635,7 +803,7 @@
     "2bitAdderMaj_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 20,
       "y": 56,
-      "size_compressed": 5010.0,
+      "size_compressed": 5011.0,
       "size_uncompressed": 110730
     }
   },
@@ -657,10 +825,10 @@
   },
   {
     "parity_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 33,
-      "y": 36,
-      "size_compressed": 7517.000000000001,
-      "size_uncompressed": 178818
+      "x": 31,
+      "y": 25,
+      "size_compressed": 6725.999999999999,
+      "size_uncompressed": 160434
     }
   },
   {
@@ -675,7 +843,7 @@
     "c3540_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 874,
       "y": 2012,
-      "size_compressed": 4266744.0,
+      "size_compressed": 4266747.0,
       "size_uncompressed": 131370591
     }
   },
@@ -690,9 +858,17 @@
   {
     "parity_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 48,
-      "y": 120,
-      "size_compressed": 22386.0,
-      "size_uncompressed": 577429
+      "y": 119,
+      "size_compressed": 22377.0,
+      "size_uncompressed": 577134
+    }
+  },
+  {
+    "priority_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 882,
+      "y": 1768,
+      "size_compressed": 4839012.0,
+      "size_uncompressed": 110573355
     }
   },
   {
@@ -704,6 +880,14 @@
     }
   },
   {
+    "c6288_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 958,
+      "y": 2270,
+      "size_compressed": 3672036.9999999995,
+      "size_uncompressed": 83433516
+    }
+  },
+  {
     "t_ONE_USE_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 10,
       "y": 10,
@@ -712,11 +896,19 @@
     }
   },
   {
-    "par_check_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+    "par_check_ONE_2DDWave_ortho_Opt_Unord.fgl": {
       "x": 9,
       "y": 10,
-      "size_compressed": 1273.0,
+      "size_compressed": 1272.0,
       "size_uncompressed": 20876
+    }
+  },
+  {
+    "parity_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 9,
+      "y": 20,
+      "size_compressed": 1388.0,
+      "size_uncompressed": 19725
     }
   },
   {
@@ -746,9 +938,17 @@
   {
     "dec_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 673,
-      "y": 728,
-      "size_compressed": 1661798.0,
-      "size_uncompressed": 51506713
+      "y": 472,
+      "size_compressed": 1523115.0000000002,
+      "size_uncompressed": 48222443
+    }
+  },
+  {
+    "HA_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 3,
+      "y": 6,
+      "size_compressed": 544.0,
+      "size_uncompressed": 4114
     }
   },
   {
@@ -763,24 +963,24 @@
     "par_gen_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 3,
       "y": 7,
-      "size_compressed": 513.0,
+      "size_compressed": 517.0,
       "size_uncompressed": 3420
     }
   },
   {
     "FA_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 12,
-      "y": 24,
-      "size_compressed": 2248.0,
-      "size_uncompressed": 45631
+      "x": 8,
+      "y": 10,
+      "size_compressed": 982.0000000000001,
+      "size_uncompressed": 14884
     }
   },
   {
     "t_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 9,
-      "y": 11,
-      "size_compressed": 1262.0,
-      "size_uncompressed": 20476
+      "x": 7,
+      "y": 10,
+      "size_compressed": 1160.0,
+      "size_uncompressed": 17600
     }
   },
   {
@@ -792,6 +992,22 @@
     }
   },
   {
+    "xor5_r1_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 3,
+      "y": 9,
+      "size_compressed": 686.0,
+      "size_uncompressed": 6803
+    }
+  },
+  {
+    "xor2_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 425.0,
+      "size_uncompressed": 1732
+    }
+  },
+  {
     "c17_ONE_2DDWave_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 7,
       "y": 7,
@@ -800,11 +1016,19 @@
     }
   },
   {
+    "router_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 245,
+      "y": 391,
+      "size_compressed": 443214.0,
+      "size_uncompressed": 12766187
+    }
+  },
+  {
     "cm82a_5_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 16,
-      "y": 22,
-      "size_compressed": 3774.0,
-      "size_uncompressed": 83221
+      "y": 23,
+      "size_compressed": 3487.0,
+      "size_uncompressed": 77179
     }
   },
   {
@@ -817,10 +1041,10 @@
   },
   {
     "FA_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 11,
-      "y": 17,
-      "size_compressed": 1970.0000000000002,
-      "size_uncompressed": 37752
+      "x": 6,
+      "y": 6,
+      "size_compressed": 802.9999999999999,
+      "size_uncompressed": 10292
     }
   },
   {
@@ -835,16 +1059,16 @@
     "priority_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 826,
       "y": 2094,
-      "size_compressed": 5591203.0,
+      "size_compressed": 5591206.0,
       "size_uncompressed": 177996842
     }
   },
   {
     "1bitAdderMaj_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 14,
-      "y": 36,
-      "size_compressed": 3214.0,
-      "size_uncompressed": 68819
+      "y": 35,
+      "size_compressed": 3206.0,
+      "size_uncompressed": 68527
     }
   },
   {
@@ -856,19 +1080,27 @@
     }
   },
   {
+    "FA_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 12,
+      "size_compressed": 876.0,
+      "size_uncompressed": 11448
+    }
+  },
+  {
     "HA_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 8,
       "y": 6,
-      "size_compressed": 851.0,
+      "size_compressed": 851.9999999999999,
       "size_uncompressed": 11473
     }
   },
   {
     "2bitAdderMaj_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 21,
-      "y": 27,
-      "size_compressed": 4398.0,
-      "size_uncompressed": 99182
+      "x": 23,
+      "y": 28,
+      "size_compressed": 4231.0,
+      "size_uncompressed": 94865
     }
   },
   {
@@ -880,11 +1112,19 @@
     }
   },
   {
+    "c1355_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 383,
+      "y": 935,
+      "size_compressed": 895924.0,
+      "size_uncompressed": 27229827
+    }
+  },
+  {
     "1bitAdderMaj_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 14,
-      "y": 28,
-      "size_compressed": 3193.0,
-      "size_uncompressed": 68443
+      "y": 27,
+      "size_compressed": 3099.0,
+      "size_uncompressed": 66119
     }
   },
   {
@@ -897,10 +1137,10 @@
   },
   {
     "sin_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 5054,
-      "y": 11899,
-      "size_compressed": 75911781.0,
-      "size_uncompressed": 2496027982
+      "x": 5053,
+      "y": 11875,
+      "size_compressed": 75872792.0,
+      "size_uncompressed": 2494815598
     }
   },
   {
@@ -915,8 +1155,16 @@
     "majority_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 10,
       "y": 17,
-      "size_compressed": 1858.0,
+      "size_compressed": 1858.9999999999998,
       "size_uncompressed": 35679
+    }
+  },
+  {
+    "max_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 2133,
+      "y": 5336,
+      "size_compressed": 35938711.0,
+      "size_uncompressed": 820863531
     }
   },
   {
@@ -960,6 +1208,22 @@
     }
   },
   {
+    "dec_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 341,
+      "y": 723,
+      "size_compressed": 915260.0,
+      "size_uncompressed": 20595501
+    }
+  },
+  {
+    "c1908_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 233,
+      "y": 529,
+      "size_compressed": 463947.0,
+      "size_uncompressed": 10526752
+    }
+  },
+  {
     "xnor2_ONE_BEST.fgl": {
       "x": 3,
       "y": 5,
@@ -971,16 +1235,24 @@
     "clpl_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 12,
       "y": 20,
-      "size_compressed": 2710.0,
+      "size_compressed": 2713.0,
       "size_uncompressed": 56314
+    }
+  },
+  {
+    "int2float_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 231,
+      "y": 500,
+      "size_compressed": 450414.0,
+      "size_uncompressed": 10237332
     }
   },
   {
     "1bitAdderMaj_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 13,
-      "y": 24,
-      "size_compressed": 2677.0,
-      "size_uncompressed": 55393
+      "y": 25,
+      "size_compressed": 2658.0,
+      "size_uncompressed": 55100
     }
   },
   {
@@ -993,25 +1265,25 @@
   },
   {
     "HA_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 4,
-      "y": 12,
-      "size_compressed": 677.0,
-      "size_uncompressed": 7275
+      "x": 3,
+      "y": 10,
+      "size_compressed": 614.0,
+      "size_uncompressed": 6123
     }
   },
   {
     "xnor2_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 2,
-      "y": 7,
-      "size_compressed": 484.0,
-      "size_uncompressed": 3164
+      "y": 6,
+      "size_compressed": 473.99999999999994,
+      "size_uncompressed": 2878
     }
   },
   {
     "c5315_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 1687,
       "y": 3498,
-      "size_compressed": 15045778.0,
+      "size_compressed": 15045777.0,
       "size_uncompressed": 485710570
     }
   },
@@ -1026,9 +1298,9 @@
   {
     "c1908_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 435,
-      "y": 901,
-      "size_compressed": 1012563.0,
-      "size_uncompressed": 30374258
+      "y": 876,
+      "size_compressed": 999028.0,
+      "size_uncompressed": 29956740
     }
   },
   {
@@ -1037,6 +1309,14 @@
       "y": 4,
       "size_compressed": 588.0,
       "size_uncompressed": 5356
+    }
+  },
+  {
+    "c5315_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 1461,
+      "y": 3005,
+      "size_compressed": 11315799.0,
+      "size_uncompressed": 258967997
     }
   },
   {
@@ -1057,10 +1337,10 @@
   },
   {
     "c1355_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 183,
-      "y": 525,
-      "size_compressed": 373517.0,
-      "size_uncompressed": 8495903
+      "x": 169,
+      "y": 493,
+      "size_compressed": 358949.0,
+      "size_uncompressed": 8175165
     }
   },
   {
@@ -1072,11 +1352,35 @@
     }
   },
   {
+    "1bitAdderAOIG_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 13,
+      "size_compressed": 963.0,
+      "size_uncompressed": 13469
+    }
+  },
+  {
     "xor5Maj_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 20,
       "y": 64,
-      "size_compressed": 7014.0,
+      "size_compressed": 7015.0,
       "size_uncompressed": 157393
+    }
+  },
+  {
+    "b1_r2_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 7,
+      "y": 15,
+      "size_compressed": 1139.0,
+      "size_uncompressed": 17309
+    }
+  },
+  {
+    "par_check_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 13,
+      "size_compressed": 922.0,
+      "size_uncompressed": 11622
     }
   },
   {
@@ -1106,9 +1410,9 @@
   {
     "majority_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 7,
-      "y": 25,
-      "size_compressed": 1724.0,
-      "size_uncompressed": 31419
+      "y": 24,
+      "size_compressed": 1712.0,
+      "size_uncompressed": 31129
     }
   },
   {
@@ -1137,18 +1441,18 @@
   },
   {
     "parity_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 40,
-      "y": 37,
-      "size_compressed": 7440.0,
-      "size_uncompressed": 173967
+      "x": 26,
+      "y": 35,
+      "size_compressed": 6066.0,
+      "size_uncompressed": 137861
     }
   },
   {
     "1bitAdderMaj_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 18,
-      "y": 15,
-      "size_compressed": 2449.0,
-      "size_uncompressed": 49277
+      "x": 16,
+      "y": 16,
+      "size_compressed": 2309.0,
+      "size_uncompressed": 46368
     }
   },
   {
@@ -1170,9 +1474,9 @@
   {
     "2bitAdderMaj_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 21,
-      "y": 34,
-      "size_compressed": 5455.0,
-      "size_uncompressed": 124768
+      "y": 37,
+      "size_compressed": 5462.0,
+      "size_uncompressed": 124468
     }
   },
   {
@@ -1201,10 +1505,10 @@
   },
   {
     "c17_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 7,
-      "y": 21,
-      "size_compressed": 1252.0,
-      "size_uncompressed": 20526
+      "x": 6,
+      "y": 19,
+      "size_compressed": 1195.0,
+      "size_uncompressed": 19081
     }
   },
   {
@@ -1219,7 +1523,7 @@
     "1bitAdderMaj_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 10,
       "y": 27,
-      "size_compressed": 2215.0,
+      "size_compressed": 2214.0,
       "size_uncompressed": 44297
     }
   },
@@ -1241,10 +1545,10 @@
   },
   {
     "b1_r2_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 9,
-      "y": 24,
-      "size_compressed": 1501.0,
-      "size_uncompressed": 26392
+      "x": 10,
+      "y": 25,
+      "size_compressed": 1606.0,
+      "size_uncompressed": 28601
     }
   },
   {
@@ -1259,7 +1563,7 @@
     "parity_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 12,
       "y": 25,
-      "size_compressed": 1948.9999999999998,
+      "size_compressed": 1951.0,
       "size_uncompressed": 33891
     }
   },
@@ -1274,9 +1578,9 @@
   {
     "majority_5_r1_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 6,
-      "y": 24,
-      "size_compressed": 1601.0,
-      "size_uncompressed": 28528
+      "y": 23,
+      "size_compressed": 1589.0,
+      "size_uncompressed": 28239
     }
   },
   {
@@ -1314,9 +1618,9 @@
   {
     "t_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 6,
-      "y": 22,
-      "size_compressed": 1410.0,
-      "size_uncompressed": 23710
+      "y": 20,
+      "size_compressed": 1356.0,
+      "size_uncompressed": 22265
     }
   },
   {
@@ -1338,9 +1642,9 @@
   {
     "par_check_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 5,
-      "y": 17,
-      "size_compressed": 1047.0,
-      "size_uncompressed": 15379
+      "y": 15,
+      "size_compressed": 1002.0,
+      "size_uncompressed": 13356
     }
   },
   {
@@ -1354,16 +1658,16 @@
   {
     "newtag_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 10,
-      "y": 30,
-      "size_compressed": 2321.0,
-      "size_uncompressed": 45616
+      "y": 29,
+      "size_compressed": 2309.0,
+      "size_uncompressed": 45326
     }
   },
   {
     "c17_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 5,
       "y": 15,
-      "size_compressed": 1004.0000000000001,
+      "size_compressed": 1004.9999999999999,
       "size_uncompressed": 13890
     }
   },
@@ -1373,6 +1677,22 @@
       "y": 13,
       "size_compressed": 2159.0,
       "size_uncompressed": 44197
+    }
+  },
+  {
+    "priority_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 862,
+      "y": 1918,
+      "size_compressed": 4995129.0,
+      "size_uncompressed": 113887601
+    }
+  },
+  {
+    "adder_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 769,
+      "y": 2038,
+      "size_compressed": 5143540.0,
+      "size_uncompressed": 158504621
     }
   },
   {
@@ -1387,7 +1707,7 @@
     "majority_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 8,
       "y": 18,
-      "size_compressed": 1369.0,
+      "size_compressed": 1370.0,
       "size_uncompressed": 22437
     }
   },
@@ -1402,17 +1722,17 @@
   {
     "1bitAdderAOIG_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 10,
-      "y": 9,
-      "size_compressed": 1116.0,
-      "size_uncompressed": 17083
+      "y": 13,
+      "size_compressed": 1411.0,
+      "size_uncompressed": 24571
     }
   },
   {
     "xor2_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 5,
-      "y": 8,
-      "size_compressed": 642.0,
-      "size_uncompressed": 6790
+      "y": 7,
+      "size_compressed": 631.0,
+      "size_uncompressed": 6503
     }
   },
   {
@@ -1425,9 +1745,9 @@
   },
   {
     "c17_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 7,
+      "x": 6,
       "y": 7,
-      "size_compressed": 841.0,
+      "size_compressed": 843.0,
       "size_uncompressed": 10411
     }
   },
@@ -1472,11 +1792,27 @@
     }
   },
   {
+    "xor5_r1_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 3,
+      "y": 7,
+      "size_compressed": 564.0,
+      "size_uncompressed": 3933
+    }
+  },
+  {
     "c499_Bestagon_BEST.fgl": {
       "x": 163,
       "y": 435,
       "size_compressed": 309499.0,
       "size_uncompressed": 7035565
+    }
+  },
+  {
+    "ctrl_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 135,
+      "y": 349,
+      "size_compressed": 215259.0,
+      "size_uncompressed": 6068173
     }
   },
   {
@@ -1488,10 +1824,26 @@
     }
   },
   {
+    "HA_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 3,
+      "y": 6,
+      "size_compressed": 543.0,
+      "size_uncompressed": 4114
+    }
+  },
+  {
+    "xor_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 425.0,
+      "size_uncompressed": 1731
+    }
+  },
+  {
     "parity_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 48,
       "y": 87,
-      "size_compressed": 19013.0,
+      "size_compressed": 19015.0,
       "size_uncompressed": 498183
     }
   },
@@ -1506,17 +1858,49 @@
   {
     "int2float_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 251,
-      "y": 587,
-      "size_compressed": 487392.0,
-      "size_uncompressed": 14304789
+      "y": 580,
+      "size_compressed": 485258.0,
+      "size_uncompressed": 14245487
+    }
+  },
+  {
+    "router_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 241,
+      "y": 319,
+      "size_compressed": 408254.0,
+      "size_uncompressed": 11841961
+    }
+  },
+  {
+    "c1355_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 147,
+      "y": 398,
+      "size_compressed": 291189.0,
+      "size_uncompressed": 6605500
+    }
+  },
+  {
+    "c1355_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 359,
+      "y": 1082,
+      "size_compressed": 962511.0,
+      "size_uncompressed": 29184038
+    }
+  },
+  {
+    "c5315_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 1458,
+      "y": 2920,
+      "size_compressed": 11906240.0,
+      "size_uncompressed": 273292133
     }
   },
   {
     "ctrl_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 218,
-      "y": 448,
-      "size_compressed": 292256.0,
-      "size_uncompressed": 8403836
+      "y": 423,
+      "size_compressed": 285120.0,
+      "size_uncompressed": 8199503
     }
   },
   {
@@ -1525,6 +1909,22 @@
       "y": 12,
       "size_compressed": 1101.0,
       "size_uncompressed": 16547
+    }
+  },
+  {
+    "c7552_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 1751,
+      "y": 3722,
+      "size_compressed": 17240037.0,
+      "size_uncompressed": 546280331
+    }
+  },
+  {
+    "1bitAdderAOIG_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 5,
+      "y": 11,
+      "size_compressed": 861.0,
+      "size_uncompressed": 10590
     }
   },
   {
@@ -1560,6 +1960,22 @@
     }
   },
   {
+    "c7552_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 1296,
+      "y": 2952,
+      "size_compressed": 12517174.0,
+      "size_uncompressed": 285386081
+    }
+  },
+  {
+    "c1355_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 162,
+      "y": 428,
+      "size_compressed": 312668.0,
+      "size_uncompressed": 7120680
+    }
+  },
+  {
     "bar_ONE_BEST.fgl": {
       "x": 2314,
       "y": 6193,
@@ -1585,10 +2001,10 @@
   },
   {
     "bar_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 3180,
-      "y": 7196,
-      "size_compressed": 38234887.0,
-      "size_uncompressed": 871629120
+      "x": 3116,
+      "y": 7068,
+      "size_compressed": 37957744.0,
+      "size_uncompressed": 865123565
     }
   },
   {
@@ -1597,6 +2013,14 @@
       "y": 212,
       "size_compressed": 124717.0,
       "size_uncompressed": 3491648
+    }
+  },
+  {
+    "bar_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 2842,
+      "y": 6178,
+      "size_compressed": 34960091.0,
+      "size_uncompressed": 797280312
     }
   },
   {
@@ -1616,6 +2040,22 @@
     }
   },
   {
+    "xor_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 4,
+      "size_compressed": 556.0,
+      "size_uncompressed": 4493
+    }
+  },
+  {
+    "c432_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 140,
+      "y": 375,
+      "size_compressed": 236761.0,
+      "size_uncompressed": 5392418
+    }
+  },
+  {
     "xor2_ONE_RES_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 5,
       "y": 5,
@@ -1624,11 +2064,35 @@
     }
   },
   {
+    "FA_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 4,
+      "y": 11,
+      "size_compressed": 827.0,
+      "size_uncompressed": 10297
+    }
+  },
+  {
+    "int2float_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 230,
+      "y": 514,
+      "size_compressed": 443734.0,
+      "size_uncompressed": 12915314
+    }
+  },
+  {
     "par_check_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 12,
-      "y": 20,
-      "size_compressed": 1899.0,
-      "size_uncompressed": 36242
+      "y": 19,
+      "size_compressed": 1891.0,
+      "size_uncompressed": 35950
+    }
+  },
+  {
+    "i2c_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 1267,
+      "y": 2688,
+      "size_compressed": 9188193.0,
+      "size_uncompressed": 209452953
     }
   },
   {
@@ -1648,6 +2112,14 @@
     }
   },
   {
+    "c6288_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 1113,
+      "y": 2287,
+      "size_compressed": 3538038.0,
+      "size_uncompressed": 80638553
+    }
+  },
+  {
     "majority_Bestagon_BEST.fgl": {
       "x": 5,
       "y": 9,
@@ -1659,16 +2131,16 @@
     "clpl_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 14,
       "y": 35,
-      "size_compressed": 3180.0,
+      "size_compressed": 3181.0,
       "size_uncompressed": 64858
     }
   },
   {
     "c880_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 330,
-      "y": 772,
-      "size_compressed": 736522.0,
-      "size_uncompressed": 21528415
+      "x": 328,
+      "y": 748,
+      "size_compressed": 719719.0,
+      "size_uncompressed": 21063642
     }
   },
   {
@@ -1680,11 +2152,19 @@
     }
   },
   {
+    "1bitAdderMaj_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 8,
+      "y": 24,
+      "size_compressed": 1990.0,
+      "size_uncompressed": 38207
+    }
+  },
+  {
     "c432_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 211,
-      "y": 470,
-      "size_compressed": 375452.0,
-      "size_uncompressed": 10875091
+      "x": 208,
+      "y": 466,
+      "size_compressed": 372979.0,
+      "size_uncompressed": 10797121
     }
   },
   {
@@ -1699,8 +2179,16 @@
     "xor5_r1_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 14,
       "y": 25,
-      "size_compressed": 2730.0,
+      "size_compressed": 2731.0,
       "size_uncompressed": 57567
+    }
+  },
+  {
+    "par_gen_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 2,
+      "y": 5,
+      "size_compressed": 462.0,
+      "size_uncompressed": 2275
     }
   },
   {
@@ -1712,18 +2200,26 @@
     }
   },
   {
+    "c432_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 193,
+      "y": 389,
+      "size_compressed": 328782.00000000006,
+      "size_uncompressed": 9427872
+    }
+  },
+  {
     "xnor2_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 6,
-      "y": 9,
-      "size_compressed": 707.0,
-      "size_uncompressed": 8226
+      "y": 8,
+      "size_compressed": 699.0,
+      "size_uncompressed": 7939
     }
   },
   {
     "c2670_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 675,
       "y": 1466,
-      "size_compressed": 2864418.0000000005,
+      "size_compressed": 2864387.0,
       "size_uncompressed": 88985186
     }
   },
@@ -1731,16 +2227,16 @@
     "cm82a_5_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 24,
       "y": 37,
-      "size_compressed": 5480.0,
+      "size_compressed": 5481.0,
       "size_uncompressed": 127373
     }
   },
   {
     "c1908_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 289,
-      "y": 654,
-      "size_compressed": 598305.0,
-      "size_uncompressed": 13613698
+      "x": 277,
+      "y": 622,
+      "size_compressed": 544929.0,
+      "size_uncompressed": 12378327
     }
   },
   {
@@ -1760,11 +2256,19 @@
     }
   },
   {
+    "dec_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 256,
+      "y": 465,
+      "size_compressed": 680415.0,
+      "size_uncompressed": 19873998
+    }
+  },
+  {
     "cavlc_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 666,
-      "y": 1446,
-      "size_compressed": 2847622.0,
-      "size_uncompressed": 64718332
+      "x": 662,
+      "y": 1435,
+      "size_compressed": 2833754.0,
+      "size_uncompressed": 64415174
     }
   },
   {
@@ -1802,8 +2306,8 @@
   {
     "t_5_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 865.0,
+      "y": 7,
+      "size_compressed": 871.0,
       "size_uncompressed": 10998
     }
   },
@@ -1818,9 +2322,9 @@
   {
     "xor5Maj_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 27,
-      "y": 60,
-      "size_compressed": 9713.0,
-      "size_uncompressed": 233173
+      "y": 57,
+      "size_compressed": 9191.0,
+      "size_uncompressed": 218298
     }
   },
   {
@@ -1834,33 +2338,33 @@
   {
     "xor5Maj_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 31,
-      "y": 79,
-      "size_compressed": 10554.0,
-      "size_uncompressed": 260248
+      "y": 78,
+      "size_compressed": 10545.0,
+      "size_uncompressed": 259956
     }
   },
   {
     "max_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 2855,
       "y": 6422,
-      "size_compressed": 45090048.0,
+      "size_compressed": 45090052.0,
       "size_uncompressed": 1468854737
     }
   },
   {
     "c6288_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 2274,
-      "y": 6659,
-      "size_compressed": 8129655.999999999,
-      "size_uncompressed": 257830140
+      "x": 2273,
+      "y": 6628,
+      "size_compressed": 8107585.0,
+      "size_uncompressed": 257269571
     }
   },
   {
     "adder_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 892,
-      "y": 2171,
-      "size_compressed": 6663106.0,
-      "size_uncompressed": 149844531
+      "x": 828,
+      "y": 2042,
+      "size_compressed": 6344829.0,
+      "size_uncompressed": 144783802
     }
   },
   {
@@ -1883,8 +2387,8 @@
     "b1_r2_ONE_2DDWave_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 10,
       "y": 10,
-      "size_compressed": 1327.0,
-      "size_uncompressed": 23306
+      "size_compressed": 1439.0,
+      "size_uncompressed": 25602
     }
   },
   {
@@ -1913,17 +2417,25 @@
   },
   {
     "c499_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 184,
-      "y": 525,
-      "size_compressed": 374243.0,
-      "size_uncompressed": 8511627
+      "x": 169,
+      "y": 493,
+      "size_compressed": 358936.0,
+      "size_uncompressed": 8175121
+    }
+  },
+  {
+    "ctrl_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 135,
+      "y": 298,
+      "size_compressed": 168920.0,
+      "size_uncompressed": 3852701
     }
   },
   {
     "c6288_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 1330,
       "y": 5714,
-      "size_compressed": 6748794.0,
+      "size_compressed": 6748789.0,
       "size_uncompressed": 213369443
     }
   },
@@ -1939,8 +2451,16 @@
     "dec_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 422,
       "y": 891,
-      "size_compressed": 1390219.0,
+      "size_compressed": 1390220.0,
       "size_uncompressed": 31452091
+    }
+  },
+  {
+    "t_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1002.0,
+      "size_uncompressed": 14174
     }
   },
   {
@@ -1952,19 +2472,35 @@
     }
   },
   {
+    "c17_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 6,
+      "y": 9,
+      "size_compressed": 951.0,
+      "size_uncompressed": 13009
+    }
+  },
+  {
+    "ctrl_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 138,
+      "y": 307,
+      "size_compressed": 173372.0,
+      "size_uncompressed": 3953101
+    }
+  },
+  {
     "xnor2_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 6,
       "y": 4,
-      "size_compressed": 593.0,
+      "size_compressed": 594.0,
       "size_uncompressed": 5356
     }
   },
   {
     "c2670_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 809,
-      "y": 1698,
-      "size_compressed": 3205852.0,
-      "size_uncompressed": 99562854
+      "x": 772,
+      "y": 1672,
+      "size_compressed": 3014590.0,
+      "size_uncompressed": 93049888
     }
   },
   {
@@ -1985,33 +2521,57 @@
   },
   {
     "majority_5_r1_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 11,
-      "y": 12,
-      "size_compressed": 1667.0,
-      "size_uncompressed": 29866
+      "x": 10,
+      "y": 11,
+      "size_compressed": 1472.0,
+      "size_uncompressed": 25264
     }
   },
   {
     "b1_r2_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 14,
-      "y": 20,
-      "size_compressed": 2097.0,
-      "size_uncompressed": 42203
+      "x": 13,
+      "y": 17,
+      "size_compressed": 1955.0,
+      "size_uncompressed": 37845
     }
   },
   {
     "parity_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 36,
-      "y": 53,
-      "size_compressed": 14127.0,
-      "size_uncompressed": 340708
+      "x": 40,
+      "y": 52,
+      "size_compressed": 14440.0,
+      "size_uncompressed": 347139
+    }
+  },
+  {
+    "xor_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 7,
+      "size_compressed": 679.0,
+      "size_uncompressed": 7650
+    }
+  },
+  {
+    "sin_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 3925,
+      "y": 8353,
+      "size_compressed": 58301226.0,
+      "size_uncompressed": 1331235667
+    }
+  },
+  {
+    "xor_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 423.0,
+      "size_uncompressed": 1731
     }
   },
   {
     "HA_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 3,
       "y": 7,
-      "size_compressed": 552.0000000000001,
+      "size_compressed": 553.0,
       "size_uncompressed": 4401
     }
   },
@@ -2034,17 +2594,17 @@
   {
     "t_5_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 10,
-      "y": 18,
-      "size_compressed": 1570.0,
-      "size_uncompressed": 28567
+      "y": 16,
+      "size_compressed": 1537.0,
+      "size_uncompressed": 27119
     }
   },
   {
     "par_gen_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 9,
-      "y": 14,
-      "size_compressed": 1222.0,
-      "size_uncompressed": 19887
+      "y": 13,
+      "size_compressed": 1211.0,
+      "size_uncompressed": 19598
     }
   },
   {
@@ -2072,10 +2632,26 @@
     }
   },
   {
+    "majority_5_r1_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 6,
+      "y": 18,
+      "size_compressed": 1328.0,
+      "size_uncompressed": 21575
+    }
+  },
+  {
+    "dec_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 252,
+      "y": 453,
+      "size_compressed": 678481.0,
+      "size_uncompressed": 19664605
+    }
+  },
+  {
     "c7552_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 1890,
       "y": 4200,
-      "size_compressed": 19111159.0,
+      "size_compressed": 19111161.0,
       "size_uncompressed": 613672181
     }
   },
@@ -2085,6 +2661,14 @@
       "y": 12,
       "size_compressed": 1995.0,
       "size_uncompressed": 38951
+    }
+  },
+  {
+    "clpl_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 11,
+      "y": 27,
+      "size_compressed": 2334.0,
+      "size_uncompressed": 43606
     }
   },
   {
@@ -2107,7 +2691,7 @@
     "priority_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 1046,
       "y": 2096,
-      "size_compressed": 5727321.0,
+      "size_compressed": 5727330.0,
       "size_uncompressed": 131291183
     }
   },
@@ -2144,10 +2728,18 @@
     }
   },
   {
+    "c17_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 13,
+      "size_compressed": 983.0,
+      "size_uncompressed": 13305
+    }
+  },
+  {
     "1bitAdderAOIG_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 11,
       "y": 15,
-      "size_compressed": 1566.0,
+      "size_compressed": 1568.0,
       "size_uncompressed": 27763
     }
   },
@@ -2160,6 +2752,14 @@
     }
   },
   {
+    "ctrl_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 160,
+      "y": 366,
+      "size_compressed": 235973.00000000003,
+      "size_uncompressed": 6671604
+    }
+  },
+  {
     "par_gen_ONE_2DDWave_exact_UnOpt_UnOrd.fgl": {
       "x": 4,
       "y": 8,
@@ -2168,19 +2768,35 @@
     }
   },
   {
+    "majority_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 19,
+      "size_compressed": 1472.0,
+      "size_uncompressed": 25028
+    }
+  },
+  {
     "adder_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 899,
       "y": 2668,
-      "size_compressed": 8029775.0,
+      "size_compressed": 8029772.0,
       "size_uncompressed": 257933273
     }
   },
   {
     "majority_5_r1_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 7,
-      "y": 11,
-      "size_compressed": 1236.0,
-      "size_uncompressed": 20087
+      "x": 9,
+      "y": 9,
+      "size_compressed": 1221.0,
+      "size_uncompressed": 19503
+    }
+  },
+  {
+    "adder_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 898,
+      "y": 1907,
+      "size_compressed": 6314152.0,
+      "size_uncompressed": 198984789
     }
   },
   {
@@ -2208,6 +2824,14 @@
     }
   },
   {
+    "bar_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 2831,
+      "y": 6408,
+      "size_compressed": 35145845.0,
+      "size_uncompressed": 800724655
+    }
+  },
+  {
     "2bitAdderMaj_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 22,
       "y": 53,
@@ -2216,19 +2840,27 @@
     }
   },
   {
+    "c499_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 162,
+      "y": 428,
+      "size_compressed": 312662.0,
+      "size_uncompressed": 7120636
+    }
+  },
+  {
     "par_gen_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 9,
-      "y": 5,
+      "x": 8,
+      "y": 6,
       "size_compressed": 878.9999999999999,
       "size_uncompressed": 11536
     }
   },
   {
     "i2c_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1553,
-      "y": 3282,
-      "size_compressed": 11227595.0,
-      "size_uncompressed": 256659698
+      "x": 1452,
+      "y": 3155,
+      "size_compressed": 10627101.0,
+      "size_uncompressed": 242849735
     }
   },
   {
@@ -2240,11 +2872,35 @@
     }
   },
   {
+    "cm82a_5_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 8,
+      "y": 22,
+      "size_compressed": 1807.0,
+      "size_uncompressed": 33212
+    }
+  },
+  {
+    "1bitAdderMaj_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 9,
+      "y": 26,
+      "size_compressed": 2237.0,
+      "size_uncompressed": 44294
+    }
+  },
+  {
+    "parity_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 11,
+      "y": 25,
+      "size_compressed": 2004.0,
+      "size_uncompressed": 35331
+    }
+  },
+  {
     "mux21_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 734.0,
-      "size_uncompressed": 8679
+      "y": 7,
+      "size_compressed": 724.0,
+      "size_uncompressed": 8392
     }
   },
   {
@@ -2257,10 +2913,10 @@
   },
   {
     "priority_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 989,
-      "y": 2491,
-      "size_compressed": 6325066.0,
-      "size_uncompressed": 200021947
+      "x": 988,
+      "y": 2484,
+      "size_compressed": 6318758.0,
+      "size_uncompressed": 199844070
     }
   },
   {
@@ -2277,6 +2933,22 @@
       "y": 14,
       "size_compressed": 1843.0,
       "size_uncompressed": 34310
+    }
+  },
+  {
+    "xnor2_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 427.0,
+      "size_uncompressed": 1734
+    }
+  },
+  {
+    "c5315_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 1572,
+      "y": 3206,
+      "size_compressed": 13046656.0,
+      "size_uncompressed": 415553349
     }
   },
   {
@@ -2304,6 +2976,14 @@
     }
   },
   {
+    "xor5Maj_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 16,
+      "y": 62,
+      "size_compressed": 7585.0,
+      "size_uncompressed": 173909
+    }
+  },
+  {
     "1bitAdderAOIG_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 6,
       "y": 13,
@@ -2323,16 +3003,16 @@
     "c5315_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 1630,
       "y": 3269,
-      "size_compressed": 13514668.0,
+      "size_compressed": 13514669.0,
       "size_uncompressed": 310537062
     }
   },
   {
-    "xnor2_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 5,
-      "y": 5,
-      "size_compressed": 608.0,
-      "size_uncompressed": 5643
+    "xnor2_ONE_2DDWave_ortho_Opt_Unord.fgl": {
+      "x": 6,
+      "y": 6,
+      "size_compressed": 662.0,
+      "size_uncompressed": 7078
     }
   },
   {
@@ -2345,18 +3025,18 @@
   },
   {
     "b1_r2_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 8,
-      "y": 15,
-      "size_compressed": 1183.0,
-      "size_uncompressed": 18274
+      "x": 9,
+      "y": 18,
+      "size_compressed": 1340.0,
+      "size_uncompressed": 21648
     }
   },
   {
     "b1_r2_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 7,
-      "y": 9,
-      "size_compressed": 1017.0,
-      "size_uncompressed": 14696
+      "x": 8,
+      "y": 10,
+      "size_compressed": 1274.0,
+      "size_uncompressed": 21584
     }
   },
   {
@@ -2369,25 +3049,33 @@
   },
   {
     "par_check_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 5,
-      "y": 12,
-      "size_compressed": 828.0,
-      "size_uncompressed": 9896
+      "x": 4,
+      "y": 13,
+      "size_compressed": 910.0,
+      "size_uncompressed": 11622
     }
   },
   {
     "clpl_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 11,
-      "y": 16,
-      "size_compressed": 2051.0,
-      "size_uncompressed": 38572
+      "x": 8,
+      "y": 15,
+      "size_compressed": 1718.0,
+      "size_uncompressed": 30790
+    }
+  },
+  {
+    "c6288_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 2215,
+      "y": 5385,
+      "size_compressed": 7249620.0,
+      "size_uncompressed": 228485727
     }
   },
   {
     "ctrl_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 151,
       "y": 333,
-      "size_compressed": 194946.0,
+      "size_compressed": 194947.0,
       "size_uncompressed": 4441887
     }
   },
@@ -2408,11 +3096,19 @@
     }
   },
   {
+    "c3540_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 842,
+      "y": 1764,
+      "size_compressed": 3683349.0,
+      "size_uncompressed": 83650216
+    }
+  },
+  {
     "bar_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 3306,
-      "y": 7222,
-      "size_compressed": 37978559.0,
-      "size_uncompressed": 1213489210
+      "y": 7094,
+      "size_compressed": 37776868.0,
+      "size_uncompressed": 1207249526
     }
   },
   {
@@ -2448,11 +3144,27 @@
     }
   },
   {
+    "dec_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 339,
+      "y": 730,
+      "size_compressed": 913926.0,
+      "size_uncompressed": 20605842
+    }
+  },
+  {
     "majority_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 10,
-      "y": 11,
-      "size_compressed": 1512.0,
-      "size_uncompressed": 26983
+      "x": 8,
+      "y": 12,
+      "size_compressed": 1385.0,
+      "size_uncompressed": 23545
+    }
+  },
+  {
+    "int2float_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 214,
+      "y": 499,
+      "size_compressed": 422200.0,
+      "size_uncompressed": 12285460
     }
   },
   {
@@ -2461,6 +3173,14 @@
       "y": 8,
       "size_compressed": 898.0,
       "size_uncompressed": 11749
+    }
+  },
+  {
+    "b1_r2_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 7,
+      "y": 15,
+      "size_compressed": 1154.0,
+      "size_uncompressed": 17312
     }
   },
   {
@@ -2488,6 +3208,14 @@
     }
   },
   {
+    "cavlc_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 573,
+      "y": 1413,
+      "size_compressed": 2424370.0,
+      "size_uncompressed": 73870932
+    }
+  },
+  {
     "clpl_ONE_2DDWave_exact_UnOpt_UnOrd.fgl": {
       "x": 3,
       "y": 15,
@@ -2505,25 +3233,25 @@
   },
   {
     "clpl_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 18,
-      "y": 26,
-      "size_compressed": 3908.0000000000005,
-      "size_uncompressed": 86262
+      "x": 17,
+      "y": 25,
+      "size_compressed": 3575.0,
+      "size_uncompressed": 78990
     }
   },
   {
     "2bitAdderMaj_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 16,
-      "y": 64,
-      "size_compressed": 5339.0,
-      "size_uncompressed": 117691
+      "x": 15,
+      "y": 62,
+      "size_compressed": 5279.0,
+      "size_uncompressed": 116172
     }
   },
   {
     "HA_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 4,
       "y": 6,
-      "size_compressed": 685.0,
+      "size_compressed": 686.0,
       "size_uncompressed": 7453
     }
   },
@@ -2544,11 +3272,19 @@
     }
   },
   {
+    "xor_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 424.0,
+      "size_uncompressed": 1731
+    }
+  },
+  {
     "xnor2_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 3,
       "y": 6,
-      "size_compressed": 549.0,
-      "size_uncompressed": 4490
+      "size_compressed": 551.0,
+      "size_uncompressed": 4203
     }
   },
   {
@@ -2560,11 +3296,19 @@
     }
   },
   {
+    "max_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 2443,
+      "y": 5780,
+      "size_compressed": 43732340.0,
+      "size_uncompressed": 1396704935
+    }
+  },
+  {
     "c5315_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1927,
-      "y": 4019,
-      "size_compressed": 16028980.0,
-      "size_uncompressed": 516527254
+      "x": 1884,
+      "y": 3940,
+      "size_compressed": 15315570.0,
+      "size_uncompressed": 491791011
     }
   },
   {
@@ -2576,27 +3320,43 @@
     }
   },
   {
+    "xor_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
+      "x": 2,
+      "y": 6,
+      "size_compressed": 471.0,
+      "size_uncompressed": 2875
+    }
+  },
+  {
     "xor2_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 2,
-      "y": 7,
-      "size_compressed": 482.0,
-      "size_uncompressed": 3162
+      "y": 6,
+      "size_compressed": 472.0,
+      "size_uncompressed": 2876
     }
   },
   {
     "b1_r2_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 9,
-      "y": 8,
-      "size_compressed": 1232.0,
-      "size_uncompressed": 20154
+      "x": 8,
+      "y": 10,
+      "size_compressed": 1298.0,
+      "size_uncompressed": 22163
+    }
+  },
+  {
+    "xor_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 5,
+      "y": 4,
+      "size_compressed": 578.0,
+      "size_uncompressed": 5067
     }
   },
   {
     "xor5_r1_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 11,
       "y": 18,
-      "size_compressed": 2023.0,
-      "size_uncompressed": 38370
+      "size_compressed": 2048.0,
+      "size_uncompressed": 38942
     }
   },
   {
@@ -2609,17 +3369,25 @@
   },
   {
     "c3540_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 941,
-      "y": 2200,
-      "size_compressed": 4406791.0,
-      "size_uncompressed": 135692258
+      "x": 931,
+      "y": 2188,
+      "size_compressed": 4386172.0,
+      "size_uncompressed": 134916092
+    }
+  },
+  {
+    "clpl_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 10,
+      "y": 22,
+      "size_compressed": 1978.0,
+      "size_uncompressed": 35189
     }
   },
   {
     "c432_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 198,
       "y": 429,
-      "size_compressed": 372601.0,
+      "size_compressed": 372603.0,
       "size_uncompressed": 10827129
     }
   },
@@ -2629,6 +3397,14 @@
       "y": 5,
       "size_compressed": 583.0,
       "size_uncompressed": 5352
+    }
+  },
+  {
+    "majority_5_r1_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 19,
+      "size_compressed": 1485.0,
+      "size_uncompressed": 25901
     }
   },
   {
@@ -2649,58 +3425,66 @@
   },
   {
     "max_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 2321,
-      "y": 6935,
-      "size_compressed": 48016904.0,
-      "size_uncompressed": 1093988380
+      "x": 2314,
+      "y": 6805,
+      "size_compressed": 47604418.0,
+      "size_uncompressed": 1084903876
     }
   },
   {
     "2bitAdderMaj_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 27,
-      "y": 64,
-      "size_compressed": 6969.0,
-      "size_uncompressed": 163668
+      "y": 62,
+      "size_compressed": 6902.0,
+      "size_uncompressed": 162212
     }
   },
   {
     "cm82a_5_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 19,
-      "y": 21,
-      "size_compressed": 4192.0,
-      "size_uncompressed": 92504
+      "x": 14,
+      "y": 22,
+      "size_compressed": 3714.0,
+      "size_uncompressed": 79703
+    }
+  },
+  {
+    "c2670_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 649,
+      "y": 1356,
+      "size_compressed": 2573462.0,
+      "size_uncompressed": 78602167
     }
   },
   {
     "majority_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 11,
+      "x": 10,
       "y": 10,
-      "size_compressed": 1548.0,
-      "size_uncompressed": 27254
+      "size_compressed": 1456.0,
+      "size_uncompressed": 24956
     }
   },
   {
     "dec_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 418,
       "y": 466,
-      "size_compressed": 1016685.0,
+      "size_compressed": 1016683.0,
       "size_uncompressed": 30728379
     }
   },
   {
     "c1355_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 164,
-      "y": 444,
-      "size_compressed": 319331.0,
-      "size_uncompressed": 7248423
+      "x": 166,
+      "y": 456,
+      "size_compressed": 334881.0,
+      "size_uncompressed": 7591104
     }
   },
   {
     "c7552_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 1561,
-      "y": 3269,
-      "size_compressed": 14804417.0,
-      "size_uncompressed": 338176330
+      "x": 1543,
+      "y": 3217,
+      "size_compressed": 14091494.000000002,
+      "size_uncompressed": 321761789
     }
   },
   {
@@ -2713,9 +3497,9 @@
   },
   {
     "HA_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 7,
-      "y": 5,
-      "size_compressed": 744.0,
+      "x": 6,
+      "y": 6,
+      "size_compressed": 754.0,
       "size_uncompressed": 8890
     }
   },
@@ -2736,43 +3520,67 @@
     }
   },
   {
+    "priority_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 801,
+      "y": 1694,
+      "size_compressed": 4797919.0,
+      "size_uncompressed": 151317177
+    }
+  },
+  {
     "int2float_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 233,
       "y": 546,
-      "size_compressed": 457765.0,
+      "size_compressed": 457766.0,
       "size_uncompressed": 13425793
     }
   },
   {
     "c5315_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1763,
-      "y": 3625,
-      "size_compressed": 14126206.0,
-      "size_uncompressed": 324027810
+      "x": 1649,
+      "y": 3506,
+      "size_compressed": 13204939.0,
+      "size_uncompressed": 302691460
     }
   },
   {
     "c432_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 168,
       "y": 397,
-      "size_compressed": 272656.0,
+      "size_compressed": 272657.0,
       "size_uncompressed": 6196064
     }
   },
   {
+    "xor_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
+      "x": 6,
+      "y": 4,
+      "size_compressed": 617.0,
+      "size_uncompressed": 5928
+    }
+  },
+  {
     "c6288_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 1248,
-      "y": 2883,
-      "size_compressed": 4537924.0,
-      "size_uncompressed": 103734403
+      "x": 1247,
+      "y": 2877,
+      "size_compressed": 4552795.0,
+      "size_uncompressed": 103662375
     }
   },
   {
     "newtag_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 10,
       "y": 11,
-      "size_compressed": 1456.0,
+      "size_compressed": 1452.0,
       "size_uncompressed": 24406
+    }
+  },
+  {
+    "int2float_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 228,
+      "y": 510,
+      "size_compressed": 454741.0,
+      "size_uncompressed": 10322522
     }
   },
   {
@@ -2787,8 +3595,32 @@
     "i2c_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 1410,
       "y": 2928,
-      "size_compressed": 10625648.0,
+      "size_compressed": 10625650.0,
       "size_uncompressed": 243231374
+    }
+  },
+  {
+    "c1908_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 344,
+      "y": 630,
+      "size_compressed": 790258.0,
+      "size_uncompressed": 23325868
+    }
+  },
+  {
+    "max_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 2055,
+      "y": 6032,
+      "size_compressed": 43309702.0,
+      "size_uncompressed": 986316364
+    }
+  },
+  {
+    "c499_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 309,
+      "y": 638,
+      "size_compressed": 654585.0,
+      "size_uncompressed": 19597818
     }
   },
   {
@@ -2803,48 +3635,80 @@
     "cm82a_5_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 9,
       "y": 25,
-      "size_compressed": 1991.0,
-      "size_uncompressed": 37281
+      "size_compressed": 2058.0,
+      "size_uncompressed": 39019
     }
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_ortho_Opt_Ord.fgl": {
-      "x": 11,
+      "x": 10,
       "y": 13,
-      "size_compressed": 1397.0,
-      "size_uncompressed": 23995
+      "size_compressed": 1400.0,
+      "size_uncompressed": 23993
+    }
+  },
+  {
+    "t_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 4,
+      "y": 11,
+      "size_compressed": 822.0,
+      "size_uncompressed": 9856
+    }
+  },
+  {
+    "i2c_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 1157,
+      "y": 2602,
+      "size_compressed": 8845445.0,
+      "size_uncompressed": 276298136
+    }
+  },
+  {
+    "mux21_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 3,
+      "y": 9,
+      "size_compressed": 629.0,
+      "size_uncompressed": 5812
     }
   },
   {
     "c499_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 454,
-      "y": 896,
-      "size_compressed": 897343.0,
-      "size_uncompressed": 27283875
+      "y": 864,
+      "size_compressed": 886348.0,
+      "size_uncompressed": 26974157
     }
   },
   {
     "newtag_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 7,
       "y": 19,
-      "size_compressed": 1380.0,
+      "size_compressed": 1381.0,
       "size_uncompressed": 22156
+    }
+  },
+  {
+    "c7552_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 1699,
+      "y": 3660,
+      "size_compressed": 17154062.000000004,
+      "size_uncompressed": 547087664
     }
   },
   {
     "majority_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 9,
-      "y": 25,
-      "size_compressed": 2190.0,
-      "size_uncompressed": 43833
+      "y": 24,
+      "size_compressed": 2183.0,
+      "size_uncompressed": 43543
     }
   },
   {
     "priority_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1040,
-      "y": 2292,
-      "size_compressed": 5689679.0,
-      "size_uncompressed": 130119155
+      "x": 1037,
+      "y": 2284,
+      "size_compressed": 5680814.0,
+      "size_uncompressed": 129939622
     }
   },
   {
@@ -2866,17 +3730,17 @@
   {
     "xor5Maj_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 27,
-      "y": 50,
-      "size_compressed": 8739.0,
-      "size_uncompressed": 205661
+      "y": 47,
+      "size_compressed": 9091.0,
+      "size_uncompressed": 213820
     }
   },
   {
     "1bitAdderMaj_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 10,
-      "y": 32,
-      "size_compressed": 2364.0,
-      "size_uncompressed": 47518
+      "y": 31,
+      "size_compressed": 2349.0,
+      "size_uncompressed": 47228
     }
   },
   {
@@ -2899,16 +3763,16 @@
     "cm82a_5_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 18,
       "y": 19,
-      "size_compressed": 3583.9999999999995,
-      "size_uncompressed": 77417
+      "size_compressed": 3575.0,
+      "size_uncompressed": 76858
     }
   },
   {
     "HA_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 9,
-      "y": 10,
-      "size_compressed": 967.0000000000001,
-      "size_uncompressed": 14630
+      "y": 8,
+      "size_compressed": 928.0000000000001,
+      "size_uncompressed": 13482
     }
   },
   {
@@ -2921,17 +3785,17 @@
   },
   {
     "FA_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
-      "x": 11,
-      "y": 19,
-      "size_compressed": 1970.0,
-      "size_uncompressed": 39822
+      "x": 7,
+      "y": 7,
+      "size_compressed": 862.9999999999999,
+      "size_uncompressed": 11727
     }
   },
   {
     "bar_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 2540,
       "y": 6441,
-      "size_compressed": 33210479.0,
+      "size_compressed": 33210483.0,
       "size_uncompressed": 1064529034
     }
   },
@@ -2963,7 +3827,7 @@
     "xnor2_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 2,
       "y": 4,
-      "size_compressed": 427.0,
+      "size_compressed": 428.0,
       "size_uncompressed": 1734
     }
   },
@@ -2977,17 +3841,17 @@
   },
   {
     "i2c_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1481,
-      "y": 3104,
-      "size_compressed": 10556562.0,
-      "size_uncompressed": 333472588
+      "x": 1480,
+      "y": 2978,
+      "size_compressed": 10148547.0,
+      "size_uncompressed": 319775753
     }
   },
   {
     "mux21_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 4,
       "y": 3,
-      "size_compressed": 517.0,
+      "size_compressed": 518.0,
       "size_uncompressed": 3513
     }
   },
@@ -3001,10 +3865,10 @@
   },
   {
     "xor5Maj_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 28,
-      "y": 32,
-      "size_compressed": 6242.0,
-      "size_uncompressed": 147420
+      "x": 27,
+      "y": 33,
+      "size_compressed": 5888.0,
+      "size_uncompressed": 135805
     }
   },
   {
@@ -3035,7 +3899,7 @@
     "c1908_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 389,
       "y": 739,
-      "size_compressed": 901381.0,
+      "size_compressed": 901381.9999999999,
       "size_uncompressed": 26853767
     }
   },
@@ -3081,18 +3945,18 @@
   },
   {
     "dec_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 667,
-      "y": 1404,
-      "size_compressed": 2311156.0,
-      "size_uncompressed": 52734712
+      "x": 548,
+      "y": 1148,
+      "size_compressed": 2150688.0,
+      "size_uncompressed": 49085740
     }
   },
   {
     "adder_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 1279,
-      "y": 2926,
-      "size_compressed": 7663892.0,
-      "size_uncompressed": 242775096
+      "y": 2797,
+      "size_compressed": 7354513.0,
+      "size_uncompressed": 237731817
     }
   },
   {
@@ -3105,18 +3969,18 @@
   },
   {
     "router_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
-      "x": 258,
-      "y": 559,
-      "size_compressed": 549620.0,
-      "size_uncompressed": 16008357
+      "x": 257,
+      "y": 557,
+      "size_compressed": 548808.0,
+      "size_uncompressed": 15986311
     }
   },
   {
     "FA_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 6,
-      "y": 19,
-      "size_compressed": 1084.0,
-      "size_uncompressed": 16651
+      "x": 5,
+      "y": 17,
+      "size_compressed": 1011.9999999999999,
+      "size_uncompressed": 14919
     }
   },
   {
@@ -3125,6 +3989,14 @@
       "y": 40,
       "size_compressed": 17076.0,
       "size_uncompressed": 422053
+    }
+  },
+  {
+    "c880_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 272,
+      "y": 624,
+      "size_compressed": 606461.9999999999,
+      "size_uncompressed": 17514136
     }
   },
   {
@@ -3145,10 +4017,10 @@
   },
   {
     "t_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 8,
-      "y": 6,
-      "size_compressed": 914.0000000000001,
-      "size_uncompressed": 12146
+      "x": 7,
+      "y": 8,
+      "size_compressed": 1009.9999999999999,
+      "size_uncompressed": 14442
     }
   },
   {
@@ -3157,6 +4029,30 @@
       "y": 13,
       "size_compressed": 1617.0,
       "size_uncompressed": 29963
+    }
+  },
+  {
+    "c880_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 259,
+      "y": 540,
+      "size_compressed": 570292.0,
+      "size_uncompressed": 16416577
+    }
+  },
+  {
+    "router_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 165,
+      "y": 423,
+      "size_compressed": 322055.0,
+      "size_uncompressed": 7347071
+    }
+  },
+  {
+    "c432_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 186,
+      "y": 339,
+      "size_compressed": 313340.0,
+      "size_uncompressed": 8992770
     }
   },
   {
@@ -3169,9 +4065,9 @@
   },
   {
     "xor5_r1_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 4,
-      "y": 16,
-      "size_compressed": 990.9999999999999,
+      "x": 5,
+      "y": 15,
+      "size_compressed": 992.0,
       "size_uncompressed": 13707
     }
   },
@@ -3181,6 +4077,14 @@
       "y": 10,
       "size_compressed": 884.0000000000001,
       "size_uncompressed": 10614
+    }
+  },
+  {
+    "i2c_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 1245,
+      "y": 2577,
+      "size_compressed": 9302769.0,
+      "size_uncompressed": 212557604
     }
   },
   {
@@ -3197,6 +4101,14 @@
       "y": 2535,
       "size_compressed": 9271124.0,
       "size_uncompressed": 212219124
+    }
+  },
+  {
+    "mux21_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 3,
+      "y": 6,
+      "size_compressed": 524.0,
+      "size_uncompressed": 3516
     }
   },
   {
@@ -3218,17 +4130,33 @@
   {
     "majority_5_r1_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 10,
-      "y": 14,
-      "size_compressed": 1725.0,
-      "size_uncompressed": 31614
+      "y": 13,
+      "size_compressed": 1597.0,
+      "size_uncompressed": 28435
+    }
+  },
+  {
+    "c5315_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 1533,
+      "y": 3035,
+      "size_compressed": 13420186.0,
+      "size_uncompressed": 431033029
     }
   },
   {
     "cavlc_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 658,
-      "y": 1679,
-      "size_compressed": 2786388.0,
-      "size_uncompressed": 85645320
+      "y": 1668,
+      "size_compressed": 2777698.0,
+      "size_uncompressed": 85378965
+    }
+  },
+  {
+    "par_check_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 4,
+      "y": 12,
+      "size_compressed": 878.0000000000001,
+      "size_uncompressed": 10470
     }
   },
   {
@@ -3248,6 +4176,14 @@
     }
   },
   {
+    "i2c_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 1124,
+      "y": 2347,
+      "size_compressed": 8710208.0,
+      "size_uncompressed": 272833503
+    }
+  },
+  {
     "priority_Bestagon_BEST.fgl": {
       "x": 352,
       "y": 937,
@@ -3259,24 +4195,32 @@
     "par_check_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 10,
       "y": 11,
-      "size_compressed": 1330.0,
+      "size_compressed": 1319.0,
       "size_uncompressed": 22034
     }
   },
   {
     "t_5_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 9,
-      "y": 22,
-      "size_compressed": 1424.0,
-      "size_uncompressed": 23712
+      "x": 8,
+      "y": 20,
+      "size_compressed": 1371.0,
+      "size_uncompressed": 22267
+    }
+  },
+  {
+    "c880_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 248,
+      "y": 551,
+      "size_compressed": 498240.0,
+      "size_uncompressed": 11290825
     }
   },
   {
     "c1355_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 494,
-      "y": 1208,
-      "size_compressed": 1101925.0,
-      "size_uncompressed": 33961678
+      "y": 1176,
+      "size_compressed": 1093199.0,
+      "size_uncompressed": 33645521
     }
   },
   {
@@ -3288,11 +4232,43 @@
     }
   },
   {
+    "adder_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 511,
+      "y": 1406,
+      "size_compressed": 3982456.0,
+      "size_uncompressed": 90714356
+    }
+  },
+  {
     "xor5_r1_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 14,
-      "y": 33,
-      "size_compressed": 2941.0,
-      "size_uncompressed": 63741
+      "y": 32,
+      "size_compressed": 2929.0,
+      "size_uncompressed": 63449
+    }
+  },
+  {
+    "priority_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 961,
+      "y": 1892,
+      "size_compressed": 5480536.999999999,
+      "size_uncompressed": 172846810
+    }
+  },
+  {
+    "c17_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 5,
+      "y": 13,
+      "size_compressed": 914.0,
+      "size_uncompressed": 11877
+    }
+  },
+  {
+    "bar_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 2396,
+      "y": 5640,
+      "size_compressed": 30326463.0,
+      "size_uncompressed": 967727182
     }
   },
   {
@@ -3322,16 +4298,24 @@
   {
     "cm82a_5_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 26,
-      "y": 51,
-      "size_compressed": 6360.0,
-      "size_uncompressed": 150905
+      "y": 48,
+      "size_compressed": 6245.0,
+      "size_uncompressed": 147707
+    }
+  },
+  {
+    "c2670_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 603,
+      "y": 1212,
+      "size_compressed": 2196876.0,
+      "size_uncompressed": 49790442
     }
   },
   {
     "HA_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 5,
+      "x": 4,
       "y": 6,
-      "size_compressed": 690.0,
+      "size_compressed": 689.0,
       "size_uncompressed": 7455
     }
   },
@@ -3363,7 +4347,7 @@
     "FA_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 5,
       "y": 13,
-      "size_compressed": 894.0,
+      "size_compressed": 895.0,
       "size_uncompressed": 11736
     }
   },
@@ -3384,11 +4368,19 @@
     }
   },
   {
+    "max_ONE_2DDWave_ortho_Opt_Ord.fgl": {
+      "x": 2412,
+      "y": 5026,
+      "size_compressed": 36027365.0,
+      "size_uncompressed": 1159271001
+    }
+  },
+  {
     "majority_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 9,
-      "y": 15,
-      "size_compressed": 1706.0,
-      "size_uncompressed": 31627
+      "y": 13,
+      "size_compressed": 1552.0,
+      "size_uncompressed": 27571
     }
   },
   {
@@ -3403,7 +4395,7 @@
     "1bitAdderMaj_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 13,
       "y": 29,
-      "size_compressed": 2802.0,
+      "size_compressed": 2803.0,
       "size_uncompressed": 59468
     }
   },
@@ -3411,7 +4403,7 @@
     "c1355_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 406,
       "y": 1119,
-      "size_compressed": 1023030.0000000001,
+      "size_compressed": 1023032.0,
       "size_uncompressed": 31126633
     }
   },
@@ -3425,26 +4417,26 @@
   },
   {
     "clpl_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
-      "x": 13,
-      "y": 13,
-      "size_compressed": 2119.0,
-      "size_uncompressed": 40312
+      "x": 10,
+      "y": 12,
+      "size_compressed": 1863.0,
+      "size_uncompressed": 33346
     }
   },
   {
     "c1908_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 279,
-      "y": 583,
-      "size_compressed": 561033.0,
-      "size_uncompressed": 12745582
+      "x": 270,
+      "y": 571,
+      "size_compressed": 533428.0,
+      "size_uncompressed": 12119889
     }
   },
   {
     "par_check_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 8,
-      "y": 9,
-      "size_compressed": 1057.0,
-      "size_uncompressed": 15701
+      "y": 8,
+      "size_compressed": 974.0000000000001,
+      "size_uncompressed": 13405
     }
   },
   {
@@ -3456,43 +4448,67 @@
     }
   },
   {
+    "c499_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 147,
+      "y": 398,
+      "size_compressed": 291166.0,
+      "size_uncompressed": 6605456
+    }
+  },
+  {
+    "c3540_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+      "x": 856,
+      "y": 1828,
+      "size_compressed": 3906893.0,
+      "size_uncompressed": 119326468
+    }
+  },
+  {
     "newtag_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
-      "x": 7,
-      "y": 10,
-      "size_compressed": 1148.0,
-      "size_uncompressed": 17211
+      "x": 8,
+      "y": 9,
+      "size_compressed": 1157.0,
+      "size_uncompressed": 17498
     }
   },
   {
     "par_check_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 10,
       "y": 13,
-      "size_compressed": 1434.0,
+      "size_compressed": 1437.0,
       "size_uncompressed": 24931
     }
   },
   {
     "clpl_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 6,
-      "y": 17,
-      "size_compressed": 1594.0,
-      "size_uncompressed": 27929
+      "y": 15,
+      "size_compressed": 1478.0,
+      "size_uncompressed": 25029
     }
   },
   {
     "xor5_r1_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 4,
       "y": 11,
-      "size_compressed": 715.0,
-      "size_uncompressed": 7377
+      "size_compressed": 720.0,
+      "size_uncompressed": 7379
     }
   },
   {
     "t_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 8,
       "y": 10,
-      "size_compressed": 1130.0,
+      "size_compressed": 1129.0,
       "size_uncompressed": 17600
+    }
+  },
+  {
+    "par_gen_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 6,
+      "size_compressed": 507.0,
+      "size_uncompressed": 3133
     }
   },
   {
@@ -3504,6 +4520,22 @@
     }
   },
   {
+    "xor5Maj_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 15,
+      "y": 57,
+      "size_compressed": 6414.0,
+      "size_uncompressed": 144399
+    }
+  },
+  {
+    "2bitAdderMaj_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 12,
+      "y": 47,
+      "size_compressed": 4316.0,
+      "size_uncompressed": 95853
+    }
+  },
+  {
     "c17_ONE_BEST.fgl": {
       "x": 4,
       "y": 7,
@@ -3512,11 +4544,11 @@
     }
   },
   {
-    "xor2_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
+    "xor2_ONE_2DDWave_ortho_Opt_Unord.fgl": {
       "x": 5,
-      "y": 5,
-      "size_compressed": 591.0,
-      "size_uncompressed": 5642
+      "y": 4,
+      "size_compressed": 557.0,
+      "size_uncompressed": 4781
     }
   },
   {
@@ -3529,26 +4561,34 @@
   },
   {
     "c2670_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
-      "x": 664,
-      "y": 1341,
-      "size_compressed": 2486584.0,
-      "size_uncompressed": 56403128
+      "x": 661,
+      "y": 1335,
+      "size_compressed": 2435003.0,
+      "size_uncompressed": 55205286
+    }
+  },
+  {
+    "majority_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 8,
+      "y": 16,
+      "size_compressed": 1253.9999999999998,
+      "size_uncompressed": 19256
     }
   },
   {
     "t_5_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 8,
       "y": 11,
-      "size_compressed": 1160.0,
+      "size_compressed": 1159.0,
       "size_uncompressed": 18473
     }
   },
   {
     "c17_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 10,
-      "y": 15,
-      "size_compressed": 1401.0,
-      "size_uncompressed": 24227
+      "y": 13,
+      "size_compressed": 1337.0,
+      "size_uncompressed": 22779
     }
   },
   {
@@ -3562,17 +4602,17 @@
   {
     "xor5Maj_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 19,
-      "y": 72,
-      "size_compressed": 6937.0,
-      "size_uncompressed": 157086
+      "y": 71,
+      "size_compressed": 6924.999999999999,
+      "size_uncompressed": 156796
     }
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 12,
-      "y": 20,
-      "size_compressed": 1777.0,
-      "size_uncompressed": 32998
+      "y": 18,
+      "size_compressed": 1728.0,
+      "size_uncompressed": 31838
     }
   },
   {
@@ -3584,27 +4624,43 @@
     }
   },
   {
+    "router_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 172,
+      "y": 387,
+      "size_compressed": 300241.0,
+      "size_uncompressed": 6890390
+    }
+  },
+  {
     "par_gen_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 7,
-      "y": 8,
-      "size_compressed": 969.0,
-      "size_uncompressed": 14112
+      "y": 7,
+      "size_compressed": 868.0,
+      "size_uncompressed": 11529
     }
   },
   {
     "parity_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 15,
-      "y": 49,
-      "size_compressed": 5612.0,
-      "size_uncompressed": 123657
+      "y": 48,
+      "size_compressed": 5603.0,
+      "size_uncompressed": 123367
     }
   },
   {
     "newtag_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 11,
       "y": 11,
-      "size_compressed": 1618.0,
+      "size_compressed": 1619.0,
       "size_uncompressed": 28711
+    }
+  },
+  {
+    "2bitAdderMaj_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 13,
+      "y": 50,
+      "size_compressed": 4932.0,
+      "size_uncompressed": 110069
     }
   },
   {
@@ -3617,10 +4673,26 @@
   },
   {
     "int2float_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 249,
-      "y": 561,
-      "size_compressed": 494819.0,
-      "size_uncompressed": 11242719
+      "x": 246,
+      "y": 554,
+      "size_compressed": 492012.0,
+      "size_uncompressed": 11174017
+    }
+  },
+  {
+    "c1908_Bestagon_ROW_ortho_Opt_Ord.fgl": {
+      "x": 238,
+      "y": 505,
+      "size_compressed": 470612.99999999994,
+      "size_uncompressed": 10705635
+    }
+  },
+  {
+    "cavlc_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 617,
+      "y": 1335,
+      "size_compressed": 2639081.0,
+      "size_uncompressed": 59919191
     }
   },
   {
@@ -3657,10 +4729,10 @@
   },
   {
     "c2670_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 644,
-      "y": 1503,
-      "size_compressed": 2818781.0,
-      "size_uncompressed": 64054049
+      "x": 631,
+      "y": 1450,
+      "size_compressed": 2534352.0,
+      "size_uncompressed": 57441721
     }
   },
   {
@@ -3712,10 +4784,18 @@
     }
   },
   {
+    "t_5_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 11,
+      "size_compressed": 838.0,
+      "size_uncompressed": 10145
+    }
+  },
+  {
     "xor2_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 2,
       "y": 4,
-      "size_compressed": 425.0,
+      "size_compressed": 426.0,
       "size_uncompressed": 1732
     }
   },
@@ -3723,7 +4803,7 @@
     "c880_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 286,
       "y": 632,
-      "size_compressed": 581946.0,
+      "size_compressed": 581947.0,
       "size_uncompressed": 13181043
     }
   },
@@ -3745,10 +4825,10 @@
   },
   {
     "c6288_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
-      "x": 1442,
-      "y": 2948,
-      "size_compressed": 4361060.0,
-      "size_uncompressed": 99905330
+      "x": 1424,
+      "y": 2910,
+      "size_compressed": 4342115.0,
+      "size_uncompressed": 99074225
     }
   },
   {
