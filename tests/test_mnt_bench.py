@@ -72,6 +72,7 @@ def test_prepare_form_input() -> None:
         exact=False,
         ortho=False,
         nanoplacer=False,
+        gold=False,
         optimized=False,
         ordered=False,
     )
@@ -116,6 +117,7 @@ def test_create_database() -> None:
         exact=False,
         ortho=False,
         nanoplacer=False,
+        gold=False,
         optimized=False,
         ordered=False,
     )
