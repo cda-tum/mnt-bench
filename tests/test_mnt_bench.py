@@ -38,6 +38,78 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 filename="mux21_ONE_2DDWave_exact_UnOpt_UnOrd.fgl",
             ),
         ),
+        (
+            "mux21_ONE_2DDWave_ortho_Opt_Ord.fgl",
+            backend.ParsedBenchmarkName(
+                benchmark="mux21",
+                level="gate",
+                library="one",
+                clocking_scheme="2ddwave",
+                physical_design_algorithm="ortho",
+                optimized="opt",
+                ordered="ord",
+                x=4,
+                y=3,
+                area=12,
+                size_compressed=518,
+                size_uncompressed=3513,
+                filename="mux21_ONE_2DDWave_ortho_Opt_Ord.fgl",
+            ),
+        ),
+        (
+            "parity_Bestagon_ROW_gold_UnOpt_UnOrd.fgl",
+            backend.ParsedBenchmarkName(
+                benchmark="parity",
+                level="gate",
+                library="bestagon",
+                clocking_scheme="row",
+                physical_design_algorithm="gold",
+                optimized="unopt",
+                ordered="unord",
+                x=9,
+                y=21,
+                area=189,
+                size_compressed=1312,
+                size_uncompressed=18296,
+                filename="parity_Bestagon_ROW_gold_UnOpt_UnOrd.fgl",
+            ),
+        ),
+        (
+            "t_ONE_USE_exact_UnOpt_UnOrd.fgl",
+            backend.ParsedBenchmarkName(
+                benchmark="t",
+                level="gate",
+                library="one",
+                clocking_scheme="use",
+                physical_design_algorithm="exact",
+                optimized="unopt",
+                ordered="unord",
+                x=6,
+                y=6,
+                area=36,
+                size_compressed=843,
+                size_uncompressed=10421,
+                filename="t_ONE_USE_exact_UnOpt_UnOrd.fgl",
+            ),
+        ),
+        (
+            "clpl.v",
+            backend.ParsedBenchmarkName(
+                benchmark="clpl",
+                level="network",
+                library="",
+                clocking_scheme="",
+                physical_design_algorithm="",
+                optimized="",
+                ordered="",
+                x="",
+                y="",
+                area="",
+                size_compressed=277,
+                size_uncompressed=682,
+                filename="clpl.v",
+            ),
+        ),
     ],
 )
 def test_parse_data(filename: str, expected_res: backend.ParsedBenchmarkName) -> None:
@@ -132,7 +204,9 @@ def test_streaming_zip() -> None:
     backend.read_mntbench_all_zip(
         skip_question=True, target_location=str(resources.files("mnt.bench") / "static" / "files"), test=True
     )
-    res = backend.generate_zip_ephemeral_chunks(filenames=["mux21_ONE_BEST.fgl", "xor2_ONE_BEST.fgl"])
+    res = backend.generate_zip_ephemeral_chunks(
+        filenames=["mux21_ONE_BEST.fgl", "xor2_ONE_BEST.fgl", "xor2_ONE_2DDWave_gold_UnOpt_UnOrd.fgl"]
+    )
     assert list(res)
 
     with pytest.raises(KeyError):
