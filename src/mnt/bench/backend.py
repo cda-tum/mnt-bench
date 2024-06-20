@@ -42,6 +42,7 @@ class BenchmarkConfiguration:
     exact: bool
     ortho: bool
     nanoplacer: bool
+    gold: bool
     optimized: bool
     ordered: bool
 
@@ -224,6 +225,12 @@ class Backend:
                     if benchmark_config.ordered:
                         db_filtered = db_filtered.loc[db_filtered["ordered"] == "ord"]
 
+                if benchmark_config.gold:
+                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "gold"]
+
+                    if benchmark_config.optimized:
+                        db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
+
         if benchmark_config.network:
             db_filtered = pd.concat([db_filtered if not db_filtered.empty else None, db_networks])
 
@@ -379,6 +386,7 @@ class Backend:
         exact = False
         ortho = False
         nanoplacer = False
+        gold = False
         optimized = False
         ordered = False
 
@@ -401,6 +409,7 @@ class Backend:
             exact = "exact" in k or exact
             ortho = "ortho" in k or ortho
             nanoplacer = "nanoplacer" in k or nanoplacer
+            gold = "gold" in k or gold
             optimized = "post-layout" in k or optimized
             ordered = "input-ordering" in k or ordered
 
@@ -419,6 +428,7 @@ class Backend:
             exact=exact,
             ortho=ortho,
             nanoplacer=nanoplacer,
+            gold=gold,
             optimized=optimized,
             ordered=ordered,
         )

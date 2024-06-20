@@ -668,6 +668,24 @@
                     ></label
                   >
                 </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="gold"
+                    name="gold"
+                    onchange="toggleGoldSelection()"
+                  />
+                  <label for="gold"
+                    >Gold<a
+                      href="https://www.cda.cit.tum.de/files/eda/2024_ieee_nano_a_star_is_born.pdf"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >&#128196;</a
+                    ></label
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -966,16 +984,25 @@
       function toggleExactSelection(){
         setCheckboxState("ortho", false, false, true);
         setCheckboxState("nanoplacer", false, false, true);
+        setCheckboxState("gold", false, false, true);
       }
 
       function toggleOrthoSelection(){
         setCheckboxState("exact", false, false, true);
         setCheckboxState("nanoplacer", false, false, true);
+        setCheckboxState("gold", false, false, true);
       }
 
       function toggleNanoPlaceRSelection(){
         setCheckboxState("exact", false, false, true);
         setCheckboxState("ortho", false, false, true);
+        setCheckboxState("gold", false, false, true);
+      }
+
+      function toggleGoldSelection(){
+        setCheckboxState("exact", false, false, true);
+        setCheckboxState("ortho", false, false, true);
+        setCheckboxState("nanoplacer", false, false, true);
       }
 
       function checks_on_change() {
@@ -1063,17 +1090,19 @@
 
       function enable_physical_design_algorithm_selection(){
           if (!document.getElementById("best-layout").checked){
-            var ortho_possible = (document.getElementById("twoddwave").checked || document.getElementById("row").checked) && !(document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked);
+            var ortho_or_gold_possible = (document.getElementById("twoddwave").checked || document.getElementById("row").checked) && !(document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked);
             var exact_or_nanoplacer_possible = document.getElementById("twoddwave").checked || document.getElementById("row").checked || document.getElementById("use").checked || document.getElementById("res").checked || document.getElementById("esr").checked;
-            if (exact_or_nanoplacer_possible && !ortho_possible) {
+            if (exact_or_nanoplacer_possible && !ortho_or_gold_possible) {
                   setCheckboxState("nanoplacer", false, false, false);
                   setCheckboxState("ortho", false, true, true);
+                  setCheckboxState("gold", false, true, true);
                   setCheckboxState("exact", false, false, false);
                   enable_optimization_algorithm_selection();
             }
-            else if (exact_or_nanoplacer_possible && ortho_possible) {
+            else if (exact_or_nanoplacer_possible && ortho_or_gold_possible) {
                 setCheckboxState("exact", false, false, false);
                 setCheckboxState("ortho", false, false, false);
+                setCheckboxState("gold", false, false, false);
                 setCheckboxState("nanoplacer", false, false, false);
                 enable_optimization_algorithm_selection();
             }
@@ -1095,6 +1124,10 @@
           setCheckboxState("input-ordering", false, false, false);
         }
         else if (document.getElementById("nanoplacer").checked){
+          setCheckboxState("post-layout", false, false, false);
+          setCheckboxState("input-ordering", false, true, true);
+        }
+        else if (document.getElementById("gold").checked){
           setCheckboxState("post-layout", false, false, false);
           setCheckboxState("input-ordering", false, true, true);
         }
@@ -1142,6 +1175,7 @@
         setCheckboxState("exact", false, true, true);
         setCheckboxState("ortho", false, true, true);
         setCheckboxState("nanoplacer", false, true, true);
+        setCheckboxState("gold", false, true, true);
       }
 
       function disable_optimization_algorithm_selection(){

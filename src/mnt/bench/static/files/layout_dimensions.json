@@ -40,6 +40,14 @@
     }
   },
   {
+    "majority_5_r1_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 12,
+      "size_compressed": 884.0,
+      "size_uncompressed": 10336
+    }
+  },
+  {
     "t_ONE_BEST.fgl": {
       "x": 4,
       "y": 7,
@@ -160,11 +168,27 @@
     }
   },
   {
+    "majority_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 14,
+      "y": 8,
+      "size_compressed": 1475.0,
+      "size_uncompressed": 25855
+    }
+  },
+  {
     "newtag_ONE_2DDWave_exact_UnOpt_UnOrd.fgl": {
       "x": 4,
       "y": 11,
       "size_compressed": 953.0,
       "size_uncompressed": 12627
+    }
+  },
+  {
+    "c17_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 7,
+      "size_compressed": 723.0,
+      "size_uncompressed": 7831
     }
   },
   {
@@ -184,6 +208,14 @@
     }
   },
   {
+    "1bitAdderAOIG_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 11,
+      "size_compressed": 798.0,
+      "size_uncompressed": 9729
+    }
+  },
+  {
     "ctrl_Bestagon_ROW_ortho_UnOpt_UnOrd.fgl": {
       "x": 166,
       "y": 365,
@@ -197,6 +229,14 @@
       "y": 666,
       "size_compressed": 676389.0,
       "size_uncompressed": 19793792
+    }
+  },
+  {
+    "c17_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 5,
+      "y": 9,
+      "size_compressed": 717.0,
+      "size_uncompressed": 7264
     }
   },
   {
@@ -269,6 +309,14 @@
       "y": 7,
       "size_compressed": 962.0,
       "size_uncompressed": 13410
+    }
+  },
+  {
+    "1bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 10,
+      "y": 20,
+      "size_compressed": 2211.0,
+      "size_uncompressed": 44020
     }
   },
   {
@@ -352,6 +400,14 @@
     }
   },
   {
+    "parity_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 61,
+      "y": 9,
+      "size_compressed": 4911.0,
+      "size_uncompressed": 112664
+    }
+  },
+  {
     "t_5_Bestagon_BEST.fgl": {
       "x": 5,
       "y": 8,
@@ -424,11 +480,27 @@
     }
   },
   {
+    "xor5Maj_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 18,
+      "y": 41,
+      "size_compressed": 5847.0,
+      "size_uncompressed": 135422
+    }
+  },
+  {
     "newtag_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
       "x": 6,
       "y": 22,
       "size_compressed": 1727.0,
       "size_uncompressed": 31687
+    }
+  },
+  {
+    "xor5Maj_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 14,
+      "y": 43,
+      "size_compressed": 4361.0,
+      "size_uncompressed": 94748
     }
   },
   {
@@ -453,6 +525,14 @@
       "y": 74,
       "size_compressed": 9646.0,
       "size_uncompressed": 236324
+    }
+  },
+  {
+    "cm82a_5_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 7,
+      "y": 18,
+      "size_compressed": 1580.0,
+      "size_uncompressed": 27131
     }
   },
   {
@@ -488,11 +568,27 @@
     }
   },
   {
+    "b1_r2_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 8,
+      "y": 6,
+      "size_compressed": 911.0,
+      "size_uncompressed": 11831
+    }
+  },
+  {
     "c17_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 8,
       "y": 11,
       "size_compressed": 1192.0,
       "size_uncompressed": 19030
+    }
+  },
+  {
+    "xor5_r1_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 3,
+      "y": 7,
+      "size_compressed": 596.0,
+      "size_uncompressed": 4507
     }
   },
   {
@@ -680,6 +776,14 @@
     }
   },
   {
+    "cm82a_5_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 26,
+      "y": 9,
+      "size_compressed": 3116.0,
+      "size_uncompressed": 66982
+    }
+  },
+  {
     "xor2_Bestagon_BEST.fgl": {
       "x": 2,
       "y": 3,
@@ -701,6 +805,14 @@
       "y": 203,
       "size_compressed": 73684.0,
       "size_uncompressed": 1690392
+    }
+  },
+  {
+    "newtag_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 12,
+      "size_compressed": 850.9999999999999,
+      "size_uncompressed": 9763
     }
   },
   {
@@ -792,6 +904,22 @@
     }
   },
   {
+    "xnor2_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 3,
+      "size_compressed": 566.0,
+      "size_uncompressed": 4782
+    }
+  },
+  {
+    "xor2_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 425.0,
+      "size_uncompressed": 1732
+    }
+  },
+  {
     "1bitAdderAOIG_ONE_BEST.fgl": {
       "x": 5,
       "y": 10,
@@ -848,6 +976,14 @@
     }
   },
   {
+    "majority_5_r1_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 10,
+      "size_compressed": 1076.0,
+      "size_uncompressed": 16072
+    }
+  },
+  {
     "majority_5_r1_ONE_USE_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 13,
       "y": 13,
@@ -885,6 +1021,14 @@
       "y": 2270,
       "size_compressed": 3672036.9999999995,
       "size_uncompressed": 83433516
+    }
+  },
+  {
+    "clpl_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 15,
+      "y": 6,
+      "size_compressed": 1384.0,
+      "size_uncompressed": 21876
     }
   },
   {
@@ -957,6 +1101,14 @@
       "y": 16,
       "size_compressed": 1785.0,
       "size_uncompressed": 33289
+    }
+  },
+  {
+    "HA_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 7,
+      "size_compressed": 574.0,
+      "size_uncompressed": 4688
     }
   },
   {
@@ -1056,6 +1208,14 @@
     }
   },
   {
+    "clpl_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 10,
+      "y": 23,
+      "size_compressed": 1575.0,
+      "size_uncompressed": 24527
+    }
+  },
+  {
     "priority_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 826,
       "y": 2094,
@@ -1112,11 +1272,35 @@
     }
   },
   {
+    "majority_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 12,
+      "size_compressed": 910.0,
+      "size_uncompressed": 11191
+    }
+  },
+  {
+    "majority_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 5,
+      "y": 12,
+      "size_compressed": 925.0,
+      "size_uncompressed": 11191
+    }
+  },
+  {
     "c1355_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 383,
       "y": 935,
       "size_compressed": 895924.0,
       "size_uncompressed": 27229827
+    }
+  },
+  {
+    "HA_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 7,
+      "size_compressed": 568.0,
+      "size_uncompressed": 4688
     }
   },
   {
@@ -1160,6 +1344,14 @@
     }
   },
   {
+    "clpl_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 15,
+      "y": 6,
+      "size_compressed": 1383.0,
+      "size_uncompressed": 21876
+    }
+  },
+  {
     "max_Bestagon_ROW_ortho_Opt_Ord.fgl": {
       "x": 2133,
       "y": 5336,
@@ -1173,6 +1365,14 @@
       "y": 7,
       "size_compressed": 701.0,
       "size_uncompressed": 7738
+    }
+  },
+  {
+    "majority_5_r1_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 10,
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16072
     }
   },
   {
@@ -1237,6 +1437,14 @@
       "y": 20,
       "size_compressed": 2713.0,
       "size_uncompressed": 56314
+    }
+  },
+  {
+    "mux21_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 3,
+      "y": 4,
+      "size_compressed": 512.0,
+      "size_uncompressed": 3513
     }
   },
   {
@@ -1368,6 +1576,14 @@
     }
   },
   {
+    "xnor2_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 427.0,
+      "size_uncompressed": 1734
+    }
+  },
+  {
     "b1_r2_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
       "x": 7,
       "y": 15,
@@ -1421,6 +1637,14 @@
       "y": 6,
       "size_compressed": 585.0,
       "size_uncompressed": 5351
+    }
+  },
+  {
+    "majority_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 14,
+      "y": 8,
+      "size_compressed": 1480.0,
+      "size_uncompressed": 25855
     }
   },
   {
@@ -1528,11 +1752,35 @@
     }
   },
   {
+    "2bitAdderMaj_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 9,
+      "y": 33,
+      "size_compressed": 3026.0,
+      "size_uncompressed": 63333
+    }
+  },
+  {
     "c6288_Bestagon_BEST.fgl": {
       "x": 1248,
       "y": 2883,
       "size_compressed": 4537924.0,
       "size_uncompressed": 103734403
+    }
+  },
+  {
+    "2bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 21,
+      "y": 19,
+      "size_compressed": 3482.0,
+      "size_uncompressed": 76092
+    }
+  },
+  {
+    "xor5Maj_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 18,
+      "y": 41,
+      "size_compressed": 5920.0,
+      "size_uncompressed": 135422
     }
   },
   {
@@ -1776,6 +2024,14 @@
     }
   },
   {
+    "clpl_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 10,
+      "y": 23,
+      "size_compressed": 1570.0,
+      "size_uncompressed": 24527
+    }
+  },
+  {
     "cm82a_5_ONE_USE_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 35,
       "y": 35,
@@ -1797,6 +2053,14 @@
       "y": 7,
       "size_compressed": 564.0,
       "size_uncompressed": 3933
+    }
+  },
+  {
+    "c17_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 7,
+      "size_compressed": 723.0,
+      "size_uncompressed": 7831
     }
   },
   {
@@ -1896,6 +2160,14 @@
     }
   },
   {
+    "parity_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 9,
+      "y": 21,
+      "size_compressed": 1301.0,
+      "size_uncompressed": 18296
+    }
+  },
+  {
     "ctrl_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 218,
       "y": 423,
@@ -1981,6 +2253,14 @@
       "y": 6193,
       "size_compressed": 30965934.0,
       "size_uncompressed": 989544058
+    }
+  },
+  {
+    "mux21_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 3,
+      "y": 4,
+      "size_compressed": 521.0,
+      "size_uncompressed": 3513
     }
   },
   {
@@ -2128,6 +2408,14 @@
     }
   },
   {
+    "par_check_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 10,
+      "size_compressed": 951.0,
+      "size_uncompressed": 12840
+    }
+  },
+  {
     "clpl_Bestagon_ROW_ortho_UnOpt_Ord.fgl": {
       "x": 14,
       "y": 35,
@@ -2200,6 +2488,14 @@
     }
   },
   {
+    "cm82a_5_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 8,
+      "y": 18,
+      "size_compressed": 1608.0,
+      "size_uncompressed": 27706
+    }
+  },
+  {
     "c432_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 193,
       "y": 389,
@@ -2213,6 +2509,22 @@
       "y": 8,
       "size_compressed": 699.0,
       "size_uncompressed": 7939
+    }
+  },
+  {
+    "mux21_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 3,
+      "y": 6,
+      "size_compressed": 518.0,
+      "size_uncompressed": 3516
+    }
+  },
+  {
+    "par_gen_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 7,
+      "y": 5,
+      "size_compressed": 766.0,
+      "size_uncompressed": 8953
     }
   },
   {
@@ -2277,6 +2589,14 @@
       "y": 19,
       "size_compressed": 834.0,
       "size_uncompressed": 9798
+    }
+  },
+  {
+    "xor5_r1_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 3,
+      "y": 7,
+      "size_compressed": 592.0,
+      "size_uncompressed": 4507
     }
   },
   {
@@ -2349,6 +2669,14 @@
       "y": 6422,
       "size_compressed": 45090052.0,
       "size_uncompressed": 1468854737
+    }
+  },
+  {
+    "2bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 21,
+      "y": 19,
+      "size_compressed": 3477.9999999999995,
+      "size_uncompressed": 76092
     }
   },
   {
@@ -2432,6 +2760,14 @@
     }
   },
   {
+    "t_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 5,
+      "size_compressed": 768.0,
+      "size_uncompressed": 8703
+    }
+  },
+  {
     "c6288_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 1330,
       "y": 5714,
@@ -2461,6 +2797,22 @@
       "y": 13,
       "size_compressed": 1002.0,
       "size_uncompressed": 14174
+    }
+  },
+  {
+    "par_gen_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 2,
+      "y": 5,
+      "size_compressed": 461.00000000000006,
+      "size_uncompressed": 2275
+    }
+  },
+  {
+    "t_5_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 710.0,
+      "size_uncompressed": 6986
     }
   },
   {
@@ -2496,11 +2848,27 @@
     }
   },
   {
+    "b1_r2_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 11,
+      "size_compressed": 909.0000000000001,
+      "size_uncompressed": 12123
+    }
+  },
+  {
     "c2670_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 772,
       "y": 1672,
       "size_compressed": 3014590.0,
       "size_uncompressed": 93049888
+    }
+  },
+  {
+    "t_5_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 5,
+      "size_compressed": 770.0,
+      "size_uncompressed": 8705
     }
   },
   {
@@ -2776,6 +3144,14 @@
     }
   },
   {
+    "xor5Maj_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 14,
+      "y": 43,
+      "size_compressed": 4297.0,
+      "size_uncompressed": 94168
+    }
+  },
+  {
     "adder_ONE_2DDWave_ortho_UnOpt_Ord.fgl": {
       "x": 899,
       "y": 2668,
@@ -2784,11 +3160,35 @@
     }
   },
   {
+    "HA_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 4,
+      "size_compressed": 685.0,
+      "size_uncompressed": 7455
+    }
+  },
+  {
     "majority_5_r1_ONE_2DDWave_NanoPlaceR_Opt_UnOrd.fgl": {
       "x": 9,
       "y": 9,
       "size_compressed": 1221.0,
       "size_uncompressed": 19503
+    }
+  },
+  {
+    "1bitAdderAOIG_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 11,
+      "size_compressed": 792.0,
+      "size_uncompressed": 9729
+    }
+  },
+  {
+    "xor2_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 3,
+      "size_compressed": 576.0,
+      "size_uncompressed": 5068
     }
   },
   {
@@ -2813,6 +3213,14 @@
       "y": 4,
       "size_compressed": 577.0,
       "size_uncompressed": 5351
+    }
+  },
+  {
+    "parity_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 61,
+      "y": 9,
+      "size_compressed": 4902.0,
+      "size_uncompressed": 112664
     }
   },
   {
@@ -2872,6 +3280,14 @@
     }
   },
   {
+    "t_5_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8705
+    }
+  },
+  {
     "cm82a_5_Bestagon_ROW_ortho_Opt_Ord.fgl": {
       "x": 8,
       "y": 22,
@@ -2904,6 +3320,22 @@
     }
   },
   {
+    "xnor2_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 425.0,
+      "size_uncompressed": 1734
+    }
+  },
+  {
+    "xnor2_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 3,
+      "size_compressed": 566.0,
+      "size_uncompressed": 4782
+    }
+  },
+  {
     "mux21_ONE_ESR_exact_UnOpt_UnOrd.fgl": {
       "x": 4,
       "y": 3,
@@ -2917,6 +3349,14 @@
       "y": 2484,
       "size_compressed": 6318758.0,
       "size_uncompressed": 199844070
+    }
+  },
+  {
+    "2bitAdderMaj_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 9,
+      "y": 33,
+      "size_compressed": 3024.0,
+      "size_uncompressed": 63623
     }
   },
   {
@@ -2976,6 +3416,22 @@
     }
   },
   {
+    "newtag_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 12,
+      "y": 5,
+      "size_compressed": 1115.0,
+      "size_uncompressed": 16368
+    }
+  },
+  {
+    "par_check_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 641.0,
+      "size_uncompressed": 5587
+    }
+  },
+  {
     "xor5Maj_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
       "x": 16,
       "y": 62,
@@ -2989,6 +3445,14 @@
       "y": 13,
       "size_compressed": 914.0,
       "size_uncompressed": 12029
+    }
+  },
+  {
+    "cm82a_5_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 26,
+      "y": 9,
+      "size_compressed": 3109.0,
+      "size_uncompressed": 66982
     }
   },
   {
@@ -3168,6 +3632,14 @@
     }
   },
   {
+    "newtag_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 12,
+      "y": 5,
+      "size_compressed": 1124.0,
+      "size_uncompressed": 16368
+    }
+  },
+  {
     "2bitAdderMaj_ONE_BEST.fgl": {
       "x": 5,
       "y": 8,
@@ -3221,6 +3693,14 @@
       "y": 15,
       "size_compressed": 807.0,
       "size_uncompressed": 8935
+    }
+  },
+  {
+    "xor2_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 3,
+      "size_compressed": 571.0,
+      "size_uncompressed": 5068
     }
   },
   {
@@ -3293,6 +3773,14 @@
       "y": 693,
       "size_compressed": 703031.0,
       "size_uncompressed": 20745262
+    }
+  },
+  {
+    "xor2_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 2,
+      "y": 4,
+      "size_compressed": 423.0,
+      "size_uncompressed": 1732
     }
   },
   {
@@ -3440,6 +3928,14 @@
     }
   },
   {
+    "xor5_r1_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 15,
+      "size_compressed": 1364.0,
+      "size_uncompressed": 23367
+    }
+  },
+  {
     "cm82a_5_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 14,
       "y": 22,
@@ -3493,6 +3989,14 @@
       "y": 1166,
       "size_compressed": 2312661.0,
       "size_uncompressed": 71067764
+    }
+  },
+  {
+    "FA_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 751.0,
+      "size_uncompressed": 8857
     }
   },
   {
@@ -3605,6 +4109,22 @@
       "y": 630,
       "size_compressed": 790258.0,
       "size_uncompressed": 23325868
+    }
+  },
+  {
+    "1bitAdderAOIG_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 7,
+      "y": 10,
+      "size_compressed": 1100.0,
+      "size_uncompressed": 17083
+    }
+  },
+  {
+    "c17_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 9,
+      "size_compressed": 714.0,
+      "size_uncompressed": 7264
     }
   },
   {
@@ -3728,6 +4248,14 @@
     }
   },
   {
+    "par_check_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 5,
+      "y": 10,
+      "size_compressed": 949.0,
+      "size_uncompressed": 12840
+    }
+  },
+  {
     "xor5Maj_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 27,
       "y": 47,
@@ -3760,11 +4288,27 @@
     }
   },
   {
+    "1bitAdderMaj_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 7,
+      "y": 19,
+      "size_compressed": 1555.0,
+      "size_uncompressed": 27763
+    }
+  },
+  {
     "cm82a_5_ONE_2DDWave_ortho_Opt_Ord.fgl": {
       "x": 18,
       "y": 19,
       "size_compressed": 3575.0,
       "size_uncompressed": 76858
+    }
+  },
+  {
+    "b1_r2_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 8,
+      "y": 6,
+      "size_compressed": 910.0,
+      "size_uncompressed": 11831
     }
   },
   {
@@ -3781,6 +4325,14 @@
       "y": 7,
       "size_compressed": 635.0,
       "size_uncompressed": 5905
+    }
+  },
+  {
+    "FA_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 5,
+      "y": 11,
+      "size_compressed": 770.0,
+      "size_uncompressed": 8862
     }
   },
   {
@@ -3816,11 +4368,27 @@
     }
   },
   {
+    "FA_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 5,
+      "y": 11,
+      "size_compressed": 770.0,
+      "size_uncompressed": 8862
+    }
+  },
+  {
     "t_5_ONE_RES_exact_UnOpt_UnOrd.fgl": {
       "x": 4,
       "y": 8,
       "size_compressed": 811.0,
       "size_uncompressed": 9562
+    }
+  },
+  {
+    "parity_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 9,
+      "y": 21,
+      "size_compressed": 1312.0,
+      "size_uncompressed": 18296
     }
   },
   {
@@ -3853,6 +4421,14 @@
       "y": 3,
       "size_compressed": 518.0,
       "size_uncompressed": 3513
+    }
+  },
+  {
+    "b1_r2_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 11,
+      "size_compressed": 917.0,
+      "size_uncompressed": 12123
     }
   },
   {
@@ -3936,6 +4512,14 @@
     }
   },
   {
+    "1bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 10,
+      "y": 20,
+      "size_compressed": 2252.0,
+      "size_uncompressed": 44020
+    }
+  },
+  {
     "c17_Bestagon_BEST.fgl": {
       "x": 5,
       "y": 8,
@@ -3957,6 +4541,14 @@
       "y": 2797,
       "size_compressed": 7354513.0,
       "size_uncompressed": 237731817
+    }
+  },
+  {
+    "par_gen_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 7,
+      "y": 5,
+      "size_compressed": 766.0,
+      "size_uncompressed": 8953
     }
   },
   {
@@ -4056,6 +4648,22 @@
     }
   },
   {
+    "t_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 708.0,
+      "size_uncompressed": 6984
+    }
+  },
+  {
+    "HA_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 4,
+      "size_compressed": 684.0,
+      "size_uncompressed": 7455
+    }
+  },
+  {
     "mux21_ONE_RES_NanoPlaceR_UnOpt_UnOrd.fgl": {
       "x": 5,
       "y": 5,
@@ -4101,6 +4709,14 @@
       "y": 2535,
       "size_compressed": 9271124.0,
       "size_uncompressed": 212219124
+    }
+  },
+  {
+    "par_gen_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 2,
+      "y": 5,
+      "size_compressed": 458.0,
+      "size_uncompressed": 2275
     }
   },
   {
@@ -4240,6 +4856,14 @@
     }
   },
   {
+    "FA_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 746.0,
+      "size_uncompressed": 8857
+    }
+  },
+  {
     "xor5_r1_ONE_2DDWave_ortho_UnOpt_UnOrd.fgl": {
       "x": 14,
       "y": 32,
@@ -4352,6 +4976,14 @@
     }
   },
   {
+    "xor5_r1_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 6,
+      "y": 15,
+      "size_compressed": 1382.0,
+      "size_uncompressed": 23367
+    }
+  },
+  {
     "HA_ONE_ESR_exact_UnOpt_UnOrd.fgl": {
       "x": 6,
       "y": 8,
@@ -4360,11 +4992,27 @@
     }
   },
   {
+    "1bitAdderMaj_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 7,
+      "y": 19,
+      "size_compressed": 1579.0,
+      "size_uncompressed": 27763
+    }
+  },
+  {
     "newtag_ONE_ESR_exact_UnOpt_UnOrd.fgl": {
       "x": 9,
       "y": 5,
       "size_compressed": 887.0,
       "size_uncompressed": 10899
+    }
+  },
+  {
+    "1bitAdderAOIG_ONE_2DDWave_gold_Opt_UnOrd.fgl": {
+      "x": 7,
+      "y": 10,
+      "size_compressed": 1114.0,
+      "size_uncompressed": 17083
     }
   },
   {
@@ -4456,6 +5104,14 @@
     }
   },
   {
+    "t_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 708.0,
+      "size_uncompressed": 6984
+    }
+  },
+  {
     "c3540_ONE_2DDWave_ortho_Opt_UnOrd.fgl": {
       "x": 856,
       "y": 1828,
@@ -4477,6 +5133,14 @@
       "y": 13,
       "size_compressed": 1437.0,
       "size_uncompressed": 24931
+    }
+  },
+  {
+    "par_check_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 641.0,
+      "size_uncompressed": 5587
     }
   },
   {
@@ -4568,6 +5232,14 @@
     }
   },
   {
+    "majority_5_r1_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 12,
+      "size_compressed": 875.0000000000001,
+      "size_uncompressed": 10336
+    }
+  },
+  {
     "majority_Bestagon_ROW_ortho_Opt_Ord.fgl": {
       "x": 8,
       "y": 16,
@@ -4656,6 +5328,14 @@
     }
   },
   {
+    "t_5_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 4,
+      "y": 8,
+      "size_compressed": 710.0,
+      "size_uncompressed": 6986
+    }
+  },
+  {
     "2bitAdderMaj_Bestagon_ROW_ortho_Opt_UnOrd.fgl": {
       "x": 13,
       "y": 50,
@@ -4669,6 +5349,14 @@
       "y": 17,
       "size_compressed": 2769.0,
       "size_uncompressed": 57536
+    }
+  },
+  {
+    "mux21_Bestagon_ROW_gold_Opt_UnOrd.fgl": {
+      "x": 3,
+      "y": 6,
+      "size_compressed": 523.0,
+      "size_uncompressed": 3516
     }
   },
   {
@@ -4712,6 +5400,14 @@
     }
   },
   {
+    "t_ONE_2DDWave_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 5,
+      "size_compressed": 770.0,
+      "size_uncompressed": 8703
+    }
+  },
+  {
     "majority_ONE_ESR_exact_UnOpt_UnOrd.fgl": {
       "x": 10,
       "y": 5,
@@ -4741,6 +5437,14 @@
       "y": 19,
       "size_compressed": 831.0,
       "size_uncompressed": 9511
+    }
+  },
+  {
+    "newtag_Bestagon_ROW_gold_UnOpt_UnOrd.fgl": {
+      "x": 6,
+      "y": 12,
+      "size_compressed": 857.0,
+      "size_uncompressed": 9763
     }
   },
   {
