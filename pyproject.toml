@@ -70,7 +70,7 @@ dev = ["mnt.bench[coverage, docs]"]
 Homepage = "https://github.com/cda-tum/mntbench"
 "Bug Tracker" = "https://github.com/cda-tum/mntbench/issues"
 Discussions = "https://github.com/cda-tum/mntbench/discussions"
-Research = "https://www.cda.cit.tum.de/research/fcn/"
+Research = "https://www.cda.cit.tum.de/research/nanotech/"
 
 [tool.setuptools_scm]
 
