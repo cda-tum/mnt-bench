@@ -21,7 +21,6 @@ if TYPE_CHECKING or sys.version_info >= (3, 10, 0):  # pragma: no cover
 else:
     import importlib_metadata as metadata
 
-
 if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import Iterable
 
@@ -45,6 +44,11 @@ class BenchmarkConfiguration:
     gold: bool
     optimized: bool
     ordered: bool
+    area: bool
+    wires: bool
+    crossings: bool
+    acp: bool
+    none: bool
 
 
 @dataclass
@@ -56,6 +60,7 @@ class ParsedBenchmarkName:
     physical_design_algorithm: str
     optimized: str
     ordered: str
+    cost: str
     x: int
     y: int
     area: int
@@ -231,6 +236,18 @@ class Backend:
                     if benchmark_config.optimized:
                         db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
 
+                    if benchmark_config.area:
+                        db_filtered = db_filtered.loc[db_filtered["cost"] == "area"]
+
+                    if benchmark_config.wires:
+                        db_filtered = db_filtered.loc[db_filtered["cost"] == "wires"]
+
+                    if benchmark_config.crossings:
+                        db_filtered = db_filtered.loc[db_filtered["cost"] == "crossings"]
+
+                    if benchmark_config.acp:
+                        db_filtered = db_filtered.loc[db_filtered["cost"] == "acp"]
+
         if benchmark_config.network:
             db_filtered = pd.concat([db_filtered if not db_filtered.empty else None, db_networks])
 
@@ -246,7 +263,7 @@ class Backend:
         paths -- list of file paths for all selected benchmarks
 
         Return values:
-            Generator of bytes to send to the browser
+                Generator of bytes to send to the browser
         """
         fileobj = NoSeekBytesIO(io.BytesIO())
 
@@ -320,6 +337,15 @@ class Backend:
         ord_mapping = {"ord": "✓", "unord": "✗"}
         table.replace({"ordered": ord_mapping}, inplace=True)
 
+        cost_mapping = {
+            "area": "Area",
+            "wires": "#Wires",
+            "crossings": "#Crossings",
+            "acp": "Area-Crossing Product",
+            "none": "✗",
+        }
+        table.replace({"cost": cost_mapping}, inplace=True)
+
         table["size_compressed"] = table["size_compressed"].apply(humanize.naturalsize)
         table["size_uncompressed"] = table["size_uncompressed"].apply(humanize.naturalsize)
 
@@ -331,6 +357,7 @@ class Backend:
             "physical_design_algorithm": "Physical Design Algorithm",
             "optimized": "Post-Layout Optimization",
             "ordered": "Input-Ordering",
+            "cost": "Cost Objective",
             "x": "Layout Width",
             "y": "Layout Height",
             "area": "Layout Area",
@@ -389,6 +416,11 @@ class Backend:
         gold = False
         optimized = False
         ordered = False
+        area = False
+        wires = False
+        crossings = False
+        acp = False
+        none = False
 
         for k in form_data:
             if "select" in k:
@@ -412,6 +444,11 @@ class Backend:
             gold = "gold" in k or gold
             optimized = "post-layout" in k or optimized
             ordered = "input-ordering" in k or ordered
+            area = "area" in k or area
+            wires = "wires" in k or wires
+            crossings = "crossings" in k or crossings
+            acp = "acp" in k or acp
+            none = "none" in k or none
 
         return BenchmarkConfiguration(
             indices_benchmarks=indices_benchmarks,
@@ -431,6 +468,11 @@ class Backend:
             gold=gold,
             optimized=optimized,
             ordered=ordered,
+            area=area,
+            wires=wires,
+            crossings=crossings,
+            acp=acp,
+            none=none,
         )
 
     def read_mntbench_all_zip(  # noqa: PLR0912
@@ -530,14 +572,14 @@ class Backend:
         Read layout dimensions from a JSON file.
 
         Parameters:
-            target_location (str): The directory where the 'layout_dimensions.json' file is located.
+                target_location (str): The directory where the 'layout_dimensions.json' file is located.
 
         Returns:
-            Union[List[Dict[str, Any]], None]: A list of dictionaries representing layout dimensions,
-            or None if the file is not found.
+                Union[List[Dict[str, Any]], None]: A list of dictionaries representing layout dimensions,
+                or None if the file is not found.
 
         Raises:
-            FileNotFoundError: If the 'layout_dimensions.json' file is not found.
+                FileNotFoundError: If the 'layout_dimensions.json' file is not found.
         """
         file_name = target_location + "/layout_dimensions.json"
         try:
@@ -563,16 +605,16 @@ class Backend:
             is_best_fgl = "best.fgl" in filename.lower()
             specs = filename.split(".")[0].lower().split("_")
 
-            benchmark = "_".join(specs[0 : -(2 if is_best_fgl else 5)])
-            library, clocking_scheme, *additional_specs = specs[-2:] if is_best_fgl else specs[-5:]
-            physical_design_algorithm, optimized, ordered = additional_specs + [""] * (3 - len(additional_specs))
+            benchmark = "_".join(specs[0 : -(2 if is_best_fgl else 6)])
+            library, clocking_scheme, *additional_specs = specs[-2:] if is_best_fgl else specs[-6:]
+            physical_design_algorithm, optimized, ordered, cost = additional_specs + [""] * (4 - len(additional_specs))
 
             level = "gate"
             area = int(layout_dimensions.get("x", 0)) * int(layout_dimensions.get("y", 0)) if layout_dimensions else ""
 
         elif filename.endswith(".v"):
             benchmark = filename.split(".")[0].lower()
-            library = clocking_scheme = physical_design_algorithm = optimized = ordered = ""
+            library = clocking_scheme = physical_design_algorithm = optimized = ordered = cost = ""
             level = "network"
             area = ""
 
@@ -591,6 +633,7 @@ class Backend:
             physical_design_algorithm=physical_design_algorithm,
             optimized=optimized,
             ordered=ordered,
+            cost=cost,
             x=layout_dimensions.get("x", ""),
             y=layout_dimensions.get("y", ""),
             area=area,  # type: ignore[arg-type]

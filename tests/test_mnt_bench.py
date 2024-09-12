@@ -21,7 +21,7 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
     ("filename", "expected_res"),
     [
         (
-            "mux21_ONE_2DDWave_exact_UnOpt_UnOrd.fgl",
+            "mux21_ONE_2DDWave_exact_UnOpt_UnOrd_area.fgl",
             backend.ParsedBenchmarkName(
                 benchmark="mux21",
                 level="gate",
@@ -30,16 +30,17 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 physical_design_algorithm="exact",
                 optimized="unopt",
                 ordered="unord",
+                cost="area",
                 x=3,
                 y=4,
                 area=12,
                 size_compressed=517,
                 size_uncompressed=3513,
-                filename="mux21_ONE_2DDWave_exact_UnOpt_UnOrd.fgl",
+                filename="mux21_ONE_2DDWave_exact_UnOpt_UnOrd_area.fgl",
             ),
         ),
         (
-            "mux21_ONE_2DDWave_ortho_Opt_Ord.fgl",
+            "mux21_ONE_2DDWave_ortho_Opt_Ord_none.fgl",
             backend.ParsedBenchmarkName(
                 benchmark="mux21",
                 level="gate",
@@ -48,16 +49,17 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 physical_design_algorithm="ortho",
                 optimized="opt",
                 ordered="ord",
+                cost="none",
                 x=4,
                 y=3,
                 area=12,
                 size_compressed=518,
                 size_uncompressed=3513,
-                filename="mux21_ONE_2DDWave_ortho_Opt_Ord.fgl",
+                filename="mux21_ONE_2DDWave_ortho_Opt_Ord_none.fgl",
             ),
         ),
         (
-            "parity_Bestagon_ROW_gold_UnOpt_UnOrd.fgl",
+            "parity_Bestagon_ROW_gold_UnOpt_UnOrd_wires.fgl",
             backend.ParsedBenchmarkName(
                 benchmark="parity",
                 level="gate",
@@ -66,16 +68,17 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 physical_design_algorithm="gold",
                 optimized="unopt",
                 ordered="unord",
+                cost="wires",
                 x=9,
                 y=21,
                 area=189,
                 size_compressed=1312,
                 size_uncompressed=18296,
-                filename="parity_Bestagon_ROW_gold_UnOpt_UnOrd.fgl",
+                filename="parity_Bestagon_ROW_gold_UnOpt_UnOrd_wires.fgl",
             ),
         ),
         (
-            "t_ONE_USE_exact_UnOpt_UnOrd.fgl",
+            "t_ONE_USE_exact_UnOpt_UnOrd_area.fgl",
             backend.ParsedBenchmarkName(
                 benchmark="t",
                 level="gate",
@@ -84,12 +87,13 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 physical_design_algorithm="exact",
                 optimized="unopt",
                 ordered="unord",
+                cost="area",
                 x=6,
                 y=6,
                 area=36,
                 size_compressed=843,
                 size_uncompressed=10421,
-                filename="t_ONE_USE_exact_UnOpt_UnOrd.fgl",
+                filename="t_ONE_USE_exact_UnOpt_UnOrd_area.fgl",
             ),
         ),
         (
@@ -102,6 +106,7 @@ target_location = str(resources.files("mnt.bench") / "static" / "files")
                 physical_design_algorithm="",
                 optimized="",
                 ordered="",
+                cost="",
                 x="",
                 y="",
                 area="",
@@ -147,6 +152,11 @@ def test_prepare_form_input() -> None:
         gold=False,
         optimized=False,
         ordered=False,
+        area=False,
+        wires=False,
+        crossings=False,
+        acp=False,
+        none=False,
     )
     backend = Backend()
     assert backend.prepare_form_input(form_data) == expected_res
@@ -192,6 +202,11 @@ def test_create_database() -> None:
         gold=False,
         optimized=False,
         ordered=False,
+        area=False,
+        wires=False,
+        crossings=False,
+        acp=False,
+        none=False,
     )
 
     res = backend.get_selected_file_paths(backend.get_updated_table(input_data))
@@ -205,7 +220,7 @@ def test_streaming_zip() -> None:
         skip_question=True, target_location=str(resources.files("mnt.bench") / "static" / "files"), test=True
     )
     res = backend.generate_zip_ephemeral_chunks(
-        filenames=["mux21_ONE_BEST.fgl", "xor2_ONE_BEST.fgl", "xor2_ONE_2DDWave_gold_UnOpt_UnOrd.fgl"]
+        filenames=["mux21_ONE_BEST.fgl", "xor2_ONE_BEST.fgl", "xor2_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl"]
     )
     assert list(res)
 

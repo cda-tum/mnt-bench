@@ -21,11 +21,13 @@
         opacity: 0.5; /* Make the checkbox semi-transparent */
         pointer-events: none; /* Disable mouse events on the checkbox */
       }
+
       table {
         border-collapse: collapse;
         width: 50%;
         margin: 20px 0;
       }
+
       th,
       td {
         border: 1px solid #dddddd;
@@ -741,6 +743,56 @@
                     ></label
                   >
                 </div>
+                <p class="text-justify" style="margin: 0px">
+                  If gold has been chosen, please also select the cost
+                  objective:
+                  <span
+                    style="border-bottom: 1px dotted; cursor: help"
+                    title="For exact and NanoPlaceR, only layout area is possible for the cost objective. For ortho, no cost objective is possible."
+                  >
+                    &#10067;
+                  </span>
+                </p>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="area"
+                    name="area"
+                  />
+                  <label for="area">Layout Area</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="wires"
+                    name="wires"
+                  />
+                  <label for="wires">Number of Wires</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="crossings"
+                    name="crossings"
+                  />
+                  <label for="crossings">Number of Crossings</label>
+                </div>
+                <div class="form-group">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="true"
+                    id="acp"
+                    name="acp"
+                  />
+                  <label for="acp">Area-Crossing Product</label>
+                </div>
               </div>
             </div>
           </div>
@@ -1057,6 +1109,7 @@
               disable_clocking_scheme_selection(one=true, bestagon=true);
               disable_physical_design_algorithm_selection();
               disable_optimization_algorithm_selection();
+              disable_cost_objective_selection();
           }
       }
 
@@ -1085,6 +1138,7 @@
               disable_clocking_scheme_selection(one=true, bestagon=true, best=true);
               disable_physical_design_algorithm_selection();
               disable_optimization_algorithm_selection();
+              disable_cost_objective_selection();
           }
       }
 
@@ -1098,6 +1152,7 @@
                   setCheckboxState("gold", false, true, true);
                   setCheckboxState("exact", false, false, false);
                   enable_optimization_algorithm_selection();
+                  enable_cost_objective_selection();
             }
             else if (exact_or_nanoplacer_possible && ortho_or_gold_possible) {
                 setCheckboxState("exact", false, false, false);
@@ -1105,16 +1160,19 @@
                 setCheckboxState("gold", false, false, false);
                 setCheckboxState("nanoplacer", false, false, false);
                 enable_optimization_algorithm_selection();
+                enable_cost_objective_selection();
             }
             else {
                 disable_physical_design_algorithm_selection();
                 disable_optimization_algorithm_selection();
+                disable_cost_objective_selection();
             }
           }
           else {
               disable_clocking_scheme_selection(one=true, bestagon=true);
               disable_physical_design_algorithm_selection();
               disable_optimization_algorithm_selection();
+              disable_cost_objective_selection();
           }
       }
 
@@ -1136,12 +1194,31 @@
         }
       }
 
+      function enable_cost_objective_selection(){
+        if (document.getElementById("gold").checked){
+          setCheckboxState("area", false, false, false);
+          setCheckboxState("wires", false, false, false);
+          setCheckboxState("crossings", false, false, false);
+          setCheckboxState("acp", false, false, false);
+        }
+        else if (document.getElementById("exact").checked){
+          setCheckboxState("area", true, true, true);
+        }
+        else if (document.getElementById("nanoplacer").checked){
+          setCheckboxState("area", true, true, true);
+        }
+        else {
+          disable_cost_objective_selection();
+        }
+      }
+
       function disable_all(){
         disable_levels();
         disable_gate_libraries();
         disable_clocking_scheme_selection(one=true, bestagon=true, best=true);
         disable_physical_design_algorithm_selection();
         disable_optimization_algorithm_selection();
+        disable_cost_objective_selection();
       }
 
       function disable_levels() {
@@ -1181,6 +1258,13 @@
       function disable_optimization_algorithm_selection(){
         setCheckboxState("post-layout", false, true, true);
         setCheckboxState("input-ordering", false, true, true);
+      }
+
+      function disable_cost_objective_selection(){
+        setCheckboxState("area", false, true, true);
+        setCheckboxState("wires", false, true, true);
+        setCheckboxState("crossings", false, true, true);
+        setCheckboxState("acp", false, true, true);
       }
 
       function get_num_benchs() {
