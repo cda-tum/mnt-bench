@@ -73,8 +73,8 @@ class Backend:
     def __init__(self) -> None:
         self.trindade = [
             {"name": "Multiplexer 2:1", "id": "1", "filename": "mux21"},
-            {"name": "XOR 2:1", "id": "2", "filename": "xor2"},
-            {"name": "XNOR 2:1", "id": "3", "filename": "xnor2"},
+            {"name": "XOR", "id": "2", "filename": "xor2"},
+            {"name": "XNOR", "id": "3", "filename": "xnor2"},
             {"name": "Half Adder", "id": "4", "filename": "ha"},
             {"name": "Full Adder", "id": "5", "filename": "fa"},
             {"name": "Parity Generator", "id": "6", "filename": "par_gen"},
@@ -310,8 +310,8 @@ class Backend:
         """
         benchmark_mapping = {
             "mux21": "MUX 2:1",
-            "xor2": "XOR 2:1",
-            "xnor2": "XNOR 2:1",
+            "xor2": "XOR",
+            "xnor2": "XNOR",
             "ha": "Half Adder",
             "fa": "Full Adder",
             "par_gen": "Parity Generator",
