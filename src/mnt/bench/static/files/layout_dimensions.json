@@ -27,8 +27,8 @@
     "t_5_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 770.0000000000001,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -145,18 +145,18 @@
   },
   {
     "xor2_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 6,
-      "y": 3,
-      "size_compressed": 551.0,
-      "size_uncompressed": 4494
+      "x": 3,
+      "y": 6,
+      "size_compressed": 555.0,
+      "size_uncompressed": 4495
     }
   },
   {
     "majority_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 8,
-      "y": 16,
-      "size_compressed": 1595.0,
-      "size_uncompressed": 28749
+      "x": 6,
+      "y": 11,
+      "size_compressed": 1115.0,
+      "size_uncompressed": 16644
     }
   },
   {
@@ -201,10 +201,10 @@
   },
   {
     "majority_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 14,
-      "y": 8,
-      "size_compressed": 1475.0,
-      "size_uncompressed": 25855
+      "x": 6,
+      "y": 11,
+      "size_compressed": 1121.0,
+      "size_uncompressed": 16931
     }
   },
   {
@@ -265,10 +265,10 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1235.0,
-      "size_uncompressed": 20281
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16534
     }
   },
   {
@@ -291,8 +291,8 @@
     "1bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 10,
       "y": 20,
-      "size_compressed": 2252.0,
-      "size_uncompressed": 44020
+      "size_compressed": 2212.0,
+      "size_uncompressed": 44021
     }
   },
   {
@@ -560,11 +560,19 @@
     }
   },
   {
+    "xor_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
+      "x": 3,
+      "y": 8,
+      "size_compressed": 632.0,
+      "size_uncompressed": 6216
+    }
+  },
+  {
     "t_5_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 771.0,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -577,10 +585,10 @@
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 10,
-      "size_compressed": 1069.0,
-      "size_uncompressed": 15785
+      "size_compressed": 982.9999999999999,
+      "size_uncompressed": 13490
     }
   },
   {
@@ -626,9 +634,9 @@
   {
     "mux21_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
       "x": 3,
-      "y": 4,
+      "y": 5,
       "size_compressed": 510.99999999999994,
-      "size_uncompressed": 3513
+      "size_uncompressed": 3227
     }
   },
   {
@@ -641,10 +649,10 @@
   },
   {
     "clpl_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1384.0,
-      "size_uncompressed": 21876
+      "x": 14,
+      "y": 5,
+      "size_compressed": 1249.0,
+      "size_uncompressed": 18702
     }
   },
   {
@@ -730,17 +738,17 @@
   {
     "t_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 960.0,
-      "size_uncompressed": 13295
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8704
     }
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 18,
-      "y": 24,
-      "size_compressed": 3402.0,
-      "size_uncompressed": 74684
+      "x": 20,
+      "y": 21,
+      "size_compressed": 3512.0,
+      "size_uncompressed": 75813
     }
   },
   {
@@ -753,10 +761,10 @@
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 18,
-      "y": 24,
-      "size_compressed": 3401.0,
-      "size_uncompressed": 74684
+      "x": 22,
+      "y": 17,
+      "size_compressed": 3405.0,
+      "size_uncompressed": 72901
     }
   },
   {
@@ -769,18 +777,18 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 7,
-      "y": 5,
-      "size_compressed": 766.0,
-      "size_uncompressed": 8953
+      "x": 4,
+      "y": 8,
+      "size_compressed": 736.0,
+      "size_uncompressed": 8093
     }
   },
   {
     "t_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 960.0,
-      "size_uncompressed": 13295
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8704
     }
   },
   {
@@ -864,11 +872,19 @@
     }
   },
   {
+    "xor_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
+      "x": 5,
+      "y": 3,
+      "size_compressed": 554.0,
+      "size_uncompressed": 4494
+    }
+  },
+  {
     "xor2_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 6,
       "y": 3,
-      "size_compressed": 576.0,
-      "size_uncompressed": 5068
+      "size_compressed": 570.0,
+      "size_uncompressed": 5069
     }
   },
   {
@@ -939,16 +955,16 @@
     "b1_r2_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 8,
       "y": 8,
-      "size_compressed": 1017.0,
-      "size_uncompressed": 14701
+      "size_compressed": 1023.9999999999999,
+      "size_uncompressed": 14989
     }
   },
   {
     "xor5Maj_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 23,
+      "x": 22,
       "y": 33,
-      "size_compressed": 5768.0,
-      "size_uncompressed": 132799
+      "size_compressed": 5730.0,
+      "size_uncompressed": 131924
     }
   },
   {
@@ -987,8 +1003,8 @@
     "t_5_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 770.0000000000001,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -1041,10 +1057,10 @@
   },
   {
     "clpl_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1384.0,
-      "size_uncompressed": 21876
+      "x": 14,
+      "y": 5,
+      "size_compressed": 1248.0,
+      "size_uncompressed": 18702
     }
   },
   {
@@ -1129,18 +1145,18 @@
   },
   {
     "majority_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 11,
-      "y": 13,
-      "size_compressed": 1594.0,
-      "size_uncompressed": 28747
+      "x": 6,
+      "y": 16,
+      "size_compressed": 1262.0,
+      "size_uncompressed": 21288
     }
   },
   {
     "newtag_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 6,
-      "y": 17,
-      "size_compressed": 1309.0,
-      "size_uncompressed": 21591
+      "x": 4,
+      "y": 13,
+      "size_compressed": 990.0,
+      "size_uncompressed": 13501
     }
   },
   {
@@ -1210,9 +1226,9 @@
   {
     "par_check_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
       "x": 5,
-      "y": 12,
-      "size_compressed": 1026.0,
-      "size_uncompressed": 14281
+      "y": 11,
+      "size_compressed": 983.9999999999999,
+      "size_uncompressed": 13704
     }
   },
   {
@@ -1289,18 +1305,18 @@
   },
   {
     "parity_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 61,
-      "y": 9,
-      "size_compressed": 4902.0,
-      "size_uncompressed": 112664
+      "x": 9,
+      "y": 56,
+      "size_compressed": 4731.0,
+      "size_uncompressed": 108588
     }
   },
   {
     "1bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 10,
-      "y": 20,
-      "size_compressed": 2252.0,
-      "size_uncompressed": 44020
+      "x": 11,
+      "y": 19,
+      "size_compressed": 2182.0,
+      "size_uncompressed": 42875
     }
   },
   {
@@ -1309,6 +1325,14 @@
       "y": 6,
       "size_compressed": 753.0,
       "size_uncompressed": 8890
+    }
+  },
+  {
+    "xor_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
+      "x": 5,
+      "y": 3,
+      "size_compressed": 530.0,
+      "size_uncompressed": 3920
     }
   },
   {
@@ -1364,7 +1388,7 @@
       "x": 23,
       "y": 33,
       "size_compressed": 5768.0,
-      "size_uncompressed": 132799
+      "size_uncompressed": 132800
     }
   },
   {
@@ -1387,8 +1411,8 @@
     "cm82a_5_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 12,
       "y": 27,
-      "size_compressed": 3375.0,
-      "size_uncompressed": 73086
+      "size_compressed": 3376.0,
+      "size_uncompressed": 73087
     }
   },
   {
@@ -1420,15 +1444,15 @@
       "x": 6,
       "y": 5,
       "size_compressed": 771.0,
-      "size_uncompressed": 8705
+      "size_uncompressed": 8706
     }
   },
   {
     "xnor2_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 6,
       "y": 3,
-      "size_compressed": 566.0,
-      "size_uncompressed": 4782
+      "size_compressed": 562.0,
+      "size_uncompressed": 4783
     }
   },
   {
@@ -1457,10 +1481,10 @@
   },
   {
     "xor5Maj_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 18,
-      "y": 41,
-      "size_compressed": 5847.0,
-      "size_uncompressed": 135422
+      "x": 22,
+      "y": 33,
+      "size_compressed": 5730.0,
+      "size_uncompressed": 131924
     }
   },
   {
@@ -1537,10 +1561,10 @@
   },
   {
     "clpl_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1384.0,
-      "size_uncompressed": 21876
+      "x": 14,
+      "y": 5,
+      "size_compressed": 1248.0,
+      "size_uncompressed": 18702
     }
   },
   {
@@ -1561,10 +1585,10 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 7,
-      "y": 5,
-      "size_compressed": 766.0,
-      "size_uncompressed": 8953
+      "x": 4,
+      "y": 8,
+      "size_compressed": 736.0,
+      "size_uncompressed": 8093
     }
   },
   {
@@ -1580,7 +1604,7 @@
       "x": 8,
       "y": 8,
       "size_compressed": 1001.0000000000001,
-      "size_uncompressed": 14414
+      "size_uncompressed": 14415
     }
   },
   {
@@ -1649,10 +1673,10 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 9,
-      "y": 5,
-      "size_compressed": 884.0,
-      "size_uncompressed": 11823
+      "x": 4,
+      "y": 8,
+      "size_compressed": 735.0,
+      "size_uncompressed": 8093
     }
   },
   {
@@ -1691,8 +1715,8 @@
     "mux21_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 3,
       "y": 5,
-      "size_compressed": 541.0,
-      "size_uncompressed": 4087
+      "size_compressed": 540.0,
+      "size_uncompressed": 4088
     }
   },
   {
@@ -1833,10 +1857,10 @@
   },
   {
     "FA_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 4,
-      "y": 8,
-      "size_compressed": 751.0,
-      "size_uncompressed": 8857
+      "x": 8,
+      "y": 4,
+      "size_compressed": 755.0,
+      "size_uncompressed": 8858
     }
   },
   {
@@ -1876,15 +1900,15 @@
       "x": 6,
       "y": 4,
       "size_compressed": 684.0,
-      "size_uncompressed": 7455
+      "size_uncompressed": 7456
     }
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 10,
-      "size_compressed": 1076.0,
-      "size_uncompressed": 16072
+      "x": 7,
+      "y": 11,
+      "size_compressed": 1148.0,
+      "size_uncompressed": 17510
     }
   },
   {
@@ -1913,18 +1937,18 @@
   },
   {
     "clpl_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1384.0,
-      "size_uncompressed": 21876
+      "x": 12,
+      "y": 10,
+      "size_compressed": 1582.0,
+      "size_uncompressed": 27031
     }
   },
   {
     "clpl_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1383.0,
-      "size_uncompressed": 21876
+      "x": 14,
+      "y": 5,
+      "size_compressed": 1248.0,
+      "size_uncompressed": 18702
     }
   },
   {
@@ -1945,10 +1969,10 @@
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 10,
-      "size_compressed": 1076.0,
-      "size_uncompressed": 16072
+      "size_compressed": 974.9999999999999,
+      "size_uncompressed": 13203
     }
   },
   {
@@ -1977,10 +2001,10 @@
   },
   {
     "parity_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 61,
-      "y": 9,
-      "size_compressed": 4879.0,
-      "size_uncompressed": 112664
+      "x": 9,
+      "y": 58,
+      "size_compressed": 4777.0,
+      "size_uncompressed": 110328
     }
   },
   {
@@ -1993,10 +2017,10 @@
   },
   {
     "xnor2_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 6,
-      "y": 3,
-      "size_compressed": 549.0,
-      "size_uncompressed": 4208
+      "x": 3,
+      "y": 6,
+      "size_compressed": 538.0,
+      "size_uncompressed": 4209
     }
   },
   {
@@ -2017,10 +2041,10 @@
   },
   {
     "xor5Maj_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 23,
+      "x": 22,
       "y": 33,
-      "size_compressed": 5749.0,
-      "size_uncompressed": 132799
+      "size_compressed": 5730.0,
+      "size_uncompressed": 131924
     }
   },
   {
@@ -2084,7 +2108,7 @@
       "x": 5,
       "y": 8,
       "size_compressed": 800.0,
-      "size_uncompressed": 10038
+      "size_uncompressed": 10039
     }
   },
   {
@@ -2169,10 +2193,10 @@
   },
   {
     "newtag_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 12,
-      "y": 5,
-      "size_compressed": 1124.0,
-      "size_uncompressed": 16368
+      "x": 4,
+      "y": 12,
+      "size_compressed": 1022.0000000000001,
+      "size_uncompressed": 13780
     }
   },
   {
@@ -2233,10 +2257,10 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 12,
-      "y": 6,
-      "size_compressed": 1185.0,
-      "size_uncompressed": 18533
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16534
     }
   },
   {
@@ -2313,10 +2337,10 @@
   },
   {
     "FA_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 4,
-      "y": 8,
-      "size_compressed": 746.0,
-      "size_uncompressed": 8857
+      "x": 8,
+      "y": 4,
+      "size_compressed": 755.0,
+      "size_uncompressed": 8858
     }
   },
   {
@@ -2361,10 +2385,10 @@
   },
   {
     "xor2_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 6,
-      "y": 3,
-      "size_compressed": 559.0,
-      "size_uncompressed": 4494
+      "x": 3,
+      "y": 6,
+      "size_compressed": 555.0,
+      "size_uncompressed": 4495
     }
   },
   {
@@ -2429,6 +2453,14 @@
       "y": 19,
       "size_compressed": 1424.0,
       "size_uncompressed": 23885
+    }
+  },
+  {
+    "xor_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
+      "x": 5,
+      "y": 3,
+      "size_compressed": 530.0,
+      "size_uncompressed": 3920
     }
   },
   {
@@ -2555,8 +2587,8 @@
     "b1_r2_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
       "x": 8,
       "y": 8,
-      "size_compressed": 1013.0000000000001,
-      "size_uncompressed": 14701
+      "size_compressed": 1023.9999999999999,
+      "size_uncompressed": 14989
     }
   },
   {
@@ -2568,11 +2600,19 @@
     }
   },
   {
+    "xor_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
+      "x": 5,
+      "y": 3,
+      "size_compressed": 551.0,
+      "size_uncompressed": 4494
+    }
+  },
+  {
     "FA_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 4,
-      "y": 8,
-      "size_compressed": 746.0,
-      "size_uncompressed": 8857
+      "x": 8,
+      "y": 4,
+      "size_compressed": 755.0,
+      "size_uncompressed": 8858
     }
   },
   {
@@ -2611,8 +2651,8 @@
     "xnor2_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 6,
       "y": 3,
-      "size_compressed": 566.0,
-      "size_uncompressed": 4782
+      "size_compressed": 562.0,
+      "size_uncompressed": 4783
     }
   },
   {
@@ -2627,8 +2667,8 @@
     "cm82a_5_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 26,
       "y": 9,
-      "size_compressed": 3116.0,
-      "size_uncompressed": 66982
+      "size_compressed": 3110.0,
+      "size_uncompressed": 66983
     }
   },
   {
@@ -2651,8 +2691,8 @@
     "newtag_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 6,
       "y": 17,
-      "size_compressed": 1308.0,
-      "size_uncompressed": 21591
+      "size_compressed": 1306.0,
+      "size_uncompressed": 21592
     }
   },
   {
@@ -2713,10 +2753,10 @@
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 18,
-      "y": 24,
-      "size_compressed": 3401.0,
-      "size_uncompressed": 74684
+      "x": 22,
+      "y": 17,
+      "size_compressed": 3405.0,
+      "size_uncompressed": 72901
     }
   },
   {
@@ -2761,10 +2801,10 @@
   },
   {
     "xor5Maj_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 18,
-      "y": 41,
-      "size_compressed": 5920.0,
-      "size_uncompressed": 135422
+      "x": 22,
+      "y": 33,
+      "size_compressed": 5730.0,
+      "size_uncompressed": 131924
     }
   },
   {
@@ -2795,8 +2835,8 @@
     "mux21_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 3,
       "y": 5,
-      "size_compressed": 539.0,
-      "size_uncompressed": 4087
+      "size_compressed": 540.0,
+      "size_uncompressed": 4088
     }
   },
   {
@@ -2843,8 +2883,8 @@
     "cm82a_5_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
       "x": 26,
       "y": 9,
-      "size_compressed": 3117.0,
-      "size_uncompressed": 66982
+      "size_compressed": 3110.0,
+      "size_uncompressed": 66983
     }
   },
   {
@@ -2977,10 +3017,10 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 7,
-      "y": 10,
-      "size_compressed": 1114.0,
-      "size_uncompressed": 17083
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1102.0,
+      "size_uncompressed": 16819
     }
   },
   {
@@ -3075,8 +3115,8 @@
     "xor2_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 7,
       "y": 3,
-      "size_compressed": 598.0,
-      "size_uncompressed": 5642
+      "size_compressed": 604.0,
+      "size_uncompressed": 5643
     }
   },
   {
@@ -3107,16 +3147,16 @@
     "FA_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 4,
       "y": 8,
-      "size_compressed": 746.0,
-      "size_uncompressed": 8857
+      "size_compressed": 751.0,
+      "size_uncompressed": 8858
     }
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 12,
-      "y": 6,
-      "size_compressed": 1181.0,
-      "size_uncompressed": 18533
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16534
     }
   },
   {
@@ -3124,7 +3164,7 @@
       "x": 6,
       "y": 3,
       "size_compressed": 566.0,
-      "size_uncompressed": 4782
+      "size_uncompressed": 4783
     }
   },
   {
@@ -3137,18 +3177,18 @@
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 18,
-      "y": 24,
-      "size_compressed": 3403.0,
-      "size_uncompressed": 74684
+      "x": 20,
+      "y": 21,
+      "size_compressed": 3512.0,
+      "size_uncompressed": 75813
     }
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 10,
-      "size_compressed": 1076.0,
-      "size_uncompressed": 16072
+      "size_compressed": 1029.0,
+      "size_uncompressed": 14638
     }
   },
   {
@@ -3172,7 +3212,7 @@
       "x": 4,
       "y": 7,
       "size_compressed": 703.0,
-      "size_uncompressed": 8029
+      "size_uncompressed": 8030
     }
   },
   {
@@ -3233,18 +3273,18 @@
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 21,
-      "y": 19,
-      "size_compressed": 3477.9999999999995,
-      "size_uncompressed": 76092
+      "x": 22,
+      "y": 17,
+      "size_compressed": 3404.0,
+      "size_uncompressed": 72901
     }
   },
   {
     "xor5_r1_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1375.0,
-      "size_uncompressed": 23367
+      "x": 5,
+      "y": 19,
+      "size_compressed": 1347.0,
+      "size_uncompressed": 22828
     }
   },
   {
@@ -3289,10 +3329,10 @@
   },
   {
     "majority_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 14,
-      "y": 8,
-      "size_compressed": 1480.0,
-      "size_uncompressed": 25855
+      "x": 6,
+      "y": 11,
+      "size_compressed": 1121.0,
+      "size_uncompressed": 16931
     }
   },
   {
@@ -3313,10 +3353,10 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1364.0,
-      "size_uncompressed": 23367
+      "x": 5,
+      "y": 18,
+      "size_compressed": 1290.0,
+      "size_uncompressed": 21959
     }
   },
   {
@@ -3355,8 +3395,8 @@
     "t_5_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 771.0,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -3425,10 +3465,10 @@
   },
   {
     "newtag_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 12,
-      "y": 5,
-      "size_compressed": 1115.0,
-      "size_uncompressed": 16368
+      "x": 4,
+      "y": 12,
+      "size_compressed": 1022.0000000000001,
+      "size_uncompressed": 13780
     }
   },
   {
@@ -3521,18 +3561,18 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 7,
-      "y": 10,
-      "size_compressed": 1100.0,
-      "size_uncompressed": 17083
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1102.0,
+      "size_uncompressed": 16819
     }
   },
   {
     "FA_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 4,
-      "y": 8,
-      "size_compressed": 751.0,
-      "size_uncompressed": 8857
+      "x": 8,
+      "y": 4,
+      "size_compressed": 755.0,
+      "size_uncompressed": 8858
     }
   },
   {
@@ -3569,10 +3609,10 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1240.0,
-      "size_uncompressed": 20281
+      "x": 5,
+      "y": 13,
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16534
     }
   },
   {
@@ -3593,10 +3633,10 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1375.0,
-      "size_uncompressed": 23367
+      "x": 5,
+      "y": 18,
+      "size_compressed": 1285.0,
+      "size_uncompressed": 21672
     }
   },
   {
@@ -3625,10 +3665,10 @@
   },
   {
     "1bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 14,
-      "y": 17,
-      "size_compressed": 2253.0,
-      "size_uncompressed": 44634
+      "x": 11,
+      "y": 19,
+      "size_compressed": 2181.0,
+      "size_uncompressed": 42875
     }
   },
   {
@@ -3657,10 +3697,10 @@
   },
   {
     "majority_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 18,
-      "y": 7,
-      "size_compressed": 1641.0,
-      "size_uncompressed": 30499
+      "x": 5,
+      "y": 15,
+      "size_compressed": 1176.0,
+      "size_uncompressed": 18687
     }
   },
   {
@@ -3691,8 +3731,8 @@
     "b1_r2_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 8,
       "y": 8,
-      "size_compressed": 1013.0000000000001,
-      "size_uncompressed": 14701
+      "size_compressed": 1023.9999999999999,
+      "size_uncompressed": 14989
     }
   },
   {
@@ -3739,8 +3779,8 @@
     "par_check_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 5,
       "y": 12,
-      "size_compressed": 1014.0000000000001,
-      "size_uncompressed": 14281
+      "size_compressed": 1026.0,
+      "size_uncompressed": 14282
     }
   },
   {
@@ -3779,8 +3819,8 @@
     "mux21_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
       "x": 3,
       "y": 5,
-      "size_compressed": 541.0,
-      "size_uncompressed": 4087
+      "size_compressed": 542.0,
+      "size_uncompressed": 4088
     }
   },
   {
@@ -3883,8 +3923,8 @@
     "newtag_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 6,
       "y": 17,
-      "size_compressed": 1315.0,
-      "size_uncompressed": 21880
+      "size_compressed": 1306.0,
+      "size_uncompressed": 21592
     }
   },
   {
@@ -3898,9 +3938,9 @@
   {
     "t_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 975.0,
-      "size_uncompressed": 13295
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8704
     }
   },
   {
@@ -3947,8 +3987,8 @@
     "HA_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 5,
       "y": 8,
-      "size_compressed": 782.0,
-      "size_uncompressed": 10038
+      "size_compressed": 800.0,
+      "size_uncompressed": 10039
     }
   },
   {
@@ -3963,8 +4003,8 @@
     "par_check_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
       "x": 6,
       "y": 9,
-      "size_compressed": 945.0,
-      "size_uncompressed": 12553
+      "size_compressed": 943.0,
+      "size_uncompressed": 12554
     }
   },
   {
@@ -3985,10 +4025,10 @@
   },
   {
     "xnor2_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 3,
-      "size_compressed": 565.0,
-      "size_uncompressed": 4782
+      "x": 3,
+      "y": 9,
+      "size_compressed": 640.0,
+      "size_uncompressed": 6505
     }
   },
   {
@@ -4001,10 +4041,10 @@
   },
   {
     "newtag_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 14,
-      "y": 5,
-      "size_compressed": 1182.0,
-      "size_uncompressed": 18397
+      "x": 4,
+      "y": 13,
+      "size_compressed": 964.9999999999999,
+      "size_uncompressed": 12927
     }
   },
   {
@@ -4041,10 +4081,10 @@
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 21,
-      "y": 19,
-      "size_compressed": 3482.0,
-      "size_uncompressed": 76092
+      "x": 22,
+      "y": 17,
+      "size_compressed": 3404.0,
+      "size_uncompressed": 72901
     }
   },
   {
@@ -4065,18 +4105,18 @@
   },
   {
     "parity_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 61,
-      "y": 9,
-      "size_compressed": 4900.0,
-      "size_uncompressed": 112664
+      "x": 9,
+      "y": 58,
+      "size_compressed": 4777.0,
+      "size_uncompressed": 110328
     }
   },
   {
     "1bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 14,
-      "y": 17,
-      "size_compressed": 2264.0,
-      "size_uncompressed": 44634
+      "x": 11,
+      "y": 19,
+      "size_compressed": 2181.0,
+      "size_uncompressed": 42875
     }
   },
   {
@@ -4121,18 +4161,18 @@
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 10,
-      "size_compressed": 1082.0,
-      "size_uncompressed": 16072
+      "x": 7,
+      "y": 11,
+      "size_compressed": 1148.0,
+      "size_uncompressed": 17510
     }
   },
   {
     "newtag_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 14,
-      "y": 5,
-      "size_compressed": 1207.0,
-      "size_uncompressed": 18397
+      "x": 4,
+      "y": 13,
+      "size_compressed": 964.9999999999999,
+      "size_uncompressed": 12927
     }
   },
   {
@@ -4249,10 +4289,10 @@
   },
   {
     "clpl_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1383.0,
-      "size_uncompressed": 21876
+      "x": 14,
+      "y": 5,
+      "size_compressed": 1249.0,
+      "size_uncompressed": 18702
     }
   },
   {
@@ -4267,24 +4307,24 @@
     "cm82a_5_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 12,
       "y": 27,
-      "size_compressed": 3399.0,
-      "size_uncompressed": 73086
+      "size_compressed": 3376.0,
+      "size_uncompressed": 73087
     }
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 10,
-      "size_compressed": 1082.0,
-      "size_uncompressed": 16072
+      "size_compressed": 1029.0,
+      "size_uncompressed": 14638
     }
   },
   {
     "t_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 960.0,
-      "size_uncompressed": 13295
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8704
     }
   },
   {
@@ -4299,8 +4339,8 @@
     "mux21_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 3,
       "y": 4,
-      "size_compressed": 512.0,
-      "size_uncompressed": 3513
+      "size_compressed": 518.0,
+      "size_uncompressed": 3514
     }
   },
   {
@@ -4337,10 +4377,10 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1382.0,
-      "size_uncompressed": 23367
+      "x": 5,
+      "y": 18,
+      "size_compressed": 1290.0,
+      "size_uncompressed": 21959
     }
   },
   {
@@ -4348,7 +4388,7 @@
       "x": 6,
       "y": 9,
       "size_compressed": 943.0,
-      "size_uncompressed": 12553
+      "size_uncompressed": 12554
     }
   },
   {
@@ -4393,10 +4433,10 @@
   },
   {
     "1bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 10,
-      "y": 20,
-      "size_compressed": 2210.0,
-      "size_uncompressed": 44020
+      "x": 11,
+      "y": 19,
+      "size_compressed": 2182.0,
+      "size_uncompressed": 42875
     }
   },
   {
@@ -4449,10 +4489,10 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 5,
-      "y": 8,
-      "size_compressed": 824.0,
-      "size_uncompressed": 10388
+      "x": 8,
+      "y": 4,
+      "size_compressed": 689.0,
+      "size_uncompressed": 6945
     }
   },
   {
@@ -4611,8 +4651,8 @@
     "cm82a_5_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 26,
       "y": 9,
-      "size_compressed": 3117.0,
-      "size_uncompressed": 66982
+      "size_compressed": 3109.0,
+      "size_uncompressed": 66983
     }
   },
   {
@@ -4657,10 +4697,10 @@
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 13,
-      "size_compressed": 1199.0,
-      "size_uncompressed": 19112
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16534
     }
   },
   {
@@ -4705,10 +4745,10 @@
   },
   {
     "clpl_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1383.0,
-      "size_uncompressed": 21876
+      "x": 12,
+      "y": 10,
+      "size_compressed": 1582.0,
+      "size_uncompressed": 27031
     }
   },
   {
@@ -4763,24 +4803,24 @@
     "xor2_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 6,
       "y": 3,
-      "size_compressed": 571.0,
-      "size_uncompressed": 5068
+      "size_compressed": 570.0,
+      "size_uncompressed": 5069
     }
   },
   {
     "mux21_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 3,
       "y": 5,
-      "size_compressed": 539.0,
-      "size_uncompressed": 4087
+      "size_compressed": 542.0,
+      "size_uncompressed": 4088
     }
   },
   {
     "t_5_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 771.0,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -4969,10 +5009,10 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 5,
-      "y": 8,
-      "size_compressed": 824.0,
-      "size_uncompressed": 10388
+      "x": 8,
+      "y": 4,
+      "size_compressed": 689.0,
+      "size_uncompressed": 6945
     }
   },
   {
@@ -5057,10 +5097,10 @@
   },
   {
     "clpl_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 15,
-      "y": 6,
-      "size_compressed": 1383.0,
-      "size_uncompressed": 21876
+      "x": 14,
+      "y": 5,
+      "size_compressed": 1248.0,
+      "size_uncompressed": 18702
     }
   },
   {
@@ -5115,8 +5155,8 @@
     "t_5_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 771.0,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -5236,7 +5276,7 @@
       "x": 7,
       "y": 3,
       "size_compressed": 604.0,
-      "size_uncompressed": 5642
+      "size_uncompressed": 5643
     }
   },
   {
@@ -5305,10 +5345,10 @@
   },
   {
     "xor5Maj_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 23,
+      "x": 22,
       "y": 33,
-      "size_compressed": 5749.0,
-      "size_uncompressed": 132799
+      "size_compressed": 5719.0,
+      "size_uncompressed": 131632
     }
   },
   {
@@ -5329,10 +5369,10 @@
   },
   {
     "b1_r2_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 8,
-      "y": 6,
-      "size_compressed": 911.0,
-      "size_uncompressed": 11831
+      "x": 7,
+      "y": 7,
+      "size_compressed": 978.9999999999999,
+      "size_uncompressed": 13554
     }
   },
   {
@@ -5354,9 +5394,9 @@
   {
     "t_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 975.0,
-      "size_uncompressed": 13295
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8704
     }
   },
   {
@@ -5373,6 +5413,14 @@
       "y": 8,
       "size_compressed": 928.0000000000001,
       "size_uncompressed": 13482
+    }
+  },
+  {
+    "xor_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
+      "x": 3,
+      "y": 8,
+      "size_compressed": 632.0,
+      "size_uncompressed": 6216
     }
   },
   {
@@ -5424,6 +5472,14 @@
     }
   },
   {
+    "xor_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
+      "x": 5,
+      "y": 3,
+      "size_compressed": 551.0,
+      "size_uncompressed": 4494
+    }
+  },
+  {
     "majority_5_r1_ONE_2DDWave_ortho_UnOpt_Ord_none.fgl": {
       "x": 11,
       "y": 17,
@@ -5443,8 +5499,8 @@
     "xor2_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 6,
       "y": 3,
-      "size_compressed": 576.0,
-      "size_uncompressed": 5068
+      "size_compressed": 570.0,
+      "size_uncompressed": 5069
     }
   },
   {
@@ -5553,18 +5609,18 @@
   },
   {
     "b1_r2_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 8,
-      "y": 6,
-      "size_compressed": 910.0,
-      "size_uncompressed": 11831
+      "x": 7,
+      "y": 7,
+      "size_compressed": 978.9999999999999,
+      "size_uncompressed": 13554
     }
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 18,
-      "y": 24,
-      "size_compressed": 3402.0,
-      "size_uncompressed": 74684
+      "x": 22,
+      "y": 17,
+      "size_compressed": 3405.0,
+      "size_uncompressed": 72901
     }
   },
   {
@@ -5601,10 +5657,10 @@
   },
   {
     "xor5Maj_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 23,
+      "x": 22,
       "y": 33,
-      "size_compressed": 5768.0,
-      "size_uncompressed": 132799
+      "size_compressed": 5719.0,
+      "size_uncompressed": 131632
     }
   },
   {
@@ -5627,8 +5683,8 @@
     "xor5Maj_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 23,
       "y": 33,
-      "size_compressed": 5749.0,
-      "size_uncompressed": 132799
+      "size_compressed": 5768.0,
+      "size_uncompressed": 132800
     }
   },
   {
@@ -5643,8 +5699,8 @@
     "t_5_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 770.0,
-      "size_uncompressed": 8705
+      "size_compressed": 771.0,
+      "size_uncompressed": 8706
     }
   },
   {
@@ -5740,7 +5796,7 @@
       "x": 6,
       "y": 5,
       "size_compressed": 770.0,
-      "size_uncompressed": 8703
+      "size_uncompressed": 8704
     }
   },
   {
@@ -5777,10 +5833,10 @@
   },
   {
     "parity_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
-      "x": 61,
-      "y": 9,
-      "size_compressed": 4911.0,
-      "size_uncompressed": 112664
+      "x": 9,
+      "y": 56,
+      "size_compressed": 4730.0,
+      "size_uncompressed": 108588
     }
   },
   {
@@ -5905,26 +5961,26 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 24,
-      "size_compressed": 1762.0,
-      "size_uncompressed": 33231
+      "x": 11,
+      "y": 16,
+      "size_compressed": 1672.0,
+      "size_uncompressed": 30280
     }
   },
   {
     "xnor2_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 6,
-      "y": 3,
-      "size_compressed": 549.0,
-      "size_uncompressed": 4208
+      "x": 3,
+      "y": 6,
+      "size_compressed": 538.0,
+      "size_uncompressed": 4209
     }
   },
   {
     "1bitAdderAOIG_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 13,
-      "size_compressed": 1196.0,
-      "size_uncompressed": 19112
+      "size_compressed": 1082.0,
+      "size_uncompressed": 16534
     }
   },
   {
@@ -5956,7 +6012,7 @@
       "x": 6,
       "y": 4,
       "size_compressed": 684.0,
-      "size_uncompressed": 7455
+      "size_uncompressed": 7456
     }
   },
   {
@@ -6138,9 +6194,9 @@
   {
     "mux21_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
       "x": 3,
-      "y": 4,
-      "size_compressed": 521.0,
-      "size_uncompressed": 3513
+      "y": 5,
+      "size_compressed": 510.99999999999994,
+      "size_uncompressed": 3227
     }
   },
   {
@@ -6153,18 +6209,18 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 8,
-      "y": 6,
-      "size_compressed": 888.0,
-      "size_uncompressed": 11823
+      "x": 4,
+      "y": 10,
+      "size_compressed": 804.0,
+      "size_uncompressed": 9815
     }
   },
   {
     "t_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 6,
       "y": 5,
-      "size_compressed": 768.0,
-      "size_uncompressed": 8703
+      "size_compressed": 770.0,
+      "size_uncompressed": 8704
     }
   },
   {
@@ -6193,10 +6249,10 @@
   },
   {
     "majority_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 8,
-      "y": 16,
-      "size_compressed": 1583.0,
-      "size_uncompressed": 28749
+      "x": 6,
+      "y": 11,
+      "size_compressed": 1115.0,
+      "size_uncompressed": 16644
     }
   },
   {
@@ -6212,15 +6268,15 @@
       "x": 4,
       "y": 8,
       "size_compressed": 751.0,
-      "size_uncompressed": 8857
+      "size_uncompressed": 8858
     }
   },
   {
     "FA_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 4,
       "y": 8,
-      "size_compressed": 746.0,
-      "size_uncompressed": 8857
+      "size_compressed": 751.0,
+      "size_uncompressed": 8858
     }
   },
   {
@@ -6241,10 +6297,10 @@
   },
   {
     "parity_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
-      "x": 61,
-      "y": 9,
-      "size_compressed": 4902.0,
-      "size_uncompressed": 112664
+      "x": 9,
+      "y": 56,
+      "size_compressed": 4730.0,
+      "size_uncompressed": 108588
     }
   },
   {
@@ -6281,10 +6337,10 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1364.0,
-      "size_uncompressed": 23367
+      "x": 5,
+      "y": 18,
+      "size_compressed": 1285.0,
+      "size_uncompressed": 21672
     }
   },
   {
@@ -6297,10 +6353,10 @@
   },
   {
     "xnor2_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 3,
-      "size_compressed": 565.0,
-      "size_uncompressed": 4782
+      "x": 3,
+      "y": 9,
+      "size_compressed": 640.0,
+      "size_uncompressed": 6505
     }
   },
   {
@@ -6339,8 +6395,8 @@
     "par_check_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 5,
       "y": 12,
-      "size_compressed": 1025.0,
-      "size_uncompressed": 14281
+      "size_compressed": 1026.0,
+      "size_uncompressed": 14282
     }
   },
   {
@@ -6417,18 +6473,18 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 6,
-      "y": 15,
-      "size_compressed": 1364.0,
-      "size_uncompressed": 23367
+      "x": 5,
+      "y": 19,
+      "size_compressed": 1347.0,
+      "size_uncompressed": 22828
     }
   },
   {
     "mux21_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 3,
       "y": 4,
-      "size_compressed": 521.0,
-      "size_uncompressed": 3513
+      "size_compressed": 518.0,
+      "size_uncompressed": 3514
     }
   },
   {
@@ -6467,8 +6523,8 @@
     "cm82a_5_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 26,
       "y": 9,
-      "size_compressed": 3109.0,
-      "size_uncompressed": 66982
+      "size_compressed": 3110.0,
+      "size_uncompressed": 66983
     }
   },
   {
@@ -6636,7 +6692,7 @@
       "x": 5,
       "y": 10,
       "size_compressed": 949.0,
-      "size_uncompressed": 12840
+      "size_uncompressed": 12841
     }
   },
   {
@@ -6644,15 +6700,15 @@
       "x": 6,
       "y": 3,
       "size_compressed": 570.0,
-      "size_uncompressed": 5068
+      "size_uncompressed": 5069
     }
   },
   {
     "newtag_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 6,
-      "y": 17,
-      "size_compressed": 1315.0,
-      "size_uncompressed": 21880
+      "x": 4,
+      "y": 13,
+      "size_compressed": 990.0,
+      "size_uncompressed": 13501
     }
   },
   {
@@ -6666,9 +6722,9 @@
   {
     "par_check_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 5,
-      "y": 12,
-      "size_compressed": 1013.0,
-      "size_uncompressed": 14281
+      "y": 11,
+      "size_compressed": 983.9999999999999,
+      "size_uncompressed": 13704
     }
   },
   {
@@ -6709,6 +6765,14 @@
       "y": 7,
       "size_compressed": 713.0,
       "size_uncompressed": 8088
+    }
+  },
+  {
+    "xor_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
+      "x": 5,
+      "y": 3,
+      "size_compressed": 554.0,
+      "size_uncompressed": 4494
     }
   },
   {
@@ -6771,8 +6835,8 @@
     "1bitAdderMaj_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
       "x": 14,
       "y": 17,
-      "size_compressed": 2253.0,
-      "size_uncompressed": 44634
+      "size_compressed": 2267.0,
+      "size_uncompressed": 44927
     }
   },
   {
@@ -6860,7 +6924,7 @@
       "x": 4,
       "y": 8,
       "size_compressed": 751.0,
-      "size_uncompressed": 8857
+      "size_uncompressed": 8858
     }
   },
   {
@@ -6892,7 +6956,7 @@
       "x": 6,
       "y": 4,
       "size_compressed": 685.0,
-      "size_uncompressed": 7455
+      "size_uncompressed": 7456
     }
   },
   {
@@ -6929,10 +6993,10 @@
   },
   {
     "parity_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
-      "x": 61,
-      "y": 9,
-      "size_compressed": 4911.0,
-      "size_uncompressed": 112664
+      "x": 9,
+      "y": 56,
+      "size_compressed": 4731.0,
+      "size_uncompressed": 108588
     }
   },
   {
@@ -7033,10 +7097,10 @@
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 10,
-      "size_compressed": 1078.0,
-      "size_uncompressed": 15785
+      "size_compressed": 982.9999999999999,
+      "size_uncompressed": 13490
     }
   },
   {
@@ -7076,7 +7140,7 @@
       "x": 6,
       "y": 3,
       "size_compressed": 566.0,
-      "size_uncompressed": 4782
+      "size_uncompressed": 4783
     }
   },
   {
@@ -7131,8 +7195,8 @@
     "HA_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 4,
       "y": 7,
-      "size_compressed": 707.0,
-      "size_uncompressed": 8029
+      "size_compressed": 703.0,
+      "size_uncompressed": 8030
     }
   },
   {
@@ -7147,8 +7211,8 @@
     "HA_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 6,
       "y": 4,
-      "size_compressed": 684.0,
-      "size_uncompressed": 7455
+      "size_compressed": 685.0,
+      "size_uncompressed": 7456
     }
   },
   {
@@ -7209,26 +7273,26 @@
   },
   {
     "parity_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 9,
-      "y": 70,
-      "size_compressed": 5523.0,
-      "size_uncompressed": 130646
+      "x": 38,
+      "y": 22,
+      "size_compressed": 5073.0,
+      "size_uncompressed": 114041
     }
   },
   {
     "2bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
-      "x": 18,
-      "y": 24,
-      "size_compressed": 3402.0,
-      "size_uncompressed": 74684
+      "x": 22,
+      "y": 17,
+      "size_compressed": 3405.0,
+      "size_uncompressed": 72901
     }
   },
   {
     "parity_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 9,
-      "y": 70,
-      "size_compressed": 5509.0,
-      "size_uncompressed": 130646
+      "x": 38,
+      "y": 22,
+      "size_compressed": 5073.0,
+      "size_uncompressed": 114041
     }
   },
   {
@@ -7251,8 +7315,8 @@
     "1bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl": {
       "x": 10,
       "y": 20,
-      "size_compressed": 2211.0,
-      "size_uncompressed": 44020
+      "size_compressed": 2212.0,
+      "size_uncompressed": 44021
     }
   },
   {
@@ -7289,10 +7353,10 @@
   },
   {
     "majority_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 18,
-      "y": 7,
-      "size_compressed": 1651.0,
-      "size_uncompressed": 30499
+      "x": 5,
+      "y": 15,
+      "size_compressed": 1176.0,
+      "size_uncompressed": 18687
     }
   },
   {
@@ -7323,8 +7387,8 @@
     "cm82a_5_ONE_2DDWave_gold_UnOpt_UnOrd_acp.fgl": {
       "x": 26,
       "y": 9,
-      "size_compressed": 3109.9999999999995,
-      "size_uncompressed": 66982
+      "size_compressed": 3109.0,
+      "size_uncompressed": 66983
     }
   },
   {
@@ -7345,18 +7409,18 @@
   },
   {
     "majority_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 11,
-      "y": 13,
-      "size_compressed": 1575.0,
-      "size_uncompressed": 28747
+      "x": 6,
+      "y": 16,
+      "size_compressed": 1262.0,
+      "size_uncompressed": 21288
     }
   },
   {
     "par_check_ONE_2DDWave_gold_Opt_UnOrd_area.fgl": {
       "x": 5,
       "y": 10,
-      "size_compressed": 951.0,
-      "size_uncompressed": 12840
+      "size_compressed": 949.0,
+      "size_uncompressed": 12841
     }
   },
   {
@@ -7385,10 +7449,10 @@
   },
   {
     "xor5_r1_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
-      "x": 6,
-      "y": 24,
-      "size_compressed": 1749.0,
-      "size_uncompressed": 33231
+      "x": 11,
+      "y": 16,
+      "size_compressed": 1672.0,
+      "size_uncompressed": 30280
     }
   },
   {
@@ -7435,8 +7499,8 @@
     "1bitAdderMaj_ONE_2DDWave_gold_UnOpt_UnOrd_crossings.fgl": {
       "x": 14,
       "y": 17,
-      "size_compressed": 2264.0,
-      "size_uncompressed": 44634
+      "size_compressed": 2267.0,
+      "size_uncompressed": 44927
     }
   },
   {
@@ -7467,16 +7531,16 @@
     "b1_r2_ONE_2DDWave_gold_Opt_UnOrd_wires.fgl": {
       "x": 8,
       "y": 8,
-      "size_compressed": 1004.9999999999999,
-      "size_uncompressed": 14414
+      "size_compressed": 1001.0000000000001,
+      "size_uncompressed": 14415
     }
   },
   {
     "par_gen_ONE_2DDWave_gold_Opt_UnOrd_crossings.fgl": {
-      "x": 8,
-      "y": 6,
-      "size_compressed": 879.0,
-      "size_uncompressed": 11823
+      "x": 4,
+      "y": 10,
+      "size_compressed": 804.0,
+      "size_uncompressed": 9815
     }
   },
   {
@@ -7507,8 +7571,8 @@
     "b1_r2_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 8,
       "y": 8,
-      "size_compressed": 1017.0,
-      "size_uncompressed": 14701
+      "size_compressed": 1023.9999999999999,
+      "size_uncompressed": 14989
     }
   },
   {
@@ -7522,9 +7586,9 @@
   {
     "t_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
       "x": 6,
-      "y": 8,
-      "size_compressed": 975.0,
-      "size_uncompressed": 13295
+      "y": 5,
+      "size_compressed": 771.0,
+      "size_uncompressed": 8704
     }
   },
   {
@@ -7537,18 +7601,18 @@
   },
   {
     "majority_5_r1_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 6,
+      "x": 5,
       "y": 10,
-      "size_compressed": 1082.0,
-      "size_uncompressed": 16072
+      "size_compressed": 974.9999999999999,
+      "size_uncompressed": 13203
     }
   },
   {
     "cm82a_5_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl": {
       "x": 26,
       "y": 9,
-      "size_compressed": 3109.9999999999995,
-      "size_uncompressed": 66982
+      "size_compressed": 3110.0,
+      "size_uncompressed": 66983
     }
   },
   {
