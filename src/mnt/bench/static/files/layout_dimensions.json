@@ -161,10 +161,10 @@
   },
   {
     "max_ONE_BEST.fgl": {
-      "x": 2461,
-      "y": 6607,
-      "size_compressed": 43576372.0,
-      "size_uncompressed": 1419205772
+      "x": 2158,
+      "y": 4727,
+      "size_compressed": 39055116.0,
+      "size_uncompressed": 1110524851
     }
   },
   {
@@ -449,10 +449,10 @@
   },
   {
     "i2c_ONE_BEST.fgl": {
-      "x": 774,
-      "y": 1573,
-      "size_compressed": 4835483.0,
-      "size_uncompressed": 149993187
+      "x": 675,
+      "y": 1248,
+      "size_compressed": 4470644.0,
+      "size_uncompressed": 128156731
     }
   },
   {
@@ -505,10 +505,10 @@
   },
   {
     "adder_ONE_BEST.fgl": {
-      "x": 893,
-      "y": 2169,
-      "size_compressed": 5701246.0,
-      "size_uncompressed": 179899537
+      "x": 636,
+      "y": 1419,
+      "size_compressed": 4246010.0,
+      "size_uncompressed": 122890432
     }
   },
   {
@@ -1009,10 +1009,10 @@
   },
   {
     "c1355_Bestagon_BEST.fgl": {
-      "x": 171,
-      "y": 417,
-      "size_compressed": 288048.0,
-      "size_uncompressed": 6536669
+      "x": 115,
+      "y": 348,
+      "size_compressed": 260190.0,
+      "size_uncompressed": 6032340
     }
   },
   {
@@ -1113,10 +1113,10 @@
   },
   {
     "bar_Bestagon_BEST.fgl": {
-      "x": 2964,
-      "y": 6470,
-      "size_compressed": 35372028.0,
-      "size_uncompressed": 807292991
+      "x": 2712,
+      "y": 5831,
+      "size_compressed": 38212924.0,
+      "size_uncompressed": 874751298
     }
   },
   {
@@ -1257,10 +1257,10 @@
   },
   {
     "ctrl_Bestagon_BEST.fgl": {
-      "x": 84,
-      "y": 203,
-      "size_compressed": 73684.0,
-      "size_uncompressed": 1690392
+      "x": 61,
+      "y": 166,
+      "size_compressed": 64419.0,
+      "size_uncompressed": 1500044
     }
   },
   {
@@ -1417,10 +1417,10 @@
   },
   {
     "sin_Bestagon_BEST.fgl": {
-      "x": 4085,
-      "y": 8707,
-      "size_compressed": 57276904.0,
-      "size_uncompressed": 1306718141
+      "x": 3582,
+      "y": 7863,
+      "size_compressed": 54230175.0,
+      "size_uncompressed": 1238792403
     }
   },
   {
@@ -1433,10 +1433,10 @@
   },
   {
     "c880_Bestagon_BEST.fgl": {
-      "x": 267,
-      "y": 588,
-      "size_compressed": 517902.0,
-      "size_uncompressed": 11736648
+      "x": 179,
+      "y": 490,
+      "size_compressed": 451988.0,
+      "size_uncompressed": 10479580
     }
   },
   {
@@ -1537,10 +1537,10 @@
   },
   {
     "dec_Bestagon_BEST.fgl": {
-      "x": 425,
-      "y": 892,
-      "size_compressed": 1390400.0,
-      "size_uncompressed": 31455673
+      "x": 344,
+      "y": 723,
+      "size_compressed": 915245.9999999999,
+      "size_uncompressed": 20594097
     }
   },
   {
@@ -1649,10 +1649,10 @@
   },
   {
     "c7552_ONE_BEST.fgl": {
-      "x": 1330,
-      "y": 3267,
-      "size_compressed": 16469893.0,
-      "size_uncompressed": 526018458
+      "x": 1213,
+      "y": 2443,
+      "size_compressed": 14445297.999999998,
+      "size_uncompressed": 426230067
     }
   },
   {
@@ -1809,10 +1809,10 @@
   },
   {
     "c2670_Bestagon_BEST.fgl": {
-      "x": 499,
-      "y": 1061,
-      "size_compressed": 1934023.0,
-      "size_uncompressed": 43729996
+      "x": 392,
+      "y": 919,
+      "size_compressed": 1636045.9999999998,
+      "size_uncompressed": 37175861
     }
   },
   {
@@ -1953,10 +1953,10 @@
   },
   {
     "i2c_Bestagon_BEST.fgl": {
-      "x": 886,
-      "y": 1880,
-      "size_compressed": 5264402.0,
-      "size_uncompressed": 119974163
+      "x": 762,
+      "y": 1624,
+      "size_compressed": 4778974.0,
+      "size_uncompressed": 108706581
     }
   },
   {
@@ -2217,10 +2217,10 @@
   },
   {
     "c1355_ONE_BEST.fgl": {
-      "x": 365,
-      "y": 701,
-      "size_compressed": 755798.0,
-      "size_uncompressed": 22749454
+      "x": 319,
+      "y": 552,
+      "size_compressed": 820891.0,
+      "size_uncompressed": 21869361
     }
   },
   {
@@ -2233,10 +2233,10 @@
   },
   {
     "cavlc_ONE_BEST.fgl": {
-      "x": 484,
-      "y": 1149,
-      "size_compressed": 1943333.9999999998,
-      "size_uncompressed": 58631530
+      "x": 454,
+      "y": 962,
+      "size_compressed": 2147582.0,
+      "size_uncompressed": 58094085
     }
   },
   {
@@ -2265,10 +2265,10 @@
   },
   {
     "router_Bestagon_BEST.fgl": {
-      "x": 111,
-      "y": 245,
-      "size_compressed": 112935.0,
-      "size_uncompressed": 2579423
+      "x": 58,
+      "y": 182,
+      "size_compressed": 80552.0,
+      "size_uncompressed": 1863499
     }
   },
   {
@@ -2353,10 +2353,10 @@
   },
   {
     "c6288_Bestagon_BEST.fgl": {
-      "x": 1248,
-      "y": 2883,
-      "size_compressed": 4537924.0,
-      "size_uncompressed": 103734403
+      "x": 892,
+      "y": 2166,
+      "size_compressed": 3854084.0,
+      "size_uncompressed": 88555680
     }
   },
   {
@@ -2377,10 +2377,10 @@
   },
   {
     "adder_Bestagon_BEST.fgl": {
-      "x": 512,
-      "y": 1659,
-      "size_compressed": 4285623.0,
-      "size_uncompressed": 98240625
+      "x": 320,
+      "y": 1273,
+      "size_compressed": 3459883.0,
+      "size_uncompressed": 78755961
     }
   },
   {
@@ -2393,10 +2393,10 @@
   },
   {
     "int2float_ONE_BEST.fgl": {
-      "x": 155,
-      "y": 362,
-      "size_compressed": 246412.0,
-      "size_uncompressed": 6986252
+      "x": 130,
+      "y": 220,
+      "size_compressed": 237467.00000000003,
+      "size_uncompressed": 5845779
     }
   },
   {
@@ -2489,18 +2489,18 @@
   },
   {
     "c3540_Bestagon_BEST.fgl": {
-      "x": 814,
-      "y": 1720,
-      "size_compressed": 3410477.0,
-      "size_uncompressed": 77487332
+      "x": 695,
+      "y": 1561,
+      "size_compressed": 3446356.0,
+      "size_uncompressed": 78701807
     }
   },
   {
     "int2float_Bestagon_BEST.fgl": {
-      "x": 169,
-      "y": 375,
-      "size_compressed": 231800.0,
-      "size_uncompressed": 5273359
+      "x": 74,
+      "y": 289,
+      "size_compressed": 194438.0,
+      "size_uncompressed": 4569783
     }
   },
   {
@@ -2529,10 +2529,10 @@
   },
   {
     "cavlc_Bestagon_BEST.fgl": {
-      "x": 549,
-      "y": 1156,
-      "size_compressed": 2124319.0,
-      "size_uncompressed": 47985570
+      "x": 507,
+      "y": 1073,
+      "size_compressed": 2111158.0,
+      "size_uncompressed": 47999673
     }
   },
   {
@@ -2817,10 +2817,10 @@
   },
   {
     "c499_Bestagon_BEST.fgl": {
-      "x": 163,
-      "y": 435,
-      "size_compressed": 309499.0,
-      "size_uncompressed": 7035565
+      "x": 108,
+      "y": 361,
+      "size_compressed": 261053.0,
+      "size_uncompressed": 6070187
     }
   },
   {
@@ -3049,10 +3049,10 @@
   },
   {
     "bar_ONE_BEST.fgl": {
-      "x": 2314,
-      "y": 6193,
-      "size_compressed": 30965934.0,
-      "size_uncompressed": 989544058
+      "x": 2228,
+      "y": 5159,
+      "size_compressed": 34399473.0,
+      "size_uncompressed": 996427429
     }
   },
   {
@@ -3097,10 +3097,10 @@
   },
   {
     "router_ONE_BEST.fgl": {
-      "x": 103,
-      "y": 212,
-      "size_compressed": 124717.0,
-      "size_uncompressed": 3491648
+      "x": 77,
+      "y": 102,
+      "size_compressed": 71488.0,
+      "size_uncompressed": 1765724
     }
   },
   {
@@ -3441,10 +3441,10 @@
   },
   {
     "c432_Bestagon_BEST.fgl": {
-      "x": 119,
-      "y": 303,
-      "size_compressed": 136902.0,
-      "size_uncompressed": 3140329
+      "x": 59,
+      "y": 217,
+      "size_compressed": 93831.0,
+      "size_uncompressed": 2177821
     }
   },
   {
@@ -3625,10 +3625,10 @@
   },
   {
     "c6288_ONE_BEST.fgl": {
-      "x": 1330,
-      "y": 5714,
-      "size_compressed": 6748794.0,
-      "size_uncompressed": 213369443
+      "x": 1552,
+      "y": 3319,
+      "size_compressed": 9089100.0,
+      "size_uncompressed": 259361904
     }
   },
   {
@@ -3643,8 +3643,8 @@
     "parity_Bestagon_BEST.fgl": {
       "x": 9,
       "y": 20,
-      "size_compressed": 1423.0,
-      "size_uncompressed": 20877
+      "size_compressed": 1426.0000000000002,
+      "size_uncompressed": 20878
     }
   },
   {
@@ -4153,10 +4153,10 @@
   },
   {
     "sin_ONE_BEST.fgl": {
-      "x": 3900,
-      "y": 9079,
-      "size_compressed": 55451587.0,
-      "size_uncompressed": 1805381622
+      "x": 3690,
+      "y": 7713,
+      "size_compressed": 49769196.0,
+      "size_uncompressed": 1611170762
     }
   },
   {
@@ -4513,10 +4513,10 @@
   },
   {
     "c880_ONE_BEST.fgl": {
-      "x": 266,
-      "y": 621,
-      "size_compressed": 615734.0,
-      "size_uncompressed": 17928653
+      "x": 248,
+      "y": 483,
+      "size_compressed": 572061.0,
+      "size_uncompressed": 15275320
     }
   },
   {
@@ -4633,10 +4633,10 @@
   },
   {
     "par_gen_ONE_2DDWave_gold_Opt_UnOrd_acp.fgl": {
-      "x": 9,
-      "y": 5,
-      "size_compressed": 878.0000000000001,
-      "size_uncompressed": 11823
+      "x": 4,
+      "y": 8,
+      "size_compressed": 735.0,
+      "size_uncompressed": 8093
     }
   },
   {
@@ -4777,10 +4777,10 @@
   },
   {
     "c499_ONE_BEST.fgl": {
-      "x": 371,
-      "y": 687,
-      "size_compressed": 754693.0,
-      "size_uncompressed": 22639876
+      "x": 321,
+      "y": 540,
+      "size_compressed": 767973.0000000001,
+      "size_uncompressed": 20499075
     }
   },
   {
@@ -4889,10 +4889,10 @@
   },
   {
     "c3540_ONE_BEST.fgl": {
-      "x": 723,
-      "y": 1744,
-      "size_compressed": 3541718.0,
-      "size_uncompressed": 108621833
+      "x": 694,
+      "y": 1400,
+      "size_compressed": 3817548.0,
+      "size_uncompressed": 105498028
     }
   },
   {
@@ -5161,10 +5161,10 @@
   },
   {
     "c1908_ONE_BEST.fgl": {
-      "x": 322,
-      "y": 693,
-      "size_compressed": 703031.0,
-      "size_uncompressed": 20745262
+      "x": 294,
+      "y": 544,
+      "size_compressed": 718030.0,
+      "size_uncompressed": 19244566
     }
   },
   {
@@ -5353,10 +5353,10 @@
   },
   {
     "c432_ONE_BEST.fgl": {
-      "x": 120,
-      "y": 266,
-      "size_compressed": 141544.0,
-      "size_uncompressed": 3922805
+      "x": 97,
+      "y": 162,
+      "size_compressed": 104205.0,
+      "size_uncompressed": 2566096
     }
   },
   {
@@ -5521,10 +5521,10 @@
   },
   {
     "c2670_ONE_BEST.fgl": {
-      "x": 473,
-      "y": 1166,
-      "size_compressed": 2312661.0,
-      "size_uncompressed": 71067764
+      "x": 445,
+      "y": 921,
+      "size_compressed": 2346226.0,
+      "size_uncompressed": 63710353
     }
   },
   {
@@ -5569,10 +5569,10 @@
   },
   {
     "c7552_Bestagon_BEST.fgl": {
-      "x": 1271,
-      "y": 2618,
-      "size_compressed": 12229011.0,
-      "size_uncompressed": 278448836
+      "x": 1111,
+      "y": 2328,
+      "size_compressed": 11343346.0,
+      "size_uncompressed": 258621175
     }
   },
   {
@@ -6153,8 +6153,8 @@
   },
   {
     "c5315_ONE_BEST.fgl": {
-      "x": 1137,
-      "y": 2715,
+      "x": 1052,
+      "y": 2145,
       "size_compressed": 9842016.0,
       "size_uncompressed": 312998361
     }
@@ -6505,10 +6505,10 @@
   },
   {
     "c5315_Bestagon_BEST.fgl": {
-      "x": 1230,
-      "y": 2535,
-      "size_compressed": 9271124.0,
-      "size_uncompressed": 212219124
+      "x": 1089,
+      "y": 2224,
+      "size_compressed": 8222129.0,
+      "size_uncompressed": 187792274
     }
   },
   {
@@ -6585,10 +6585,10 @@
   },
   {
     "max_Bestagon_BEST.fgl": {
-      "x": 2370,
-      "y": 5982,
-      "size_compressed": 43323672.0,
-      "size_uncompressed": 991574254
+      "x": 1959,
+      "y": 4894,
+      "size_compressed": 34884822.0,
+      "size_uncompressed": 795016882
     }
   },
   {
@@ -6601,10 +6601,10 @@
   },
   {
     "priority_Bestagon_BEST.fgl": {
-      "x": 352,
-      "y": 937,
-      "size_compressed": 1401113.0,
-      "size_uncompressed": 31875779
+      "x": 213,
+      "y": 628,
+      "size_compressed": 867331.0,
+      "size_uncompressed": 19792965
     }
   },
   {
@@ -6657,10 +6657,10 @@
   },
   {
     "ctrl_ONE_BEST.fgl": {
-      "x": 80,
-      "y": 164,
-      "size_compressed": 73618.0,
-      "size_uncompressed": 1968655
+      "x": 64,
+      "y": 105,
+      "size_compressed": 59520.99999999999,
+      "size_uncompressed": 1467096
     }
   },
   {
@@ -6737,10 +6737,10 @@
   },
   {
     "dec_ONE_BEST.fgl": {
-      "x": 418,
-      "y": 466,
-      "size_compressed": 1016761.0000000001,
-      "size_uncompressed": 30729728
+      "x": 228,
+      "y": 442,
+      "size_compressed": 755806.0,
+      "size_uncompressed": 20331043
     }
   },
   {
@@ -6897,10 +6897,10 @@
   },
   {
     "c1908_Bestagon_BEST.fgl": {
-      "x": 225,
-      "y": 496,
-      "size_compressed": 394340.0,
-      "size_uncompressed": 8939114
+      "x": 123,
+      "y": 418,
+      "size_compressed": 346340.0,
+      "size_uncompressed": 8036506
     }
   },
   {
@@ -7297,10 +7297,10 @@
   },
   {
     "priority_ONE_BEST.fgl": {
-      "x": 479,
-      "y": 684,
-      "size_compressed": 1332806.0000000002,
-      "size_uncompressed": 40253397
+      "x": 303,
+      "y": 535,
+      "size_compressed": 1000168.0,
+      "size_uncompressed": 28109776
     }
   },
   {
@@ -7345,10 +7345,10 @@
   },
   {
     "cm82a_5_ONE_BEST.fgl": {
-      "x": 14,
-      "y": 13,
-      "size_compressed": 2093.0,
-      "size_uncompressed": 39235
+      "x": 11,
+      "y": 11,
+      "size_compressed": 1748.0,
+      "size_uncompressed": 32230
     }
   },
   {
@@ -7489,10 +7489,10 @@
   },
   {
     "parity_ONE_BEST.fgl": {
-      "x": 10,
-      "y": 60,
-      "size_compressed": 5351.0,
-      "size_uncompressed": 125126
+      "x": 9,
+      "y": 56,
+      "size_compressed": 4732.0,
+      "size_uncompressed": 108588
     }
   },
   {
