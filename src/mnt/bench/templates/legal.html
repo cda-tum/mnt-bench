@@ -10,166 +10,420 @@
 
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
 
-    <style></style>
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --secondary-color: #64748b;
+        --accent-color: #f1f5f9;
+        --border-color: #e2e8f0;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --radius: 12px;
+        --radius-sm: 8px;
+      }
 
-    <title>MNT Bench</title>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: #fafafa;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+        padding: 1rem 0;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        color: var(--text-secondary) !important;
+        transition: all 0.2s ease;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color) !important;
+        background-color: var(--accent-color);
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 6rem 0 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        margin-bottom: 3rem;
+        margin-top: 80px;
+      }
+
+      .hero-section h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero-section p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .section {
+        background: white;
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      .section h2 {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .section p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .legal-info {
+        background: white;
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      .legal-info h3 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .legal-info p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .legal-info ul {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+
+      .legal-info li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+
+      .contact-info {
+        background: var(--accent-color);
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .contact-info strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .contact-info p {
+        margin: 0.5rem 0;
+        color: var(--text-secondary);
+      }
+
+      .email-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .email-link:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .section,
+        .legal-info {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+
+    <title>MNT Bench - Legal Information</title>
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='favicon.ico') }}"
     />
   </head>
   <body>
-    <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="/mntbench">
-        <img
-          src="{{ url_for('static', filename='tum_logo.svg') }}"
-          alt=""
-          width="50"
-          height="24"
-          class="d-inline-block align-text-top"
-        />
-        MNT Bench
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="index">Benchmarks</a>
-          <a class="nav-item nav-link" href="description "
-            >Level and File Descriptions</a
-          >
-          <a
-            class="nav-item nav-link"
-            href="https://www.cda.cit.tum.de/research/fcn/"
-            target="_blank"
-            >More on our Work</a
-          >
-          <a class="nav-item nav-link active" href="legal">Legal Information</a>
+    <!-- Modern Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/mntbench">
+          <img
+            src="{{ url_for('static', filename='tum_logo.svg') }}"
+            alt="TUM Logo"
+            width="40"
+            height="40"
+            class="d-inline-block align-text-top"
+          />
+          MNT Bench
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-item nav-link" href="index">Benchmarks</a>
+            <a class="nav-item nav-link" href="description"
+              >Level and File Descriptions</a
+            >
+            <a
+              class="nav-item nav-link"
+              href="https://www.cda.cit.tum.de/research/nanotech"
+              target="_blank"
+              >More on our Work</a
+            >
+            <a class="nav-item nav-link active" href="legal"
+              >Legal Information</a
+            >
+          </div>
         </div>
       </div>
     </nav>
 
-    <div class="col-xs-12" style="height: 80px"></div>
-    <div class="container">
-      <strong>Herausgeber</strong><br />
-      Technische Universität München<br />
-      Arcisstraße 21<br />
-      80333 München<br />
-      Telefon: +49 89 289-01<br />
-      poststelle@tum.de<br /><br />
-
-      <strong>Rechtsform und Vertretung</strong><br />
-      Die Technische Universität München ist eine Körperschaft des Öffentlichen
-      Rechts und staatliche Einrichtung (Art. 11 Abs. 1 BayHSchG). Sie wird
-      gesetzlich vertreten durch den Präsidenten Prof. Dr. Thomas F. Hofmann.
-      <br /><br />
-      <strong>Zuständige Aufsichtsbehörde</strong><br />
-      Bayerisches Staatsministerium für Wissenschaft und Kunst<br /><br />
-
-      <strong>Umsatzsteueridentifikationnummer</strong><br />
-      DE811193231 (gemäß § 27a Umsatzsteuergesetz )<br /><br />
-
-      <strong>Inhaltlich verantwortlich</strong><br />
-      Prof. Dr. Robert Wille<br />
-      Arcisstr. 21<br />
-      80333 München<br />
-      E-Mail: robert.wille(at)tum.de<br /><br />
-
-      Namentlich gekennzeichnete Internetseiten geben die Auffassungen und
-      Erkenntnisse der genannten Personen wieder.<br /><br />
-
-      <strong>Nutzungsbedingungen</strong><br />
-      Texte, Bilder, Grafiken sowie die Gestaltung dieses Webauftritts können
-      dem Urheberrecht unterliegen. Nicht urheberrechtlich geschützt sind nach §
-      5 des Urheberrechtsgesetz (UrhG)
-      <ul>
-        <li>
-          Gesetze, Verordnungen, amtliche Erlasse und Bekanntmachungen sowie
-          Entscheidungen und amtlich verfasste Leitsätze zu Entscheidungen und
-        </li>
-        <li>
-          andere amtliche Werke, die im amtlichen Interesse zur allgemeinen
-          Kenntnisnahme veröffentlicht worden sind, mit der Einschränkung, dass
-          die Bestimmungen über Änderungsverbot und Quellenangabe in § 62 Abs. 1
-          bis 3 und § 63 Abs. 1 und 2 UrhG entsprechend anzuwenden sind.
-        </li>
-      </ul>
-      Als Privatperson dürfen Sie urheberrechtlich geschütztes Material zum
-      privaten und sonstigen eigenen Gebrauch im Rahmen des § 53 UrhG verwenden.
-      Eine Vervielfältigung oder Verwendung urheberrechtlich geschützten
-      Materials dieser Seiten oder Teilen davon in anderen elektronischen oder
-      gedruckten Publikationen und deren Veröffentlichung ist nur mit unserer
-      Einwilligung gestattet. Diese Einwilligung erteilen auf Anfrage die für
-      den Inhalt Verantwortlichen. Der Nachdruck und die Auswertung von
-      Pressemitteilungen und Reden sind mit Quellenangabe allgemein gestattet.
-      <br /><br />
-      Weiterhin können Texte, Bilder, Grafiken und sonstige Dateien ganz oder
-      teilweise dem Urheberrecht Dritter unterliegen. Auch über das Bestehen
-      möglicher Rechte Dritter geben Ihnen die für den Inhalt Verantwortlichen
-      nähere Auskünfte.
-      <br /><br />
-      <strong>Haftungsausschluss</strong><br />
-      Alle in diesem Webauftritt bereitgestellten Informationen haben wir nach
-      bestem Wissen und Gewissen erarbeitet und geprüft. Eine Gewähr für die
-      jederzeitige Aktualität, Richtigkeit, Vollständigkeit und Verfügbarkeit
-      der bereit gestellten Informationen können wir allerdings nicht
-      übernehmen. Ein Vertragsverhältnis mit den Nutzern des Webauftritts kommt
-      nicht zustande.
-      <br /><br />
-      Wir haften nicht für Schäden, die durch die Nutzung dieses Webauftritts
-      entstehen. Dieser Haftungsausschluss gilt nicht, soweit die Vorschriften
-      des § 839 BGB (Haftung bei Amtspflichtverletzung) einschlägig sind. Für
-      etwaige Schäden, die beim Aufrufen oder Herunterladen von Daten durch
-      Schadsoftware oder der Installation oder Nutzung von Software verursacht
-      werden, übernehmen wir keine Haftung.
-      <br /><br />
-      <strong>Links</strong><br />
-      Von unseren eigenen Inhalten sind Querverweise („Links“) auf die Webseiten
-      anderer Anbieter zu unterscheiden. Durch diese Links ermöglichen wir
-      lediglich den Zugang zur Nutzung fremder Inhalte nach § 8
-      Telemediengesetz. Bei der erstmaligen Verknüpfung mit diesen
-      Internetangeboten haben wir diese fremden Inhalte daraufhin überprüft, ob
-      durch sie eine mögliche zivilrechtliche oder strafrechtliche
-      Verantwortlichkeit ausgelöst wird. Wir können diese fremden Inhalte aber
-      nicht ständig auf Veränderungen überprüfen und daher auch keine
-      Verantwortung dafür übernehmen. Für illegale, fehlerhafte oder
-      unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung
-      oder Nichtnutzung von Informationen Dritter entstehen, haftet allein der
-      jeweilige Anbieter der Seite.
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="container">
+        <h1>Legal Information</h1>
+        <p>
+          Important legal information, terms of use, and contact details for MNT
+          Bench.
+        </p>
+      </div>
     </div>
 
-    <div class="col-xs-12" style="height: 50px"></div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Publisher Information -->
+      <div class="legal-info">
+        <h3>Herausgeber (Publisher)</h3>
+        <div class="contact-info">
+          <strong>Technische Universität München</strong>
+          <p>Arcisstraße 21</p>
+          <p>80333 München</p>
+          <p>Telefon: +49 89 289-01</p>
+          <p>
+            E-Mail:
+            <a href="mailto:poststelle@tum.de" class="email-link"
+              >poststelle@tum.de</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Legal Form and Representation -->
+      <div class="legal-info">
+        <h3>Rechtsform und Vertretung (Legal Form and Representation)</h3>
+        <p>
+          Die Technische Universität München ist eine Körperschaft des
+          Öffentlichen Rechts und staatliche Einrichtung (Art. 11 Abs. 1
+          BayHSchG). Sie wird gesetzlich vertreten durch den Präsidenten Prof.
+          Dr. Thomas F. Hofmann.
+        </p>
+      </div>
+
+      <!-- Supervisory Authority -->
+      <div class="legal-info">
+        <h3>Zuständige Aufsichtsbehörde (Supervisory Authority)</h3>
+        <p>Bayerisches Staatsministerium für Wissenschaft und Kunst</p>
+      </div>
+
+      <!-- VAT Identification Number -->
+      <div class="legal-info">
+        <h3>Umsatzsteueridentifikationnummer (VAT Identification Number)</h3>
+        <p>DE811193231 (gemäß § 27a Umsatzsteuergesetz)</p>
+      </div>
+
+      <!-- Content Responsibility -->
+      <div class="legal-info">
+        <h3>Inhaltlich verantwortlich (Content Responsibility)</h3>
+        <div class="contact-info">
+          <strong>Prof. Dr. Robert Wille</strong>
+          <p>Arcisstr. 21</p>
+          <p>80333 München</p>
+          <p>
+            E-Mail:
+            <a href="mailto:robert.wille@tum.de" class="email-link"
+              >robert.wille@tum.de</a
+            >
+          </p>
+        </div>
+        <p>
+          Namentlich gekennzeichnete Internetseiten geben die Auffassungen und
+          Erkenntnisse der genannten Personen wieder.
+        </p>
+      </div>
+
+      <!-- Terms of Use -->
+      <div class="legal-info">
+        <h3>Nutzungsbedingungen (Terms of Use)</h3>
+        <p>
+          Texte, Bilder, Grafiken sowie die Gestaltung dieses Webauftritts
+          können dem Urheberrecht unterliegen. Nicht urheberrechtlich geschützt
+          sind nach § 5 des Urheberrechtsgesetz (UrhG):
+        </p>
+        <ul>
+          <li>
+            Gesetze, Verordnungen, amtliche Erlasse und Bekanntmachungen sowie
+            Entscheidungen und amtlich verfasste Leitsätze zu Entscheidungen
+          </li>
+          <li>
+            andere amtliche Werke, die im amtlichen Interesse zur allgemeinen
+            Kenntnisnahme veröffentlicht worden sind, mit der Einschränkung,
+            dass die Bestimmungen über Änderungsverbot und Quellenangabe in § 62
+            Abs. 1 bis 3 und § 63 Abs. 1 und 2 UrhG entsprechend anzuwenden
+            sind.
+          </li>
+        </ul>
+        <p>
+          Als Privatperson dürfen Sie urheberrechtlich geschütztes Material zum
+          privaten und sonstigen eigenen Gebrauch im Rahmen des § 53 UrhG
+          verwenden. Eine Vervielfältigung oder Verwendung urheberrechtlich
+          geschützten Materials dieser Seiten oder Teilen davon in anderen
+          elektronischen oder gedruckten Publikationen und deren
+          Veröffentlichung ist nur mit unserer Einwilligung gestattet. Diese
+          Einwilligung erteilen auf Anfrage die für den Inhalt Verantwortlichen.
+          Der Nachdruck und die Auswertung von Pressemitteilungen und Reden sind
+          mit Quellenangabe allgemein gestattet.
+        </p>
+        <p>
+          Weiterhin können Texte, Bilder, Grafiken und sonstige Dateien ganz
+          oder teilweise dem Urheberrecht Dritter unterliegen. Auch über das
+          Bestehen möglicher Rechte Dritter geben Ihnen die für den Inhalt
+          Verantwortlichen nähere Auskünfte.
+        </p>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="legal-info">
+        <h3>Haftungsausschluss (Disclaimer)</h3>
+        <p>
+          Alle in diesem Webauftritt bereitgestellten Informationen haben wir
+          nach bestem Wissen und Gewissen erarbeitet und geprüft. Eine Gewähr
+          für die jederzeitige Aktualität, Richtigkeit, Vollständigkeit und
+          Verfügbarkeit der bereit gestellten Informationen können wir
+          allerdings nicht übernehmen. Ein Vertragsverhältnis mit den Nutzern
+          des Webauftritts kommt nicht zustande.
+        </p>
+        <p>
+          Wir haften nicht für Schäden, die durch die Nutzung dieses
+          Webauftritts entstehen. Dieser Haftungsausschluss gilt nicht, soweit
+          die Vorschriften des § 839 BGB (Haftung bei Amtspflichtverletzung)
+          einschlägig sind. Für etwaige Schäden, die beim Aufrufen oder
+          Herunterladen von Daten durch Schadsoftware oder der Installation oder
+          Nutzung von Software verursacht werden, übernehmen wir keine Haftung.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="legal-info">
+        <h3>Links</h3>
+        <p>
+          Von unseren eigenen Inhalten sind Querverweise („Links") auf die
+          Webseiten anderer Anbieter zu unterscheiden. Durch diese Links
+          ermöglichen wir lediglich den Zugang zur Nutzung fremder Inhalte nach
+          § 8 Telemediengesetz. Bei der erstmaligen Verknüpfung mit diesen
+          Internetangeboten haben wir diese fremden Inhalte daraufhin überprüft,
+          ob durch sie eine mögliche zivilrechtliche oder strafrechtliche
+          Verantwortlichkeit ausgelöst wird. Wir können diese fremden Inhalte
+          aber nicht ständig auf Veränderungen überprüfen und daher auch keine
+          Verantwortung dafür übernehmen. Für illegale, fehlerhafte oder
+          unvollständige Inhalte und insbesondere für Schäden, die aus der
+          Nutzung oder Nichtnutzung von Informationen Dritter entstehen, haftet
+          allein der jeweilige Anbieter der Seite.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript -->
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
   </body>

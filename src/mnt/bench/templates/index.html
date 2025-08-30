@@ -17,36 +17,594 @@
     />
 
     <style>
-      .disabled-checkbox {
-        opacity: 0.5; /* Make the checkbox semi-transparent */
-        pointer-events: none; /* Disable mouse events on the checkbox */
+      :root {
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --secondary-color: #64748b;
+        --accent-color: #f1f5f9;
+        --border-color: #e2e8f0;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --radius: 12px;
+        --radius-sm: 8px;
       }
 
-      table {
-        border-collapse: collapse;
-        width: 50%;
-        margin: 20px 0;
+      * {
+        box-sizing: border-box;
       }
 
-      th,
-      td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 12px; /* Increased padding for better spacing */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: #fafafa;
+        margin: 0;
+        padding: 0;
       }
 
-      #pipeline-img {
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: var(--shadow-md);
+        padding: 0.75rem 0;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        color: var(--text-secondary) !important;
+        transition: all 0.2s ease;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color) !important;
+        background-color: var(--accent-color);
+      }
+
+      .hero-section {
+        text-align: center;
+        padding: 6rem 0 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        margin-bottom: 3rem;
+        margin-top: 80px;
+      }
+
+      .hero-section h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero-section p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+      }
+
+      .hero-logo {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 2rem;
+        filter: brightness(0) invert(1);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .section {
+        background: white;
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      .section h4 {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .section p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .benchmark-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .benchmark-category {
+        background: var(--accent-color);
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
+      }
+
+      .benchmark-category:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .benchmark-category h6 {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .benchmark-category h6 a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.2s ease;
+      }
+
+      .benchmark-category h6 a:hover {
+        transform: scale(1.1);
+      }
+
+      .benchmark-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .benchmark-item:last-child {
+        border-bottom: none;
+      }
+
+      .form-check-input {
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 2px solid var(--border-color);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .form-check-input:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      .form-check-input:focus {
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      .technology-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .tech-card {
+        background: white;
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
+        height: 100%;
+      }
+
+      .tech-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary-color);
+      }
+
+      .tech-card h6 {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .tech-card p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+
+      .tech-option {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .tech-option:last-child {
+        border-bottom: none;
+      }
+
+      .tech-option label {
+        font-weight: 500;
+        color: var(--text-primary);
+        cursor: pointer;
+        flex: 1;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .image-card {
+        background: white;
+        border-radius: var(--radius-sm);
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.2s ease;
+      }
+
+      .image-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .image-card img {
         width: 100%;
-        height: auto; /* Maintain aspect ratio */
-        display: block; /* Remove extra space beneath image */
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+      }
+
+      .download-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-hover) 100%
+        );
+        color: white;
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .download-section h4 {
+        color: white;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .stat-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: var(--radius-sm);
+        text-align: center;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .btn-modern {
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .btn-modern:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        background: var(--accent-color);
+      }
+
+      .btn-modern:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .format-selector {
+        background: white;
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border: 1px solid var(--border-color);
+      }
+
+      .form-control {
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        padding: 0.75rem;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        outline: none;
+      }
+
+      .reference-section {
+        background: var(--accent-color);
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin: 2rem 0;
+      }
+
+      .reference-section h4 {
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .citation-box {
+        background: white;
+        border-radius: var(--radius-sm);
+        padding: 0;
+        border-left: 4px solid var(--primary-color);
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 1.5rem 0;
+        overflow: hidden;
+      }
+
+      .citation-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background: var(--accent-color);
+        border-bottom: 1px solid var(--border-color);
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .citation-content {
+        padding: 1.5rem;
+      }
+
+      .copy-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .copy-btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .copy-btn:active {
+        transform: translateY(0);
+      }
+
+      .copy-btn svg {
+        transition: transform 0.2s ease;
+      }
+
+      .copy-btn:hover svg {
+        transform: scale(1.1);
+      }
+
+      .copy-btn.copied {
+        background: var(--success-color);
+      }
+
+      .copy-btn.copied {
+        background: var(--success-color);
+      }
+
+      .copy-btn.copied .copy-text {
+        display: none;
+      }
+
+      .disabled-checkbox {
+        opacity: 0.5;
+        pointer-events: none;
       }
 
       .disabled-checkbox + label {
-        color: #808080; /* Change label color to gray */
+        color: var(--text-secondary);
+        opacity: 0.7;
       }
 
-      a:active {
-        text-decoration: none;
+      .data-table {
+        background: white;
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border: 1px solid var(--border-color);
+        overflow-x: auto;
+      }
+
+      .data-table table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+      }
+
+      .data-table th,
+      .data-table td {
+        border: 1px solid var(--border-color);
+        text-align: left;
+        padding: 0.75rem;
+      }
+
+      .data-table th {
+        background: var(--accent-color);
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .data-table tr:nth-child(even) {
+        background: #fafafa;
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .benchmark-grid,
+        .technology-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 1.5rem;
+        }
+      }
+
+      .help-tooltip {
+        display: inline-block;
+        width: 1.2rem;
+        height: 1.2rem;
+        background: var(--secondary-color);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 1.2rem;
+        font-size: 0.8rem;
+        cursor: help;
+        margin-left: 0.5rem;
+      }
+
+      /* Additional modern touches */
+      .form-check-input:checked {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+      }
+
+      .btn-modern {
+        min-width: 200px;
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Focus improvements */
+      .tech-card:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      /* Loading states */
+      .btn-modern:disabled {
+        position: relative;
+      }
+
+      .btn-modern:disabled::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid transparent;
+        border-top: 2px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
     </style>
 
@@ -57,151 +615,165 @@
     />
   </head>
   <body onload="disable_all()">
-    <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="/mntbench">
-        <img
-          src="{{ url_for('static', filename='tum_logo.svg') }}"
-          alt=""
-          width="50"
-          height="24"
-          class="d-inline-block align-text-top"
-        />
-        MNT Bench
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="index">Benchmarks</a>
-          <a class="nav-item nav-link" href="description"
-            >Level and File Descriptions</a
-          >
-          <a
-            class="nav-item nav-link"
-            href="https://www.cda.cit.tum.de/research/fcn/"
-            target="_blank"
-            >More on our Work</a
-          >
-          <a class="nav-item nav-link" href="legal">Legal Information</a>
+    <!-- Modern Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/mntbench">
+          <img
+            src="{{ url_for('static', filename='mnt_dark.svg')}}"
+            alt="MNT Logo"
+            width="40"
+            height="40"
+            class="d-inline-block align-text-top"
+          />
+          Bench
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-item nav-link active" href="index">Benchmarks</a>
+            <a class="nav-item nav-link" href="description"
+              >Level and File Descriptions</a
+            >
+            <a
+              class="nav-item nav-link"
+              href="https://www.cda.cit.tum.de/research/fcn/"
+              target="_blank"
+              >More on our Work</a
+            >
+            <a class="nav-item nav-link" href="legal">Legal Information</a>
+          </div>
         </div>
       </div>
     </nav>
 
-    <div class="col-md-12" style="height: 80px"></div>
-    <p align="center">
-      <img src="{{ url_for('static', filename='mnt_dark.svg')}}" width="20%" />
-    </p>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="container">
+        <img
+          src="{{ url_for('static', filename='mnt_dark.svg')}}"
+          class="hero-logo"
+          alt="MNT Logo"
+        />
+        <h1>Welcome to the Munich Nanotech Benchmark Library</h1>
+        <p>
+          The development and improvement of physical design tools for
+          <em>nanotechnologies</em>, such as
+          <em>Silicon Dangling Bonds</em> (SiDBS), is critical to the success of
+          this emerging technology. Furthermore, simulation and fabrication
+          heavily rely on the usage of area-efficient layouts.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
-      <h1>Welcome to the Munich Nanotech Benchmark Library (MNT Bench)!</h1>
-      <p>
-        The development and improvement of physical design tools for
-        <em>nanotechnologies</em>, such as
-        <em>Silicon Dangling Bonds</em> (SiDBS), is critical to the success of
-        this emerging technology. Furthermore, simulation and fabrication
-        heavily rely on the usage of area-efficient layouts. To compare the
-        results of new physical design algorithms and provide the most optimal
-        layouts found thus far, this benchmark suite offers common benchmark
-        functions in the field combined with the best state-of-the-art layouts
-        w.r.t. to area. In addition to layouts using different gate sets, such
-        as the
-        <em
-          >QCA ONE<a
-            href="https://ieeexplore.ieee.org/document/7538997/"
+      <div class="section">
+        <p>
+          To compare the results of new physical design algorithms and provide
+          the most optimal layouts found thus far, this benchmark suite offers
+          common benchmark functions in the field combined with the best
+          state-of-the-art layouts w.r.t. to area. In addition to layouts using
+          different gate sets, such as the
+          <em
+            >QCA ONE<a
+              href="https://ieeexplore.ieee.org/document/7538997/"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >
+          gate library for <em>Quantum-dot Cellular Automata</em> (QCA) or
+          <em
+            >Bestagon<a
+              href="https://www.cda.cit.tum.de/files/eda/2022_dac_hexagons_are_the_bestagons.pdf"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >
+          for <em>Silicon Dangling Bonds</em> (SiDBS), the following benchmark
+          library also differentiates between different underlying clocking
+          schemes such as
+          <em
+            >2DDWave<a
+              href="https://ieeexplore.ieee.org/document/1717097"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >,
+          <em
+            >USE<a
+              href="https://ieeexplore.ieee.org/document/7219390"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >,
+          <em
+            >RES<a
+              href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >,
+          <em
+            >ESR<a
+              href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >
+          , or
+          <em
+            >ROW<a
+              href="https://ieeexplore.ieee.org/document/573740"
+              target="_blank"
+              style="text-decoration: none"
+              >&#128196;</a
+            ></em
+          >. Furthermore, all layouts have been verified using
+          <a href="https://github.com/cda-tum/fiction" target="_blank"
+            ><em>fiction</em></a
+          >'s equivalence checker<a
+            href="https://www.cda.cit.tum.de/files/eda/2020_dac_verification_for_field-coupled_nanocomputing_circuits.pdf"
             target="_blank"
             style="text-decoration: none"
             >&#128196;</a
-          ></em
-        >
-        gate library for <em>Quantum-dot Cellular Automata</em> (QCA) or
-        <em
-          >Bestagon<a
-            href="https://www.cda.cit.tum.de/files/eda/2022_dac_hexagons_are_the_bestagons.pdf"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          ></em
-        >
-        for <em>Silicon Dangling Bonds</em> (SiDBS), the following benchmark
-        library also differentiates between different underlying clocking
-        schemes such as
-        <em
-          >2DDWave<a
-            href="https://ieeexplore.ieee.org/document/1717097"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          ></em
-        >,
-        <em
-          >USE<a
-            href="https://ieeexplore.ieee.org/document/7219390"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          ></em
-        >,
-        <em
-          >RES<a
-            href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          ></em
-        >,
-        <em
-          >ESR<a
-            href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          ></em
-        >
-        , or
-        <em
-          >ROW<a
-            href="https://ieeexplore.ieee.org/document/573740"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          ></em
-        >. Furthermore, all layouts have been verified using
-        <a href="https://github.com/cda-tum/fiction" target="_blank"
-          ><em>fiction</em></a
-        >'s equivalence checker<a
-          href="https://www.cda.cit.tum.de/files/eda/2020_dac_verification_for_field-coupled_nanocomputing_circuits.pdf"
-          target="_blank"
-          style="text-decoration: none"
-          >&#128196;</a
-        >.
-      </p>
-      <p>
-        All layouts can be downloaded as fiction gate-level layouts files (<span
-          style="font-family: monospace"
-          >.fgl</span
-        >), which can be parsed and generated by
-        <a href="https://github.com/cda-tum/fiction" target="_blank"
-          ><em>fiction</em></a
-        >.
-      </p>
-      <p>
-        The respective publications for the gate libraries, benchmarks, clocking
-        schemes, physical design algorithms, and optimization algorithms can be
-        found by clicking the corresponding paper (&#128196;) symbol.
-      </p>
-      <p>
-        In order to create a benchmark set according to your needs, simply fill
-        out the form below.
-      </p>
+          >.
+        </p>
+        <p>
+          All layouts can be downloaded as fiction gate-level layouts files
+          (<span style="font-family: monospace">.fgl</span>), which can be
+          parsed and generated by
+          <a href="https://github.com/cda-tum/fiction" target="_blank"
+            ><em>fiction</em></a
+          >.
+        </p>
+        <p>
+          The respective publications for the gate libraries, benchmarks,
+          clocking schemes, physical design algorithms, and optimization
+          algorithms can be found by clicking the corresponding paper
+          (&#128196;) symbol.
+        </p>
+        <p>
+          In order to create a benchmark set according to your needs, simply
+          fill out the form below.
+        </p>
+      </div>
     </div>
     <form
       method="POST"
@@ -211,27 +783,24 @@
       id="benchmark_form"
       onchange="checks_on_change()"
     >
-      <div class="container">
-        <div class="row">
-          <h4>Benchmark Selection</h4>
-          <p class="text-justify">
-            Please select the desired benchmarks from the set of all available
-            ones or select all
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value="true"
-              id="all_benchmarks"
-              name="all_benchmarks"
-              onchange="toggleAllSelection()"
-            />.
-          </p>
-        </div>
-        <div class="row border border-secondary">
-          <div class="row"></div>
-          <div class="row d-flex"></div>
-          <div class="col-md-6">
-            <h6 style="margin-bottom: 0px">
+      <div class="section">
+        <h4>Benchmark Selection</h4>
+        <p>
+          Please select the desired benchmarks from the set of all available
+          ones or select all
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="true"
+            id="all_benchmarks"
+            name="all_benchmarks"
+            onchange="toggleAllSelection()"
+          />.
+        </p>
+
+        <div class="benchmark-grid">
+          <div class="benchmark-category">
+            <h6>
               Trindade16<a
                 href="https://ieeexplore.ieee.org/document/7724048"
                 target="_blank"
@@ -246,28 +815,27 @@
                 id="trindade16_benchmarks"
                 name="trindade16_benchmarks"
                 onchange="toggleTrindade16Selection()"
-              />:
+              />
             </h6>
 
             {% for benchmark_trindade in trindade %}
-
-            <div>
-              <div class="col-md-12">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="{{ benchmark_trindade.name }}"
-                  id="selectBench_{{ benchmark_trindade.id }}"
-                  name="selectBench_{{ benchmark_trindade.id }}"
-                />
-                {{ benchmark_trindade.name }}
-              </div>
+            <div class="benchmark-item">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ benchmark_trindade.name }}"
+                id="selectBench_{{ benchmark_trindade.id }}"
+                name="selectBench_{{ benchmark_trindade.id }}"
+              />
+              <label for="selectBench_{{ benchmark_trindade.id }}"
+                >{{ benchmark_trindade.name }}</label
+              >
             </div>
             {% endfor %}
           </div>
 
-          <div class="col-md-6">
-            <h6 style="margin-bottom: 0px">
+          <div class="benchmark-category">
+            <h6>
               Fontes18<a
                 href="https://ieeexplore.ieee.org/document/8351001"
                 target="_blank"
@@ -282,29 +850,27 @@
                 id="fontes18_benchmarks"
                 name="fontes18_benchmarks"
                 onchange="toggleFontes18Selection()"
-              />:
+              />
             </h6>
 
             {% for benchmark_fontes in fontes %}
-
-            <div>
-              <div class="col-md-12">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="{{ benchmark_fontes.name }}"
-                  id="selectBench_{{ benchmark_fontes.id }}"
-                  name="selectBench_{{ benchmark_fontes.id }}"
-                />
-                {{ benchmark_fontes.name }}
-              </div>
+            <div class="benchmark-item">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ benchmark_fontes.name }}"
+                id="selectBench_{{ benchmark_fontes.id }}"
+                name="selectBench_{{ benchmark_fontes.id }}"
+              />
+              <label for="selectBench_{{ benchmark_fontes.id }}"
+                >{{ benchmark_fontes.name }}</label
+              >
             </div>
-
             {% endfor %}
           </div>
 
-          <div class="col-md-6">
-            <h6 style="margin-bottom: 0px">
+          <div class="benchmark-category">
+            <h6>
               ISCAS85<a
                 href="https://www.researchgate.net/publication/273775783_A_neutral_netlist_of_10_combinational_benchmark_circuits_and_a_targeted_translator_in_FORTRAN"
                 target="_blank"
@@ -319,29 +885,27 @@
                 id="iscas85_benchmarks"
                 name="iscas85_benchmarks"
                 onchange="toggleISCAS85Selection()"
-              />:
+              />
             </h6>
 
             {% for benchmark_iscas in iscas %}
-
-            <div>
-              <div class="col-md-12">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="{{ benchmark_iscas.name }}"
-                  id="selectBench_{{ benchmark_iscas.id }}"
-                  name="selectBench_{{ benchmark_iscas.id }}"
-                />
-                {{ benchmark_iscas.name }}
-              </div>
+            <div class="benchmark-item">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ benchmark_iscas.name }}"
+                id="selectBench_{{ benchmark_iscas.id }}"
+                name="selectBench_{{ benchmark_iscas.id }}"
+              />
+              <label for="selectBench_{{ benchmark_iscas.id }}"
+                >{{ benchmark_iscas.name }}</label
+              >
             </div>
-
             {% endfor %}
           </div>
 
-          <div class="col-md-6">
-            <h6 style="margin-bottom: 0px">
+          <div class="benchmark-category">
+            <h6>
               EPFL<a
                 href="https://www.epfl.ch/labs/lsi/page-102566-en-html/benchmarks/"
                 target="_blank"
@@ -356,546 +920,494 @@
                 id="epfl_benchmarks"
                 name="epfl_benchmarks"
                 onchange="toggleEPFLSelection()"
-              />:
+              />
             </h6>
 
             {% for benchmark_epfl in epfl %}
-
-            <div>
-              <div class="col-md-12">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="{{ benchmark_epfl.name }}"
-                  id="selectBench_{{ benchmark_epfl.id }}"
-                  name="selectBench_{{ benchmark_epfl.id }}"
-                />
-                {{ benchmark_epfl.name }}
-              </div>
+            <div class="benchmark-item">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="{{ benchmark_epfl.name }}"
+                id="selectBench_{{ benchmark_epfl.id }}"
+                name="selectBench_{{ benchmark_epfl.id }}"
+              />
+              <label for="selectBench_{{ benchmark_epfl.id }}"
+                >{{ benchmark_epfl.name }}</label
+              >
             </div>
-
             {% endfor %}
           </div>
         </div>
+      </div>
 
-        <div class="col-md-12" style="height: 20px"></div>
+      <div class="section">
         <h4>Technology Selection</h4>
-        <p class="text-justify" style="margin: 0px">
+        <p>
           Next, technological specifications for the selected benchmarks must be
           chosen. The gate library defines the selection of gates that can be
           used, while the clocking scheme defines the underlying arrangement of
           clock zones on the layout. For details, see
           <a href="description" target="_blank">the level description</a>.
         </p>
-      </div>
 
-      <div class="col-md-12" style="height: 20px"></div>
-      <div class="container">
-        <div class="row">
-          <div
-            class="col border border-secondary"
-            style="width: 25%; min-width: 200px; margin: 1px"
-          >
+        <div class="technology-grid">
+          <div class="tech-card">
             <h6>Abstraction Level</h6>
-            <p class="text-justify" style="margin: 0px">
-              Select the abstraction level:
-            </p>
-            <div class="row">
-              <div class="col-md-12 align-items-center">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="network"
-                  name="network"
-                  value="true"
-                />
-                <label for="network"
-                  >Network (<span style="font-family: monospace">.v</span
-                  >)</label
-                >
-              </div>
+            <p>Select the abstraction level:</p>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="network"
+                name="network"
+                value="true"
+              />
+              <label for="network"
+                >Network (<span style="font-family: monospace">.v</span>)</label
+              >
+            </div>
 
-              <div class="col-md-12 align-items-center">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="gate"
-                  name="gate"
-                  value="true"
-                />
-                <label for="gate"
-                  >Gate-level (<span style="font-family: monospace">.fgl</span
-                  >)</label
-                >
-              </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="gate"
+                name="gate"
+                value="true"
+              />
+              <label for="gate"
+                >Gate-level (<span style="font-family: monospace">.fgl</span
+                >)</label
+              >
             </div>
           </div>
 
-          <div
-            class="col border border-secondary"
-            style="width: 25%; min-width: 200px; margin: 1px"
-          >
+          <div class="tech-card">
             <h6>Gate Library</h6>
-            <p class="text-justify" style="margin: 0px">
-              Select the used gate library:
-            </p>
-            <div class="row">
-              <div class="col-md-12 align-items-center">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="one"
-                  name="one"
-                  value="true"
-                />
-                <label for="one"
-                  >QCA ONE
-                  <a
-                    href="https://ieeexplore.ieee.org/document/7538997/"
-                    target="_blank"
-                    style="text-decoration: none"
-                    >&#128196;</a
-                  ></label
-                >
-              </div>
+            <p>Select the used gate library:</p>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="one"
+                name="one"
+                value="true"
+              />
+              <label for="one"
+                >QCA ONE
+                <a
+                  href="https://ieeexplore.ieee.org/document/7538997/"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
+            </div>
 
-              <div class="col-md-12 align-items-center">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="bestagon"
-                  name="bestagon"
-                  value="true"
-                />
-                <label for="bestagon"
-                  >Bestagon<a
-                    href="https://dl.acm.org/doi/10.1145/3489517.3530525"
-                    target="_blank"
-                    style="text-decoration: none"
-                    >&#128196;</a
-                  ></label
-                >
-              </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="bestagon"
+                name="bestagon"
+                value="true"
+              />
+              <label for="bestagon"
+                >Bestagon<a
+                  href="https://dl.acm.org/doi/10.1145/3489517.3530525"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
             </div>
           </div>
 
-          <div
-            class="col border border-secondary"
-            style="width: 25%; min-width: 200px; margin: 1px"
-          >
+          <div class="tech-card">
             <h6>Clocking Scheme</h6>
 
-            <p class="text-justify" style="margin: 0px">
-              Select the underlying clocking scheme:
-            </p>
-            <div class="row">
-              <div class="col-md-12 align-items-center">
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="twoddwave"
-                    name="twoddwave"
-                  />
-                  <label for="twoddwave"
-                    >2DDWave<a
-                      href="https://ieeexplore.ieee.org/document/1717097"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="use"
-                    name="use"
-                  />
-                  <label for="use"
-                    >USE<a
-                      href="https://ieeexplore.ieee.org/document/7219390"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="res"
-                    name="res"
-                  />
-                  <label for="res"
-                    >RES<a
-                      href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="esr"
-                    name="esr"
-                  />
-                  <label for="esr"
-                    >ESR<a
-                      href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="row"
-                    name="row"
-                  />
-                  <label for="row"
-                    >ROW<a
-                      href="https://ieeexplore.ieee.org/document/573740"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <p class="text-justify" style="margin: 0px">
-                  Choose Best to automatically select the best clocking scheme,
-                  physical design algorithm and optimizations w.r.t. layout
-                  area:
-                </p>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="best-layout"
-                    name="best-layout"
-                  />
-                  <label for="best-layout">Best</label>
-                </div>
-              </div>
+            <p>Select the underlying clocking scheme:</p>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="twoddwave"
+                name="twoddwave"
+              />
+              <label for="twoddwave"
+                >2DDWave<a
+                  href="https://ieeexplore.ieee.org/document/1717097"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
             </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="use"
+                name="use"
+              />
+              <label for="use"
+                >USE<a
+                  href="https://ieeexplore.ieee.org/document/7219390"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
+            </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="res"
+                name="res"
+              />
+              <label for="res"
+                >RES<a
+                  href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
+            </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="esr"
+                name="esr"
+              />
+              <label for="esr"
+                >ESR<a
+                  href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
+            </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="row"
+                name="row"
+              />
+              <label for="row"
+                >ROW<a
+                  href="https://ieeexplore.ieee.org/document/573740"
+                  target="_blank"
+                  style="text-decoration: none"
+                  >&#128196;</a
+                ></label
+              >
+            </div>
+            <div class="tech-option">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="true"
+                id="best-layout"
+                name="best-layout"
+              />
+              <label for="best-layout">Best</label>
+            </div>
+            <p class="text-justify" style="margin: 0px">
+              Choose Best to automatically select the best clocking scheme,
+              physical design algorithm and optimizations w.r.t. layout area:
+            </p>
           </div>
+        </div>
 
-          <div
-            class="col border border-secondary"
-            style="width: 25%; min-width: 200px; margin: 1px"
-          >
-            <h6>Physical Design Algorithm</h6>
+        <div class="tech-card">
+          <h6>Physical Design Algorithm</h6>
 
-            <p class="text-justify" style="margin: 0px">
-              Select the physical design algorithm used to create the chosen
-              layouts:
-            </p>
-            <div class="row">
-              <div class="col-md-12 align-items-center">
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="exact"
-                    name="exact"
-                    onchange="toggleExactSelection()"
-                  />
-                  <label for="exact"
-                    >Exact<a
-                      href="https://www.cda.cit.tum.de/files/eda/2018_date_exact_design_exploration_qca.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="ortho"
-                    name="ortho"
-                    onchange="toggleOrthoSelection()"
-                  />
-                  <label for="ortho"
-                    >Ortho<a
-                      href="https://www.cda.cit.tum.de/files/eda/2019_aspdac_scalable_design_field_coupled_nanocomputing_circuits.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    >(+45°)<a
-                      href="https://www.cda.cit.tum.de/files/eda/2023_ieeenano_45_degree_sidb_design.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="nanoplacer"
-                    name="nanoplacer"
-                    onchange="toggleNanoPlaceRSelection()"
-                  />
-                  <label for="nanoplacer"
-                    >NanoPlaceR<a
-                      href="https://www.cda.cit.tum.de/files/eda/2023_dac_late_breaking_results_from_hybrid_design_automation_for_field_coupled_nanotechnologies.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ><a
-                      href="https://www.cda.cit.tum.de/files/eda/2024_isqed_thinking_outside_the_clock_physical_design_for_field-coupled_nanocomputing_with_deep_reinforcement_learning.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="gold"
-                    name="gold"
-                    onchange="toggleGoldSelection()"
-                  />
-                  <label for="gold"
-                    >Gold<a
-                      href="https://www.cda.cit.tum.de/files/eda/2024_ieee_nano_a_star_is_born.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ><a
-                      href="https://www.cda.cit.tum.de/files/eda/2025_lascas_physical_design_for_fcn_with_discretionary_cost_objectives.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-              </div>
-            </div>
+          <p>
+            Select the physical design algorithm used to create the chosen
+            layouts:
+          </p>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="exact"
+              name="exact"
+              onchange="toggleExactSelection()"
+            />
+            <label for="exact"
+              >Exact<a
+                href="https://www.cda.cit.tum.de/files/eda/2018_date_exact_design_exploration_qca.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ></label
+            >
           </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="ortho"
+              name="ortho"
+              onchange="toggleOrthoSelection()"
+            />
+            <label for="ortho"
+              >Ortho<a
+                href="https://www.cda.cit.tum.de/files/eda/2019_aspdac_scalable_design_field_coupled_nanocomputing_circuits.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              >(+45°)<a
+                href="https://www.cda.cit.tum.de/files/eda/2023_ieeenano_45_degree_sidb_design.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ></label
+            >
+          </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="nanoplacer"
+              name="nanoplacer"
+              onchange="toggleNanoPlaceRSelection()"
+            />
+            <label for="nanoplacer"
+              >NanoPlaceR<a
+                href="https://www.cda.cit.tum.de/files/eda/2023_dac_late_breaking_results_from_hybrid_design_automation_for_field_coupled_nanotechnologies.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ><a
+                href="https://www.cda.cit.tum.de/files/eda/2024_isqed_thinking_outside_the_clock_physical_design_for_field-coupled_nanocomputing_with_deep_reinforcement_learning.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ></label
+            >
+          </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="gold"
+              name="gold"
+              onchange="toggleGoldSelection()"
+            />
+            <label for="gold"
+              >Gold<a
+                href="https://www.cda.cit.tum.de/files/eda/2024_ieee_nano_a_star_is_born.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ><a
+                href="https://www.cda.cit.tum.de/files/eda/2025_lascas_physical_design_for_fcn_with_discretionary_cost_objectives.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ></label
+            >
+          </div>
+        </div>
 
-          <div
-            class="col border border-secondary"
-            style="width: 25%; min-width: 200px; margin: 1px"
-          >
-            <h6>Optimization Algorithm</h6>
+        <div class="tech-card">
+          <h6>Optimization Algorithm</h6>
 
-            <p class="text-justify" style="margin: 0px">
-              If Ortho or NanoPlaceR has been chosen, please also select the
-              applied optimization algorithms:
-            </p>
-            <div class="row">
-              <div class="col-md-12 align-items-center">
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="post-layout"
-                    name="post-layout"
-                  />
-                  <label for="post-layout"
-                    >Post-Layout Optimization<a
-                      href="https://www.cda.cit.tum.de/files/eda/2025_tcad_efficient_and_scalable_post-layout_optimization_for_fcn.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    >
-                    <a
-                      href="https://www.cda.cit.tum.de/files/eda/2023_nanoarch_post-layout_optimization_for_fcn.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ><a
-                      href="https://www.cda.cit.tum.de/files/eda/2024_dac_wiring_reduction_for_field-coupled_nanotechnologies.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="input-ordering"
-                    name="input-ordering"
-                  />
-                  <label for="input-ordering"
-                    >Input Ordering<a
-                      href="https://www.cda.cit.tum.de/files/eda/2023_isvlsi_versatile_signal_distribution_networks.pdf"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >&#128196;</a
-                    ></label
-                  >
-                </div>
-                <p class="text-justify" style="margin: 0px">
-                  If gold has been chosen, please also select the cost
-                  objective:
-                  <span
-                    style="border-bottom: 1px dotted; cursor: help"
-                    title="For exact and NanoPlaceR, only layout area is possible for the cost objective. For ortho, no cost objective is possible."
-                  >
-                    &#10067;
-                  </span>
-                </p>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="area"
-                    name="area"
-                  />
-                  <label for="area">Layout Area</label>
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="wires"
-                    name="wires"
-                  />
-                  <label for="wires">Number of Wires</label>
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="crossings"
-                    name="crossings"
-                  />
-                  <label for="crossings">Number of Crossings</label>
-                </div>
-                <div class="form-group">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="true"
-                    id="acp"
-                    name="acp"
-                  />
-                  <label for="acp">Area-Crossing Product</label>
-                </div>
-              </div>
-            </div>
+          <p>
+            If Ortho or NanoPlaceR has been chosen, please also select the
+            applied optimization algorithms:
+          </p>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="post-layout"
+              name="post-layout"
+            />
+            <label for="post-layout"
+              >Post-Layout Optimization<a
+                href="https://www.cda.cit.tum.de/files/eda/2025_tcad_efficient_and_scalable_post-layout_optimization_for_fcn.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              >
+              <a
+                href="https://www.cda.cit.tum.de/files/eda/2023_nanoarch_post-layout_optimization_for_fcn.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              >(+Wiring Reduction)<a
+                href="https://www.cda.cit.tum.de/files/eda/2024_dac_wiring_reduction_for_field-coupled_nanotechnologies.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ></label
+            >
+          </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="input-ordering"
+              name="input-ordering"
+            />
+            <label for="input-ordering"
+              >Input Ordering<a
+                href="https://www.cda.cit.tum.de/files/eda/2023_isvlsi_versatile_signal_distribution_networks.pdf"
+                target="_blank"
+                style="text-decoration: none"
+                >&#128196;</a
+              ></label
+            >
+          </div>
+          <p class="text-justify" style="margin: 0px">
+            If gold has been chosen, please also select the cost objective:
+            <span
+              style="border-bottom: 1px dotted; cursor: help"
+              title="For exact and NanoPlaceR, only layout area is possible for the cost objective. For ortho, no cost objective is possible."
+            >
+              &#10067;
+            </span>
+          </p>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="area"
+              name="area"
+            />
+            <label for="area">Layout Area</label>
+          </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="wires"
+              name="wires"
+            />
+            <label for="wires">Number of Wires</label>
+          </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="crossings"
+              name="crossings"
+            />
+            <label for="crossings">Number of Crossings</label>
+          </div>
+          <div class="tech-option">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="true"
+              id="acp"
+              name="acp"
+            />
+            <label for="acp">Area-Crossing Product</label>
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <!-- Existing boxes -->
-
-          <!-- Box 1 -->
-          <div
-            class="col border border-secondary"
-            style="width: 20%; min-width: 200px; margin: 1px"
-          >
+      <div class="section">
+        <h4>Visual Overview</h4>
+        <div class="image-grid">
+          <div class="image-card">
             <img
               src="{{ url_for('static', filename='abstraction_level.png')}}"
-              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Abstraction Level"
             />
+            <p>Abstraction Level</p>
           </div>
 
-          <!-- Box 2 -->
-          <div
-            class="col border border-secondary"
-            style="width: 20%; min-width: 200px; margin: 1px"
-          >
+          <div class="image-card">
             <img
               src="{{ url_for('static', filename='gate_library.png')}}"
-              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Gate Library"
             />
+            <p>Gate Library</p>
           </div>
 
-          <!-- Box 3 -->
-          <div
-            class="col border border-secondary"
-            style="width: 20%; min-width: 200px; margin: 1px"
-          >
+          <div class="image-card">
             <img
               src="{{ url_for('static', filename='clocking_scheme.png')}}"
-              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Clocking Scheme"
             />
+            <p>Clocking Scheme</p>
           </div>
 
-          <!-- Box 4 -->
-          <div
-            class="col border border-secondary"
-            style="width: 20%; min-width: 200px; margin: 1px"
-          >
+          <div class="image-card">
             <img
               src="{{ url_for('static', filename='physical_design_algorithm.png')}}"
-              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Physical Design Algorithm"
             />
+            <p>Physical Design Algorithm</p>
           </div>
 
-          <!-- Box 5 -->
-          <div
-            class="col border border-secondary"
-            style="width: 20%; min-width: 200px; margin: 1px"
-          >
+          <div class="image-card">
             <img
               src="{{ url_for('static', filename='optimization_algorithm.png')}}"
-              style="width: 100%; height: 100%; object-fit: cover"
+              alt="Optimization Algorithm"
             />
+            <p>Optimization Algorithm</p>
           </div>
         </div>
+      </div>
 
-        <div class="col-md-12" style="height: 20px"></div>
-        <h4>Download</h4>
-        <p class="text-justify"></p>
-        <div class="d-flex">
-          <div class="same_row">Number of selected benchmarks: &nbsp;</div>
-          <div class="same_row" id="num_benchmarks">0</div>
-          <div class="same_row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-          <div class="same_row">File Size (compressed): &nbsp;</div>
-          <div class="same_row" id="size_compressed">0</div>
-          <div class="same_row">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-          <div class="same_row">File Size (uncompressed): &nbsp;</div>
-          <div class="same_row" id="size_uncompressed">0</div>
-          <div class="same_row">&nbsp;</div>
+      <div class="section">
+        <h4>Download Information</h4>
+        <p>
+          After the download button is clicked, all benchmark functions provided
+          as <span style="font-family: monospace">.v</span> files and selected
+          layouts provided as
+          <span style="font-family: monospace">.fgl</span> files are downloaded
+          as a <em>.zip</em> archive. Details of the
+          <a href="description" target="_blank">file format</a> are provided.
+          Alternatively, a pre-generated archive with <em>all</em> benchmarks
+          can be <a href="get_pre_gen">downloaded</a>.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">Number of selected benchmarks</div>
+            <div class="stat-value" id="num_benchmarks">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">File Size (compressed)</div>
+            <div class="stat-value" id="size_compressed">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">File Size (uncompressed)</div>
+            <div class="stat-value" id="size_uncompressed">0</div>
+          </div>
         </div>
-        After the download button is clicked, all benchmark functions provided
-        as <span style="font-family: monospace">.v</span> files and selected
-        layouts provided as
-        <span style="font-family: monospace">.fgl</span> files are downloaded as
-        a <em>.zip</em> archive. Details of the
-        <a href="description" target="_blank">file format</a> are provided.
-        Alternatively, a pre-generated archive with <em>all</em> benchmarks can
-        be <a href="get_pre_gen">downloaded</a>.
-        <div class="col-md-12" style="height: 20px"></div>
+      </div>
+      <div class="section">
+        <h4>Download</h4>
         <div class="text-center">
           <button
             type="submit"
-            class="btn btn-primary btn-lg mx-auto text-center"
+            class="btn-modern"
             id="downloadButton"
             disabled
             name="button"
@@ -904,20 +1416,26 @@
             Download selected Benchmarks
           </button>
         </div>
+      </div>
+
+      <div class="section">
         <h6>Overview of Selected Benchmarks:</h6>
-        <div class="form-inline">
-          <div class="form-group">
-            <label for="format" style="margin-right: 10px"
-              >Select format:</label
+        <div class="format-selector">
+          <div class="d-flex align-items-center gap-3">
+            <label for="format" class="mb-0">Select format:</label>
+            <select
+              name="format"
+              id="format"
+              class="form-control"
+              style="width: auto"
             >
-            <select name="format" id="format" class="form-control-sm">
               <option value="csv">CSV</option>
               <option value="excel">Excel</option>
               <option value="json">JSON</option>
             </select>
             <button
               type="submit"
-              class="btn btn-primary btn-sm ml-2"
+              class="btn-modern"
               id="downloadTableButton"
               disabled
               name="button"
@@ -933,78 +1451,106 @@
       </div>
     </form>
 
-    <div class="col-md-12" style="height: 20px"></div>
+    <div class="reference-section">
+      <div class="container">
+        <h4>Reference</h4>
+        <p>
+          For a more detailed description of MNT Bench, we are referring to the
+          corresponding paper
+          <a
+            href="{{ url_for('static', filename='mntbench_technical_report.pdf') }}"
+            target="_blank"
+            >"MNT Bench: Benchmarking Software and Layout Libraries for
+            Field-coupled Nanocomputing"</a
+          >. Our implementation is available on
+          <a href="https://github.com/cda-tum/mnt-bench" target="_blank"
+            >GitHub</a
+          >.
 
-    <div class="container">
-      <h4>Reference</h4>
-      <p class="text-justify">
-        For a more detailed description of MNT Bench, we are referring to the
-        corresponding paper
-        <a
-          href="{{ url_for('static', filename='mntbench_technical_report.pdf') }}"
-          target="_blank"
-          >"MNT Bench: Benchmarking Software and Layout Libraries for
-          Field-coupled Nanocomputing"</a
-        >. Our implementation is available on
-        <a href="https://github.com/cda-tum/mnt-bench" target="_blank">GitHub</a
-        >.
+          <strong
+            >In case you are using MNT Bench in your work, we would be thankful
+            if you referred to it by citing the following publication:</strong
+          >
+        </p>
 
-        <strong
-          >In case you are using MNT Bench in your work, we would be thankful if
-          you referred to it by citing the following publication:</strong
-        >
-      </p>
+        <div class="citation-box">
+          <div class="citation-header">
+            <span>Citation</span>
+            <button
+              class="copy-btn"
+              onclick="copyCitation()"
+              title="Copy citation to clipboard"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
+              </svg>
+              <span class="copy-text">Copy</span>
+            </button>
+          </div>
+          <div class="citation-content" id="citationText">
+            @inproceedings{hofmann2024mntbench, <br />
+            &nbsp; author={Hofmann, Simon and Walter, Marcel and Wille,
+            Robert},<br />
+            &nbsp; booktitle = &#123;&#123;2024 Design, Automation and Test in
+            Europe (DATE)}},<br />
+            &nbsp; title=&#123;&#123;&#123;MNT Bench}}: Benchmarking Software
+            and Layout Libraries for Field-coupled Nanocomputing},<br />
+            &nbsp; year={2024},<br />
+            }
+          </div>
+        </div>
 
-      <p>
-        @inproceedings{hofmann2024mntbench, <br />
-        &nbsp; author={Hofmann, Simon and Walter, Marcel and Wille, Robert},<br />
-        &nbsp; booktitle = &#123;&#123;2024 Design, Automation and Test in
-        Europe (DATE)}},<br />
-        &nbsp; title=&#123;&#123;&#123;MNT Bench}}: Benchmarking Software and
-        Layout Libraries for Field-coupled Nanocomputing},<br />
-        &nbsp; year={2024},<br />
-        }
-      </p>
+        <p>
+          If you use any of the algorithms in your work, please consider citing
+          them as shown on
+          <a
+            href="https://fiction.readthedocs.io/en/latest/publications.html"
+            target="_blank"
+            >this page</a
+          >.
+        </p>
 
-      <p>
-        If you use any of the algorithms in your work, please consider citing
-        them as shown on
-        <a
-          href="https://fiction.readthedocs.io/en/latest/publications.html"
-          target="_blank"
-          >this page</a
-        >.
-      </p>
-
-      <p>
-        In case you have any problems or questions feel free to contact us via
-        <a href="mailto:nanotech.cda@xcit.tum.de">nanotech.cda@xcit.tum.de</a>.
-        More on our work on nanotechnologies is summarized on
-        <a href="https://www.cda.cit.tum.de/research/fcn" target="_blank"
-          >this page</a
-        >.
-      </p>
+        <p>
+          In case you have any problems or questions feel free to contact us via
+          <a href="mailto:nanotech.cda@xcit.tum.de">nanotech.cda@xcit.tum.de</a
+          >. More on our work on nanotechnologies is summarized on
+          <a href="https://www.cda.cit.tum.de/research/nanotech" target="_blank"
+            >this page</a
+          >.
+        </p>
+      </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Bootstrap 5 JavaScript -->
     <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
 
     <script>
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
       function toggleAllSelection() {
           var ids = {{trindade | length}}+{{fontes | length }}+{{iscas | length }}+{{epfl | length }}
           for (let i = 1; i <= ids; i++) {
@@ -1301,7 +1847,14 @@
                       }
                   }
 
-                  if (num_benchmarks.innerHTML > 0) {
+                  // Show warning if some files are missing
+                  if (response.missing_files > 0) {
+                      showMissingFilesWarning(response.missing_files, response.original_selected);
+                  } else {
+                      hideMissingFilesWarning();
+                  }
+
+                  if (response.num_selected > 0) {
                       downloadButton.disabled = false;
                       downloadTableButton.disabled = false;
                   } else {
@@ -1383,6 +1936,80 @@
           if (check_epfl_selected) {
               epfl_benchmarks.checked = true;
           }
+      }
+
+      // Copy citation function
+      function copyCitation() {
+          const citationText = document.getElementById('citationText');
+          const copyBtn = document.querySelector('.copy-btn');
+
+          // Get the text content without HTML tags
+          const textToCopy = citationText.innerText || citationText.textContent;
+
+          // Use the modern Clipboard API if available
+          if (navigator.clipboard && window.isSecureContext) {
+              navigator.clipboard.writeText(textToCopy).then(() => {
+                  showCopySuccess(copyBtn);
+              }).catch(err => {
+                  console.error('Failed to copy: ', err);
+                  fallbackCopyTextToClipboard(textToCopy, copyBtn);
+              });
+          } else {
+              // Fallback for older browsers
+              fallbackCopyTextToClipboard(textToCopy, copyBtn);
+          }
+      }
+
+      function fallbackCopyTextToClipboard(text, copyBtn) {
+          const textArea = document.createElement("textarea");
+          textArea.value = text;
+          textArea.style.top = "0";
+          textArea.style.left = "0";
+          textArea.style.position = "fixed";
+          textArea.style.opacity = "0";
+
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+
+          try {
+              const successful = document.execCommand('copy');
+              if (successful) {
+                  showCopySuccess(copyBtn);
+              } else {
+                  console.error('Fallback copy command failed');
+              }
+          } catch (err) {
+              console.error('Fallback copy failed: ', err);
+          }
+
+          document.body.removeChild(textArea);
+      }
+
+      function showCopySuccess(copyBtn) {
+          copyBtn.classList.add('copied');
+
+          // Change the icon to a checkmark
+          const svg = copyBtn.querySelector('svg');
+          svg.innerHTML = '<polyline points="20,6 9,17 4,12"></polyline>';
+
+          // Update the text to "Copied!"
+          const copyText = copyBtn.querySelector('.copy-text');
+          if (copyText) {
+              copyText.textContent = 'Copied!';
+          }
+
+          setTimeout(() => {
+              copyBtn.classList.remove('copied');
+
+              // Restore the original icon
+              svg.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>';
+
+              // Restore the original text
+              if (copyText) {
+                  copyText.textContent = 'Copy';
+              }
+          }, 2000);
       }
     </script>
   </body>

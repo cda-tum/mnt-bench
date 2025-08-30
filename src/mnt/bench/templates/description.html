@@ -10,282 +10,716 @@
 
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
 
     <style>
-      .container {
-        display: flex;
-        flex-wrap: wrap;
+      :root {
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --secondary-color: #64748b;
+        --accent-color: #f1f5f9;
+        --border-color: #e2e8f0;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        --radius: 12px;
+        --radius-sm: 8px;
       }
 
-      .image-container {
+      * {
         box-sizing: border-box;
-        width: 20%;
-        padding: 10px;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: #fafafa;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+        padding: 1rem 0;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        color: var(--text-secondary) !important;
+        transition: all 0.2s ease;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color) !important;
+        background-color: var(--accent-color);
+      }
+
+      .hero-section {
         text-align: center;
+        padding: 6rem 0 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        margin-bottom: 3rem;
+        margin-top: 80px;
       }
 
-      .image-container img {
-        max-width: 100%;
-        height: 120px; /* Set a fixed height for all images */
-        object-fit: cover; /* This property ensures the image retains its aspect ratio and covers the entire container */
-        display: block; /* Remove extra space beneath the image */
-        margin: 0 auto; /* Center the image within the container */
+      .hero-section h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
       }
 
-      .clear-after-images::before,
-      .clear-after-images::after {
-        content: "";
-        display: table;
-        clear: both;
+      .hero-section p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto 2rem;
       }
 
-      .line-break {
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .section {
+        background: white;
+        border-radius: var(--radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      .section h2 {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .section h3 {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      .section p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .section ul {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .section li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+
+      .clocking-schemes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .scheme-card {
+        background: white;
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .scheme-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary-color);
+      }
+
+      .scheme-card h4 {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .scheme-card h4 a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .scheme-card h4 a:hover {
+        transform: scale(1.1);
+      }
+
+      .scheme-card img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+      }
+
+      .table-modern {
+        background: white;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      .table-modern table {
+        margin: 0;
         width: 100%;
       }
 
+      .table-modern th {
+        background: var(--accent-color);
+        color: var(--text-primary);
+        font-weight: 600;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        text-align: left;
+      }
+
+      .table-modern td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: top;
+      }
+
+      .table-modern tr:last-child td {
+        border-bottom: none;
+      }
+
+      .table-modern tr:nth-child(even) {
+        background: #fafafa;
+      }
+
+      .monospace-text {
+        font-family: "Courier New", monospace;
+        background: var(--accent-color);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+      }
+
+      .gate-libraries {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .library-card {
+        background: var(--accent-color);
+        border-radius: var(--radius-sm);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
+      }
+
+      .library-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .library-card h4 {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .library-card h4 a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.2s ease;
+      }
+
+      .library-card h4 a:hover {
+        transform: scale(1.1);
+      }
+
+      .library-card p {
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      /* Clickable card styling */
+      .clickable-card {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .clickable-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-color);
+      }
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(37, 99, 235, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+        border-radius: var(--radius-sm);
+      }
+
+      .clickable-card:hover .card-overlay {
+        opacity: 1;
+      }
+
+      .click-hint {
+        background: rgba(37, 99, 235, 0.9);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        font-weight: 500;
+        font-size: 0.9rem;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+
+      .clickable-card:hover .click-hint {
+        transform: translateY(0);
+      }
+
+      /* Prevent paper link clicks from triggering card click */
+      .paper-link {
+        position: relative;
+        z-index: 10;
+      }
+
+      .paper-link:hover {
+        transform: scale(1.2);
+      }
+
       @media (max-width: 768px) {
-        .image-container {
-          width: 50%;
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .clocking-schemes-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .gate-libraries {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 1.5rem;
         }
       }
 
-      @media (max-width: 480px) {
-        .image-container {
-          width: 80%;
-        }
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
       }
     </style>
 
-    <title>MNT Bench</title>
+    <title>MNT Bench - Level and File Descriptions</title>
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='favicon.ico') }}"
     />
   </head>
   <body>
-    <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="/mntbench">
-        <img
-          src="{{ url_for('static', filename='tum_logo.svg') }}"
-          alt=""
-          width="50"
-          height="24"
-          class="d-inline-block align-text-top"
-        />
-        MNT Bench
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="index">Benchmarks</a>
-          <a class="nav-item nav-link active" href="description "
-            >Level and File Descriptions</a
-          >
-          <a
-            class="nav-item nav-link"
-            href="https://www.cda.cit.tum.de/research/fcn/"
-            target="_blank"
-            >More on our Work</a
-          >
-          <a class="nav-item nav-link" href="legal">Legal Information</a>
+    <!-- Modern Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/mntbench">
+          <img
+            src="{{ url_for('static', filename='tum_logo.svg') }}"
+            alt="TUM Logo"
+            width="40"
+            height="40"
+            class="d-inline-block align-text-top"
+          />
+          MNT Bench
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-item nav-link" href="index">Benchmarks</a>
+            <a class="nav-item nav-link active" href="description"
+              >Level and File Descriptions</a
+            >
+            <a
+              class="nav-item nav-link"
+              href="https://www.cda.cit.tum.de/research/fcn/"
+              target="_blank"
+              >More on our Work</a
+            >
+            <a class="nav-item nav-link" href="legal">Legal Information</a>
+          </div>
         </div>
       </div>
     </nav>
-    <div class="col-xs-12" style="height: 80px"></div>
 
-    <div class="container">
-      <h1>MNT Bench: Library Description and File Format</h1>
-      <div class="line-break"></div>
-      <p>Benchmarks are provided for two different gate libraries:</p>
-      <div class="line-break"></div>
-      <ul>
-        <li>
-          QCA ONE<a
-            href="https://ieeexplore.ieee.org/document/7538997/"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >: Used for QCA circuits.
-        </li>
-        <li>
-          Bestagon<a
-            href="https://www.cda.cit.tum.de/files/eda/2022_dac_hexagons_are_the_bestagons.pdf"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >: Used for SiDB circuits.
-        </li>
-      </ul>
-      <div class="line-break"></div>
-      <p>and up to five different clocking schemes:</p>
-      <div class="line-break"></div>
-      <div class="image-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="container">
+        <h1>MNT Bench: Library Description and File Format</h1>
         <p>
-          2DDWave<a
-            href="https://ieeexplore.ieee.org/document/1717097"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >
+          Comprehensive guide to understanding the benchmark library structure,
+          gate libraries, clocking schemes, and file naming conventions.
         </p>
-        <img src="{{ url_for('static', filename='2ddwave.png')}}" />
       </div>
-
-      <div class="image-container">
-        <p>
-          USE<a
-            href="https://ieeexplore.ieee.org/document/7219390"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >
-        </p>
-        <img src="{{ url_for('static', filename='use.png')}}" />
-      </div>
-
-      <div class="image-container">
-        <p>
-          RES<a
-            href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >
-        </p>
-        <img src="{{ url_for('static', filename='res.png')}}" />
-      </div>
-
-      <div class="image-container">
-        <p>
-          ESR<a
-            href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >
-        </p>
-        <img src="{{ url_for('static', filename='esr.png')}}" />
-      </div>
-
-      <div class="image-container">
-        <p>
-          ROW<a
-            href="https://ieeexplore.ieee.org/document/573740"
-            target="_blank"
-            style="text-decoration: none"
-            >&#128196;</a
-          >
-        </p>
-        <img src="{{ url_for('static', filename='row.png')}}" />
-      </div>
-
-      <div class="line-break"></div>
-      <div class="col-md-12" style="height: 20px"></div>
-      <p class="clear-after-images">Used File Format:</p>
-      <ul>
-        <li>
-          Not every benchmark is necessarily available for every possible
-          configuration of the available options. For example, for large
-          circuits, layouts using the USE clocking scheme have not been found
-          yet.
-        </li>
-        <li>
-          Since the <em>.zip</em> file may be composed of numerous files
-          (currently, we offer almost 1000 benchmark circuits), the following
-          naming convention is used for the respective files:
-        </li>
-      </ul>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
-      <table class="table-sm">
-        <caption>
-          Level Descriptions
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col" style="width: 15%">Level</th>
-            <th scope="col" style="width: 80%">Filename</th>
-            <th scope="col" style="width: 5%">Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="vertical-align: top">Gate-Level</td>
-            <td style="vertical-align: top">
-              <span style="font-family: monospace"
-                >&lt;benchmark_identifier&gt;_&lt;library&gt;_&lt;clocking_scheme&gt;_&lt;algorithm&gt;_&lt;optimized&gt;_&lt;input-ordered&gt;_&lt;cost_objective&gt;.fgl</span
+      <div class="section">
+        <h2>Gate Libraries</h2>
+        <p>Benchmarks are provided for two different gate libraries:</p>
+
+        <div class="gate-libraries">
+          <div
+            class="library-card clickable-card"
+            data-url="https://ieeexplore.ieee.org/document/7538997/"
+            data-title="QCA ONE Paper"
+          >
+            <h4>
+              QCA ONE<a
+                href="https://ieeexplore.ieee.org/document/7538997/"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
               >
-            </td>
-            <td style="vertical-align: top">
-              <span style="font-family: monospace"
-                >mux21_Bestagon_ROW_gold_Opt_Ord_crossings.fgl</span
+            </h4>
+            <p>Used for QCA circuits.</p>
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+
+          <div
+            class="library-card clickable-card"
+            data-url="https://www.cda.cit.tum.de/files/eda/2022_dac_hexagons_are_the_bestagons.pdf"
+            data-title="Bestagon Paper"
+          >
+            <h4>
+              Bestagon<a
+                href="https://www.cda.cit.tum.de/files/eda/2022_dac_hexagons_are_the_bestagons.pdf"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
               >
-              <span style="font-family: monospace"
-                >mux21_ONE_USE_NanoPlaceR_UnOpt_UnOrd_area.fgl</span
+            </h4>
+            <p>Used for SiDB circuits.</p>
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Clocking Schemes</h2>
+        <p>Up to five different clocking schemes are available:</p>
+
+        <div class="clocking-schemes-grid">
+          <div
+            class="scheme-card clickable-card"
+            data-url="https://ieeexplore.ieee.org/document/1717097"
+            data-title="2DDWave Paper"
+          >
+            <h4>
+              2DDWave<a
+                href="https://ieeexplore.ieee.org/document/1717097"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
               >
-            </td>
-          </tr>
-          <tr>
-            <td style="vertical-align: top">Best Gate-Level Layout</td>
-            <td style="vertical-align: top">
-              <span style="font-family: monospace"
-                >&lt;benchmark_identifier&gt;_&lt;library&gt;_BEST.fgl</span
+            </h4>
+            <img
+              src="{{ url_for('static', filename='2ddwave.png')}}"
+              alt="2DDWave Clocking Scheme"
+            />
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+
+          <div
+            class="scheme-card clickable-card"
+            data-url="https://ieeexplore.ieee.org/document/7219390"
+            data-title="USE Paper"
+          >
+            <h4>
+              USE<a
+                href="https://ieeexplore.ieee.org/document/7219390"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
               >
-            </td>
-            <td style="vertical-align: top">
-              <span style="font-family: monospace">mux21_ONE_BEST.fgl</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="vertical-align: top">Network Level</td>
-            <td style="vertical-align: top">
-              <span style="font-family: monospace"
-                >&lt;benchmark_identifier&gt;.v</span
+            </h4>
+            <img
+              src="{{ url_for('static', filename='use.png')}}"
+              alt="USE Clocking Scheme"
+            />
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+
+          <div
+            class="scheme-card clickable-card"
+            data-url="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
+            data-title="RES Paper"
+          >
+            <h4>
+              RES<a
+                href="https://www.tandfonline.com/doi/abs/10.1080/21681724.2019.1570551"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
               >
-            </td>
-            <td style="vertical-align: top">
-              <span style="font-family: monospace">mux21.v</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </h4>
+            <img
+              src="{{ url_for('static', filename='res.png')}}"
+              alt="RES Clocking Scheme"
+            />
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+
+          <div
+            class="scheme-card clickable-card"
+            data-url="https://link.springer.com/content/pdf/10.1080/21681724.2019.1570551"
+            data-title="ESR Paper"
+          >
+            <h4>
+              ESR<a
+                href="https://link.springer.com/content/pdf/10.1007/s10470-020-01760-4.pdf"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
+              >
+            </h4>
+            <img
+              src="{{ url_for('static', filename='esr.png')}}"
+              alt="ESR Clocking Scheme"
+            />
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+
+          <div
+            class="scheme-card clickable-card"
+            data-url="https://ieeexplore.ieee.org/document/573740"
+            data-title="ROW Paper"
+          >
+            <h4>
+              ROW<a
+                href="https://ieeexplore.ieee.org/document/573740"
+                target="_blank"
+                class="paper-link"
+                >&#128196;</a
+              >
+            </h4>
+            <img
+              src="{{ url_for('static', filename='row.png')}}"
+              alt="ROW Clocking Scheme"
+            />
+            <div class="card-overlay">
+              <span class="click-hint">Click to view paper</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>File Format Information</h2>
+        <ul>
+          <li>
+            Not every benchmark is necessarily available for every possible
+            configuration of the available options. For example, for large
+            circuits, layouts using the USE clocking scheme have not been found
+            yet.
+          </li>
+          <li>
+            Since the <em>.zip</em> file may be composed of numerous files
+            (currently, we offer almost 1000 benchmark circuits), the following
+            naming convention is used for the respective files:
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>File Naming Conventions</h2>
+        <div class="table-modern">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" style="width: 15%">Level</th>
+                <th scope="col" style="width: 80%">Filename</th>
+                <th scope="col" style="width: 5%">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gate-Level</td>
+                <td>
+                  <span class="monospace-text"
+                    >&lt;benchmark_identifier&gt;_&lt;library&gt;_&lt;clocking_scheme&gt;_&lt;algorithm&gt;_&lt;optimized&gt;_&lt;input-ordered&gt;_&lt;cost_objective&gt;.fgl</span
+                  >
+                </td>
+                <td>
+                  <span class="monospace-text"
+                    >mux21_Bestagon_ROW_gold_Opt_Ord_crossings.fgl</span
+                  >
+                  <br /><br />
+                  <span class="monospace-text"
+                    >mux21_ONE_USE_NanoPlaceR_UnOpt_UnOrd_area.fgl</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Best Gate-Level Layout</td>
+                <td>
+                  <span class="monospace-text"
+                    >&lt;benchmark_identifier&gt;_&lt;library&gt;_BEST.fgl</span
+                  >
+                </td>
+                <td>
+                  <span class="monospace-text">mux21_ONE_BEST.fgl</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Network Level</td>
+                <td>
+                  <span class="monospace-text"
+                    >&lt;benchmark_identifier&gt;.v</span
+                  >
+                </td>
+                <td>
+                  <span class="monospace-text">mux21.v</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <div class="col-xs-12" style="height: 50px"></div>
+    <!-- Bootstrap 5 JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Clickable card functionality -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all clickable cards
+        const clickableCards = document.querySelectorAll(".clickable-card");
+
+        clickableCards.forEach((card) => {
+          card.addEventListener("click", function (e) {
+            // Don't trigger if clicking on the paper link
+            if (e.target.closest(".paper-link")) {
+              return;
+            }
+
+            const url = this.getAttribute("data-url");
+            const title = this.getAttribute("data-title");
+
+            if (url) {
+              // Add a small delay to show the click effect
+              setTimeout(() => {
+                window.open(url, "_blank");
+              }, 150);
+            }
+          });
+
+          // Add keyboard support for accessibility
+          card.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              this.click();
+            }
+          });
+
+          // Make cards focusable for keyboard navigation
+          card.setAttribute("tabindex", "0");
+          card.setAttribute("role", "button");
+          card.setAttribute(
+            "aria-label",
+            `Click to view ${this.getAttribute("data-title")}`,
+          );
+        });
+      });
+    </script>
   </body>
 </html>
