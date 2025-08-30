@@ -155,8 +155,8 @@
 
       .clocking-schemes-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
         margin: 2rem 0;
       }
 
@@ -195,11 +195,13 @@
 
       .scheme-card img {
         width: 100%;
-        height: 120px;
-        object-fit: cover;
+        max-height: 200px;
+        height: auto;
+        object-fit: contain;
         border-radius: 8px;
         margin-bottom: 1rem;
         border: 1px solid var(--border-color);
+        background: white;
       }
 
       .table-modern {
@@ -298,12 +300,14 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
+        transition: all 0.2s ease;
       }
 
       .clickable-card:hover {
         transform: translateY(-4px);
         box-shadow: var(--shadow-lg);
         border-color: var(--primary-color);
+        background: rgba(37, 99, 235, 0.05);
       }
 
       .card-overlay {
@@ -356,7 +360,7 @@
         }
 
         .clocking-schemes-grid {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         }
 
         .gate-libraries {
@@ -685,7 +689,7 @@
         // Get all clickable cards
         const clickableCards = document.querySelectorAll(".clickable-card");
 
-        clickableCards.forEach((card) => {
+        clickableCards.forEach(function (card, index) {
           card.addEventListener("click", function (e) {
             // Don't trigger if clicking on the paper link
             if (e.target.closest(".paper-link")) {
@@ -693,7 +697,6 @@
             }
 
             const url = this.getAttribute("data-url");
-            const title = this.getAttribute("data-title");
 
             if (url) {
               // Add a small delay to show the click effect
@@ -716,7 +719,7 @@
           card.setAttribute("role", "button");
           card.setAttribute(
             "aria-label",
-            `Click to view ${this.getAttribute("data-title")}`,
+            `Click to view ${card.getAttribute("data-title")}`,
           );
         });
       });
