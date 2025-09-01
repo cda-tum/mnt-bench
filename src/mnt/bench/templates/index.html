@@ -66,6 +66,10 @@
         padding: 0.75rem 0;
       }
 
+      .navbar.hidden {
+        transform: translateY(-100%);
+      }
+
       .navbar-brand {
         font-weight: 700;
         font-size: 1.5rem;
@@ -142,6 +146,10 @@
         margin-bottom: 2rem;
         box-shadow: var(--shadow-sm);
         border: 1px solid var(--border-color);
+      }
+
+      form {
+        margin-top: 2rem;
       }
 
       .section h4 {
@@ -286,7 +294,7 @@
       .image-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
+        gap: 2rem;
         margin: 2rem 0;
       }
 
@@ -304,11 +312,120 @@
         box-shadow: var(--shadow-md);
       }
 
+      .image-card {
+        cursor: pointer;
+      }
+
       .image-card img {
         width: 100%;
         height: auto;
         border-radius: 8px;
         margin-bottom: 0.5rem;
+        transition: all 0.2s ease;
+      }
+
+      .image-card:hover img {
+        transform: scale(1.05);
+      }
+
+      /* Modal styles */
+      .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .image-modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 95vw;
+        max-height: 95vh;
+        width: auto;
+        height: auto;
+        background: white;
+        border-radius: var(--radius);
+        padding: 1rem;
+        box-shadow: var(--shadow-lg);
+        animation: zoomIn 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .modal-content img {
+        max-width: 95vw;
+        max-height: 95vh;
+        width: auto;
+        height: auto;
+        border-radius: var(--radius-sm);
+        display: block;
+        object-fit: contain;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background: var(--error-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow-md);
+        z-index: 1001;
+      }
+
+      .modal-close:hover {
+        background: #dc2626;
+        transform: scale(1.1);
+      }
+
+      .modal-title {
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 1.1rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .download-section {
@@ -379,6 +496,27 @@
         opacity: 0.6;
         cursor: not-allowed;
         transform: none;
+      }
+
+      .btn-modern.loading {
+        position: relative;
+        opacity: 0.8;
+        cursor: not-allowed;
+      }
+
+      .btn-modern.loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid transparent;
+        border-top: 2px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
       }
 
       .format-selector {
@@ -548,6 +686,38 @@
         .section {
           padding: 1.5rem;
         }
+
+        .modal-content {
+          max-width: 98vw;
+          max-height: 98vh;
+          padding: 0.5rem;
+        }
+
+        .modal-content img {
+          max-width: 98vw;
+          max-height: 98vh;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .modal-content {
+          max-width: 100vw;
+          max-height: 100vh;
+          padding: 0.25rem;
+          border-radius: 0;
+        }
+
+        .modal-content img {
+          max-width: 100vw;
+          max-height: 100vh;
+        }
+
+        .modal-close {
+          top: 5px;
+          right: 5px;
+          font-size: 1.5rem;
+          z-index: 1001;
+        }
       }
 
       .help-tooltip {
@@ -588,25 +758,7 @@
         box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
       }
 
-      /* Loading states */
-      .btn-modern:disabled {
-        position: relative;
-      }
-
-      .btn-modern:disabled::after {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 50%;
-        left: 50%;
-        margin-left: -8px;
-        margin-top: -8px;
-        border: 2px solid transparent;
-        border-top: 2px solid var(--primary-color);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
+      /* Loading states - moved to .btn-modern.loading class above */
 
       @keyframes spin {
         0% {
@@ -679,9 +831,10 @@
         <p>
           The development and improvement of physical design tools for
           <em>nanotechnologies</em>, such as
-          <em>Silicon Dangling Bonds</em> (SiDBS), is critical to the success of
-          this emerging technology. Furthermore, simulation and fabrication
-          heavily rely on the usage of area-efficient layouts.
+          <em>Silicon Dangling Bonds</em> (SiDBs) and
+          <em>Quantum-dot Cellular Automata</em> (QCA), is critical to the
+          success of this emerging technology. Furthermore, simulation and
+          fabrication heavily rely on the usage of area-efficient layouts.
         </p>
       </div>
     </div>
@@ -712,7 +865,7 @@
               >&#128196;</a
             ></em
           >
-          for <em>Silicon Dangling Bonds</em> (SiDBS), the following benchmark
+          for <em>Silicon Dangling Bonds</em> (SiDBs), the following benchmark
           library also differentiates between different underlying clocking
           schemes such as
           <em
@@ -776,8 +929,8 @@
         <p>
           The respective publications for the gate libraries, benchmarks,
           clocking schemes, physical design algorithms, and optimization
-          algorithms can be found by clicking the corresponding paper
-          (&#128196;) symbol.
+          algorithms can be found by clicking the corresponding paper symbol
+          (&#128196;).
         </p>
         <p>
           In order to create a benchmark set according to your needs, simply
@@ -1289,7 +1442,7 @@
             >
           </div>
           <p class="text-justify" style="margin: 0px">
-            If gold has been chosen, please also select the cost objective:
+            If Gold has been chosen, please also select the cost objective:
             <span
               style="border-bottom: 1px dotted; cursor: help"
               title="For exact and NanoPlaceR, only layout area is possible for the cost objective. For ortho, no cost objective is possible."
@@ -1342,7 +1495,10 @@
       <div class="section">
         <h4>Visual Overview</h4>
         <div class="image-grid">
-          <div class="image-card">
+          <div
+            class="image-card"
+            onclick="openModal('{{ url_for('static', filename='abstraction_level.png')}}', 'Abstraction Level')"
+          >
             <img
               src="{{ url_for('static', filename='abstraction_level.png')}}"
               alt="Abstraction Level"
@@ -1350,7 +1506,10 @@
             <p>Abstraction Level</p>
           </div>
 
-          <div class="image-card">
+          <div
+            class="image-card"
+            onclick="openModal('{{ url_for('static', filename='gate_library.png')}}', 'Gate Library')"
+          >
             <img
               src="{{ url_for('static', filename='gate_library.png')}}"
               alt="Gate Library"
@@ -1358,7 +1517,10 @@
             <p>Gate Library</p>
           </div>
 
-          <div class="image-card">
+          <div
+            class="image-card"
+            onclick="openModal('{{ url_for('static', filename='clocking_scheme.png')}}', 'Clocking Scheme')"
+          >
             <img
               src="{{ url_for('static', filename='clocking_scheme.png')}}"
               alt="Clocking Scheme"
@@ -1366,15 +1528,20 @@
             <p>Clocking Scheme</p>
           </div>
 
-          <div class="image-card">
+          <div
+            class="image-card"
+            onclick="openModal('{{ url_for('static', filename='physical_design_algorithm.png')}}', 'Physical Design Algorithm')"
+          >
             <img
               src="{{ url_for('static', filename='physical_design_algorithm.png')}}"
               alt="Physical Design Algorithm"
             />
             <p>Physical Design Algorithm</p>
           </div>
-
-          <div class="image-card">
+          <div
+            class="image-card"
+            onclick="openModal('{{ url_for('static', filename='optimization_algorithm.png')}}', 'Optimization Algorithm')"
+          >
             <img
               src="{{ url_for('static', filename='optimization_algorithm.png')}}"
               alt="Optimization Algorithm"
@@ -1391,10 +1558,10 @@
           as <span style="font-family: monospace">.v</span> files and selected
           layouts provided as
           <span style="font-family: monospace">.fgl</span> files are downloaded
-          as a <em>.zip</em> archive. Details of the
-          <a href="description" target="_blank">file format</a> are provided.
-          Alternatively, a pre-generated archive with <em>all</em> benchmarks
-          can be <a href="get_pre_gen">downloaded</a>.
+          as a <span style="font-family: monospace">.zip</span> archive. Details
+          of the <a href="description" target="_blank">file format</a> are
+          provided. Alternatively, a pre-generated archive with
+          <em>all</em> benchmarks can be <a href="get_pre_gen">downloaded</a>.
         </p>
 
         <div class="stats-grid">
@@ -1423,7 +1590,7 @@
             name="button"
             value="submit"
           >
-            Download selected Benchmarks
+            Please select benchmarks first
           </button>
         </div>
       </div>
@@ -1451,7 +1618,7 @@
               name="button"
               value="submitTable"
             >
-              Download Table
+              Please select benchmarks first
             </button>
           </div>
         </div>
@@ -1540,6 +1707,23 @@
             >this page</a
           >.
         </p>
+
+        <p>
+          <strong>Found better layouts?</strong> If you discover even smaller
+          layouts, we would be grateful if you could share them with us at
+          <a href="mailto:nanotech.cda@xcit.tum.de">nanotech.cda@xcit.tum.de</a
+          >. This helps us continuously improve the benchmark library and
+          benefit the entire research community.
+        </p>
+      </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <img id="modalImage" src="" alt="" />
+        <div class="modal-title" id="modalTitle"></div>
       </div>
     </div>
 
@@ -1551,14 +1735,31 @@
     ></script>
 
     <script>
-      // Navbar scroll effect
+      // Navbar scroll effect with hide/show functionality
+      let lastScrollTop = 0;
+      const scrollThreshold = 100; // Minimum scroll distance before hiding
+
       window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Add scrolled class for styling
+        if (currentScrollTop > 50) {
           navbar.classList.add('scrolled');
         } else {
           navbar.classList.remove('scrolled');
         }
+
+        // Hide/show navbar based on scroll direction
+        if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
+          // Scrolling down - hide navbar
+          navbar.classList.add('hidden');
+        } else if (currentScrollTop < lastScrollTop) {
+          // Scrolling up - show navbar
+          navbar.classList.remove('hidden');
+        }
+
+        lastScrollTop = currentScrollTop;
       });
 
       function toggleAllSelection() {
@@ -1631,6 +1832,8 @@
           check_col_if_fontes18_selected()
           check_col_if_iscas85_selected()
           check_col_if_epfl_selected()
+
+          // Update button states based on server response
           get_num_benchs()
       }
 
@@ -1857,12 +2060,25 @@
                       }
                   }
 
+                  // Update button states based on server response
                   if (response.num_selected > 0) {
+                      // Enable buttons and show normal text
                       downloadButton.disabled = false;
+                      downloadButton.classList.remove('loading');
+                      downloadButton.textContent = 'Download selected Benchmarks';
+
                       downloadTableButton.disabled = false;
+                      downloadTableButton.classList.remove('loading');
+                      downloadTableButton.textContent = 'Download Table';
                   } else {
+                      // Disable buttons and show benchmark selection prompt
                       downloadButton.disabled = true;
+                      downloadButton.classList.remove('loading');
+                      downloadButton.textContent = 'Please select benchmarks and the abstraction level first';
+
                       downloadTableButton.disabled = true;
+                      downloadTableButton.classList.remove('loading');
+                      downloadTableButton.textContent = 'Please select benchmarks and the abstraction level first';
                   }
               });
       }
@@ -1940,6 +2156,114 @@
               epfl_benchmarks.checked = true;
           }
       }
+
+      // Button state management functions
+      function updateButtonStates() {
+          // This function is now simplified - just call the backend to get the count
+          get_num_benchs();
+      }
+
+      function setButtonsLoading() {
+          const downloadButton = document.getElementById('downloadButton');
+          const downloadTableButton = document.getElementById('downloadTableButton');
+
+          downloadButton.disabled = true;
+          downloadButton.classList.add('loading');
+          downloadButton.textContent = 'Preparing download...';
+
+          downloadTableButton.disabled = true;
+          downloadTableButton.classList.add('loading');
+          downloadTableButton.textContent = 'Preparing table...';
+      }
+
+      function resetButtonsState() {
+          const downloadButton = document.getElementById('downloadButton');
+          const downloadTableButton = document.getElementById('downloadTableButton');
+
+          // Remove loading state
+          downloadButton.classList.remove('loading');
+          downloadTableButton.classList.remove('loading');
+
+          // Update button states based on current selection
+          get_num_benchs();
+      }
+
+            // Image modal functions
+      function openModal(imageSrc, imageTitle) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const navbar = document.querySelector('.navbar');
+
+        modalImage.src = imageSrc;
+        modalImage.alt = imageTitle;
+        modalTitle.textContent = imageTitle;
+
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        navbar.classList.add('hidden'); // Hide navbar when modal opens
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('imageModal');
+        const navbar = document.querySelector('.navbar');
+
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+        navbar.classList.remove('hidden'); // Show navbar when modal closes
+      }
+
+      // Close modal when clicking outside the image
+      document.getElementById('imageModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
+
+      // Handle window resize to ensure modal adapts
+      window.addEventListener('resize', function() {
+        const modal = document.getElementById('imageModal');
+        if (modal.classList.contains('show')) {
+          // Force a reflow to ensure the modal adapts to new screen size
+          modal.style.display = 'none';
+          modal.offsetHeight; // Trigger reflow
+          modal.style.display = 'flex';
+        }
+      });
+
+      // Form submission handling
+      document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('benchmark_form');
+
+          // Set initial button states
+          get_num_benchs();
+
+          form.addEventListener('submit', function(e) {
+              // Check if any benchmarks are selected and abstraction level is selected before showing loading
+              const formData = new FormData(form);
+              let hasSelectedBenchmarks = false;
+
+              // Check for selected benchmarks
+              for (let [key, value] of formData.entries()) {
+                  if (key.startsWith('selectBench_') && value) {
+                      hasSelectedBenchmarks = true;
+                      break;
+                  }
+              }
+
+              if (hasSelectedBenchmarks) {
+                  setButtonsLoading();
+              }
+              // If no benchmarks selected, let the form validation handle it
+          });
+      });
 
       // Copy citation function
       function copyCitation() {
