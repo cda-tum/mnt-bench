@@ -2061,6 +2061,9 @@
                   }
 
                   // Update button states based on server response
+                  const downloadButton = document.getElementById('downloadButton');
+                  const downloadTableButton = document.getElementById('downloadTableButton');
+
                   if (response.num_selected > 0) {
                       // Enable buttons and show normal text
                       downloadButton.disabled = false;
@@ -2071,14 +2074,15 @@
                       downloadTableButton.classList.remove('loading');
                       downloadTableButton.textContent = 'Download Table';
                   } else {
-                      // Disable buttons and show benchmark selection prompt
+                      // Disable download button but keep table download enabled
                       downloadButton.disabled = true;
                       downloadButton.classList.remove('loading');
                       downloadButton.textContent = 'Please select benchmarks and the abstraction level first';
 
-                      downloadTableButton.disabled = true;
+                      // Table download should always be enabled (can download empty table)
+                      downloadTableButton.disabled = false;
                       downloadTableButton.classList.remove('loading');
-                      downloadTableButton.textContent = 'Please select benchmarks and the abstraction level first';
+                      downloadTableButton.textContent = 'Download Table';
                   }
               });
       }
@@ -2246,22 +2250,57 @@
           get_num_benchs();
 
           form.addEventListener('submit', function(e) {
-              // Check if any benchmarks are selected and abstraction level is selected before showing loading
-              const formData = new FormData(form);
-              let hasSelectedBenchmarks = false;
+              // First, try to get the button value from the actual button that was clicked
+              // This is more reliable than FormData which might not include disabled buttons
+              let buttonValue = null;
+              const downloadButton = document.getElementById('downloadButton');
+              const downloadTableButton = document.getElementById('downloadTableButton');
 
-              // Check for selected benchmarks
-              for (let [key, value] of formData.entries()) {
-                  if (key.startsWith('selectBench_') && value) {
-                      hasSelectedBenchmarks = true;
-                      break;
+              // Check which button was clicked by looking at the event target
+              if (e.submitter === downloadButton) {
+                  buttonValue = downloadButton.value;
+              } else if (e.submitter === downloadTableButton) {
+                  buttonValue = downloadTableButton.value;
+              }
+
+              // Fallback: try to get from FormData
+              if (!buttonValue) {
+                  const formData = new FormData(form);
+                  for (let [key, value] of formData.entries()) {
+                      if (key === 'button') {
+                          buttonValue = value;
+                          break;
+                      }
                   }
               }
 
-              if (hasSelectedBenchmarks) {
-                  setButtonsLoading();
+              // If no button value is found, prevent submission
+              if (!buttonValue) {
+                  e.preventDefault();
+                  return false;
               }
-              // If no benchmarks selected, let the form validation handle it
+
+              // Always store the button value in a hidden input to ensure it's preserved
+              // Remove any existing hidden button input
+              const existingHidden = form.querySelector('input[name="button"][type="hidden"]');
+              if (existingHidden) {
+                  existingHidden.remove();
+              }
+
+              // Add hidden input to preserve button value
+              const hiddenInput = document.createElement('input');
+              hiddenInput.type = 'hidden';
+              hiddenInput.name = 'button';
+              hiddenInput.value = buttonValue;
+              form.appendChild(hiddenInput);
+
+              // Show loading state for any submission
+              setButtonsLoading();
+
+              // Reset button states after a short delay to allow for download to start
+              setTimeout(() => {
+                  resetButtonsState();
+              }, 500); // 0.5 second delay to allow download to start
           });
       });
 
