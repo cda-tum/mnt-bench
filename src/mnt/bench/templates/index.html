@@ -75,6 +75,16 @@
         gap: 0.75rem;
       }
 
+      .navbar-logo {
+        width: 100px !important;
+        height: 50px !important;
+        transition: all 0.2s ease;
+      }
+
+      .navbar-logo:hover {
+        transform: scale(1.05);
+      }
+
       .navbar-nav .nav-link {
         font-weight: 500;
         color: var(--text-secondary) !important;
@@ -113,8 +123,8 @@
       }
 
       .hero-logo {
-        width: 160px;
-        height: 160px;
+        width: 400px;
+        height: 200px;
         margin-bottom: 2rem;
         filter: brightness(0) invert(1);
       }
@@ -622,9 +632,9 @@
           <img
             src="{{ url_for('static', filename='mnt_dark.svg')}}"
             alt="MNT Logo"
-            width="40"
-            height="40"
-            class="d-inline-block align-text-top"
+            width="100"
+            height="50"
+            class="d-inline-block align-text-top navbar-logo"
           />
           Bench
         </a>
@@ -1845,13 +1855,6 @@
                       if (tables.length > 0) {
                           tables[0].innerHTML = response.table;
                       }
-                  }
-
-                  // Show warning if some files are missing
-                  if (response.missing_files > 0) {
-                      showMissingFilesWarning(response.missing_files, response.original_selected);
-                  } else {
-                      hideMissingFilesWarning();
                   }
 
                   if (response.num_selected > 0) {
