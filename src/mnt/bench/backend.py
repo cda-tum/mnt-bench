@@ -4,25 +4,21 @@ import io
 import json
 import os
 import re
-import sys
 from dataclasses import dataclass
+from importlib import metadata
 from pathlib import Path
+from shutil import copyfileobj
 from typing import TYPE_CHECKING, Any
-from zipfile import ZIP_DEFLATED, ZipFile
+from zipfile import ZIP_DEFLATED, BadZipFile, ZipFile
 
-import humanize  # type: ignore[import-not-found]
+import humanize
 import pandas as pd
 import requests
-from packaging import version
+from packaging.version import InvalidVersion, Version
 from tqdm import tqdm
 
-if TYPE_CHECKING or sys.version_info >= (3, 10, 0):  # pragma: no cover
-    from importlib import metadata
-else:
-    import importlib_metadata as metadata
-
 if TYPE_CHECKING:  # pragma: no cover
-    from collections.abc import Iterable
+    from collections.abc import Iterable, Mapping
 
 
 @dataclass
@@ -61,9 +57,9 @@ class ParsedBenchmarkName:
     optimized: str
     ordered: str
     cost: str
-    x: int
-    y: int
-    area: int
+    x: int | str
+    y: int | str
+    area: int | str
     size_uncompressed: int
     size_compressed: int
     filename: str
@@ -128,24 +124,13 @@ class Backend:
 
         self.database: pd.DataFrame | None = None
         self.mntbench_all_zip: ZipFile | None = None
-        self.layout_dimensions: list[dict[str, dict[str, str]]] | None = None
+        self.layout_dimensions: list[dict[str, dict[str, int]]] | None = None
 
-    def filter_database(self, benchmark_config: BenchmarkConfiguration) -> pd.DataFrame:  # noqa: PLR0912, PLR0915
-        """Filters the database according to the filter criteria.
-
-        Keyword arguments:
-        filterCriteria -- list of all filter criteria
-        database -- database containing all available benchmarks
-
-
-        Return values:
-        db_filtered["path"].to_list() -- list of all file paths of the selected benchmark files
-        """
+    def filter_database(self, benchmark_config: BenchmarkConfiguration) -> pd.DataFrame:
+        """Filter the database according to a benchmark configuration."""
         colnames = list(ParsedBenchmarkName.__annotations__.keys())
-        db_filtered = pd.DataFrame(columns=colnames)
-
         if self.database is None or self.database.empty:
-            return []
+            return pd.DataFrame(columns=colnames)
 
         selected_benchmarks = []
         for identifier in benchmark_config.indices_benchmarks:
@@ -162,96 +147,79 @@ class Backend:
                     self.epfl[identifier - 1 - len(self.trindade) - len(self.fontes) - len(self.iscas)]["filename"]
                 )
 
-        db_tmp = self.database[self.database["benchmark"].isin(selected_benchmarks)]
-        db_networks = db_tmp.loc[db_tmp["level"] == "network"]
+        matching_benchmarks = self.database[self.database["benchmark"].isin(selected_benchmarks)]
+        selected_rows: list[pd.DataFrame] = []
 
         if benchmark_config.gate:
-            db_tmp = db_tmp.loc[db_tmp["level"] == "gate"]
-            db_filtered = pd.concat([db_filtered if not db_filtered.empty else None, db_tmp])
+            gate_rows = matching_benchmarks.loc[matching_benchmarks["level"] == "gate"]
 
-            if benchmark_config.one and not benchmark_config.bestagon:
-                db_filtered = db_tmp.loc[db_tmp["library"] == "one"]
-
-            if not benchmark_config.one and benchmark_config.bestagon:
-                db_filtered = db_tmp.loc[db_tmp["library"] == "bestagon"]
+            libraries = [
+                library
+                for library, selected in (("one", benchmark_config.one), ("bestagon", benchmark_config.bestagon))
+                if selected
+            ]
+            if libraries:
+                gate_rows = gate_rows.loc[gate_rows["library"].isin(libraries)]
 
             if benchmark_config.best:
-                db_filtered = db_filtered.loc[db_filtered["clocking_scheme"] == "best"]
+                gate_rows = gate_rows.loc[gate_rows["clocking_scheme"] == "best"]
             else:
-                db_tmp_all_schemes = pd.DataFrame(columns=colnames)
-                if benchmark_config.twoddwave:
-                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "2ddwave"]
-                    db_tmp_all_schemes = pd.concat(
-                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                clocking_schemes = [
+                    scheme
+                    for scheme, selected in (
+                        ("2ddwave", benchmark_config.twoddwave),
+                        ("use", benchmark_config.use),
+                        ("res", benchmark_config.res),
+                        ("esr", benchmark_config.esr),
+                        ("row", benchmark_config.row),
                     )
+                    if selected
+                ]
+                if clocking_schemes:
+                    gate_rows = gate_rows.loc[gate_rows["clocking_scheme"].isin(clocking_schemes)]
 
-                if benchmark_config.use:
-                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "use"]
-                    db_tmp_all_schemes = pd.concat(
-                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
+                algorithms = [
+                    algorithm
+                    for algorithm, selected in (
+                        ("exact", benchmark_config.exact),
+                        ("nanoplacer", benchmark_config.nanoplacer),
+                        ("ortho", benchmark_config.ortho),
+                        ("gold", benchmark_config.gold),
                     )
+                    if selected
+                ]
+                if algorithms:
+                    algorithm_rows = []
+                    costs = [
+                        cost
+                        for cost, selected in (
+                            ("area", benchmark_config.area),
+                            ("wires", benchmark_config.wires),
+                            ("crossings", benchmark_config.crossings),
+                            ("acp", benchmark_config.acp),
+                            ("none", benchmark_config.none),
+                        )
+                        if selected
+                    ]
+                    for algorithm in algorithms:
+                        rows = gate_rows.loc[gate_rows["physical_design_algorithm"] == algorithm]
+                        if benchmark_config.optimized and algorithm != "exact":
+                            rows = rows.loc[rows["optimized"] == "opt"]
+                        if benchmark_config.ordered and algorithm == "ortho":
+                            rows = rows.loc[rows["ordered"] == "ord"]
+                        if costs and algorithm == "gold":
+                            rows = rows.loc[rows["cost"].isin(costs)]
+                        algorithm_rows.append(rows)
+                    gate_rows = pd.concat(algorithm_rows, ignore_index=True)
 
-                if benchmark_config.res:
-                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "res"]
-                    db_tmp_all_schemes = pd.concat(
-                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
-                    )
-
-                if benchmark_config.esr:
-                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "esr"]
-                    db_tmp_all_schemes = pd.concat(
-                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
-                    )
-
-                if benchmark_config.row:
-                    db_tmp = db_filtered.loc[db_filtered["clocking_scheme"] == "row"]
-                    db_tmp_all_schemes = pd.concat(
-                        [db_tmp_all_schemes if not db_tmp_all_schemes.empty else None, db_tmp]
-                    )
-
-                if not db_tmp_all_schemes.empty:
-                    db_filtered = db_tmp_all_schemes
-
-                if benchmark_config.exact:
-                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "exact"]
-
-                if benchmark_config.nanoplacer:
-                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "nanoplacer"]
-
-                    if benchmark_config.optimized:
-                        db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
-
-                if benchmark_config.ortho:
-                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "ortho"]
-
-                    if benchmark_config.optimized:
-                        db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
-
-                    if benchmark_config.ordered:
-                        db_filtered = db_filtered.loc[db_filtered["ordered"] == "ord"]
-
-                if benchmark_config.gold:
-                    db_filtered = db_filtered.loc[db_filtered["physical_design_algorithm"] == "gold"]
-
-                    if benchmark_config.optimized:
-                        db_filtered = db_filtered.loc[db_filtered["optimized"] == "opt"]
-
-                    if benchmark_config.area:
-                        db_filtered = db_filtered.loc[db_filtered["cost"] == "area"]
-
-                    if benchmark_config.wires:
-                        db_filtered = db_filtered.loc[db_filtered["cost"] == "wires"]
-
-                    if benchmark_config.crossings:
-                        db_filtered = db_filtered.loc[db_filtered["cost"] == "crossings"]
-
-                    if benchmark_config.acp:
-                        db_filtered = db_filtered.loc[db_filtered["cost"] == "acp"]
+            selected_rows.append(gate_rows)
 
         if benchmark_config.network:
-            db_filtered = pd.concat([db_filtered if not db_filtered.empty else None, db_networks])
+            selected_rows.append(matching_benchmarks.loc[matching_benchmarks["level"] == "network"])
 
-        return db_filtered.drop_duplicates()
+        if not selected_rows:
+            return pd.DataFrame(columns=colnames)
+        return pd.concat(selected_rows, ignore_index=True).drop_duplicates()
 
     def generate_zip_ephemeral_chunks(
         self,
@@ -267,30 +235,31 @@ class Backend:
         """
         fileobj = NoSeekBytesIO(io.BytesIO())
 
-        with ZipFile(fileobj, mode="w") as zf:  # type: ignore[arg-type]
-            for individual_file in filenames:
-                individual_file_as_path = Path(individual_file)
-                assert self.mntbench_all_zip is not None
-                zf.writestr(
-                    individual_file_as_path.name,
-                    data=self.mntbench_all_zip.read(individual_file),
-                    compress_type=ZIP_DEFLATED,
-                    compresslevel=3,
-                )
-                fileobj.hidden_seek(0)
-                yield fileobj.read()
-                fileobj.truncate_and_remember_offset(0)
+        try:
+            with ZipFile(fileobj, mode="w", compression=ZIP_DEFLATED, compresslevel=3) as zf:
+                for individual_file in filenames:
+                    individual_file_as_path = Path(individual_file)
+                    assert self.mntbench_all_zip is not None
+                    with (
+                        self.mntbench_all_zip.open(individual_file) as source,
+                        zf.open(individual_file_as_path.name, mode="w", force_zip64=True) as destination,
+                    ):
+                        copyfileobj(source, destination, length=1024 * 1024)
+                    fileobj.hidden_seek(0)
+                    yield fileobj.read()
+                    fileobj.truncate_and_remember_offset(0)
 
-        fileobj.hidden_seek(0)
-        yield fileobj.read()
-        fileobj.close()
+            fileobj.hidden_seek(0)
+            yield fileobj.read()
+        finally:
+            fileobj.close()
 
-    def get_updated_table(self, prepared_data: pd.DataFrame) -> pd.DataFrame:
+    def get_updated_table(self, prepared_data: BenchmarkConfiguration) -> pd.DataFrame:
         """
         Get an updated table based on the provided prepared data.
 
         Parameters:
-        - prepared_data (pd.DataFrame): A DataFrame containing prepared data for filtering.
+        - prepared_data: Filter configuration prepared from the submitted form.
 
         Returns:
         - pd.DataFrame: The updated table after applying filters using the filter_database method.
@@ -397,193 +366,168 @@ class Backend:
         return False
 
     @staticmethod
-    def prepare_form_input(form_data: dict[str, str]) -> BenchmarkConfiguration:
+    def prepare_form_input(form_data: Mapping[str, str]) -> BenchmarkConfiguration:
         """Formats the formData extracted from the user's inputs."""
         indices_benchmarks = []
-        network = False
-        gate = False
-        one = False
-        bestagon = False
-        twoddwave = False
-        use = False
-        res = False
-        esr = False
-        row = False
-        best = False
-        exact = False
-        ortho = False
-        nanoplacer = False
-        gold = False
-        optimized = False
-        ordered = False
-        area = False
-        wires = False
-        crossings = False
-        acp = False
-        none = False
-
-        for k in form_data:
-            if "select" in k:
-                found_benchmark_id = parse_benchmark_id_from_form_key(k)
+        for key in form_data:
+            if key.startswith("selectBench_"):
+                found_benchmark_id = parse_benchmark_id_from_form_key(key)
                 if found_benchmark_id:
                     indices_benchmarks.append(found_benchmark_id)
 
-            network = "network" in k or network
-            gate = "gate" in k or gate
-            one = "one" in k or one
-            bestagon = "bestagon" in k or bestagon
-            twoddwave = "twoddwave" in k or twoddwave
-            use = "use" in k or use
-            res = "res" in k or res
-            esr = "esr" in k or esr
-            row = "row" in k or row
-            best = "best-layout" in k or best
-            exact = "exact" in k or exact
-            ortho = "ortho" in k or ortho
-            nanoplacer = "nanoplacer" in k or nanoplacer
-            gold = "gold" in k or gold
-            optimized = "post-layout" in k or optimized
-            ordered = "input-ordering" in k or ordered
-            area = "area" in k or area
-            wires = "wires" in k or wires
-            crossings = "crossings" in k or crossings
-            acp = "acp" in k or acp
-            none = "none" in k or none
-
         return BenchmarkConfiguration(
             indices_benchmarks=indices_benchmarks,
-            gate=gate,
-            network=network,
-            one=one,
-            bestagon=bestagon,
-            twoddwave=twoddwave,
-            use=use,
-            res=res,
-            esr=esr,
-            row=row,
-            best=best,
-            exact=exact,
-            ortho=ortho,
-            nanoplacer=nanoplacer,
-            gold=gold,
-            optimized=optimized,
-            ordered=ordered,
-            area=area,
-            wires=wires,
-            crossings=crossings,
-            acp=acp,
-            none=none,
+            gate="gate" in form_data,
+            network="network" in form_data,
+            one="one" in form_data,
+            bestagon="bestagon" in form_data,
+            twoddwave="twoddwave" in form_data,
+            use="use" in form_data,
+            res="res" in form_data,
+            esr="esr" in form_data,
+            row="row" in form_data,
+            best="best-layout" in form_data,
+            exact="exact" in form_data,
+            ortho="ortho" in form_data,
+            nanoplacer="nanoplacer" in form_data,
+            gold="gold" in form_data,
+            optimized="post-layout" in form_data,
+            ordered="input-ordering" in form_data,
+            area="area" in form_data,
+            wires="wires" in form_data,
+            crossings="crossings" in form_data,
+            acp="acp" in form_data,
+            none="none" in form_data,
         )
 
-    def read_mntbench_all_zip(  # noqa: PLR0912
+    def read_mntbench_all_zip(
         self,
         target_location: str,
         skip_question: bool = False,
-        test: bool = False,
     ) -> bool:
         huge_zip_path = Path(target_location) / "MNTBench_all.zip"
-
-        try:
-            mntbench_module_version = metadata.version("mnt.bench")
-        except Exception:
-            print("'mnt.bench' is most likely not installed. Please run 'pip install . or pip install mnt.bench'.")
-            return False
+        expected_sizes = (
+            {
+                filename: int(dimensions["size_uncompressed"])
+                for entry in self.layout_dimensions
+                for filename, dimensions in entry.items()
+            }
+            if self.layout_dimensions
+            else None
+        )
 
         print("Searching for local benchmarks...")
-        if (not skip_question or test) and huge_zip_path.is_file() and len(ZipFile(huge_zip_path, "r").namelist()) != 0:
+        local_benchmarks_available = False
+        if huge_zip_path.is_file():
+            try:
+                with ZipFile(huge_zip_path) as archive:
+                    archive_entries = archive.infolist()
+                    archive_sizes = {info.filename: info.file_size for info in archive_entries}
+                    local_benchmarks_available = bool(archive_sizes) and (
+                        expected_sizes is None
+                        or (len(archive_entries) == len(expected_sizes) and archive_sizes == expected_sizes)
+                    )
+            except BadZipFile:
+                pass
+
+        if local_benchmarks_available:
             print("... found.")
         else:
             print("No benchmarks found. Querying GitHub...")
+            try:
+                mntbench_module_version = metadata.version("mnt.bench")
+            except metadata.PackageNotFoundError:
+                print(
+                    "'mnt.bench' is not installed. Run 'python -m pip install .' or 'python -m pip install mnt.bench'."
+                )
+                return False
+            installed_version = Version(mntbench_module_version)
+            matching_releases: list[tuple[Version, str, dict[str, Any]]] = []
+            for release in handle_github_api_request("releases?per_page=100").json():
+                try:
+                    release_version = Version(release["tag_name"])
+                except (InvalidVersion, KeyError):
+                    continue
+                if installed_version < release_version:
+                    continue
+                asset = next(
+                    (candidate for candidate in release.get("assets", []) if candidate["name"] == "MNTBench_all.zip"),
+                    None,
+                )
+                if asset is not None:
+                    matching_releases.append((release_version, release["tag_name"], asset))
 
-            version_found = False
-            available_versions = []
-            for elem in handle_github_api_request("tags").json():
-                available_versions.append(elem["name"])
-
-            for possible_version in available_versions:
-                if version.parse(mntbench_module_version) >= version.parse(possible_version):
-                    response_json = handle_github_api_request(f"releases/tags/{possible_version}").json()
-                    if "assets" in response_json:
-                        assets = response_json["assets"]
-                    elif "asset" in response_json:
-                        assets = [response_json["asset"]]
-                    else:
-                        assets = []
-
-                    for asset in assets:
-                        if asset["name"] == "MNTBench_all.zip":
-                            version_found = True
-
-                        if version_found:
-                            download_url = asset["browser_download_url"]
-                            response = "n"
-                            if not skip_question:
-                                file_size = round((asset["size"]) / 2**20, 2)
-                                print(
-                                    "Found 'MNTBench_all.zip' (Version {}, Size {} MB, Link: {})".format(
-                                        possible_version,
-                                        file_size,
-                                        download_url,
-                                    )
-                                )
-                                response = input("Would you like to downloaded the file? (Y/n)")
-                            if skip_question or response.lower() == "y" or not response:
-                                self.handle_downloading_benchmarks(target_location, download_url)
-                                break
-                if version_found:
-                    break
-
-            if not version_found:
+            if not matching_releases:
                 print("No suitable benchmarks found.")
                 return False
 
-        with huge_zip_path.open("rb") as zf:
-            zip_bytes = io.BytesIO(zf.read())
-            self.mntbench_all_zip = ZipFile(zip_bytes, mode="r")
+            _, release_tag, asset = max(matching_releases, key=lambda candidate: candidate[0])
+            download_url = asset["browser_download_url"]
+            response = ""
+            if not skip_question:
+                file_size = round(asset["size"] / 2**20, 2)
+                print(f"Found 'MNTBench_all.zip' ({release_tag}, {file_size} MB, {download_url})")
+                response = input("Would you like to download the file? (Y/n) ")
+            if not (skip_question or response.lower() == "y" or not response):
+                print("Benchmark download cancelled.")
+                return False
+            self.handle_downloading_benchmarks(target_location, download_url, expected_sizes)
+
+        if self.mntbench_all_zip is not None:
+            self.mntbench_all_zip.close()
+        self.mntbench_all_zip = ZipFile(huge_zip_path, mode="r")
         return True
 
     @staticmethod
-    def handle_downloading_benchmarks(target_location: str, download_url: str) -> None:
+    def handle_downloading_benchmarks(
+        target_location: str,
+        download_url: str,
+        expected_sizes: Mapping[str, int] | None = None,
+    ) -> None:
         print("Start downloading benchmarks...")
+        destination = Path(target_location) / "MNTBench_all.zip"
+        temporary_destination = destination.with_suffix(".zip.part")
+        destination.parent.mkdir(parents=True, exist_ok=True)
 
-        r = requests.get(download_url, stream=True)
-
-        content_length_response = r.headers.get("content-length")
-        assert content_length_response is not None
-        total_length = int(content_length_response)
-        fname = target_location + "/MNTBench_all.zip"
-
-        Path(target_location).mkdir(parents=True, exist_ok=True)
-        with Path(fname).open("wb") as f, tqdm(
-            desc=fname,
-            total=total_length,
-            unit="iB",
-            unit_scale=True,
-            unit_divisor=1024,
-        ) as bar:
-            for data in r.iter_content(chunk_size=1024):
-                size = f.write(data)
-                bar.update(size)
-        print(f"Download completed to {fname}. Server is starting now.")
+        try:
+            with requests.get(download_url, stream=True, timeout=(10, 60)) as response:
+                response.raise_for_status()
+                content_length = response.headers.get("content-length")
+                total_length = int(content_length) if content_length is not None else None
+                with (
+                    temporary_destination.open("wb") as output,
+                    tqdm(
+                        desc=str(destination),
+                        total=total_length,
+                        unit="iB",
+                        unit_scale=True,
+                        unit_divisor=1024,
+                    ) as progress,
+                ):
+                    for data in response.iter_content(chunk_size=1024 * 1024):
+                        progress.update(output.write(data))
+            with ZipFile(temporary_destination) as archive:
+                archive_entries = archive.infolist()
+                archive_sizes = {info.filename: info.file_size for info in archive_entries}
+                if not archive_sizes:
+                    msg = "Downloaded benchmark archive is empty."
+                    raise BadZipFile(msg)
+                if expected_sizes is not None and (
+                    len(archive_entries) != len(expected_sizes) or archive_sizes != expected_sizes
+                ):
+                    msg = "Downloaded benchmark archive does not match this MNT Bench release."
+                    raise BadZipFile(msg)
+            temporary_destination.replace(destination)
+        finally:
+            temporary_destination.unlink(missing_ok=True)
+        print(f"Download completed to {destination}. Server is starting now.")
 
     @staticmethod
-    def read_layout_dimensions_from_json(target_location: str) -> list[dict[str, dict[str, str]]] | None:
-        """
-        Read layout dimensions from a JSON file.
-
-        Parameters:
-                target_location (str): The directory where the 'layout_dimensions.json' file is located.
-
-        Returns:
-                Union[List[Dict[str, Any]], None]: A list of dictionaries representing layout dimensions,
-                or None if the file is not found.
-
-        Raises:
-                FileNotFoundError: If the 'layout_dimensions.json' file is not found.
-        """
-        file_name = target_location + "/layout_dimensions.json"
+    def read_layout_dimensions_from_json(target_location: str) -> list[dict[str, dict[str, int]]]:
+        """Read layout metadata from ``layout_dimensions.json`` when it exists."""
+        file_name = Path(target_location) / "layout_dimensions.json"
         try:
-            with open(file_name) as file:  # noqa: PTH123
+            with file_name.open(encoding="utf-8") as file:
                 return json.load(file)  # type: ignore[no-any-return]
         except FileNotFoundError:
             return []
@@ -603,9 +547,11 @@ class Backend:
 
         if filename.endswith(".fgl"):
             is_best_fgl = "best.fgl" in filename.lower()
-            specs = filename.split(".")[0].lower().split("_")
+            specs = filename.split(".", maxsplit=1)[0].lower().split("_")
 
             benchmark = "_".join(specs[0 : -(2 if is_best_fgl else 6)])
+            if benchmark == "xor":
+                benchmark = "xor2"
             library, clocking_scheme, *additional_specs = specs[-2:] if is_best_fgl else specs[-6:]
             physical_design_algorithm, optimized, ordered, cost = additional_specs + [""] * (4 - len(additional_specs))
 
@@ -613,7 +559,7 @@ class Backend:
             area = int(layout_dimensions.get("x", 0)) * int(layout_dimensions.get("y", 0)) if layout_dimensions else ""
 
         elif filename.endswith(".v"):
-            benchmark = filename.split(".")[0].lower()
+            benchmark = filename.split(".", maxsplit=1)[0].lower()
             library = clocking_scheme = physical_design_algorithm = optimized = ordered = cost = ""
             level = "network"
             area = ""
@@ -636,7 +582,7 @@ class Backend:
             cost=cost,
             x=layout_dimensions.get("x", ""),
             y=layout_dimensions.get("y", ""),
-            area=area,  # type: ignore[arg-type]
+            area=area,
             size_uncompressed=size_uncompressed,
             size_compressed=size_compressed,
             filename=filename,
@@ -654,9 +600,6 @@ class NoSeekBytesIO:
     def tell(self) -> int:
         return self.deleted_offset + self.fp.tell()
 
-    def hidden_tell(self) -> int:
-        return self.fp.tell()
-
     def seekable(self) -> bool:
         return False
 
@@ -667,9 +610,6 @@ class NoSeekBytesIO:
         self.deleted_offset += self.fp.tell()
         self.fp.seek(0)
         return self.fp.truncate(size)
-
-    def get_value(self) -> bytes:
-        return self.fp.getvalue()
 
     def close(self) -> None:
         return self.fp.close()
@@ -709,44 +649,27 @@ def create_database(backend: Backend, zip_file: ZipFile) -> pd.DataFrame:
     return pd.DataFrame(rows_list, columns=colnames)
 
 
-def handle_downloading_benchmarks(target_location: str, download_url: str) -> None:
-    print("Start downloading benchmarks...")
-
-    r = requests.get(download_url)
-    total_length = int(r.headers["content-length"])
-
-    fname = target_location + "/MNTBench_all.zip"
-
-    Path(target_location).mkdir(parents=True, exist_ok=True)
-    with Path(fname).open("wb") as f, tqdm(
-        desc=fname,
-        total=total_length,
-        unit="iB",
-        unit_scale=True,
-        unit_divisor=1024,
-    ) as bar:
-        for data in r.iter_content(chunk_size=1024):
-            size = f.write(data)
-            bar.update(size)
-    print(f"Download completed to {fname}. Server is starting now.")
-
-
 def handle_github_api_request(repo_url: str) -> requests.Response:
-    # If the environment variable GITHUB_TOKEN is set, use it to authenticate to the GitHub API
-    # to increase the rate limit from 60 to 5000 requests per hour per IP address.
-    headers = None
-    if "GITHUB_TOKEN" in os.environ:
-        headers = {"Authorization": f"token {os.environ['GITHUB_TOKEN']}"}
+    """Query the MNT Bench GitHub API, using a token when one is available."""
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    if github_token := os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = f"Bearer {github_token}"
 
-    response = requests.get(f"https://api.github.com/repos/cda-tum/mnt-bench/{repo_url}", headers=headers)
+    response = requests.get(
+        f"https://api.github.com/repos/cda-tum/mnt-bench/{repo_url}",
+        headers=headers,
+        timeout=30,
+    )
     success_code = 200
     if response.status_code == success_code:
         return response
 
     msg = (
         f"Request to GitHub API failed with status code {response.status_code}!\n"
-        f"One reasons could be that the limit of 60 API calls per hour and IP address is exceeded.\n"
-        f"If you want to increase the limit, set the environment variable GITHUB_TOKEN to a GitHub personal access token.\n"
-        f"See https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token for more information."
+        "The unauthenticated GitHub API limit may have been exceeded. Set GITHUB_TOKEN to a personal access token "
+        "to increase the limit."
     )
     raise RuntimeError(msg)

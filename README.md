@@ -7,7 +7,7 @@
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/img/mnt_light.svg" width="60%">
-  <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/img/mnt_dark.svg" width="60%">
+  <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/img/mnt_dark.svg" width="60%" alt="Munich Nanotech Toolkit logo">
 </picture>
 </p>
 
@@ -51,14 +51,14 @@ Most of the layouts are available for any of the following clocking schemes:
 | :-----------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://raw.githubusercontent.com/cda-tum/mnt-bench/main/src/mnt/bench/static/row.png" alt="Row" height="200"/> |
 
-# Repository Structure
+## Repository structure
 
-- src/mnt/: main source directory
-  - bench: Directory for the webpage (which can be started locally and is also hosted at
-    [https://www.cda.cit.tum.de/mntbench/](https://www.cda.cit.tum.de/mntbench/))
-- tests: Directory for the tests for MNT Bench
+```text
+src/mnt/bench/        Viewer backend, templates, and static assets
+tests/                Unit and integration tests
+```
 
-# Repository Usage
+## Repository usage
 
 There are three ways how to use this benchmark suite:
 
@@ -68,42 +68,41 @@ There are three ways how to use this benchmark suite:
 
 Since the first way is rather self-explanatory, the other two ways are explained in more detail in the following.
 
-## Usage via pip package
+## Usage via the Python package
 
-MNT Bench is available via [PyPI](https://pypi.org/project/mnt.bench/)
+MNT Bench supports Python 3.11 through 3.14 and is available from [PyPI](https://pypi.org/project/mnt.bench/).
 
 ```console
-(venv) $ pip install mnt.bench
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install mnt.bench
 ```
+
+On Windows, activate the environment with `.venv\Scripts\activate`.
 
 ### Locally hosting the MNT Bench Viewer
 
 Additionally, this python package includes the same webserver used for the hosting of the
 [MNT Bench webpage](https://www.cda.cit.tum.de/mntbench).
 
-After the `mnt.bench` Python package is installed via
+Start the MNT Bench Viewer from the terminal with either command:
 
 ```console
-(venv) $ pip install mnt.bench
-```
-
-the MNT Bench Viewer can be started from the terminal via
-
-```console
-(venv) $ mnt.bench
+mnt-bench
+mnt.bench
 ```
 
 This first searches for the most recent version of the benchmark files on GitHub and offers to download them.
-Afterwards, the webserver is started locally.
+The archive is stored in `~/.mntbench` by default. Afterwards, the webserver is started locally.
 
 ## Usage directly via this repository
 
-For that, the repository must be cloned and installed:
+Clone and install the repository with:
 
-```
+```console
 git clone https://github.com/cda-tum/mnt-bench.git
 cd mnt-bench
-pip install .
+python -m pip install .
 ```
 
-Afterwards, the package can be used as described [above](#Usage-via-pip-package).
+Afterwards, the package can be used as described [above](#usage-via-the-python-package).
