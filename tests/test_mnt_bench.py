@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
-from importlib import resources
+from importlib import metadata, resources
 from io import BytesIO
 from pathlib import Path
 from types import SimpleNamespace
@@ -9,6 +9,7 @@ from zipfile import BadZipFile, ZipFile
 
 import pytest
 
+import mnt.bench.main as main_module
 from mnt.bench import Backend, BenchmarkConfiguration, Server
 from mnt.bench import backend as backend_module
 from mnt.bench.main import app, main
@@ -20,6 +21,7 @@ BENCHMARK_FILENAMES = (
     "mux21_ONE_2DDWave_exact_UnOpt_UnOrd_area.fgl",
     "mux21_ONE_2DDWave_NanoPlaceR_UnOpt_UnOrd_area.fgl",
     "mux21_ONE_2DDWave_ortho_UnOpt_UnOrd_none.fgl",
+    "mux21_ONE_2DDWave_ortho_Opt_Ord_none.fgl",
     "mux21_ONE_2DDWave_gold_UnOpt_UnOrd_area.fgl",
     "mux21_ONE_2DDWave_gold_UnOpt_UnOrd_wires.fgl",
     "mux21.v",
@@ -259,6 +261,23 @@ def test_read_mntbench_all_zip(benchmark_directory: Path, monkeypatch: pytest.Mo
     )
     bench_backend = Backend()
     assert bench_backend.read_mntbench_all_zip(str(benchmark_directory), skip_question=True)
+    previous_archive = bench_backend.mntbench_all_zip
+    assert bench_backend.read_mntbench_all_zip(str(benchmark_directory), skip_question=True)
+    assert previous_archive is not None
+    assert previous_archive.fp is None
+
+
+def test_invalid_local_archive_is_reported(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    (tmp_path / "MNTBench_all.zip").write_bytes(b"not a zip")
+
+    def missing_package(_package: str) -> str:
+        raise metadata.PackageNotFoundError
+
+    monkeypatch.setattr("mnt.bench.backend.metadata.version", missing_package)
+    assert not Backend().read_mntbench_all_zip(str(tmp_path), skip_question=True)
+    assert "Local benchmark archive is invalid." in capsys.readouterr().out
 
 
 def test_refreshes_stale_archive_from_matching_release_asset(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -266,6 +285,17 @@ def test_refreshes_stale_archive_from_matching_release_asset(tmp_path: Path, mon
     with ZipFile(tmp_path / "MNTBench_all.zip", mode="w") as archive:
         archive.writestr("mux21.v", "old")
     releases = [
+        {"tag_name": "not-a-version", "assets": []},
+        {
+            "tag_name": "v0.4.0",
+            "assets": [
+                {
+                    "name": "MNTBench_all.zip",
+                    "browser_download_url": "https://example.com/future-benchmarks",
+                    "size": 42,
+                }
+            ],
+        },
         {
             "tag_name": "v0.3.8",
             "assets": [
@@ -350,6 +380,14 @@ def test_download_rejects_mismatched_archive_without_replacing_cache(
     assert destination.read_bytes() == original_archive
     assert not destination.with_suffix(".zip.part").exists()
 
+    Backend.handle_downloading_benchmarks(
+        str(tmp_path),
+        "https://example.com/benchmarks",
+        {"mux21.v": len(b"wrong")},
+    )
+    with ZipFile(destination) as archive:
+        assert archive.read("mux21.v") == b"wrong"
+
 
 def test_create_database(initialized_backend: Backend) -> None:
     input_data = replace(BASE_CONFIGURATION, gate=True, one=True)
@@ -383,6 +421,40 @@ def test_filter_multiple_gold_costs(initialized_backend: Backend) -> None:
     )
     table = initialized_backend.get_updated_table(input_data)
     assert set(table["cost"]) == {"area", "wires"}
+
+
+@pytest.mark.parametrize(
+    ("configuration", "expected_files"),
+    [
+        (replace(BASE_CONFIGURATION, gate=True, one=True, best=True), {"mux21_ONE_BEST.fgl"}),
+        (replace(BASE_CONFIGURATION, network=True), {"mux21.v"}),
+        (
+            replace(
+                BASE_CONFIGURATION,
+                gate=True,
+                one=True,
+                twoddwave=True,
+                ortho=True,
+                optimized=True,
+                ordered=True,
+                none=True,
+            ),
+            {"mux21_ONE_2DDWave_ortho_Opt_Ord_none.fgl"},
+        ),
+    ],
+)
+def test_filter_special_cases(
+    initialized_backend: Backend,
+    configuration: BenchmarkConfiguration,
+    expected_files: set[str],
+) -> None:
+    table = initialized_backend.get_updated_table(configuration)
+    assert set(initialized_backend.get_selected_file_paths(table)) == expected_files
+
+
+def test_filter_empty_database_and_selection(initialized_backend: Backend) -> None:
+    assert Backend().get_updated_table(BASE_CONFIGURATION).empty
+    assert initialized_backend.get_updated_table(BASE_CONFIGURATION).empty
 
 
 def test_streaming_zip(initialized_backend: Backend, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -433,6 +505,14 @@ def test_flask_server(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch
         ):
             assert client.get(endpoint).status_code == 200
 
+        selection = {"button": "submit", "selectBench_1": "MUX 2:1", "network": "true"}
+        response = client.post("/mntbench/download", data=selection)
+        with ZipFile(BytesIO(response.data)) as archive:
+            assert archive.namelist() == ["mux21.v"]
+
+        response = client.post("/mntbench/get_num_benchmarks", data=selection)
+        assert response.get_json()["num_selected"] == 1
+
 
 def test_logging_uses_target_location(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     configured_log_files: list[Path] = []
@@ -447,9 +527,31 @@ def test_logging_uses_target_location(benchmark_directory: Path, monkeypatch: py
     )
     Server(skip_question=True, activate_logging=True, target_location=str(benchmark_directory))
     assert configured_log_files == [benchmark_directory / "downloads.log"]
+    with app.test_client() as client:
+        assert client.get("/mntbench/get_pre_gen").status_code == 200
 
 
 def test_cli_help(capsys: pytest.CaptureFixture[str]) -> None:
     with pytest.raises(SystemExit, match="0"):
         main(["--help"])
     assert "Run the local MNT Bench viewer" in capsys.readouterr().out
+
+
+def test_cli_starts_server_with_defaults(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    server_arguments: list[tuple[str, bool, bool]] = []
+    run_arguments: list[tuple[bool, int]] = []
+
+    def create_server(target_location: str, skip_question: bool, activate_logging: bool) -> None:
+        server_arguments.append((target_location, skip_question, activate_logging))
+
+    def run_server(*, debug: bool, port: int) -> None:
+        run_arguments.append((debug, port))
+
+    monkeypatch.setattr(main_module, "Server", create_server)
+    monkeypatch.setattr(Path, "home", staticmethod(lambda: tmp_path))
+    monkeypatch.setattr(app, "run", run_server)
+
+    main(["--skip-question", "--activate-logging", "--debug"])
+
+    assert server_arguments == [(str(tmp_path / ".mntbench"), True, True)]
+    assert run_arguments == [(True, 5001)]

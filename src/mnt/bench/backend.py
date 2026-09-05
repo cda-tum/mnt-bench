@@ -428,7 +428,7 @@ class Backend:
                         or (len(archive_entries) == len(expected_sizes) and archive_sizes == expected_sizes)
                     )
             except BadZipFile:
-                pass
+                print("Local benchmark archive is invalid.")
 
         if local_benchmarks_available:
             print("... found.")
