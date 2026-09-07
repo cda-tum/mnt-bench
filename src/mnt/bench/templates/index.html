@@ -5,13 +5,12 @@
 <div class="page-shell explorer-page">
   <section class="explorer-hero" aria-labelledby="explorer-title">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="status-dot"></span> OPEN BENCHMARK LIBRARY</div>
+      <div class="eyebrow">Open benchmark library</div>
       <h1 id="explorer-title">Small circuits.<br><span>Big possibilities.</span></h1>
       <p>Explore circuit layouts for field-coupled nanocomputing.<br class="desktop-break"> Find the right benchmark. Build what comes next.</p>
       <div class="hero-links"><a class="text-link" href="{{ url_for('description') }}">Get to know the library {{ icon('arrow') }}</a><span class="hero-separator"></span><span>Open source. Built for research.</span></div>
     </div>
     <div class="circuit-art" aria-hidden="true">
-      <div class="art-label"><span class="status-dot"></span> FIELD-COUPLED NANOCOMPUTING</div>
       <img src="{{ url_for('static', filename='qca_wordmark.svg') }}" alt="" width="1152" height="608">
     </div>
   </section>
@@ -81,7 +80,7 @@
     <div class="explorer-workspace">
       <section class="panel circuit-selection" aria-labelledby="circuits-heading">
         <div class="section-heading">
-          <div><div class="eyebrow">01 / CHOOSE YOUR CIRCUITS</div><h2 id="circuits-heading">A starting point for every idea.</h2></div>
+          <div><div class="eyebrow">01 / Choose your circuits</div><h2 id="circuits-heading">A starting point for every idea.</h2></div>
           <label class="select-all"><input id="all-benchmarks" type="checkbox" checked><span>Select all <span class="count-badge">{{ library_stats.functions }}</span></span></label>
         </div>
         <div class="circuit-toolbar">
@@ -107,16 +106,16 @@
           {% endfor %}
           <p id="no-circuits" class="empty-circuits" hidden>No circuits match your search. Try a function such as “adder” or “xor”.</p>
         </div>
-        <div class="selection-footer"><span><span class="status-dot"></span> <strong id="selected-functions">{{ library_stats.functions }}</strong> functions selected across the library</span><button type="button" id="clear-circuits" class="text-button">Clear selection</button></div>
+        <div class="selection-footer"><span><strong id="selected-functions">{{ library_stats.functions }}</strong> functions selected across the library</span><button type="button" id="clear-circuits" class="text-button">Clear selection</button></div>
       </section>
 
       <section class="panel results-panel" aria-labelledby="results-heading">
         <div class="results-heading section-heading">
-          <div><div class="eyebrow">02 / EXPLORE & DOWNLOAD</div><h2 id="results-heading">Your benchmark collection <span id="result-count" class="count-badge">…</span></h2></div>
+          <div><div class="eyebrow">02 / Explore &amp; download</div><h2 id="results-heading">Your benchmark collection <span id="result-count" class="count-badge">…</span></h2></div>
           <button class="button button-primary" type="submit" name="button" value="submit" id="download-button" disabled>{{ icon('download') }} Download ZIP</button>
         </div>
         <div class="results-toolbar">
-          <div class="results-summary" aria-live="polite" aria-atomic="true"><span class="status-dot"></span><span id="results-status">Finding your benchmarks…</span></div>
+          <div class="results-summary" aria-live="polite" aria-atomic="true"><span id="results-status">Finding your benchmarks…</span></div>
           <div class="export-controls"><label class="sr-only" for="format">Table export format</label><select name="format" id="format"><option value="csv">CSV</option><option value="excel">Excel</option><option value="json">JSONL</option></select><button type="submit" class="button button-quiet" name="button" value="submitTable" id="export-button" disabled>{{ icon('download') }} Export table</button></div>
         </div>
         <div class="table-scroll" id="results-container" tabindex="0" aria-label="Benchmark results. Scroll horizontally for more columns." aria-busy="true">
@@ -145,7 +144,7 @@
 
   <section class="research-note">
     <div class="research-icon">{{ icon('book') }}</div>
-    <div><div class="eyebrow">BUILT FOR THE RESEARCH COMMUNITY</div><h2>Good research starts with a shared foundation.</h2><p>Using MNT Bench in your work? Cite the library to help others build on your results.</p><a href="{{ url_for('static', filename='mntbench_technical_report.pdf') }}" target="_blank" rel="noopener noreferrer" class="text-link">Read the technical report {{ icon('external') }}</a></div>
+    <div><div class="eyebrow">Built for the research community</div><h2>Good research starts with a shared foundation.</h2><p>Using MNT Bench in your work? Cite the library to help others build on your results.</p><a href="{{ url_for('static', filename='mntbench_technical_report.pdf') }}" target="_blank" rel="noopener noreferrer" class="text-link">Read the technical report {{ icon('external') }}</a></div>
     <button type="button" class="button button-secondary" data-open-dialog="citation-dialog">{{ icon('copy') }} Cite MNT Bench</button>
   </section>
 </div>

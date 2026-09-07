@@ -588,6 +588,25 @@ def test_qca_wordmark(flask_client: FlaskClient) -> None:
     assert {(int(cell.attrib["x"]), int(cell.attrib["y"])) for cell in cells} == expected_cells
 
 
+def test_qca_wordmark_motion(flask_client: FlaskClient) -> None:
+    svg = ET.fromstring(flask_client.get("/mntbench/qca_wordmark.svg").data)
+    ns = {"svg": "http://www.w3.org/2000/svg"}
+    css = svg.findtext("svg:style", namespaces=ns) or ""
+    assert css.strip().startswith("@media (prefers-reduced-motion: no-preference)")
+    assert "animation: cell-wake 1100ms ease-out backwards;" in css
+    assert "infinite" not in css
+    for letter in svg.findall("svg:g/svg:g", ns):
+        position = letter.attrib["transform"].removeprefix("translate(").removesuffix(")")
+        delay = sum(map(int, position.split()))
+        assert letter.attrib["style"] == f"--letter-delay: {delay}ms"
+        for cell in letter.findall("svg:use", ns):
+            assert delay + int(cell.attrib["x"]) + int(cell.attrib["y"]) + 1100 < 3000
+            for axis, variable in (("x", "column"), ("y", "row")):
+                coordinate = int(cell.attrib[axis])
+                if coordinate:
+                    assert f'use[{axis}="{coordinate}"] {{ --{variable}-delay: {coordinate}ms; }}' in css
+
+
 def test_guide_illustrations(flask_client: FlaskClient) -> None:
     illustrations = (
         "abstraction_level.png",
