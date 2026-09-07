@@ -94,6 +94,8 @@ mnt.bench
 
 This first searches for the most recent version of the benchmark files on GitHub and offers to download them.
 The archive is stored in `~/.mntbench` by default. Afterwards, the webserver is started locally.
+The package includes an empty `MNTBench_all.zip` placeholder; the actual benchmarks are downloaded from the newest
+compatible release containing the archive, which may be older than the package release.
 
 ## Usage directly via this repository
 

@@ -257,12 +257,17 @@ def test_invalid_local_archive_is_reported(
     assert "Local benchmark archive is invalid." in capsys.readouterr().out
 
 
-def test_refreshes_stale_archive_from_matching_release_asset(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+@pytest.mark.parametrize("local_content", [None, "old"], ids=["empty-placeholder", "stale-archive"])
+def test_refreshes_archive_from_older_release_asset(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, local_content: str | None
+) -> None:
     download_urls: list[str] = []
     with ZipFile(tmp_path / "MNTBench_all.zip", mode="w") as archive:
-        archive.writestr("mux21.v", "old")
+        if local_content is not None:
+            archive.writestr("mux21.v", local_content)
     releases = [
         {"tag_name": "not-a-version", "assets": []},
+        {"tag_name": "v0.3.10", "assets": []},
         {
             "tag_name": "v0.4.0",
             "assets": [
@@ -295,7 +300,7 @@ def test_refreshes_stale_archive_from_matching_release_asset(tmp_path: Path, mon
             ],
         },
     ]
-    monkeypatch.setattr("mnt.bench.backend.metadata.version", lambda _package: "0.3.9")
+    monkeypatch.setattr("mnt.bench.backend.metadata.version", lambda _package: "0.3.10")
     monkeypatch.setattr(
         backend_module,
         "handle_github_api_request",

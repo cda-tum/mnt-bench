@@ -70,6 +70,7 @@ include-package-data = false
     "static/*.pdf",
     "static/*.png",
     "static/*.svg",
+    "static/files/MNTBench_all.zip",
     "static/files/*.json",
     "templates/*.html",
 ]

@@ -7,7 +7,6 @@
 *.DS_Store
 *hist_output/*png
 src/mnt/bench/node_modules/
-src/mnt/bench/static/files/MNTBench_all.zip
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks

@@ -15,24 +15,6 @@ concurrency:
 permissions: {}
 
 jobs:
-  verify_release_asset:
-    if: github.event_name == 'release' && github.event.action == 'published'
-    name: Verify benchmark archive
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: Require the benchmark archive
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RELEASE_ID: ${{ github.event.release.id }}
-        run: |
-          asset_count="$(gh api "repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}" --jq '[.assets[] | select(.name == "MNTBench_all.zip")] | length')"
-          if [[ "${asset_count}" != "1" ]]; then
-            echo "::error::Attach exactly one MNTBench_all.zip asset to the GitHub release before publishing to PyPI."
-            exit 1
-          fi
-
   quality:
     name: Quality checks
     runs-on: ubuntu-latest
@@ -118,7 +100,7 @@ jobs:
       url: https://pypi.org/p/mnt.bench
     permissions:
       id-token: write
-    needs: [verify_release_asset, quality, build_wheel, build_sdist]
+    needs: [quality, build_wheel, build_sdist]
     steps:
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
