@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import io
 import logging
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from importlib import resources
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -81,7 +81,7 @@ def download_pre_gen_zip() -> Response:
     filename = "MNTBench_all.zip"
 
     if SERVER.activate_logging:
-        timestamp = datetime.now(UTC).strftime("%Y-%m-%d-%H-%M-%S")
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
         app.logger.info("###### Start ######")
         app.logger.info("Timestamp: %s", timestamp)
         headers = str(request.headers)
@@ -109,7 +109,7 @@ def download_data() -> str | Response:
             prepared_data = SERVER.backend.prepare_form_input(data)
             table = SERVER.backend.get_updated_table(prepared_data)
             file_paths = SERVER.backend.get_selected_file_paths(table)
-            timestamp = datetime.now(UTC).strftime("%Y-%m-%d-%H-%M-%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
 
             if SERVER.activate_logging:
                 app.logger.info("###### Start ######")

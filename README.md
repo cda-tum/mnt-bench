@@ -70,7 +70,7 @@ Since the first way is rather self-explanatory, the other two ways are explained
 
 ## Usage via the Python package
 
-MNT Bench supports Python 3.11 through 3.14 and is available from [PyPI](https://pypi.org/project/mnt.bench/).
+MNT Bench supports Python 3.10 through 3.14 and is available from [PyPI](https://pypi.org/project/mnt.bench/).
 
 ```console
 python -m venv .venv
