@@ -66,6 +66,8 @@ include-package-data = false
 [tool.setuptools.package-data]
 "mnt.bench" = [
     "py.typed",
+    "static/*.css",
+    "static/*.js",
     "static/*.ico",
     "static/*.pdf",
     "static/*.png",

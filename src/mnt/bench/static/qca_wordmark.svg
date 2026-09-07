@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1152 608" role="img" aria-labelledby="wordmark-title wordmark-description">
+  <title id="wordmark-title">MNT Bench QCA wordmark</title>
+  <desc id="wordmark-description">MNT above BENCH, formed from decorative quantum-dot cellular automata cells. Each cell has four corner dots with two filled on opposite corners. This wordmark is not a functional circuit.</desc>
+  <defs>
+    <symbol id="cell-a" viewBox="0 0 28 28" overflow="visible">
+      <rect width="28" height="28" rx="3" fill="#edf3fd" stroke="#9bb7e5"/>
+      <circle cx="8" cy="8" r="3.2" fill="#2858ac" stroke="#2858ac"/>
+      <circle cx="20" cy="8" r="3.2" fill="none" stroke="#2858ac"/>
+      <circle cx="8" cy="20" r="3.2" fill="none" stroke="#2858ac"/>
+      <circle cx="20" cy="20" r="3.2" fill="#2858ac" stroke="#2858ac"/>
+    </symbol>
+    <symbol id="cell-b" viewBox="0 0 28 28" overflow="visible">
+      <rect width="28" height="28" rx="3" fill="#edf3fd" stroke="#9bb7e5"/>
+      <circle cx="8" cy="8" r="3.2" fill="none" stroke="#2858ac"/>
+      <circle cx="20" cy="8" r="3.2" fill="#2858ac" stroke="#2858ac"/>
+      <circle cx="8" cy="20" r="3.2" fill="#2858ac" stroke="#2858ac"/>
+      <circle cx="20" cy="20" r="3.2" fill="none" stroke="#2858ac"/>
+    </symbol>
+  </defs>
+  <g data-word="MNT">
+    <g data-letter="M" transform="translate(274 50)">
+      <use href="#cell-a" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="192" width="28" height="28"/>
+    </g>
+    <g data-letter="N" transform="translate(498 50)">
+      <use href="#cell-b" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="32" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="96" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="192" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="192" width="28" height="28"/>
+    </g>
+    <g data-letter="T" transform="translate(722 50)">
+      <use href="#cell-a" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="32" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="96" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="192" width="28" height="28"/>
+    </g>
+  </g>
+  <g data-word="BENCH">
+    <g data-letter="B" transform="translate(50 338)">
+      <use href="#cell-a" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="32" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="96" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="192" width="28" height="28"/>
+      <use href="#cell-b" x="32" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="192" width="28" height="28"/>
+      <use href="#cell-b" x="96" y="192" width="28" height="28"/>
+    </g>
+    <g data-letter="E" transform="translate(274 338)">
+      <use href="#cell-b" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="32" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="96" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="192" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="192" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="192" width="28" height="28"/>
+    </g>
+    <g data-letter="N" transform="translate(498 338)">
+      <use href="#cell-a" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="32" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="96" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="192" width="28" height="28"/>
+    </g>
+    <g data-letter="C" transform="translate(722 338)">
+      <use href="#cell-a" x="32" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="192" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="192" width="28" height="28"/>
+    </g>
+    <g data-letter="H" transform="translate(946 338)">
+      <use href="#cell-a" x="0" y="0" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="0" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="32" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="32" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="64" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="64" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="32" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="64" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="96" y="96" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="96" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="128" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="128" width="28" height="28"/>
+      <use href="#cell-b" x="0" y="160" width="28" height="28"/>
+      <use href="#cell-b" x="128" y="160" width="28" height="28"/>
+      <use href="#cell-a" x="0" y="192" width="28" height="28"/>
+      <use href="#cell-a" x="128" y="192" width="28" height="28"/>
+    </g>
+  </g>
+</svg>
