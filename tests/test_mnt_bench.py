@@ -217,30 +217,7 @@ def test_prepare_form_input() -> None:
         "one": "true",
     }
 
-    expected_res = BenchmarkConfiguration(
-        indices_benchmarks=list(range(1, 5)),
-        gate=True,
-        network=False,
-        one=True,
-        bestagon=False,
-        twoddwave=False,
-        use=False,
-        res=False,
-        esr=False,
-        row=False,
-        best=False,
-        exact=False,
-        ortho=False,
-        nanoplacer=False,
-        gold=False,
-        optimized=False,
-        ordered=False,
-        area=False,
-        wires=False,
-        crossings=False,
-        acp=False,
-        none=False,
-    )
+    expected_res = replace(BASE_CONFIGURATION, indices_benchmarks=list(range(1, 5)), gate=True, one=True)
     bench_backend = Backend()
     assert bench_backend.prepare_form_input(form_data) == expected_res
 

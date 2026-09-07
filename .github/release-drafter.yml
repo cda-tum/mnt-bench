@@ -41,10 +41,6 @@ categories:
     semver-increment: patch
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: '\<*_&'
-autolabeler:
-  - label: "dependencies"
-    title:
-      - "/update pre-commit hooks/i"
 
 template: |
   ## What Changed 👀

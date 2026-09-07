@@ -39,8 +39,7 @@ class Server:
             msg = "Error while reading the MNTBench_all.zip file."
             raise RuntimeError(msg)
 
-        self.backend.init_database()
-        if self.backend.database is None or self.backend.database.empty:
+        if not self.backend.init_database():
             msg = "Error while initializing the database."
             raise RuntimeError(msg)
 
@@ -191,14 +190,13 @@ def get_num_benchmarks() -> Response:
     data = request.form
     prepared_data = SERVER.backend.prepare_form_input(data)
     raw_table = SERVER.backend.get_updated_table(prepared_data)
-    file_paths = SERVER.backend.get_selected_file_paths(raw_table)
     size_compressed = humanize.naturalsize(raw_table["size_compressed"].sum())
     size_uncompressed = humanize.naturalsize(raw_table["size_uncompressed"].sum())
     table = SERVER.backend.prettify_table(raw_table)
 
     return jsonify(
         {
-            "num_selected": len(file_paths),
+            "num_selected": len(raw_table),
             "table": table.to_html(classes="data", header="true", index=False),
             "size_compressed": size_compressed,
             "size_uncompressed": size_uncompressed,
