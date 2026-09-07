@@ -1,0 +1,41 @@
+{% from 'components.html' import icon %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f5f7">
+    <meta name="description" content="Explore, compare, and download circuit layouts for field-coupled nanocomputing from the Munich Nanotech Toolkit.">
+    <title>{% block title %}Benchmark explorer{% endblock %} · MNT Bench</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bench.css') }}">
+    <script src="{{ url_for('static', filename='bench.js') }}" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="MNT Bench home">
+          <img src="{{ url_for('static', filename='mnt_dark.svg') }}" alt="MNT" width="70" height="33">
+          <span class="brand-divider"></span><span>Bench<span class="brand-dot">.</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="{{ url_for('index') }}" {% if request.endpoint in ('index', 'download_data') %}aria-current="page"{% endif %}>{{ icon('grid') }} <span>Explorer</span></a>
+          <a href="{{ url_for('description') }}" {% if request.endpoint == 'description' %}aria-current="page"{% endif %}>{{ icon('book') }} <span>Library guide</span></a>
+        </nav>
+        <a class="repository-link" href="https://github.com/cda-tum/mnt-bench" target="_blank" rel="noopener noreferrer">{{ icon('github') }} <span>GitHub</span> {{ icon('external') }}</a>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
+    <footer class="site-footer page-shell">
+      <div><span class="footer-mark">MNT Bench</span><span>Part of the Munich Nanotech Toolkit</span></div>
+      <nav aria-label="Footer navigation">
+        <a href="https://www.cda.cit.tum.de/research/fcn/" target="_blank" rel="noopener noreferrer">Our research {{ icon('external') }}</a>
+        <a href="mailto:nanotech.cda@xcit.tum.de">Contact</a>
+        <a href="{{ url_for('legal') }}" {% if request.endpoint == 'legal' %}aria-current="page"{% endif %}>Legal information</a>
+      </nav>
+    </footer>
+    <div id="notification" class="toast" role="status" hidden></div>
+    {% block dialogs %}{% endblock %}
+  </body>
+</html>

@@ -3,13 +3,12 @@ from __future__ import annotations
 import argparse
 import io
 import logging
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from importlib import resources
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 import humanize
-import pandas as pd
 from flask import Flask, cli, jsonify, make_response, render_template, request, send_from_directory
 
 from mnt.bench.backend import Backend
@@ -59,14 +58,21 @@ PREFIX = "/mntbench"
 @app.route(f"{PREFIX}/", methods=["POST", "GET"])
 @app.route(f"{PREFIX}/index", methods=["POST", "GET"])
 def index() -> str:
-    """Return the index.html file together with the benchmarks and nonscalable benchmarks."""
+    """Render the benchmark explorer with library statistics."""
+    database = SERVER.backend.database
+    assert database is not None
     return render_template(
         "index.html",
         trindade=SERVER.backend.trindade,
         fontes=SERVER.backend.fontes,
         iscas=SERVER.backend.iscas,
         epfl=SERVER.backend.epfl,
-        tables=[pd.DataFrame().to_html(classes="data", header="true", index=False)],
+        library_stats={
+            "layouts": int((database["level"] == "gate").sum()),
+            "functions": len(
+                SERVER.backend.trindade + SERVER.backend.fontes + SERVER.backend.iscas + SERVER.backend.epfl
+            ),
+        },
     )
 
 
@@ -75,7 +81,7 @@ def download_pre_gen_zip() -> Response:
     filename = "MNTBench_all.zip"
 
     if SERVER.activate_logging:
-        timestamp = datetime.now(UTC).strftime("%Y-%m-%d-%H-%M-%S")
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
         app.logger.info("###### Start ######")
         app.logger.info("Timestamp: %s", timestamp)
         headers = str(request.headers)
@@ -103,7 +109,7 @@ def download_data() -> str | Response:
             prepared_data = SERVER.backend.prepare_form_input(data)
             table = SERVER.backend.get_updated_table(prepared_data)
             file_paths = SERVER.backend.get_selected_file_paths(table)
-            timestamp = datetime.now(UTC).strftime("%Y-%m-%d-%H-%M-%S")
+            timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
 
             if SERVER.activate_logging:
                 app.logger.info("###### Start ######")
@@ -163,14 +169,7 @@ def download_data() -> str | Response:
         else:
             return render_template("error.html", error_message="Invalid button selected!")
 
-    return render_template(
-        "index.html",
-        trindade=SERVER.backend.trindade,
-        fontes=SERVER.backend.fontes,
-        iscas=SERVER.backend.iscas,
-        epfl=SERVER.backend.epfl,
-        tables=[pd.DataFrame().to_html(classes="data", header="true", index=False)],
-    )
+    return index()
 
 
 @app.route(f"{PREFIX}/legal")

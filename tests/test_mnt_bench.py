@@ -2,17 +2,25 @@ from __future__ import annotations
 
 from dataclasses import replace
 from importlib import metadata, resources
-from io import BytesIO
+from io import BytesIO, StringIO
 from pathlib import Path
 from types import SimpleNamespace
+from typing import TYPE_CHECKING
+from xml.etree import ElementTree as ET
 from zipfile import BadZipFile, ZipFile
 
+import pandas as pd
 import pytest
 
 import mnt.bench.main as main_module
 from mnt.bench import Backend, BenchmarkConfiguration, Server
 from mnt.bench import backend as backend_module
 from mnt.bench.main import app, main
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
+
+    from flask.testing import FlaskClient
 
 PACKAGE_FILES = resources.files("mnt.bench") / "static" / "files"
 TARGET_LOCATION = str(PACKAGE_FILES)
@@ -461,7 +469,8 @@ def test_streaming_zip(initialized_backend: Backend, monkeypatch: pytest.MonkeyP
         list(initialized_backend.generate_zip_ephemeral_chunks(["not_existing_file.fgl"]))
 
 
-def test_flask_server(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+@pytest.fixture
+def flask_client(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch) -> Iterator[FlaskClient]:
     monkeypatch.setattr(
         backend_module,
         "handle_github_api_request",
@@ -472,28 +481,207 @@ def test_flask_server(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch
     )
     Server(skip_question=True, activate_logging=False, target_location=str(benchmark_directory))
 
+    with app.test_client() as client:
+        yield client
+
+
+def test_flask_server(flask_client: FlaskClient) -> None:
     with resources.as_file(resources.files("mnt.bench")) as bench_location:
         for path in ("templates/index.html", "templates/legal.html", "templates/description.html"):
             assert (bench_location / path).is_file()
 
-    with app.test_client() as client:
-        for endpoint in (
-            "/mntbench/",
-            "/mntbench/index",
-            "/mntbench/get_pre_gen",
-            "/mntbench/download",
-            "/mntbench/legal",
-            "/mntbench/description",
-        ):
-            assert client.get(endpoint).status_code == 200
+    for endpoint in (
+        "/mntbench/",
+        "/mntbench/index",
+        "/mntbench/get_pre_gen",
+        "/mntbench/download",
+        "/mntbench/legal",
+        "/mntbench/description",
+        "/mntbench/bench.css",
+        "/mntbench/bench.js",
+    ):
+        assert flask_client.get(endpoint).status_code == 200
 
-        selection = {"button": "submit", "selectBench_1": "MUX 2:1", "network": "true"}
-        response = client.post("/mntbench/download", data=selection)
-        with ZipFile(BytesIO(response.data)) as archive:
-            assert archive.namelist() == ["mux21.v"]
+    html = flask_client.get("/mntbench/").get_data(as_text=True)
+    for name in (
+        *(f"selectBench_{identifier}" for identifier in range(1, 44)),
+        "network",
+        "gate",
+        "one",
+        "bestagon",
+        "twoddwave",
+        "use",
+        "res",
+        "esr",
+        "row",
+        "best-layout",
+        "exact",
+        "ortho",
+        "nanoplacer",
+        "gold",
+        "post-layout",
+        "input-ordering",
+        "area",
+        "wires",
+        "crossings",
+        "acp",
+        "format",
+        "button",
+    ):
+        assert f'name="{name}"' in html
+    assert 'action="/mntbench/download"' in html
+    assert 'data-summary-url="/mntbench/get_num_benchmarks"' in html
+    assert 'href="/mntbench/bench.css"' in html
+    assert 'src="/mntbench/bench.js"' in html
 
-        response = client.post("/mntbench/get_num_benchmarks", data=selection)
-        assert response.get_json()["num_selected"] == 1
+    selection = {"button": "submit", "selectBench_1": "MUX 2:1", "network": "true"}
+    response = flask_client.post("/mntbench/download", data=selection)
+    with ZipFile(BytesIO(response.data)) as archive:
+        assert archive.namelist() == ["mux21.v"]
+
+    response = flask_client.post("/mntbench/get_num_benchmarks", data=selection)
+    summary = response.get_json()
+    assert summary["num_selected"] == 1
+    assert "mux21.v" in summary["table"]
+    assert summary["size_compressed"]
+    assert summary["size_uncompressed"]
+
+
+def test_qca_wordmark(flask_client: FlaskClient) -> None:
+    url = "/mntbench/qca_wordmark.svg"
+    assert f'src="{url}"' in flask_client.get("/mntbench/").get_data(as_text=True)
+    response = flask_client.get(url)
+    assert response.status_code == 200
+    assert response.mimetype == "image/svg+xml"
+    svg = ET.fromstring(response.data)
+    ns = {"svg": "http://www.w3.org/2000/svg"}
+    words = svg.findall("svg:g", ns)
+    assert [word.attrib["data-word"] for word in words] == ["MNT", "BENCH"]
+    for word in words:
+        assert "".join(letter.attrib["data-letter"] for letter in word) == word.attrib["data-word"]
+
+    symbols = svg.findall("svg:defs/svg:symbol", ns)
+    assert len(symbols) == 2
+    for symbol in symbols:
+        dots = symbol.findall("svg:circle", ns)
+        assert len(dots) == 4
+        assert {(int(dot.attrib["cx"]), int(dot.attrib["cy"])) for dot in dots} == {
+            (8, 8),
+            (8, 20),
+            (20, 8),
+            (20, 20),
+        }
+        filled = [(int(dot.attrib["cx"]), int(dot.attrib["cy"])) for dot in dots if dot.attrib["fill"] != "none"]
+        assert len(filled) == 2
+        assert set(filled) in ({(8, 8), (20, 20)}, {(8, 20), (20, 8)})
+
+    letter_b = svg.find(".//svg:g[@data-letter='B']", ns)
+    assert letter_b is not None
+    expected_cells = {
+        (column * 32, row * 32)
+        for row, pattern in enumerate(("11110", "10001", "10001", "11110", "10001", "10001", "11110"))
+        for column, cell in enumerate(pattern)
+        if cell == "1"
+    }
+    cells = letter_b.findall("svg:use", ns)
+    assert len(cells) == len(expected_cells)
+    assert {(int(cell.attrib["x"]), int(cell.attrib["y"])) for cell in cells} == expected_cells
+
+
+def test_qca_wordmark_motion(flask_client: FlaskClient) -> None:
+    svg = ET.fromstring(flask_client.get("/mntbench/qca_wordmark.svg").data)
+    ns = {"svg": "http://www.w3.org/2000/svg"}
+    css = svg.findtext("svg:style", namespaces=ns) or ""
+    assert css.strip().startswith("@media (prefers-reduced-motion: no-preference)")
+    assert "animation: cell-wake 1100ms ease-out backwards;" in css
+    assert "infinite" not in css
+    for letter in svg.findall("svg:g/svg:g", ns):
+        position = letter.attrib["transform"].removeprefix("translate(").removesuffix(")")
+        delay = sum(map(int, position.split()))
+        assert letter.attrib["style"] == f"--letter-delay: {delay}ms"
+        for cell in letter.findall("svg:use", ns):
+            assert delay + int(cell.attrib["x"]) + int(cell.attrib["y"]) + 1100 < 3000
+            for axis, variable in (("x", "column"), ("y", "row")):
+                coordinate = int(cell.attrib[axis])
+                if coordinate:
+                    assert f'use[{axis}="{coordinate}"] {{ --{variable}-delay: {coordinate}ms; }}' in css
+
+
+def test_guide_illustrations(flask_client: FlaskClient) -> None:
+    illustrations = (
+        "abstraction_level.png",
+        "gate_library.png",
+        "clocking_scheme.png",
+        "physical_design_algorithm.png",
+        "optimization_algorithm.png",
+    )
+    html = flask_client.get("/mntbench/description").get_data(as_text=True)
+    assert html.count("data-illustration") == len(illustrations)
+    assert 'id="illustration-dialog"' in html
+    assert 'id="illustration-image"' in html
+    assert 'aria-label="Close illustration"' in html
+    assert "data-close-dialog" in html
+    for filename in illustrations:
+        url = f"/mntbench/{filename}"
+        assert f'href="{url}"' in html
+        response = flask_client.get(url)
+        assert response.status_code == 200
+        assert response.mimetype == "image/png"
+        assert response.data.startswith(b"\x89PNG\r\n\x1a\n")
+
+
+@pytest.mark.parametrize(
+    ("format_name", "content_type", "extension"),
+    [
+        ("csv", "text/csv", "csv"),
+        ("excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "xlsx"),
+        ("json", "application/json", "json"),
+    ],
+)
+def test_table_exports(flask_client: FlaskClient, format_name: str, content_type: str, extension: str) -> None:
+    response = flask_client.post(
+        "/mntbench/download",
+        data={"button": "submitTable", "format": format_name, "selectBench_1": "true", "network": "true"},
+    )
+    assert response.status_code == 200
+    assert response.mimetype == content_type
+    assert response.headers["Content-Disposition"] == f"attachment; filename=table.{extension}"
+
+    if format_name == "excel":
+        table = pd.read_excel(BytesIO(response.data))
+    elif format_name == "csv":
+        table = pd.read_csv(StringIO(response.get_data(as_text=True)))
+    else:
+        table = pd.read_json(StringIO(response.get_data(as_text=True)), lines=True)
+
+    assert table["Filename"].to_list() == ["mux21.v"]
+    assert table["Benchmark Function"].to_list() == ["MUX 2:1"]
+    assert table["Abstraction Level"].to_list() == ["Network"]
+
+
+def test_empty_selection_and_export_error(flask_client: FlaskClient) -> None:
+    response = flask_client.post("/mntbench/get_num_benchmarks", data={})
+    assert response.get_json()["num_selected"] == 0
+
+    for response in (
+        flask_client.get("/mntbench/download"),
+        flask_client.post("/mntbench/download", data={"button": "submit"}),
+    ):
+        assert response.status_code == 200
+        assert 'id="benchmark_form"' in response.get_data(as_text=True)
+
+    response = flask_client.post("/mntbench/download", data={"button": "submitTable", "format": "csv"})
+    table = pd.read_csv(StringIO(response.get_data(as_text=True)))
+    assert "Filename" in table.columns
+    assert table.empty
+
+    response = flask_client.post(
+        "/mntbench/download", data={"button": "submitTable", "format": "<script>alert(1)</script>"}
+    )
+    html = response.get_data(as_text=True)
+    assert response.status_code == 200
+    assert "Unsupported format: &lt;script&gt;alert(1)&lt;/script&gt;" in html
+    assert "<script>alert(1)</script>" not in html
 
 
 def test_logging_uses_target_location(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch) -> None:
