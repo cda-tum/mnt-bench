@@ -6,6 +6,7 @@
 .idea/*
 *.DS_Store
 *hist_output/*png
+src/mnt/bench/node_modules/
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks

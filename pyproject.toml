@@ -1,7 +1,7 @@
 [build-system]
 requires = [
-    "setuptools>=61",
-    "setuptools_scm>=7",
+    "setuptools>=77.0.3",
+    "setuptools-scm>=8.1",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -12,66 +12,74 @@ readme = "README.md"
 authors = [
     { name = "Simon Hofmann", email = "simon.t.hofmann@tum.de" },
 ]
-keywords = ["MNT",  "field-coupled nanocomputing", "benchmarking", "performance", "testing"]
-license = { file = "LICENSE" }
-requires-python = ">=3.8"
+keywords = ["MNT", "field-coupled nanocomputing", "benchmarking", "performance", "testing"]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
 dynamic = ["version"]
 
 dependencies = [
-    "pandas>=1.0.0",
-    "flask>=2.0.0",
-    "networkx>=2.0.0",
-    "pyscf>=2.3.0",
-    "packaging>=21.0",
-    "tqdm>=4.0.0",
-    "joblib>=1.3.0",
-    "importlib_metadata>=3.6; python_version < '3.10'",
-    "importlib_resources>=5.9; python_version < '3.10'",
-    "requests>=2.31.0",
-    "openpyxl>=3.1.2",
+    "flask>=3.0.0",
     "humanize>=4.9.0",
+    "openpyxl>=3.1.2",
+    "packaging>=23.2",
+    "pandas>=2.2.0",
+    "requests>=2.31.0",
+    "tqdm>=4.66.0",
 ]
 
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Intended Audience :: Science/Research",
     "Natural Language :: English",
     "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
 ]
 
 [project.optional-dependencies]
-test = ["pytest>=7.2"]
-coverage = ["mnt.bench[test]", "pytest-cov[toml]"]
-dev = ["mnt.bench[coverage]"]
+test = ["pytest>=8.2.1"]
+coverage = ["mnt.bench[test]", "pytest-cov"]
 
 [project.scripts]
-"mnt.bench" = "mnt.bench.main:start_server"
+"mnt.bench" = "mnt.bench.main:main"
+"mnt-bench" = "mnt.bench.main:main"
 
 [project.urls]
-Homepage = "https://github.com/cda-tum/mntbench"
-"Bug Tracker" = "https://github.com/cda-tum/mntbench/issues"
-Discussions = "https://github.com/cda-tum/mntbench/discussions"
-Research = "https://www.cda.cit.tum.de/research/nanotech/"
+Homepage = "https://github.com/cda-tum/mnt-bench"
+"Bug Tracker" = "https://github.com/cda-tum/mnt-bench/issues"
+Discussions = "https://github.com/cda-tum/mnt-bench/discussions"
+Research = "https://www.cda.cit.tum.de/research/fcn/"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["mnt.bench"]
+include-package-data = false
+
+[tool.setuptools.package-data]
+"mnt.bench" = [
+    "py.typed",
+    "static/*.ico",
+    "static/*.pdf",
+    "static/*.png",
+    "static/*.svg",
+    "static/files/MNTBench_all.zip",
+    "static/files/*.json",
+    "templates/*.html",
+]
 
 [tool.setuptools_scm]
 
 [tool.pytest.ini_options]
-minversion = "7.2"
 testpaths = ["tests"]
-addopts = ["-ra", "--strict-markers", "--strict-config", "--showlocals"]
-log_cli_level = "INFO"
-xfail_strict = true
+addopts = ["-ra", "--strict-config", "--strict-markers"]
 
 [tool.coverage.run]
 source = ["mnt.bench"]
@@ -87,8 +95,8 @@ precision = 1
 
 [tool.mypy]
 mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
-files = ["src", "tests", "setup.py"]
-python_version = "3.8"
+files = ["src", "tests"]
+python_version = "3.11"
 strict = true
 show_error_codes = true
 enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
@@ -97,43 +105,21 @@ explicit_package_bases = true
 pretty = true
 
 [[tool.mypy.overrides]]
-module = ["joblib.*", "networkx.*", "pandas.*"]
+module = ["numpy", "numpy.*", "pandas", "pandas.*"]
+follow_imports = "skip"
 ignore_missing_imports = true
 
 [tool.ruff]
-# Exclude a variety of commonly ignored directories.
-exclude = [
-    "__init__.py",
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "venv",
-]
-
 line-length = 120
-extend-include = ["*.ipynb"]
+namespace-packages = ["src/mnt"]
 src = ["src"]
+target-version = "py311"
 
 [tool.ruff.lint]
-extend-select = [
+select = [
     "E", "F", "W", # flake8
     "A",           # flake8-builtins
-    "B",  "B904",  # flake8-bugbear
+    "B",           # flake8-bugbear
     "I",           # isort
     "ARG",         # flake8-unused-arguments
     "C4",          # flake8-comprehensions
@@ -155,7 +141,16 @@ extend-select = [
     "YTT",         # flake8-2020
 ]
 ignore = [
+    "E501",    # Line too long (Ruff's formatter is enough)
+    "ISC001",  # Conflicts with Ruff's formatter
     "PLR2004", # Magic values
+    "PLR0912", # Too many branches
     "PLR0913", # Too many arguments
-    "E501",    # Line too long (Black is enough)
+    "PLR0915", # Too many statements
+    "PLR0917", # Too many positional arguments
 ]
+
+[tool.codespell]
+ignore-words-list = "Wille"
+skip = "*.svg,src/mnt/bench/templates/legal.html"
+quiet-level = 3
