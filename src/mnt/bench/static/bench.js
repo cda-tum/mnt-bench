@@ -2,6 +2,15 @@
   "use strict";
 
   const byId = (id) => document.getElementById(id);
+  window.addEventListener("pageshow", () => {
+    const wordmark = document.querySelector(".circuit-art img");
+    if (!wordmark || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // A cached SVG image can retain its finished animation, including after browser Back.
+    const source = new URL(wordmark.src);
+    source.searchParams.set("replay", Date.now());
+    wordmark.src = source.href;
+  });
+
   let notificationTimer;
   function notify(message) {
     const notification = byId("notification");
