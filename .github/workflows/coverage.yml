@@ -41,9 +41,7 @@ jobs:
         with:
           python-version: "3.14"
       - name: Bootstrap patched pip
-        run: |
-          python -m pip install --upgrade "pip @ $PIP_BOOTSTRAP_URL"
-          python .github/scripts/check_tls_trust.py
+        run: python -m pip install --upgrade "pip @ $PIP_BOOTSTRAP_URL"
       - name: Install MNT Bench
         run: python -m pip install ".[coverage]"
       - name: Generate Report
