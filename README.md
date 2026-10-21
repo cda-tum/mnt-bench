@@ -96,6 +96,14 @@ This first searches for the most recent version of the benchmark files on GitHub
 The archive is stored in `~/.mntbench` by default. Afterwards, the webserver is started locally.
 The package includes an empty `MNTBench_all.zip` placeholder; the actual benchmarks are downloaded from the newest
 compatible release containing the archive, which may be older than the package release.
+Downloaded and cached archives must match the SHA-256 checksum embedded in the package. A failed download is discarded
+without replacing the existing archive. When publishing new benchmark data, update `BENCHMARK_ARCHIVE_SHA256` in
+`backend.py` from a separately verified release asset; do not trust a checksum fetched alongside the download.
+
+Keep the host's certificate store and each virtual environment's `pip` and `certifi` up to date. MNT Bench requires
+`certifi>=2026.10.19`; pip needs its own update because it bundles a separate certificate store. See the
+[Python security announcement](https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576)
+for secure upgrade instructions.
 
 ## Usage directly via this repository
 

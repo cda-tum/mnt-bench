@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import os
@@ -19,6 +20,18 @@ from tqdm import tqdm
 
 if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import Iterable, Mapping
+
+
+# Trusted v0.3.0 release asset, shared by subsequent package releases. Never obtain this hash from the download response.
+BENCHMARK_ARCHIVE_SHA256 = "54c3d96c16be67d724037a41a463881d2f3bb64a70c95c8b7773220a4a062a98"
+
+
+def _archive_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as archive:
+        for chunk in iter(lambda: archive.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 @dataclass
@@ -420,6 +433,9 @@ class Backend:
         local_benchmarks_available = False
         if huge_zip_path.is_file():
             try:
+                if _archive_sha256(huge_zip_path) != BENCHMARK_ARCHIVE_SHA256:
+                    msg = "Local benchmark archive has an unexpected SHA-256 checksum."
+                    raise BadZipFile(msg)
                 with ZipFile(huge_zip_path) as archive:
                     archive_entries = archive.infolist()
                     archive_sizes = {info.filename: info.file_size for info in archive_entries}
@@ -427,8 +443,8 @@ class Backend:
                         expected_sizes is None
                         or (len(archive_entries) == len(expected_sizes) and archive_sizes == expected_sizes)
                     )
-            except BadZipFile:
-                print("Local benchmark archive is invalid.")
+            except BadZipFile as error:
+                print(f"Local benchmark archive is invalid. {error}")
 
         if local_benchmarks_available:
             print("... found.")
@@ -490,6 +506,7 @@ class Backend:
         destination.parent.mkdir(parents=True, exist_ok=True)
 
         try:
+            digest = hashlib.sha256()
             with requests.get(download_url, stream=True, timeout=(10, 60)) as response:
                 response.raise_for_status()
                 content_length = response.headers.get("content-length")
@@ -505,7 +522,11 @@ class Backend:
                     ) as progress,
                 ):
                     for data in response.iter_content(chunk_size=1024 * 1024):
+                        digest.update(data)
                         progress.update(output.write(data))
+            if digest.hexdigest() != BENCHMARK_ARCHIVE_SHA256:
+                msg = "Downloaded benchmark archive has an unexpected SHA-256 checksum."
+                raise BadZipFile(msg)
             with ZipFile(temporary_destination) as archive:
                 archive_entries = archive.infolist()
                 archive_sizes = {info.filename: info.file_size for info in archive_entries}
