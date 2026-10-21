@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 from dataclasses import replace
 from importlib import metadata, resources
 from io import BytesIO, StringIO
@@ -73,10 +74,15 @@ BASE_CONFIGURATION = BenchmarkConfiguration(
 
 
 @pytest.fixture
-def benchmark_directory(tmp_path: Path) -> Path:
+def benchmark_directory(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     with ZipFile(tmp_path / "MNTBench_all.zip", mode="w") as archive:
         for filename in BENCHMARK_FILENAMES:
             archive.writestr(filename, f"fixture:{filename}")
+    monkeypatch.setattr(
+        backend_module,
+        "BENCHMARK_ARCHIVE_SHA256",
+        hashlib.sha256((tmp_path / "MNTBench_all.zip").read_bytes()).hexdigest(),
+    )
     return tmp_path
 
 
@@ -265,6 +271,23 @@ def test_invalid_local_archive_is_reported(
     assert "Local benchmark archive is invalid." in capsys.readouterr().out
 
 
+def test_cached_archive_with_same_size_tampering_is_not_used(
+    benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    path = benchmark_directory / "MNTBench_all.zip"
+    with ZipFile(path, mode="w") as archive:
+        for filename in BENCHMARK_FILENAMES:
+            archive.writestr(filename, f"Fixture:{filename}")
+    tampered_archive = path.read_bytes()
+    monkeypatch.setattr(backend_module, "handle_github_api_request", lambda _url: SimpleNamespace(json=list))
+    bench_backend = Backend()
+    bench_backend.layout_dimensions = FIXTURE_LAYOUT_DIMENSIONS
+
+    assert not bench_backend.read_mntbench_all_zip(str(benchmark_directory), skip_question=True)
+    assert bench_backend.mntbench_all_zip is None
+    assert path.read_bytes() == tampered_archive
+
+
 @pytest.mark.parametrize("local_content", [None, "old"], ids=["empty-placeholder", "stale-archive"])
 def test_refreshes_archive_from_older_release_asset(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, local_content: str | None
@@ -330,8 +353,9 @@ def test_refreshes_archive_from_older_release_asset(
     assert download_urls == ["https://example.com/latest-benchmarks"]
 
 
+@pytest.mark.parametrize("trusted_download", [False, True], ids=["checksum-mismatch", "entry-size-mismatch"])
 def test_download_rejects_mismatched_archive_without_replacing_cache(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, trusted_download: bool
 ) -> None:
     destination = tmp_path / "MNTBench_all.zip"
     with ZipFile(destination, mode="w") as archive:
@@ -341,6 +365,8 @@ def test_download_rejects_mismatched_archive_without_replacing_cache(
     incoming = BytesIO()
     with ZipFile(incoming, mode="w") as archive:
         archive.writestr("mux21.v", "wrong")
+    trusted_hash = hashlib.sha256(incoming.getvalue()).hexdigest()
+    monkeypatch.setattr(backend_module, "BENCHMARK_ARCHIVE_SHA256", trusted_hash if trusted_download else "0" * 64)
 
     class FakeResponse:
         def __init__(self) -> None:
@@ -357,19 +383,21 @@ def test_download_rejects_mismatched_archive_without_replacing_cache(
 
         def iter_content(self, chunk_size: int) -> list[bytes]:
             assert chunk_size == 1024 * 1024
-            return [incoming.getvalue()]
+            payload = incoming.getvalue()
+            return [payload[:10], payload[10:]]
 
     monkeypatch.setattr("mnt.bench.backend.requests.get", lambda *_args, **_kwargs: FakeResponse())
-    with pytest.raises(BadZipFile, match="does not match"):
+    with pytest.raises(BadZipFile, match="does not match" if trusted_download else "SHA-256"):
         Backend.handle_downloading_benchmarks(
             str(tmp_path),
             "https://example.com/benchmarks",
-            {"mux21.v": len(b"expected")},
+            {"mux21.v": len(b"expected") if trusted_download else len(b"wrong")},
         )
 
     assert destination.read_bytes() == original_archive
     assert not destination.with_suffix(".zip.part").exists()
 
+    monkeypatch.setattr(backend_module, "BENCHMARK_ARCHIVE_SHA256", trusted_hash)
     Backend.handle_downloading_benchmarks(
         str(tmp_path),
         "https://example.com/benchmarks",

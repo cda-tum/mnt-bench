@@ -12,12 +12,25 @@ concurrency:
 
 permissions: {}
 
+env:
+  # Use the refreshed OS roots instead of Node's bundled certificate snapshot.
+  NODE_OPTIONS: --use-openssl-ca
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+  SSL_CERT_DIR: /etc/ssl/certs
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  # Authenticate the bootstrap even if the preinstalled pip still trusts compromised CAs.
+  PIP_BOOTSTRAP_URL: https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl#sha256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70
+
 jobs:
   run:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
+      - name: Refresh system certificates
+        run: |
+          sudo apt-get update
+          sudo apt-get install --only-upgrade --yes ca-certificates
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
@@ -26,6 +39,8 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.14"
+      - name: Bootstrap patched pip
+        run: python -m pip install --upgrade "pip @ $PIP_BOOTSTRAP_URL"
       - name: Install MNT Bench
         run: python -m pip install ".[coverage]"
       - name: Generate Report
@@ -34,4 +49,6 @@ jobs:
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         with:
           fail_ci_if_error: true
+          # Reuse the patched Python environment rather than the frozen CLI's CA bundle.
+          use_pypi: true
           token: ${{ secrets.CODECOV_TOKEN }}
