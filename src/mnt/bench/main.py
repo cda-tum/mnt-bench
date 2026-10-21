@@ -84,9 +84,6 @@ def download_pre_gen_zip() -> Response:
         timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H-%M-%S")
         app.logger.info("###### Start ######")
         app.logger.info("Timestamp: %s", timestamp)
-        headers = str(request.headers)
-        headers = headers.replace("\r\n", "").replace("\n", "")
-        app.logger.info("Headers: %s", headers)
         app.logger.info("Download of pre-generated zip")
         app.logger.info("###### End ######")
 
@@ -114,9 +111,6 @@ def download_data() -> str | Response:
             if SERVER.activate_logging:
                 app.logger.info("###### Start ######")
                 app.logger.info("Timestamp: %s", timestamp)
-                headers = str(request.headers)
-                headers = headers.replace("\r\n", "").replace("\n", "")
-                app.logger.info("Headers: %s", headers)
                 app.logger.info("Prepared_data: %s", prepared_data)
                 app.logger.info("Download started: %s", len(file_paths))
                 app.logger.info("###### End ######")
