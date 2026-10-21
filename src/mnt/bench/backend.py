@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from importlib import metadata
 from pathlib import Path
 from shutil import copyfileobj
+from tempfile import mkstemp
 from typing import TYPE_CHECKING, Any
 from zipfile import ZIP_DEFLATED, BadZipFile, ZipFile
 
@@ -502,25 +503,26 @@ class Backend:
     ) -> None:
         print("Start downloading benchmarks...")
         destination = Path(target_location) / "MNTBench_all.zip"
-        temporary_destination = destination.with_suffix(".zip.part")
         destination.parent.mkdir(parents=True, exist_ok=True)
+        descriptor, filename = mkstemp(dir=destination.parent, prefix=".MNTBench-", suffix=".zip.part")
+        temporary_destination = Path(filename)
 
         try:
             digest = hashlib.sha256()
-            with requests.get(download_url, stream=True, timeout=(10, 60)) as response:
+            with (
+                os.fdopen(descriptor, "wb") as output,
+                requests.get(download_url, stream=True, timeout=(10, 60)) as response,
+            ):
                 response.raise_for_status()
                 content_length = response.headers.get("content-length")
                 total_length = int(content_length) if content_length is not None else None
-                with (
-                    temporary_destination.open("wb") as output,
-                    tqdm(
-                        desc=str(destination),
-                        total=total_length,
-                        unit="iB",
-                        unit_scale=True,
-                        unit_divisor=1024,
-                    ) as progress,
-                ):
+                with tqdm(
+                    desc=str(destination),
+                    total=total_length,
+                    unit="iB",
+                    unit_scale=True,
+                    unit_divisor=1024,
+                ) as progress:
                     for data in response.iter_content(chunk_size=1024 * 1024):
                         digest.update(data)
                         progress.update(output.write(data))

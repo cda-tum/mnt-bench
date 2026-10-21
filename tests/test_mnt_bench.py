@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+from contextlib import contextmanager
 from dataclasses import replace
 from importlib import metadata, resources
 from io import BytesIO, StringIO
@@ -395,7 +396,7 @@ def test_download_rejects_mismatched_archive_without_replacing_cache(
         )
 
     assert destination.read_bytes() == original_archive
-    assert not destination.with_suffix(".zip.part").exists()
+    assert list(tmp_path.iterdir()) == [destination]
 
     monkeypatch.setattr(backend_module, "BENCHMARK_ARCHIVE_SHA256", trusted_hash)
     Backend.handle_downloading_benchmarks(
@@ -411,6 +412,30 @@ def test_create_database(initialized_backend: Backend) -> None:
     input_data = replace(BASE_CONFIGURATION, gate=True, one=True)
     selected_files = initialized_backend.get_selected_file_paths(initialized_backend.get_updated_table(input_data))
     assert set(selected_files) == set(BENCHMARK_FILENAMES) - {"mux21.v"}
+
+
+def test_overlapping_downloads_use_private_temporary_files(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    incoming = BytesIO()
+    with ZipFile(incoming, "w") as archive:
+        archive.writestr("mux21.v", "trusted")
+    payload = incoming.getvalue()
+    monkeypatch.setattr(backend_module, "BENCHMARK_ARCHIVE_SHA256", hashlib.sha256(payload).hexdigest())
+
+    def chunks(url: str) -> Iterator[bytes]:
+        yield payload[:10]
+        if url.endswith("first"):
+            # Finish another download while the first still has its output file open.
+            Backend.handle_downloading_benchmarks(str(tmp_path), "https://example.com/second")
+        yield payload[10:]
+
+    @contextmanager
+    def response(url: str, **_kwargs: object) -> Iterator[SimpleNamespace]:
+        yield SimpleNamespace(headers={}, raise_for_status=lambda: None, iter_content=lambda **_kw: chunks(url))
+
+    monkeypatch.setattr("mnt.bench.backend.requests.get", response)
+    Backend.handle_downloading_benchmarks(str(tmp_path), "https://example.com/first")
+    assert (tmp_path / "MNTBench_all.zip").read_bytes() == payload
+    assert list(tmp_path.iterdir()) == [tmp_path / "MNTBench_all.zip"]
 
 
 def test_filter_multiple_algorithms(initialized_backend: Backend) -> None:
@@ -573,6 +598,25 @@ def test_flask_server(flask_client: FlaskClient) -> None:
     assert "mux21.v" in summary["table"]
     assert summary["size_compressed"]
     assert summary["size_uncompressed"]
+
+
+@pytest.mark.parametrize("endpoint", ["/mntbench/get_pre_gen", "/mntbench/download"])
+def test_download_logs_do_not_store_credentials(
+    flask_client: FlaskClient, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture, endpoint: str
+) -> None:
+    monkeypatch.setattr(main_module.SERVER, "activate_logging", True)
+    flask_client.set_cookie("session", "private-cookie")
+    with caplog.at_level("INFO", logger=app.logger.name):
+        response = flask_client.post(
+            endpoint,
+            data={"button": "submit", "selectBench_1": "true", "network": "true"},
+            headers={"Authorization": "Bearer private-token", "X-Api-Key": "private-api-key"},
+        )
+        assert response.status_code == 200
+        response.close()
+    assert "Timestamp:" in caplog.text
+    for secret in ("private-cookie", "private-token", "private-api-key"):
+        assert secret not in caplog.text
 
 
 def test_qca_wordmark(flask_client: FlaskClient) -> None:
