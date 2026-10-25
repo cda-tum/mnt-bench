@@ -1,4 +1,4 @@
-name: CodeCov
+name: 🧪 CI · Coverage
 
 on:
   push:

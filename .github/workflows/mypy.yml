@@ -1,4 +1,4 @@
-name: MyPy
+name: 🧪 CI · Types
 
 on:
   pull_request:
