@@ -174,4 +174,3 @@ uv run --no-project --python .venv python -m pytest tests/browser_smoke.py
 ```
 
 The browser test reuses the tiny unit-test archive, not the downloaded benchmark library.
-For production upgrades, health checks, and rollback, see [the deployment guide](deploy/README.md).
