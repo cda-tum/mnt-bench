@@ -63,7 +63,7 @@ tests/                Unit and integration tests
 There are three ways how to use this benchmark suite:
 
 1. Via the webpage hosted at [https://www.cda.cit.tum.de/mntbench/](https://www.cda.cit.tum.de/mntbench/)
-2. Via the pip package `mnt.bench`
+2. Via the Python package `mnt.bench`, installed with uv or pip
 3. Directly via this repository
 
 Since the first way is rather self-explanatory, the other two ways are explained in more detail in the following.
@@ -72,13 +72,48 @@ Since the first way is rather self-explanatory, the other two ways are explained
 
 MNT Bench supports Python 3.10 through 3.14 and is available from [PyPI](https://pypi.org/project/mnt.bench/).
 
+### Recommended: install the viewer with uv
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) 0.13.5 or newer, then run:
+
+```console
+uv tool install --python 3.13 mnt.bench
+mnt-bench
+```
+
+uv manages a separate environment for the viewer; no activation is needed. The explicit Python version keeps the
+installation within the supported range, and uv can download Python if it is missing. If the command is not on your
+PATH, run `uv tool update-shell` and restart your terminal. To update the installed viewer, run `uv tool upgrade mnt.bench`.
+
+To try the viewer without a persistent tool installation:
+
+```console
+uvx --python 3.13 --from mnt.bench mnt-bench
+```
+
+The first run installs dependencies; subsequent runs reuse uv's cache. Benchmark data is still stored separately in
+`~/.mntbench`. Stop the viewer with Ctrl+C. Open <http://127.0.0.1:5001/mntbench/> in your browser.
+
+### Python library or pip installation
+
+`uv tool install` isolates the application, so it does not make `mnt.bench` importable from your own Python scripts.
+For that, install it in your project's environment instead:
+
+```console
+uv venv --python 3.13
+uv pip install --python .venv mnt.bench
+uv run --no-project --python .venv python -c "from mnt.bench.backend import Backend"
+```
+
+Standard pip installations remain supported:
+
 ```console
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install mnt.bench
 ```
 
-On Windows, activate the environment with `.venv\Scripts\activate`.
+For fish, activate with `source .venv/bin/activate.fish`; for Windows PowerShell, use `.venv\Scripts\Activate.ps1`.
 
 ### Locally hosting the MNT Bench Viewer
 
@@ -112,7 +147,13 @@ Clone and install the repository with:
 ```console
 git clone https://github.com/cda-tum/mnt-bench.git
 cd mnt-bench
-python -m pip install .
+uv venv --python 3.13
+uv pip install --python .venv -e ".[coverage]"
+uv run --no-project --python .venv python -m pytest
+uv run --no-project --python .venv mnt-bench
 ```
 
 Afterwards, the package can be used as described [above](#usage-via-the-python-package).
+Alternatively, activate a virtual environment and use `python -m pip install -e ".[coverage]"`.
+CI builds with uv and the existing setuptools backend, tests wheel installs with uv and source installs with pip,
+and checks both `uv tool install` and `uvx`. Publishing and hosted deployments are unchanged.
