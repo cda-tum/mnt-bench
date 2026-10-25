@@ -24,6 +24,8 @@ Keep the reverse proxy configuration, archive, and existing environment. Never i
 If the old `start.sh` contains `pip install -U`, back it up and remove that installation line before the migration:
 otherwise restoring the old service could immediately upgrade the rollback environment again.
 Each worker opens its own archive; the sample intentionally does not use Gunicorn's `--preload`.
+This procedure assumes unchanged benchmark data. If a release changes the archive checksum, use a separate data
+directory for the candidate and keep the old archive for rollback; update both the preflight command and the new unit.
 
 ## Prepare and test before switching
 
@@ -78,8 +80,8 @@ backup="$(mktemp "$root/mntbench.service.XXXXXX")"
 cp /etc/systemd/system/mntbench.service "$backup"
 
 switch_environment() {
-  ln -s "$1" "$root/current.next"
-  mv -Tf "$root/current.next" "$root/current"
+  ln -s "$1" "$root/current.next" &&
+    mv -Tf "$root/current.next" "$root/current"
 }
 
 if switch_environment "$candidate" &&
