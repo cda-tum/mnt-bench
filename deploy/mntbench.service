@@ -1,0 +1,18 @@
+[Unit]
+Description=MNT Bench
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=web-user
+Group=web-user
+WorkingDirectory=/var/www/cda/app/mntbench
+ExecStart=/var/www/cda/app/mntbench/current/bin/gunicorn --bind 127.0.0.1:8000 --workers 2 --threads 4 --timeout 1000 'mnt.bench.main:create_app(skip_question=True, activate_logging=True, target_location="/local/mntbench/fgl_output/")'
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -4,7 +4,7 @@ import argparse
 import io
 import logging
 from datetime import datetime, timezone
-from importlib import resources
+from importlib import metadata, resources
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -26,6 +26,7 @@ class Server:
         skip_question: bool = False,
         activate_logging: bool = False,
     ) -> None:
+        self.version = metadata.version("mnt.bench")
         self.backend = Backend()
 
         self.target_location = str(Path(target_location).expanduser())
@@ -51,14 +52,34 @@ class Server:
 
 
 app = Flask(__name__, static_url_path="/mntbench")
-SERVER: Server = None  # type: ignore[assignment]
+SERVER: Server | None = None
 PREFIX = "/mntbench"
+
+
+@app.get(f"{PREFIX}/health")
+def health() -> Response:
+    """Report readiness and the package version loaded by this process."""
+    ready = (
+        SERVER is not None
+        and SERVER.backend.database is not None
+        and not SERVER.backend.database.empty
+        and SERVER.backend.mntbench_all_zip is not None
+        and SERVER.backend.mntbench_all_zip.fp is not None
+    )
+    response = jsonify(
+        status="ready" if ready else "unavailable",
+        version=SERVER.version if SERVER is not None else None,
+    )
+    response.status_code = 200 if ready else 503
+    response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 @app.route(f"{PREFIX}/", methods=["POST", "GET"])
 @app.route(f"{PREFIX}/index", methods=["POST", "GET"])
 def index() -> str:
     """Render the benchmark explorer with library statistics."""
+    assert SERVER is not None
     database = SERVER.backend.database
     assert database is not None
     return render_template(
@@ -78,6 +99,7 @@ def index() -> str:
 
 @app.route(f"{PREFIX}/get_pre_gen", methods=["POST", "GET"])
 def download_pre_gen_zip() -> Response:
+    assert SERVER is not None
     filename = "MNTBench_all.zip"
 
     if SERVER.activate_logging:
@@ -99,6 +121,7 @@ def download_pre_gen_zip() -> Response:
 @app.route(f"{PREFIX}/download", methods=["POST", "GET"])
 def download_data() -> str | Response:
     """Triggers the downloading process of all benchmarks according to the user's input."""
+    assert SERVER is not None
     if request.method == "POST":
         selected_action = request.form["button"]
         if selected_action == "submit":
@@ -180,6 +203,7 @@ def description() -> str:
 
 @app.route(f"{PREFIX}/get_num_benchmarks", methods=["POST"])
 def get_num_benchmarks() -> Response:
+    assert SERVER is not None
     data = request.form
     prepared_data = SERVER.backend.prepare_form_input(data)
     raw_table = SERVER.backend.get_updated_table(prepared_data)
@@ -197,12 +221,12 @@ def get_num_benchmarks() -> Response:
     )
 
 
-def start_server(
+def create_app(
     skip_question: bool = False,
     activate_logging: bool = False,
     target_location: str | None = None,
-    debug_flag: bool = False,
-) -> None:
+) -> Flask:
+    """Initialize the benchmark library and return a WSGI app without starting a server."""
     if not target_location:
         target_location = str(Path.home() / ".mntbench")
 
@@ -210,6 +234,20 @@ def start_server(
         target_location=target_location,
         skip_question=skip_question,
         activate_logging=activate_logging,
+    )
+    return app
+
+
+def start_server(
+    skip_question: bool = False,
+    activate_logging: bool = False,
+    target_location: str | None = None,
+    debug_flag: bool = False,
+) -> None:
+    create_app(
+        skip_question=skip_question,
+        activate_logging=activate_logging,
+        target_location=target_location,
     )
     print(
         f"Server is hosted at http://127.0.0.1:5001{PREFIX}/",

@@ -538,6 +538,34 @@ def flask_client(benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch) -> 
         yield client
 
 
+def test_health_reports_loaded_version(flask_client: FlaskClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    assert main_module.SERVER is not None
+    loaded_version = main_module.SERVER.version
+    monkeypatch.setattr(metadata, "version", lambda _name: "999.0.0")
+    response = flask_client.get("/mntbench/health")
+    assert response.status_code == 200
+    assert response.json == {"status": "ready", "version": loaded_version}
+    assert response.headers["Cache-Control"] == "no-store"
+
+
+def test_health_rejects_uninitialized_server(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(main_module, "SERVER", None)
+    response = app.test_client().get("/mntbench/health")
+    assert response.status_code == 503
+    assert response.json == {"status": "unavailable", "version": None}
+
+
+def test_wsgi_factory_initializes_without_running_a_server(
+    benchmark_directory: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(
+        Backend, "read_layout_dimensions_from_json", staticmethod(lambda _path: FIXTURE_LAYOUT_DIMENSIONS)
+    )
+    monkeypatch.setattr(app, "run", lambda **_kwargs: pytest.fail("WSGI factory must not start a server"))
+    assert main_module.create_app(skip_question=True, target_location=str(benchmark_directory)) is app
+    assert app.test_client().get("/mntbench/health").status_code == 200
+
+
 def test_flask_server(flask_client: FlaskClient) -> None:
     with resources.as_file(resources.files("mnt.bench")) as bench_location:
         for path in ("templates/index.html", "templates/legal.html", "templates/description.html"):

@@ -50,6 +50,6 @@ jobs:
           enable-cache: auto
           cache-suffix: ${{ github.job }}
       - name: Install type-checking dependencies
-        run: uv pip install --python "$(command -v python)" ".[test]" mypy types-requests types-tqdm
+        run: uv pip install --python "$(command -v python)" ".[test]" mypy types-requests types-tqdm pytest-playwright
       - name: Run MyPy
         run: python -m mypy

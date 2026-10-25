@@ -157,3 +157,21 @@ Afterwards, the package can be used as described [above](#usage-via-the-python-p
 Alternatively, activate a virtual environment and use `python -m pip install -e ".[coverage]"`.
 CI builds with uv and the existing setuptools backend, tests wheel installs with uv and source installs with pip,
 and checks both `uv tool install` and `uvx`. Publishing and hosted deployments are unchanged.
+
+## Installation, browser, and dependency checks
+
+CI smoke-tests built wheels on macOS ARM and Windows x64 with Python 3.13; the existing Linux jobs cover the
+minimum and maximum supported Python versions. One Chromium workflow checks the real interface, and a separate
+job audits freshly resolved runtime dependencies (including transitive dependencies) with `pip-audit` on PRs,
+main, and weekly. Browser failure traces are retained for seven days; these tests use temporary data only.
+
+To run the browser check locally after creating the development environment:
+
+```console
+uv pip install --python .venv pytest-playwright
+uv run --no-project --python .venv python -m playwright install chromium
+uv run --no-project --python .venv python -m pytest tests/browser_smoke.py
+```
+
+The browser test reuses the tiny unit-test archive, not the downloaded benchmark library.
+For production upgrades, health checks, and rollback, see [the deployment guide](deploy/README.md).
