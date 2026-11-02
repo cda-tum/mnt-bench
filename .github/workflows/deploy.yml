@@ -117,10 +117,15 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Stage verified pip for Python setup
+        run: bash .github/scripts/stage-pip-bootstrap.sh
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.10"
         name: Install Python
+        env:
+          PIP_NO_INDEX: "1"
+          PIP_FIND_LINKS: ${{ runner.temp }}/pip-bootstrap
       - *bootstrap-pip
       - *setup-uv
       - *install-build-tools
