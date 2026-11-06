@@ -1,5 +1,5 @@
 {
-  "name": "Temporary publishing TLS diagnostics (no credentials)",
+  "name": "Temporary publisher CA mount validation",
   "on": {
     "push": {
       "branches": [
@@ -11,7 +11,7 @@
     "contents": "read"
   },
   "concurrency": {
-    "group": "temporary-tls-diagnostics-${{ github.ref }}-publishing",
+    "group": "temporary-tls-diagnostics-${{ github.ref }}-mounted",
     "cancel-in-progress": true
   },
   "env": {
@@ -48,8 +48,8 @@
           "run": "import json, os, platform, subprocess, sys\nprint(json.dumps({\"image\": os.environ.get(\"ImageVersion\"), \"platform\": platform.platform(), \"initial_python\": sys.version}))\nif sys.platform == \"linux\":\n    subprocess.run([\"dpkg-query\", \"-W\", \"ca-certificates\"], check=True)\n"
         },
         {
-          "name": "Inspect pinned publishing container without invoking upload or OIDC",
-          "run": "docker pull ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086\ndocker image inspect ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086 --format '{{json .RepoDigests}}'\ndocker run --rm --entrypoint python --env SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt --env SSL_CERT_DIR=/etc/ssl/certs -v \"$GITHUB_WORKSPACE/.github/tls-diagnostic:/probe:ro\" ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086 /probe/probe.py clients --keep-overrides --label publishing-current-workflow --only oidc,tuf,fulcio,twine\ndocker run --rm --entrypoint /bin/sh -v \"$GITHUB_WORKSPACE/.github/tls-diagnostic:/probe:ro\" ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086 -c 'export SSL_CERT_FILE=\"$(python -m certifi)\"; export SSL_CERT_DIR=\"$(mktemp -d)\"; exec python /probe/probe.py clients --keep-overrides --label publishing-verified-bundle --only oidc,tuf,fulcio,twine'\n"
+          "name": "Validate workspace-mounted CA bundle with actual publishing clients",
+          "run": "cp /etc/ssl/certs/ca-certificates.crt \"$GITHUB_WORKSPACE/.publish-ca.pem\"\nmkdir -p \"$GITHUB_WORKSPACE/.publish-empty-ca\"\ndocker pull ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086\ndocker image inspect ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086 --format '{{json .RepoDigests}}'\ndocker run --rm --entrypoint python --env SSL_CERT_FILE=/github/workspace/.publish-ca.pem --env SSL_CERT_DIR=/github/workspace/.publish-empty-ca -v \"$GITHUB_WORKSPACE:/github/workspace:ro\" ghcr.io/pypa/gh-action-pypi-publish:7245906fb61fa33a13554f9d5fb856fe61758086 /github/workspace/.github/tls-diagnostic/probe.py clients --keep-overrides --label publishing-workspace-bundle --only oidc,tuf,fulcio,twine\n"
         }
       ]
     }
