@@ -14,6 +14,8 @@ concurrency:
 permissions: {}
 
 env:
+  # Disable CVE-2026-114938's Base64 intrinsic until CodeQL bundles a fixed JVM; see #52.
+  JAVA_TOOL_OPTIONS: "-XX:-UseBASE64Intrinsics"
   # TODO(emudhra): remove incident-specific setup only after runner/client verification; see #39.
   # Use the refreshed OS roots instead of Node's bundled certificate snapshot.
   NODE_OPTIONS: --use-openssl-ca
